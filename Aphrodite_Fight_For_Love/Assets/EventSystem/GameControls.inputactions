@@ -1,0 +1,34 @@
+{
+    "name": "GameControls",
+    "maps": [
+        {
+            "name": "UIPuzzleNav",
+            "id": "dfe0c6e9-3521-4ddb-ab50-6c50fbe58aed",
+            "actions": [
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "7c2174e9-9a0d-4f5e-ad7e-2d52e85ad4d4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b73b44a9-d3ae-4c97-a677-1458e48bbaee",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
