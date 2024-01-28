@@ -30,7 +30,6 @@ namespace AphroditeFightCode
             //StartCoroutine(WaitForKeyCodesDictionary());
             //populateKeyCode();
             AddKeyCodeToDictionary();
-            Debug.Log(GameData.keypadPuzzleCodes[0].Count);
 
             currentButton = EventSystem.current.currentSelectedGameObject;
         }

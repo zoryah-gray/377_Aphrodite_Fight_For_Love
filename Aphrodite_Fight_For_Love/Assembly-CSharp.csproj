@@ -63,6 +63,7 @@
     <Compile Include="Assets/Scripts/CompositeInteractable.cs" />
     <Compile Include="Assets/Puzzle/TestPlayerCtlr.cs" />
     <Compile Include="Assets/Puzzle/LightKeypad/KeyPadContoller.cs" />
+    <Compile Include="Assets/Puzzle/LightKeypad/PuzzleEnter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
