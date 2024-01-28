@@ -62,6 +62,7 @@
     <Compile Include="Assets/Scripts/GameData.cs" />
     <Compile Include="Assets/Scripts/CompositeInteractable.cs" />
     <Compile Include="Assets/Puzzle/TestPlayerCtlr.cs" />
+    <Compile Include="Assets/Puzzle/ModifiedActionMap.cs" />
     <Compile Include="Assets/Puzzle/LightKeypad/KeyPadContoller.cs" />
     <Compile Include="Assets/Puzzle/LightKeypad/PuzzleEnter.cs" />
   </ItemGroup>

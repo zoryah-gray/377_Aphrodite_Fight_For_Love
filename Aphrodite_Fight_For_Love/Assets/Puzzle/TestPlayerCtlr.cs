@@ -16,17 +16,33 @@ namespace AphroditeFightCode
         [Header("PuzzleUI")]
         public GameObject puzzle;
         public bool inPuzzleTrigger = false;
+        public bool inPuzzle = false;
+        public bool freezePlayer = false;
+
+        [Header("Action Map")]
+        [SerializeField] InputActionAsset actionMap;
         
-        // Start is called before the first frame update
+
+
+
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            //Debug.Log(actionMap.controlSchemes.ToString());
+            //Debug.Log(actionMap.enabled);
+            //actionMap.FindAction("Player");
+            //foreach (var i in actionMap.actionMaps)
+            //{
+            //    Debug.Log(i);
+            //}
         }
 
         private void FixedUpdate()
         {
             
-            if (movementInput != Vector2.zero)
+            if (movementInput != Vector2.zero && !freezePlayer)
             {
                 //check for obstacles
                 int count = rb.Cast(movementInput, movementFilter, castCollisions, speed * Time.fixedDeltaTime + collisionOffset);
@@ -40,7 +56,6 @@ namespace AphroditeFightCode
 
         public void OnMove(InputValue movementValue)
         {
-            Debug.Log("on move");
             movementInput = movementValue.Get<Vector2>();
         }
 
@@ -49,8 +64,10 @@ namespace AphroditeFightCode
             Debug.Log("interact pressed");
             if (inPuzzleTrigger)
             {
-                Debug.Log("activate puzzle");
+                Debug.Log("Puzzle Activated");
+                inPuzzle = true;
                 puzzle.SetActive(true);
+                freezePlayer = true;
             }
         }
     }

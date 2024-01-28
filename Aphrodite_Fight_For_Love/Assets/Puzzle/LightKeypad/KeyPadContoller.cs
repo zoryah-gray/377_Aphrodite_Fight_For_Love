@@ -20,6 +20,27 @@ namespace AphroditeFightCode
         [SerializeField] private List<int> code;
         [SerializeField] public Queue<int> codeQ = new Queue<int>();
         [SerializeField] private List<int> currentInput;
+        [Header("Action Map")]
+        [SerializeField] private ModifiedActionMap actionMapI;
+
+        private void OnEnable()
+        {
+            if (actionMapI == null)
+            {
+                actionMapI = new ModifiedActionMap();
+            }
+            actionMapI.Player.Disable();
+            actionMapI.UI.Enable();
+            currentButton = EventSystem.current.currentSelectedGameObject;
+
+            Debug.Log(InputSystem.FindControls("UI"));
+        }
+
+        private void OnDisable()
+        {
+            actionMapI.Player.Disable();
+            actionMapI.UI.Enable();
+        }
 
 
         // Start is called before the first frame update
@@ -32,6 +53,7 @@ namespace AphroditeFightCode
             AddKeyCodeToDictionary();
 
             currentButton = EventSystem.current.currentSelectedGameObject;
+            
         }
 
         // Update is called once per frame
@@ -58,6 +80,11 @@ namespace AphroditeFightCode
         private void ResetCode()
         {
             return;
+        }
+
+        public void OnReturn()
+        {
+            gameObject.SetActive(false);
         }
 
         
