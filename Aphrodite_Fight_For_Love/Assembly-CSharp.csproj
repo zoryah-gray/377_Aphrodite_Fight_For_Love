@@ -66,6 +66,7 @@
     <Compile Include="Assets/Puzzle/LightKeypad/KeyPadContoller.cs" />
     <Compile Include="Assets/PlayerInputs.cs" />
     <Compile Include="Assets/Puzzle/LightKeypad/PuzzleEnter.cs" />
+    <Compile Include="Assets/Scripts/FollowingCam.cs" />
     <Compile Include="Assets/Scripts/PlayerMovement.cs" />
   </ItemGroup>
   <ItemGroup>
