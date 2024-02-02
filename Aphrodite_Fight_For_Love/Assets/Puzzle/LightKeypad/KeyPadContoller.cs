@@ -10,9 +10,10 @@ namespace AphroditeFightCode
 {
     public class KeyPadContoller : MonoBehaviour
     {
-        [Header("Keys Objects")]
+        [Header("Button Objects")]
         [SerializeField] private GameObject currentButton;
         public GameObject firstButton;
+        public Button[] buttons;
         [Header("Code Tracker")]
         [SerializeField] private int idx = 0;
         public int codeID = 0;
@@ -47,8 +48,8 @@ namespace AphroditeFightCode
 
         private void OnDisable()
         {
-            actionMap.Player.Disable();
-            actionMap.UI.Enable();
+            actionMap.Player.Enable();
+            actionMap.UI.Disable();
         }
 
 
@@ -81,6 +82,16 @@ namespace AphroditeFightCode
             currentInput.Add(keyID);
         }
 
+        public void SubmitPattern()
+        {
+            // evaluate if the pattern and code are the same
+            if (currentInput != code)
+            {
+                Debug.Log("Code is not the same! " + currentInput + " != " + code);
+            }
+            currentInput.Clear();
+        }
+
         private void StartSequenceHint(float duration)
         {
             return;
@@ -93,6 +104,10 @@ namespace AphroditeFightCode
 
         public void OnReturn()
         {
+            actionMap.Player.Enable();
+            actionMap.UI.Disable();
+            GameData.freezePlayer = false;
+            GameData.inKeypadPuzzle = false;
             gameObject.SetActive(false);
         }
 

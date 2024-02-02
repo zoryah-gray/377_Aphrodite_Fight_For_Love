@@ -19,13 +19,13 @@ namespace AphroditeFightCode
         }
         private void OnEnable()
         {
-            input.Enable();
+            input.Player.Enable();
             input.Player.Movement.performed += OnMovementPerformed;
             input.Player.Movement.canceled += OnMovementCancelled;
         }
         private void OnDisable()
         {
-            input.Disable();
+            input.Player.Disable();
             input.Player.Movement.performed -= OnMovementPerformed;
             input.Player.Movement.canceled -= OnMovementCancelled;
         }

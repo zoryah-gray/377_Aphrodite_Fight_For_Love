@@ -44,13 +44,14 @@ namespace AphroditeFightCode
             Debug.Log("interact pressed");
             if (inPuzzleTrigger)
             {
-                inKeypadPuzzle = true;
+                
+                GameData.inKeypadPuzzle = true;
                 GameData.freezePlayer = true;
                 //TODO
                 //currently single ref game object => later have a function to
                 // pass in the puzzle idx
                 puzzle.SetActive(true);
-                freezePlayer = true;
+                inPuzzleTrigger = false;
                 Debug.Log("Puzzle Activated| in puuzzle? " + inKeypadPuzzle + "freeze player>?: " + freezePlayer + " Game data saved: " + GameData.freezePlayer);
 
             }
