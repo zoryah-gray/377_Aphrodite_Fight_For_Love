@@ -11,7 +11,7 @@ namespace AphroditeFightCode
         private PlayerInputs input = null;
         private Vector2 moveVector = Vector2.zero;
         private Rigidbody2D rb = null;
-        private float moveSpeed = 10f;
+        private float moveSpeed = 6f;
         private void Awake()
         {
             input = new PlayerInputs();
@@ -31,7 +31,10 @@ namespace AphroditeFightCode
         }
         private void FixedUpdate()
         {
-            rb.velocity = moveVector * moveSpeed;
+            if (!GameData.freezePlayer)
+            {
+                rb.velocity = moveVector * moveSpeed;
+            }
         }
         private void OnMovementPerformed(InputAction.CallbackContext val)
         {

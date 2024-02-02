@@ -16,7 +16,7 @@ namespace AphroditeFightCode
             icon.SetActive(true);
             if (collision.gameObject.name == "Player")
             {
-                collision.GetComponent<TestPlayerCtlr>().inPuzzleTrigger = true;
+                collision.gameObject.GetComponent<PlayerKeypadPuzzleController>().inPuzzleTrigger = true;
             }
         }
 
@@ -25,7 +25,7 @@ namespace AphroditeFightCode
             icon.SetActive(false);
             if (collision.gameObject.name == "Player")
             {
-                collision.GetComponent<TestPlayerCtlr>().inPuzzleTrigger = false;
+                collision.gameObject.GetComponent<PlayerKeypadPuzzleController>().inPuzzleTrigger = false;
             }
         }
     }

@@ -13,7 +13,7 @@ namespace AphroditeFightCode
         
         [Header("Puzzle Data")]
         public static Dictionary<int, List<int>> keypadPuzzleCodes = new Dictionary<int, List<int>>();
-        
+        public static bool freezePlayer = false;
 
 
 

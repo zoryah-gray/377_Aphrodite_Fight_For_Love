@@ -12,34 +12,43 @@ namespace AphroditeFightCode
     {
         [Header("Keys Objects")]
         [SerializeField] private GameObject currentButton;
-        public Button firstButton;
+        public GameObject firstButton;
         [Header("Code Tracker")]
         [SerializeField] private int idx = 0;
         public int codeID = 0;
         //[SerializeField] private int[] code;
         [SerializeField] private List<int> code;
         [SerializeField] public Queue<int> codeQ = new Queue<int>();
-        [SerializeField] private List<int> currentInput;
+        public List<int> currentInput;
         [Header("Action Map")]
         [SerializeField] private ModifiedActionMap actionMapI;
+        [SerializeField] private PlayerInputs actionMap = null;
 
         private void OnEnable()
         {
-            if (actionMapI == null)
-            {
-                actionMapI = new ModifiedActionMap();
-            }
-            actionMapI.Player.Disable();
-            actionMapI.UI.Enable();
-            currentButton = EventSystem.current.currentSelectedGameObject;
+            //if (actionMapI == null)
+            //{
+            //    actionMapI = new ModifiedActionMap();
+            //}
+            //actionMapI.Player.Disable();
+            //actionMapI.UI.Enable();
+            //currentButton = EventSystem.current.currentSelectedGameObject;
 
+            if (actionMap == null)
+            {
+                actionMap = new PlayerInputs();
+            }
+            actionMap.Player.Disable();
+            actionMap.UI.Enable();
+            EventSystem.current.SetSelectedGameObject(firstButton);
+            currentButton = firstButton;
             Debug.Log(InputSystem.FindControls("UI"));
         }
 
         private void OnDisable()
         {
-            actionMapI.Player.Disable();
-            actionMapI.UI.Enable();
+            actionMap.Player.Disable();
+            actionMap.UI.Enable();
         }
 
 
