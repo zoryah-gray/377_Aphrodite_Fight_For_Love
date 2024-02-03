@@ -16,6 +16,7 @@ namespace AphroditeFightCode
         public bool isWalkingFront = false;
         public bool isWalkingHoriz = false;
         public bool isWalkingBack = false;
+        public bool isRight = false;
 
         private void Update()
         {
@@ -28,8 +29,12 @@ namespace AphroditeFightCode
                 isWalkingFront = false;
             }
             if (Input.GetKeyDown(KeyCode.A)) {
-                GetComponent<Animator>().SetBool("isWalkingHoriz", true);
-                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                if (isRight)
+                {
+                    transform.localScale = new Vector3((-1) * transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                    GetComponent<Animator>().SetBool("isWalkingHoriz", true);
+                }
+                isRight = false;
                 isWalkingHoriz = true;
             }
             else if (Input.GetKeyUp(KeyCode.A)) {
@@ -37,8 +42,12 @@ namespace AphroditeFightCode
                 isWalkingHoriz = false;
             }
             if (Input.GetKeyDown(KeyCode.D)) {
-                GetComponent<Animator>().SetBool("isWalkingHoriz", true);
-                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                if (!isRight)
+                {
+                    transform.localScale = new Vector3((-1) * transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                    GetComponent<Animator>().SetBool("isWalkingHoriz", true);
+                }
+                isRight = true;
                 isWalkingHoriz = true;
             }
             else if (Input.GetKeyUp(KeyCode.D)) {
