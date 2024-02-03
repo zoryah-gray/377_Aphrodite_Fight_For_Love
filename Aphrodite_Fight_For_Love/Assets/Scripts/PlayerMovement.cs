@@ -11,7 +11,51 @@ namespace AphroditeFightCode
         private PlayerInputs input = null;
         private Vector2 moveVector = Vector2.zero;
         private Rigidbody2D rb = null;
-        private float moveSpeed = 6f;
+        private float moveSpeed = 3f;
+        public Animator animator;
+        public bool isWalkingFront = false;
+        public bool isWalkingHoriz = false;
+        public bool isWalkingBack = false;
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.S)) {
+                GetComponent<Animator>().SetBool("isWalkingFront", true);
+                isWalkingFront = true;
+            }
+            else if (Input.GetKeyUp(KeyCode.S)) {
+                GetComponent<Animator>().SetBool("isWalkingFront", false);
+                isWalkingFront = false;
+            }
+            if (Input.GetKeyDown(KeyCode.A)) {
+                GetComponent<Animator>().SetBool("isWalkingHoriz", true);
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                isWalkingHoriz = true;
+            }
+            else if (Input.GetKeyUp(KeyCode.A)) {
+                GetComponent<Animator>().SetBool("isWalkingHoriz", false);
+                isWalkingHoriz = false;
+            }
+            if (Input.GetKeyDown(KeyCode.D)) {
+                GetComponent<Animator>().SetBool("isWalkingHoriz", true);
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                isWalkingHoriz = true;
+            }
+            else if (Input.GetKeyUp(KeyCode.D)) {
+                GetComponent<Animator>().SetBool("isWalkingHoriz", false);
+                isWalkingHoriz = false;
+            }
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                GetComponent<Animator>().SetBool("isWalkingBack", true);
+                isWalkingBack = true;
+            }
+            else if (Input.GetKeyUp(KeyCode.W))
+            {
+                GetComponent<Animator>().SetBool("isWalkingBack", false);
+                isWalkingBack = false;
+            }
+        }
         private void Awake()
         {
             input = new PlayerInputs();

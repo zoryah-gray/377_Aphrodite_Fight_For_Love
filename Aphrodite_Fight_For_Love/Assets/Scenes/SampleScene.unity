@@ -522,6 +522,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7600a3815b3643e0ba56bb40991ea45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1631309990}
+  isWalkingFront: 0
 --- !u!50 &1631309989
 Rigidbody2D:
   serializedVersion: 4
