@@ -1,4 +1,6 @@
-Library/
-Logs/
-UserSettings/
+.vs/
+
+/[Ll]ibrary/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
 **/.DS_Store
