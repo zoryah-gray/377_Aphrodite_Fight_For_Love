@@ -13,73 +13,53 @@ namespace AphroditeFightCode
         private Rigidbody2D rb = null;
         private float moveSpeed = 3f;
         public Animator animator;
-
-
-        //public bool isWalkingFront = false;
-        //public bool isWalkingHoriz = false;
-        //public bool isWalkingBack = false;
+        public GameObject playerGO;
+        public GameObject meleeBoxGO;
 
         public bool isFacingRight = false;
         public bool isFacingLeft = false;
         public bool isFacingFront = false;
         public bool isFacingBack = false;
-
         public bool isRight = false;
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.S)) {
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) {
                 GetComponent<Animator>().SetBool("isWalkingFront", true);
-               //isWalkingFront = true;
             }
-            else if (Input.GetKeyUp(KeyCode.S)) {
+            else if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow)) {
                 GetComponent<Animator>().SetBool("isWalkingFront", false);
-                //isWalkingFront = false;
             }
-            if (Input.GetKeyDown(KeyCode.A)) {
-                
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) {
                 GetComponent<Animator>().SetBool("isWalkingHoriz", true);
                 if(transform.localScale.x < 0)
                 {
                     transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
                 }
-
-                //isRight = false;
-                //isWalkingHoriz = true;
             }
-            else if (Input.GetKeyUp(KeyCode.A)) {
+            else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow)) {
                 GetComponent<Animator>().SetBool("isWalkingHoriz", false);
-                //isWalkingHoriz = false;
             }
-            if (Input.GetKeyDown(KeyCode.D)) {
-
-                //transform.localScale = new Vector3((-1) * transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) {
                 GetComponent<Animator>().SetBool("isWalkingHoriz", true);
-            
-                
                 if (transform.localScale.x > 0)
                 {
                     transform.localScale = new Vector3((-1) * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
                 }
-
-                //isRight = true;
-                //isWalkingHoriz = true;
             }
-            else if (Input.GetKeyUp(KeyCode.D)) {
+            else if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow)) {
                 GetComponent<Animator>().SetBool("isWalkingHoriz", false);
-                //isWalkingHoriz = false;
             }
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 GetComponent<Animator>().SetBool("isWalkingBack", true);
-                //isWalkingBack = true;
             }
-            else if (Input.GetKeyUp(KeyCode.W))
+            else if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
             {
                 GetComponent<Animator>().SetBool("isWalkingBack", false);
-                //isWalkingBack = false;
             }
         }
+
         private void Awake()
         {
             input = new PlayerInputs();
