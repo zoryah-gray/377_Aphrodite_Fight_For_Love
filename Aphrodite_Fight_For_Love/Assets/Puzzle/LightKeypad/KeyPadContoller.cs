@@ -15,7 +15,7 @@ namespace AphroditeFightCode
         public GameObject firstButton;
         public Button[] buttons;
         [Header("Code Tracker")]
-        [SerializeField] private int idx = 0;
+//        [SerializeField] private int idx = 0;
         public int codeID = 0;
         //[SerializeField] private int[] code;
         [SerializeField] private List<int> code;

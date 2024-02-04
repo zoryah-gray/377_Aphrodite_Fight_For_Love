@@ -16,7 +16,9 @@ namespace AphroditeFightCode
         public GameObject playerGO;
         public GameObject meleeBoxGO;
 
-        public int directionInt = 0; 
+        public int directionInt = 0;
+        public bool animAfterLeft = true;
+
 
         private void Update()
         {
@@ -29,6 +31,7 @@ namespace AphroditeFightCode
             }
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) {
                 GetComponent<Animator>().SetBool("isWalkingHoriz", true);
+                animAfterLeft = true;
                 directionInt = 4;
                 if (transform.localScale.x < 0)
                 {
@@ -40,6 +43,7 @@ namespace AphroditeFightCode
             }
             if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) {
                 GetComponent<Animator>().SetBool("isWalkingHoriz", true);
+                animAfterLeft = false;
                 directionInt = 2;
                 if (transform.localScale.x > 0)
                 {
