@@ -16,23 +16,21 @@ namespace AphroditeFightCode
         public GameObject playerGO;
         public GameObject meleeBoxGO;
 
-        public bool isFacingRight = false;
-        public bool isFacingLeft = false;
-        public bool isFacingFront = false;
-        public bool isFacingBack = false;
-        public bool isRight = false;
+        public int directionInt = 0; 
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) {
                 GetComponent<Animator>().SetBool("isWalkingFront", true);
-            }
+                directionInt = 3;
+    }
             else if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow)) {
                 GetComponent<Animator>().SetBool("isWalkingFront", false);
             }
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) {
                 GetComponent<Animator>().SetBool("isWalkingHoriz", true);
-                if(transform.localScale.x < 0)
+                directionInt = 4;
+                if (transform.localScale.x < 0)
                 {
                     transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
                 }
@@ -42,6 +40,7 @@ namespace AphroditeFightCode
             }
             if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) {
                 GetComponent<Animator>().SetBool("isWalkingHoriz", true);
+                directionInt = 2;
                 if (transform.localScale.x > 0)
                 {
                     transform.localScale = new Vector3((-1) * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
@@ -52,6 +51,7 @@ namespace AphroditeFightCode
             }
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
+                directionInt = 1;
                 GetComponent<Animator>().SetBool("isWalkingBack", true);
             }
             else if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))

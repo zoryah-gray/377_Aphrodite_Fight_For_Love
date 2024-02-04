@@ -500,8 +500,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409992814}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01, y: -0.81, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.8, z: 0}
   m_LocalScale: {x: 1, y: 0.5000698, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -520,6 +520,7 @@ GameObject:
   - component: {fileID: 1631309989}
   - component: {fileID: 1631309990}
   - component: {fileID: 1631309991}
+  - component: {fileID: 1631309992}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -658,11 +659,21 @@ MonoBehaviour:
   animator: {fileID: 1631309990}
   playerGO: {fileID: 0}
   meleeBoxGO: {fileID: 0}
-  isFacingRight: 0
-  isFacingLeft: 0
-  isFacingFront: 0
-  isFacingBack: 0
-  isRight: 0
+  directionInt: 0
+--- !u!114 &1631309992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631309984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fb6603ce9dcadf4eb20cf43e95a75db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 1631309991}
+  meleeBox: {fileID: 1409992816}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
