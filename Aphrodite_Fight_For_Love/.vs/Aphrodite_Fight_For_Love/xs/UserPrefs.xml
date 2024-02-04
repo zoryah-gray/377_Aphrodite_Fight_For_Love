@@ -1,19 +1,31 @@
 ﻿<Properties StartupConfiguration="{0838A8C5-3FCE-5B03-D3D3-292AD21EEBF2}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Puzzle/LightKeypad/PlayerKeypadPuzzleController.cs">
-    <Files>
-      <File FileName="Assets/Scripts/GameData.cs" Line="17" Column="51" />
-      <File FileName="Assets/Puzzle/TestPlayerCtlr.cs" Line="31" Column="13" />
-      <File FileName="Assets/Puzzle/LightKeypad/KeyPadContoller.cs" Line="108" Column="36" />
-      <File FileName="Assets/Puzzle/LightKeypad/PuzzleEnter.cs" Line="19" Column="98" />
-      <File FileName="Assets/Scripts/PlayerMovement.cs" Line="25" Column="10" />
-      <File FileName="Assets/Puzzle/LightKeypad/PlayerPuzzleController.cs" Line="47" Column="17" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="fab7a1c7-7c71-43e5-a686-5c609b499339" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerMovement.cs">
+    <Files>
+      <File FileName="Assets/Scripts/GameData.cs" Line="45" Column="78" />
+      <File FileName="Library/PackageCache/com.unity.inputsystem@1.7.0/InputSystem/Plugins/OnScreen/OnScreenButton.cs" />
+      <File FileName="Assets/Puzzle/LightKeypad/KeyPadContoller.cs" />
+      <File FileName="Assets/Puzzle/TestPlayerCtlr.cs" Line="4" Column="1" />
+      <File FileName="Assets/Puzzle/LightKeypad/PuzzleEnter.cs" />
+      <File FileName="Assets/Scripts/PlayerMovement.cs" Line="36" Column="18" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Aphrodite_Fight_For_Love">
+            <Node name="Assets" expanded="True">
+              <Node name="Puzzle" expanded="True" />
+              <Node name="Scripts" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="219e9bba-56aa-410c-ae97-596672774f0f" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
