@@ -5,17 +5,14 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using UnityEngine;
+//using LeanTween;
 
 namespace AphroditeFightCode
 {
     public class KeyPadContoller : MonoBehaviour
     {
-        [Header("Button Objects")]
+        [Header("Keys Objects")]
         [SerializeField] private GameObject currentButton;
-<<<<<<< Updated upstream
-        public GameObject firstButton;
-        public Button[] buttons;
-=======
   
         public Button firstButton;
      
@@ -24,39 +21,11 @@ namespace AphroditeFightCode
         
         public List<Button> keypadButtons;
         
->>>>>>> Stashed changes
         [Header("Code Tracker")]
-//        [SerializeField] private int idx = 0;
         public int codeID = 0;
         //[SerializeField] private int[] code;
         [SerializeField] private List<int> code;
         [SerializeField] public Queue<int> codeQ = new Queue<int>();
-<<<<<<< Updated upstream
-        public List<int> currentInput;
-        [Header("Action Map")]
-        [SerializeField] private ModifiedActionMap actionMapI;
-        [SerializeField] private PlayerInputs actionMap = null;
-
-        private void OnEnable()
-        {
-            //if (actionMapI == null)
-            //{
-            //    actionMapI = new ModifiedActionMap();
-            //}
-            //actionMapI.Player.Disable();
-            //actionMapI.UI.Enable();
-            //currentButton = EventSystem.current.currentSelectedGameObject;
-
-            if (actionMap == null)
-            {
-                actionMap = new PlayerInputs();
-            }
-            actionMap.Player.Disable();
-            actionMap.UI.Enable();
-            EventSystem.current.SetSelectedGameObject(firstButton);
-            currentButton = firstButton;
-            Debug.Log(InputSystem.FindControls("UI"));
-=======
   
         
      
@@ -87,21 +56,15 @@ namespace AphroditeFightCode
             //EventSystem.current.SetSelectedGameObject(firstButton);
             //currentButton = firstButton;
         
->>>>>>> Stashed changes
         }
 
         private void OnDisable()
         {
-<<<<<<< Updated upstream
-            actionMap.Player.Enable();
-            actionMap.UI.Disable();
-=======
      
             actionMap.Player.Enable();
             actionMap.UI.Disable();
             StopAllCoroutines();
         
->>>>>>> Stashed changes
         }
 
 
@@ -113,20 +76,9 @@ namespace AphroditeFightCode
             //StartCoroutine(WaitForKeyCodesDictionary());
             //populateKeyCode();
             AddKeyCodeToDictionary();
-
-            currentButton = EventSystem.current.currentSelectedGameObject;
+            FlashPuzzleAnswer();
+            //currentButton = EventSystem.current.currentSelectedGameObject;
             
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-            while (codeQ.Count > 0)
-            {
-                Debug.Log(codeQ.Dequeue());
-            }
-
         }
 
         public void AddKeyPress(int keyID)
@@ -134,30 +86,36 @@ namespace AphroditeFightCode
             currentInput.Add(keyID);
         }
 
-<<<<<<< Updated upstream
-=======
   
-        private void StartSequenceHint(float duration)
-        {
-            return;
-        }
+        //private void StartSequenceHint(float duration)
+        //{
+        //    return;
+        //}
      
->>>>>>> Stashed changes
         public void SubmitPattern()
         {
+            int flashCount = 3;
+            Color flashColorCorrect = new Color(0f, 1f, 0.0157f, 1f); // #00FF04 => green
+            Color flashColorIncorrect = new Color(1f, 0.3f, 0.23f, 1f); // #FF4C3B => red
             // evaluate if the pattern and code are the same
-            if (currentInput != code)
+            Debug.Log("code count " + code.Count + " | " + currentInput.Count);
+            if (currentInput.Equals(code) || currentInput.Count != code.Count)
             {
                 Debug.Log("Code is not the same! " + currentInput + " != " + code);
+                // all buttons flash red
+                FlashAllButtons(flashCount, flashColorIncorrect);
+
+
+            }
+            else
+            {
+                // all buttons flash green and set unlocked to true
+                Debug.Log("Code is the same! ");
+                FlashAllButtons(flashCount, flashColorCorrect);
             }
             currentInput.Clear();
         }
 
-<<<<<<< Updated upstream
-        private void StartSequenceHint(float duration)
-        {
-            return;
-=======
         private void FlashPuzzleAnswer()
         
         {
@@ -192,34 +150,68 @@ namespace AphroditeFightCode
                     });
             }
             
->>>>>>> Stashed changes
         }
 
-        private void ResetCode()
+        private void FlashAllButtons(int flashCount, Color btnFlashColor)
         {
-            return;
+            for (int i = 0; i < flashCount; i++)
+            {
+                foreach (Button button in keypadButtons)
+                {
+                    Image buttonImage = button.GetComponent<Image>();
+
+                    // Flash animation using LeanTween
+                    LeanTween.value(buttonImage.gameObject, originalBtnColor, btnFlashColor, flashDuration)
+                        .setEase(LeanTweenType.easeInOutQuad)
+                        .setOnUpdate((Color color) =>
+                        {
+                                // Update button color during the flash
+                                buttonImage.color = color;
+                        })
+                        .setOnComplete(() =>
+                        {
+                                // Return to the original color after the flash
+                                LeanTween.value(buttonImage.gameObject, btnFlashColor, originalBtnColor, flashDuration)
+                                        .setEase(LeanTweenType.easeInOutQuad)
+                                        .setOnUpdate((Color color) =>
+                                {
+                                        // Update button color
+                                        buttonImage.color = color;
+                                });
+
+                               
+                        })
+                        .setDelay(i * (flashDuration + delayBtFlashes));
+                }
+            }
         }
+
 
         public void OnReturn()
         {
-<<<<<<< Updated upstream
-=======
   
      
->>>>>>> Stashed changes
             actionMap.Player.Enable();
             actionMap.UI.Disable();
             GameData.freezePlayer = false;
             GameData.inKeypadPuzzle = false;
-<<<<<<< Updated upstream
-=======
             StopAllCoroutines();
         
->>>>>>> Stashed changes
             gameObject.SetActive(false);
         }
 
         
+        private void Initalize()
+        {
+            foreach (Transform child in transform)
+            {
+                if (child.TryGetComponent<Button>(out Button btn))
+                {
+                    //Debug.Log(child.gameObject.name + " | " + btn.gameObject.name);
+                    keypadButtons.Add(btn);
+                }
+            }
+        }
 
         private void AddKeyCodeToDictionary()
         {

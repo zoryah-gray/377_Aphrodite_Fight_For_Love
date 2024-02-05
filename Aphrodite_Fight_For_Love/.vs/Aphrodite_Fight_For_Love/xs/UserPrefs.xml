@@ -1,31 +1,18 @@
-﻿<Properties StartupConfiguration="{0838A8C5-3FCE-5B03-D3D3-292AD21EEBF2}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerMovement.cs">
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Puzzle/LightKeypad/KeyPadContoller.cs">
     <Files>
-      <File FileName="Assets/Scripts/GameData.cs" />
-      <File FileName="Library/PackageCache/com.unity.inputsystem@1.7.0/InputSystem/Plugins/OnScreen/OnScreenButton.cs" />
-      <File FileName="Assets/Puzzle/LightKeypad/KeyPadContoller.cs" />
-      <File FileName="Assets/Puzzle/TestPlayerCtlr.cs" />
-      <File FileName="Assets/Puzzle/LightKeypad/PuzzleEnter.cs" />
-      <File FileName="Assets/Scripts/PlayerMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets/Puzzle/LightKeypad/KeyPadContoller.cs" Line="93" Column="12" />
+      <File FileName="Assets/Scripts/GameData.cs" Line="24" Column="13" />
+      <File FileName="Assets/Puzzle/TestPlayerCtlr.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PlayerMovement.cs" Line="8" Column="32" />
+      <File FileName="Assets/Puzzle/LightKeypad/PuzzleEnter.cs" Line="19" Column="73" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="Aphrodite_Fight_For_Love">
-            <Node name="Assets" expanded="True">
-              <Node name="Puzzle" expanded="True" />
-              <Node name="Scripts" expanded="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="8598a2c4-031e-4c8d-af0f-141b6a56a3ba" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="7e042846-a077-4aea-896c-4c34e76303e9" />
 </Properties>
