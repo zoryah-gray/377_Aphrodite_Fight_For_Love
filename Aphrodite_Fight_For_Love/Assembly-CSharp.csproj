@@ -62,10 +62,19 @@
     <Compile Include="Assets/Scripts/GameData.cs" />
     <Compile Include="Assets/Scripts/CompositeInteractable.cs" />
     <Compile Include="Assets/Puzzle/TestPlayerCtlr.cs" />
+<<<<<<< Updated upstream
     <Compile Include="Assets/Puzzle/ModifiedActionMap.cs" />
     <Compile Include="Assets/Puzzle/LightKeypad/KeyPadContoller.cs" />
     <Compile Include="Assets/PlayerInputs.cs" />
     <Compile Include="Assets/Puzzle/LightKeypad/PuzzleEnter.cs" />
+=======
+    <Compile Include="Assets/EventSystem/PlayerInputs.cs" />
+    <Compile Include="Assets/Puzzle/ModifiedActionMap.cs" />
+    <Compile Include="Assets/Puzzle/LightKeypad/KeyPadContoller.cs" />
+    <Compile Include="Assets/Scripts/PlayerAttack.cs" />
+    <Compile Include="Assets/Puzzle/LightKeypad/PuzzleEnter.cs" />
+    <Compile Include="Assets/Puzzle/LightKeypad/PlayerKeypadPuzzleController.cs" />
+>>>>>>> Stashed changes
     <Compile Include="Assets/Scripts/FollowingCam.cs" />
     <Compile Include="Assets/Scripts/PlayerMovement.cs" />
   </ItemGroup>
