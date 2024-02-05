@@ -1,5 +1,8 @@
-Library/
-Logs/
-UserSettings/
-Temp/
+.vs/
+
+/Library/
+/Logs/
+/[Uu]ser[Ss]ettings/
+/Temp/
+/[Oo]bj/
 **/.DS_Store
