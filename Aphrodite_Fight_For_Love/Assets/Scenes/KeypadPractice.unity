@@ -722,17 +722,17 @@ MonoBehaviour:
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: 30304550e4ec248abbfd98e90f938981, type: 3}
-  m_PointAction: {fileID: -1654692200621890270, guid: 30304550e4ec248abbfd98e90f938981, type: 3}
-  m_MoveAction: {fileID: -8784545083839296357, guid: 30304550e4ec248abbfd98e90f938981, type: 3}
-  m_SubmitAction: {fileID: 392368643174621059, guid: 30304550e4ec248abbfd98e90f938981, type: 3}
-  m_CancelAction: {fileID: 7727032971491509709, guid: 30304550e4ec248abbfd98e90f938981, type: 3}
-  m_LeftClickAction: {fileID: 3001919216989983466, guid: 30304550e4ec248abbfd98e90f938981, type: 3}
-  m_MiddleClickAction: {fileID: -2185481485913320682, guid: 30304550e4ec248abbfd98e90f938981, type: 3}
-  m_RightClickAction: {fileID: -4090225696740746782, guid: 30304550e4ec248abbfd98e90f938981, type: 3}
-  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: 30304550e4ec248abbfd98e90f938981, type: 3}
-  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: 30304550e4ec248abbfd98e90f938981, type: 3}
-  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: 30304550e4ec248abbfd98e90f938981, type: 3}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: 3b8f47e284d3544c7a079906dca1dfeb, type: 3}
+  m_PointAction: {fileID: 0}
+  m_MoveAction: {fileID: -244753602233531585, guid: 3b8f47e284d3544c7a079906dca1dfeb, type: 3}
+  m_SubmitAction: {fileID: 5338380567969303975, guid: 3b8f47e284d3544c7a079906dca1dfeb, type: 3}
+  m_CancelAction: {fileID: 0}
+  m_LeftClickAction: {fileID: 0}
+  m_MiddleClickAction: {fileID: 0}
+  m_RightClickAction: {fileID: 0}
+  m_ScrollWheelAction: {fileID: 0}
+  m_TrackedDevicePositionAction: {fileID: 0}
+  m_TrackedDeviceOrientationAction: {fileID: 0}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
@@ -7611,21 +7611,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentButton: {fileID: 1298504967}
-  firstButton: {fileID: 1298504967}
-  buttons:
-  - {fileID: 1298504968}
-  - {fileID: 480220760}
-  - {fileID: 1203964475}
-  - {fileID: 1415416701}
-  - {fileID: 2045028192}
-  - {fileID: 2040489182}
-  - {fileID: 862202568}
-  - {fileID: 1682070007}
-  - {fileID: 691272171}
-  idx: 0
+  firstButton: {fileID: 1298504968}
+  keypadButtons: []
   codeID: 0
   code: 0100000002000000030000000400000005000000
   currentInput: 
+  flashDuration: 0.25
+  delayBtFlashes: 0.42
+  solved: 0
+  unlocksObj: {fileID: 2056980739}
 --- !u!1 &606197754
 GameObject:
   m_ObjectHideFlags: 0
@@ -8349,10 +8343,10 @@ GameObject:
   - component: {fileID: 1090948910}
   - component: {fileID: 1090948909}
   - component: {fileID: 1090948908}
+  - component: {fileID: 1090948912}
   - component: {fileID: 1090948907}
   - component: {fileID: 1090948906}
   - component: {fileID: 1090948911}
-  - component: {fileID: 1090948912}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -8420,6 +8414,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7600a3815b3643e0ba56bb40991ea45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  playerGO: {fileID: 0}
+  meleeBoxGO: {fileID: 0}
+  directionInt: 0
+  animAfterLeft: 1
+  collisionCount: 0
+  collisionOffset: 0.1
+  movementFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 1
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
 --- !u!212 &1090948909
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8519,18 +8534,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.11}
+  m_Offset: {x: 0, y: -0.17}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.254902, y: 1.254902}
+    oldSize: {x: 1.0847458, y: 1.0847458}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.254902, y: 1.04}
+  m_Size: {x: 0.71, y: 0.84}
   m_EdgeRadius: 0
 --- !u!114 &1090948912
 MonoBehaviour:
@@ -10369,6 +10384,7 @@ GameObject:
   - component: {fileID: 2056980742}
   - component: {fileID: 2056980741}
   - component: {fileID: 2056980740}
+  - component: {fileID: 2056980743}
   m_Layer: 0
   m_Name: Door0
   m_TagString: Untagged
@@ -10482,12 +10498,39 @@ Transform:
   m_GameObject: {fileID: 2056980739}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.6742, y: -0.4138, z: 1}
+  m_LocalPosition: {x: 3.6742, y: -0.4138, z: 0}
   m_LocalScale: {x: 2.3388, y: 1.8986961, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &2056980743
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056980739}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &2125644962
 GameObject:
   m_ObjectHideFlags: 0

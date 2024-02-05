@@ -71,9 +71,7 @@
     <Compile Include="Assets/LeanTween/Testing/TestingColorTweening.cs" />
     <Compile Include="Assets/Scripts/CompositeInteractable.cs" />
     <Compile Include="Assets/Puzzle/TestPlayerCtlr.cs" />
-<<<<<<< Updated upstream
     <Compile Include="Assets/EventSystem/PlayerInputs.cs" />
-=======
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralSimpleUI.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSplineEndless.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/Following.cs" />
@@ -83,24 +81,18 @@
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSplineTrack.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathBezier.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSpline.cs" />
->>>>>>> Stashed changes
     <Compile Include="Assets/Puzzle/ModifiedActionMap.cs" />
     <Compile Include="Assets/LeanTween/Testing/Testing240.cs" />
     <Compile Include="Assets/LeanTween/Testing/Scripts/LeanPool.cs" />
     <Compile Include="Assets/Puzzle/LightKeypad/KeyPadContoller.cs" />
-<<<<<<< Updated upstream
-    <Compile Include="Assets/Scripts/PlayerAttack.cs" />
-    <Compile Include="Assets/Puzzle/LightKeypad/PuzzleEnter.cs" />
-    <Compile Include="Assets/Puzzle/LightKeypad/PlayerKeypadPuzzleController.cs" />
-=======
     <Compile Include="Assets/LeanTween/Testing/TestingSequencer.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/TestingZLegacy.cs" />
     <Compile Include="Assets/LeanTween/Testing/PerformanceTests.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/LogoCinematic.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralAdvancedTechniques.cs" />
+    <Compile Include="Assets/Scripts/PlayerAttack.cs" />
     <Compile Include="Assets/LeanTween/Testing/TestingSceneSwitching.cs" />
     <Compile Include="Assets/LeanTween/Testing/Testing246.cs" />
-    <Compile Include="Assets/PlayerInputs.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/TestingZLegacyExt.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralSequencer.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralEventsListeners.cs" />
@@ -113,7 +105,7 @@
     <Compile Include="Assets/LeanTween/Framework/LeanTween.cs" />
     <Compile Include="Assets/LeanTween/Framework/LeanTweenExt.cs" />
     <Compile Include="Assets/LeanTween/Framework/LeanSmooth.cs" />
->>>>>>> Stashed changes
+    <Compile Include="Assets/Puzzle/LightKeypad/PlayerKeypadPuzzleController.cs" />
     <Compile Include="Assets/Scripts/FollowingCam.cs" />
     <Compile Include="Assets/LeanTween/Framework/LeanAudio.cs" />
     <Compile Include="Assets/LeanTween/Framework/LTDescrOptional.cs" />

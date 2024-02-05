@@ -26,45 +26,87 @@ namespace AphroditeFightCode
         //[SerializeField] private int[] code;
         [SerializeField] private List<int> code;
         [SerializeField] public Queue<int> codeQ = new Queue<int>();
-  
-        
-     
+
+
         public List<int> currentInput;
         [Header("Puzzle Settings")]
         public float flashDuration = 0.25f;
         public float delayBtFlashes = 0.42f;
-        
+        public bool solved = false;
+
+        [Header("Puzzle Unlocks")]
+        public GameObject unlocksObj;
+
         [Header("Action Map")]
         [SerializeField] private ModifiedActionMap actionMap;
 
+        [Header("Input Mappings - Syncing")]
+        private PlayerInputs input = null;
+
         private void OnEnable()
         {
-            if (actionMap == null)
+            //if (actionMap == null)
+            //{
+            //    actionMap = new ModifiedActionMap();
+            //}
+
+            // syncing to playerinputs mapping
+            if (input == null)
             {
-                actionMap = new ModifiedActionMap();
+                input = new PlayerInputs();
             }
   
             currentButton = EventSystem.current.currentSelectedGameObject;
 
           
      
-            actionMap.Player.Disable();
-            actionMap.UI.Enable();
+            //actionMap.Player.Disable();
+            //actionMap.UI.Enable();
+
+            // syncing to playerinputs mapping
+            input.Player.Disable();
+            input.UI.Enable();
+            Debug.Log("ui enabled?: " + input.UI.enabled + " | player enabled?: " + input.Player.enabled);
+
             EventSystem.current.SetSelectedGameObject(null);
             Initalize();
 
             //EventSystem.current.SetSelectedGameObject(firstButton);
             //currentButton = firstButton;
-        
+
         }
 
         private void OnDisable()
         {
      
-            actionMap.Player.Enable();
-            actionMap.UI.Disable();
+            //actionMap.Player.Enable();
+            //actionMap.UI.Disable();
+
+            // syncing to playerinputs mapping
+            input.Player.Enable();
+            input.UI.Disable();
+
             StopAllCoroutines();
         
+        }
+
+        public void OnReturn()
+        {
+
+
+            //actionMap.Player.Enable();
+            //actionMap.UI.Disable();
+
+            // syncing to playerinputs mapping
+            input.Player.Enable();
+            input.UI.Disable();
+
+            currentInput.Clear();
+            GameData.freezePlayer = false;
+            GameData.inKeypadPuzzle = false;
+            StopAllCoroutines();
+
+            gameObject.SetActive(false);
         }
 
 
@@ -87,10 +129,6 @@ namespace AphroditeFightCode
         }
 
   
-        //private void StartSequenceHint(float duration)
-        //{
-        //    return;
-        //}
      
         public void SubmitPattern()
         {
@@ -112,6 +150,9 @@ namespace AphroditeFightCode
                 // all buttons flash green and set unlocked to true
                 Debug.Log("Code is the same! ");
                 FlashAllButtons(flashCount, flashColorCorrect);
+                solved = true;
+                UnlockObj();
+                Invoke("OnReturn", 3.5f);
             }
             currentInput.Clear();
         }
@@ -186,21 +227,26 @@ namespace AphroditeFightCode
             }
         }
 
-
-        public void OnReturn()
+        private void UnlockObj()
         {
-  
-     
-            actionMap.Player.Enable();
-            actionMap.UI.Disable();
-            GameData.freezePlayer = false;
-            GameData.inKeypadPuzzle = false;
-            StopAllCoroutines();
-        
-            gameObject.SetActive(false);
+            float targetScaleXPos = 0.27f;
+            unlocksObj.GetComponent<SpriteRenderer>().color = Color.green;
+            LeanTween.move(unlocksObj, new Vector3(2.664f, -0.4138f, 0f), 1f)
+                .setEase(LeanTweenType.easeOutQuad);
+            LeanTween.value(unlocksObj, unlocksObj.transform.localScale.x, targetScaleXPos, 1.5f)
+                .setEase(LeanTweenType.easeOutBounce)
+                .setOnUpdate((float val) =>
+                    {
+                        Vector3 newScale = unlocksObj.transform.localScale;
+                        newScale.x = val;
+                        unlocksObj.transform.localScale = newScale;
+                    });
+
+            
         }
 
-        
+
+
         private void Initalize()
         {
             foreach (Transform child in transform)
@@ -211,6 +257,7 @@ namespace AphroditeFightCode
                     keypadButtons.Add(btn);
                 }
             }
+            FlashPuzzleAnswer();
         }
 
         private void AddKeyCodeToDictionary()

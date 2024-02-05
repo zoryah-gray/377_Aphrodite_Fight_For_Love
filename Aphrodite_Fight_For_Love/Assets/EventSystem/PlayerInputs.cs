@@ -182,6 +182,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Submit"",
+                    ""type"": ""Button"",
+                    ""id"": ""f90637be-6fc8-4c27-930c-b7aff033cc3e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -272,6 +281,28 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Navigation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""80a58d73-21a0-492e-9c69-2c9feeb4cfa2"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Submit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""49909626-358d-4d9b-acc6-47b87570eacc"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Submit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -285,6 +316,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigation = m_UI.FindAction("Navigation", throwIfNotFound: true);
+        m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -401,11 +433,13 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Navigation;
+    private readonly InputAction m_UI_Submit;
     public struct UIActions
     {
         private @PlayerInputs m_Wrapper;
         public UIActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Navigation => m_Wrapper.m_UI_Navigation;
+        public InputAction @Submit => m_Wrapper.m_UI_Submit;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -418,6 +452,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Navigation.started += instance.OnNavigation;
             @Navigation.performed += instance.OnNavigation;
             @Navigation.canceled += instance.OnNavigation;
+            @Submit.started += instance.OnSubmit;
+            @Submit.performed += instance.OnSubmit;
+            @Submit.canceled += instance.OnSubmit;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -425,6 +462,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Navigation.started -= instance.OnNavigation;
             @Navigation.performed -= instance.OnNavigation;
             @Navigation.canceled -= instance.OnNavigation;
+            @Submit.started -= instance.OnSubmit;
+            @Submit.performed -= instance.OnSubmit;
+            @Submit.canceled -= instance.OnSubmit;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -450,5 +490,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         void OnNavigation(InputAction.CallbackContext context);
+        void OnSubmit(InputAction.CallbackContext context);
     }
 }

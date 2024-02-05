@@ -48,10 +48,10 @@ namespace AphroditeFightCode
             {
                 keypadPuzzleCodes.Add(codeID, code);
             }
-            else
-            {
-                Debug.LogWarning("key already exists in keycodesdictionary");
-            }
+            //else
+            //{
+            //    Debug.LogWarning("key already exists in keycodesdictionary");
+            //}
         }
 
 

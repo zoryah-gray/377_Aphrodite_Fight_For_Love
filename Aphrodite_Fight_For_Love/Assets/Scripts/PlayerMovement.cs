@@ -7,68 +7,45 @@ namespace AphroditeFightCode
 {
     public class PlayerMovement : MonoBehaviour
     {
-        // Start is called before the first frame update
+        [Header("Player RB and Move Controls")]
         private PlayerInputs input = null;
         private Vector2 moveVector = Vector2.zero;
         private Rigidbody2D rb = null;
         private float moveSpeed = 3f;
+
+        [Header("Attached Objects and References")]
         public Animator animator;
         public GameObject playerGO;
         public GameObject meleeBoxGO;
 
+        [Header("Movement Animation Paramters")]
         public int directionInt = 0;
         public bool animAfterLeft = true;
 
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) {
-                GetComponent<Animator>().SetBool("isWalkingFront", true);
-                directionInt = 3;
-    }
-            else if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow)) {
-                GetComponent<Animator>().SetBool("isWalkingFront", false);
-            }
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) {
-                GetComponent<Animator>().SetBool("isWalkingHoriz", true);
-                animAfterLeft = true;
-                directionInt = 4;
-                if (transform.localScale.x < 0)
-                {
-                    transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-                }
-            }
-            else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow)) {
-                GetComponent<Animator>().SetBool("isWalkingHoriz", false);
-            }
-            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) {
-                GetComponent<Animator>().SetBool("isWalkingHoriz", true);
-                animAfterLeft = false;
-                directionInt = 2;
-                if (transform.localScale.x > 0)
-                {
-                    transform.localScale = new Vector3((-1) * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-                }
-            }
-            else if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow)) {
-                GetComponent<Animator>().SetBool("isWalkingHoriz", false);
-            }
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                directionInt = 1;
-                GetComponent<Animator>().SetBool("isWalkingBack", true);
-            }
-            else if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
-            {
-                GetComponent<Animator>().SetBool("isWalkingBack", false);
-            }
-        }
+        [Header("Collision Control")]
+        public int collisionCount;
+        public float collisionOffset = 0.5f;
+        public ContactFilter2D movementFilter;
+        List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
 
         private void Awake()
         {
             input = new PlayerInputs();
             rb = GetComponent<Rigidbody2D>();
+            input.Player.Enable();
+
+            // lock the cursor and turn it invisible
+            // => in playMode if you want to click away press 'Esc'
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
+
+        private void Update()
+        {
+            
+        }
+
+        
         private void OnEnable()
         {
             input.Player.Enable();
@@ -83,18 +60,186 @@ namespace AphroditeFightCode
         }
         private void FixedUpdate()
         {
+           
             if (!GameData.freezePlayer)
             {
-                rb.velocity = moveVector * moveSpeed;
+                if (CanMove(moveVector))
+                {
+                    rb.velocity = moveVector * moveSpeed;
+                    HandleMovementAnim();
+
+                    // I got bored and wanted to procrasinate so I tried condensing/simplifying
+                    // your movement statements into blend trees; if you want to see how it works
+                    // uncomment the function on the line below and then
+                    // go into animator and set IdleTree to be the default state
+                    // n if you have any questions (even if it is Why?) let me know :D - Z
+
+                    //HandleMovementAnimBlendTree();
+                }
+                else
+                {
+                    // try moving left/right
+                    if (CanMove(new Vector2(moveVector.x, 0)))
+                    {
+                        // can move l/r
+                        rb.velocity = new Vector2(moveVector.x, 0) * moveSpeed;
+                    }
+                    else if (CanMove(new Vector2(0, moveVector.y)))
+                    {
+                        //can move up/down
+                        rb.velocity = new Vector2(0, moveVector.y) * moveSpeed;
+                    }
+
+                }
+                
             }
         }
+
+        public bool CanMove(Vector2 dir)
+        {
+            //check for obstacles
+            collisionCount = rb.Cast(dir, movementFilter, castCollisions, moveSpeed * Time.fixedDeltaTime + collisionOffset);
+
+            if (collisionCount == 0)
+            {
+                // no collisions detected
+                return true;
+            }
+            else
+            {
+                //foreach (RaycastHit2D hit2D in castCollisions)
+                //{
+                //    Debug.Log("colliding with: " + hit2D.ToString());
+                //}
+                return false;
+            }
+
+
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.green;
+
+            Vector3 startPosition = transform.position;
+            Vector3 endPosition = transform.position + new Vector3(moveVector.x, moveVector.y, 0);
+            Gizmos.DrawLine(startPosition, endPosition);
+
+            Vector3 cubeCenter = endPosition + new Vector3(0, 0, collisionOffset * 0.5f);
+            Vector3 cubeSize = new Vector3(collisionOffset, collisionOffset, collisionOffset);
+            Gizmos.DrawWireCube(cubeCenter, cubeSize);
+        }
+
         private void OnMovementPerformed(InputAction.CallbackContext val)
         {
             moveVector = val.ReadValue<Vector2>();
         }
+
         private void OnMovementCancelled(InputAction.CallbackContext val)
         {
             moveVector = Vector2.zero;
+        }
+
+        private void HandleMovementAnim()
+        {
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                GetComponent<Animator>().SetBool("isWalkingFront", true);
+                directionInt = 3;
+            }
+            else if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
+            {
+                GetComponent<Animator>().SetBool("isWalkingFront", false);
+            }
+
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                GetComponent<Animator>().SetBool("isWalkingHoriz", true);
+                animAfterLeft = true;
+                directionInt = 4;
+                if (transform.localScale.x < 0)
+                {
+                    transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                }
+            }
+            else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow))
+            {
+                GetComponent<Animator>().SetBool("isWalkingHoriz", false);
+            }
+
+            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                GetComponent<Animator>().SetBool("isWalkingHoriz", true);
+                animAfterLeft = false;
+                directionInt = 2;
+                if (transform.localScale.x > 0)
+                {
+                    transform.localScale = new Vector3((-1) * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                }
+            }
+            else if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow))
+            {
+                GetComponent<Animator>().SetBool("isWalkingHoriz", false);
+            }
+
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                directionInt = 1;
+                GetComponent<Animator>().SetBool("isWalkingBack", true);
+            }
+            else if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
+            {
+                GetComponent<Animator>().SetBool("isWalkingBack", false);
+            }
+        }
+
+        private void HandleMovementAnimBlendTree()
+        {
+            if (moveVector != Vector2.zero)
+            {
+                animator.SetFloat("Horizontal", moveVector.x);
+                animator.SetFloat("Vertical", moveVector.y);
+
+                if (moveVector.x < 0.01f)
+                {
+                    // moving left
+                    transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                }
+                else
+                {
+                    // moving right
+                    transform.localScale = new Vector3((-1) * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                }
+
+
+                if (animator.GetFloat("Vertical") == 1)
+                {
+                    // moving up
+                    directionInt = 1;
+                }
+                else if (animator.GetFloat("Vertical") == -1)
+                {
+                    // moving down
+                    directionInt = 3;
+                }
+
+
+                if (animator.GetFloat("Horizontal") == 1)
+                {
+                    // move right
+                    animAfterLeft = false;
+                    directionInt = 2;
+                }
+                else if (animator.GetFloat("Horizontal") == -1)
+                {
+                    // move left
+                    animAfterLeft = true;
+                    directionInt = 4;
+                }
+
+               
+            }
+            animator.SetFloat("Speed", moveVector.sqrMagnitude);
         }
     }
 }

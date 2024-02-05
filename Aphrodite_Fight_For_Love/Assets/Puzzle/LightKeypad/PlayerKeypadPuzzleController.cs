@@ -15,33 +15,40 @@ namespace AphroditeFightCode
         public GameObject puzzle;
         public bool inPuzzleTrigger = false;
         public bool inKeypadPuzzle = false;
+
+
         private void Awake()
         {
             input = new PlayerInputs();
             rb = GetComponent<Rigidbody2D>();
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.visible = false;
+            //Cursor.lockState = CursorLockMode.Locked;
         }
         private void OnEnable()
         {
-            input.Enable();
+            input.Player.Enable();
             input.Player.Interact.performed += OnInteractPerformed;
             //input.Player.Interact.canceled += OnInteractCanceled;
         }
-
-        private void FixedUpdate()
+        private void OnDisable()
         {
-            if (freezePlayer)
-            {
-                rb.velocity = Vector2.zero;
-            }
-            
+            input.Player.Disable();
+            input.Player.Interact.performed -= OnInteractPerformed;
         }
+
+            //private void FixedUpdate()
+            //{
+            //    if (freezePlayer)
+            //    {
+            //        rb.velocity = Vector2.zero;
+            //    }
+
+            //}
 
         private void OnInteractPerformed(InputAction.CallbackContext val)
         {
             // open puzzle and freeze player movement
-            Debug.Log("interact pressed");
+            Debug.Log("Plyr interact pressed");
             if (inPuzzleTrigger)
             {
                 
@@ -52,7 +59,7 @@ namespace AphroditeFightCode
                 // pass in the puzzle idx
                 puzzle.SetActive(true);
                 inPuzzleTrigger = false;
-                Debug.Log("Puzzle Activated| in puuzzle? " + inKeypadPuzzle + "freeze player>?: " + freezePlayer + " Game data saved: " + GameData.freezePlayer);
+                Debug.Log("Puzzle Activated| in puzzle? " + inKeypadPuzzle + "freeze player>?: " + freezePlayer + " Game data saved: " + GameData.freezePlayer);
 
             }
         }
