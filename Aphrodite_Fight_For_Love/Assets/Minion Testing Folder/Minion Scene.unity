@@ -457,6 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e864f653d2f6f547b30d5cf4400fc76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerBody: {fileID: 0}
 --- !u!1 &1472652371
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,10 +548,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2115506030}
   - component: {fileID: 2115506029}
-  - component: {fileID: 2115506028}
   - component: {fileID: 2115506033}
   - component: {fileID: 2115506035}
   - component: {fileID: 2115506034}
+  - component: {fileID: 2115506036}
   m_Layer: 0
   m_Name: Minion Object
   m_TagString: Untagged
@@ -558,24 +559,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2115506028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2115506027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a9c80dfe18ee7a42b4fcc1b78b8fdeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
-  strength: 0.5
-  attackSpeed: 0
-  moveSpeed: 1
-  minionType: 0
-  yesPatrol: 0
 --- !u!212 &2115506029
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -727,7 +710,7 @@ Animator:
   m_GameObject: {fileID: 2115506027}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 39adb6cd5748917419a52ece85ff0ded, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -738,6 +721,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2115506036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115506027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a9c80dfe18ee7a42b4fcc1b78b8fdeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  strength: 0.5
+  attackSpeed: 2
+  moveSpeed: 1
+  minionType: 0
+  yesPatrol: 0
+  level: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

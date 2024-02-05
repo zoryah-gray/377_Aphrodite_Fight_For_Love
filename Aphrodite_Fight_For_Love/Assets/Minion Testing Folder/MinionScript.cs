@@ -15,7 +15,7 @@ namespace AphroditeFightCode
         [SerializeField] public float moveSpeed = 1;
         [SerializeField] public SpecialMinionTypes minionType = SpecialMinionTypes.standard;
         [SerializeField] public bool yesPatrol;
-        [SerializeField] public int level;
+        [SerializeField] public int level = 1;
         // Start is called before the first frame update
 
         //handles damage to the minion, holds values, and destroys the minion upon death.
@@ -44,10 +44,10 @@ namespace AphroditeFightCode
                 case SpecialMinionTypes.heavy:
                     health = 4 * level;
                     break;
-                case SpecialMinionTypes.boss: 
+                case SpecialMinionTypes.boss:
                     health = 5 * level;
                     break;
-                case SpecialMinionTypes.userDefine: 
+                case SpecialMinionTypes.userDefine:
 
                     break;
 
@@ -64,10 +64,12 @@ namespace AphroditeFightCode
         public void TakeDamage(int playerDamage)
         {
             health -= playerDamage;
+            Debug.Log("Minion has taken " +  playerDamage +" damage. " + health + " health remaining");
             if (health <= 0)
             {
                 //we'll actually do a kill function which will do a death animation,
                 //then delete the game object
+                
                 MinionDeath();
             }
         }

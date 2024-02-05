@@ -7,11 +7,11 @@ namespace AphroditeFightCode
     public class QuickPlayerMove : MonoBehaviour
     {
 
-        public int health = 2;
+        public float health = 4;
         // Start is called before the first frame update
         void Start()
         {
-        
+            
         }
 
         // Update is called once per frame
@@ -24,6 +24,13 @@ namespace AphroditeFightCode
             if (health <= 0)
             {
                 Debug.Log("Player Killed");
+                Destroy(gameObject);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                GameObject minionObject = GameObject.Find("Minion Object");
+                minionObject.GetComponent<MinionScript>().TakeDamage(1);
             }
         }
     }
