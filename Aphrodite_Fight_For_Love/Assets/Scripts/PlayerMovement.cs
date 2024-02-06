@@ -107,10 +107,10 @@ namespace AphroditeFightCode
             }
             else
             {
-                //foreach (RaycastHit2D hit2D in castCollisions)
-                //{
-                //    Debug.Log("colliding with: " + hit2D.ToString());
-                //}
+                foreach (RaycastHit2D hit2D in castCollisions)
+                {
+                    Debug.Log("colliding with: " + hit2D.ToString());
+                }
                 return false;
             }
 
