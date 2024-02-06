@@ -16,13 +16,14 @@ namespace AphroditeFightCode
             minionVariables = animator.GetComponentInParent<MinionScript>();
             playerObject = GameObject.Find("PlayerCircle");
             minionAttackTime = minionVariables.attackSpeed;
+            Attack(playerObject, minionVariables.strength);
         }
 
         // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
         override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             timeElasped += Time.deltaTime;
-            if (timeElasped >= minionAttackTime) {
+            if (timeElasped >= minionAttackTime ) {
                 timeElasped = 0;
                 Attack(playerObject, minionVariables.strength);
             }
