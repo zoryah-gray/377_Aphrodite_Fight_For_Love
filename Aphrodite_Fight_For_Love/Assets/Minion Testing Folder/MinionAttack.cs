@@ -43,7 +43,7 @@ namespace AphroditeFightCode
             /*StartCoroutine(Attack(collision.gameObject, inRadius));*/
 
             GameObject playerObject = collision.gameObject;
-            if (playerObject.GetComponent("QuickPlayerMove") != null)
+            if (playerObject.CompareTag("Player"))
             {
                 //animator.SetBool("isAttacking", true);
                 animator.SetInteger("currState", 2);
@@ -59,7 +59,7 @@ namespace AphroditeFightCode
             /// Stop attacking the player
             /*StopCoroutine(Attack(collision.gameObject, inRadius));*/
             GameObject playerObject = collision.gameObject;
-            if (playerObject.GetComponent("QuickPlayerMove") != null)
+            if (playerObject.CompareTag("Player"))
             {
                 //animator.SetBool("isAttacking", false);
                 animator.SetInteger("currState", 1);

@@ -28,7 +28,7 @@ namespace AphroditeFightCode
         {
             /*StopCoroutine(PatrolForPlayer());*/
             GameObject playerObject = collision.gameObject;
-            if (playerObject.GetComponent("QuickPlayerMove") != null)
+            if (playerObject.CompareTag("Player"))
             {
 
                // playerBody = collision.gameObject;
@@ -59,7 +59,7 @@ namespace AphroditeFightCode
             /* if (minionBase.yesPatrol)
                  StartCoroutine(PatrolForPlayer());*/
             GameObject playerObject = collision.gameObject;
-            if (playerObject.GetComponent("QuickPlayerMove") != null)
+            if (playerObject.CompareTag("Player"))
             {
                 //animator.SetBool("isFollowing", false);
                 animator.SetInteger("currState", 0);
