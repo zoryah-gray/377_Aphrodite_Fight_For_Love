@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 namespace AphroditeFightCode
 {
@@ -42,10 +43,9 @@ namespace AphroditeFightCode
 
         private void Update()
         {
-            
+
         }
 
-        
         private void OnEnable()
         {
             input.Player.Enable();
@@ -60,7 +60,7 @@ namespace AphroditeFightCode
         }
         private void FixedUpdate()
         {
-           
+
             if (!GameData.freezePlayer)
             {
                 if (CanMove(moveVector))
@@ -73,6 +73,8 @@ namespace AphroditeFightCode
                     // uncomment the function on the line below and then
                     // go into animator and set IdleTree to be the default state
                     // n if you have any questions (even if it is Why?) let me know :D - Z
+
+                    // Z, ur incredible, thank you! -Rch
 
                     HandleMovementAnimBlendTree();
                 }
@@ -91,7 +93,7 @@ namespace AphroditeFightCode
                     }
 
                 }
-                
+
             }
         }
 
@@ -143,58 +145,7 @@ namespace AphroditeFightCode
             moveVector = Vector2.zero;
         }
 
-        private void HandleMovementAnim()
-        {
-            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                GetComponent<Animator>().SetBool("isWalkingFront", true);
-                directionInt = 3;
-            }
-            else if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
-            {
-                GetComponent<Animator>().SetBool("isWalkingFront", false);
-            }
 
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                GetComponent<Animator>().SetBool("isWalkingHoriz", true);
-                animAfterLeft = true;
-                directionInt = 4;
-                if (transform.localScale.x < 0)
-                {
-                    transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-                }
-            }
-            else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow))
-            {
-                GetComponent<Animator>().SetBool("isWalkingHoriz", false);
-            }
-
-            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                GetComponent<Animator>().SetBool("isWalkingHoriz", true);
-                animAfterLeft = false;
-                directionInt = 2;
-                if (transform.localScale.x > 0)
-                {
-                    transform.localScale = new Vector3((-1) * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-                }
-            }
-            else if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow))
-            {
-                GetComponent<Animator>().SetBool("isWalkingHoriz", false);
-            }
-
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                directionInt = 1;
-                GetComponent<Animator>().SetBool("isWalkingBack", true);
-            }
-            else if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
-            {
-                GetComponent<Animator>().SetBool("isWalkingBack", false);
-            }
-        }
 
         private void HandleMovementAnimBlendTree()
         {
@@ -240,9 +191,17 @@ namespace AphroditeFightCode
                     directionInt = 4;
                 }
 
-               
+
             }
             animator.SetFloat("Speed", moveVector.sqrMagnitude);
         }
     }
 }
+
+
+
+
+
+
+
+    
