@@ -10,24 +10,18 @@ namespace AphroditeFightCode
     {
         public PlayerMovement playerMovement;
         //public UnityEngine.Transform meleeBox;
-
-
-
-
         public GameObject meleeBoxGO;
         public UnityEngine.Transform attackBox;
         public LayerMask enemyLayers;
         public Vector3 curPosition;
-        //private bool canAttack = true;
-        public Animator animator;
-        
-        private bool isPlaying;
+        //private bool canAttack = true;        
+        //private bool isPlaying;
 
         Vector2 rectangleSize = new Vector2(0.9f, 0.45f);
+        //private bool isPlayingSwingAnim = true;
 
         void Start()
         {
-            animator = GetComponent<Animator>();
         }
         // Update is called once per frame
         void Update()
@@ -53,24 +47,22 @@ namespace AphroditeFightCode
                 meleeBoxGO.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) && !isPlaying)
+            
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                animator.SetBool("animCanAttack",true);
+                meleeBoxGO.GetComponent<Animator>().SetBool("animCanAttack",true);
                 curPosition = meleeBoxGO.transform.position;
                 Attack();
                 Debug.Log("Attack!");
-                isPlaying = true;
-                StartCoroutine(ResetAnimationState());
+ 
             }
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                meleeBoxGO.GetComponent<Animator>().SetBool("animCanAttack", false);
+            }
+            
         }
-        System.Collections.IEnumerator ResetAnimationState()
-        {
-            // Wait for the length of your animation
-            yield return new WaitForSeconds(0.18f); 
-            animator.SetBool("animCanAttack", false);
-            isPlaying = false;
-        }
-
+        
 
         void Attack()
         {
