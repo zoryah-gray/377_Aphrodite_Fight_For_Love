@@ -25,14 +25,14 @@ namespace AphroditeFightCode
             {
                 meleeBox.position = new Vector3(transform.position.x, transform.position.y + 0.8f, transform.position.z);
         //        Debug.Log(playerMovement.animAfterLeft);
-                if (playerMovement.animAfterLeft == true)
-                {
-                    meleeBox.rotation = Quaternion.Euler(0f, 0f, 270f);
-                }
-                else
-                {
-                    meleeBox.rotation = Quaternion.Euler(0f, 0f, 90f);
-                }
+                //if (playerMovement.animAfterLeft == true)
+                //{
+                meleeBox.rotation = Quaternion.Euler(0f, 0f, 270f);
+                //}
+                //else
+                //{
+                //    meleeBox.rotation = Quaternion.Euler(0f, 0f, 90f);
+                //}
             }
             else if (playerMovement.directionInt == 2) //Right
             {
@@ -45,14 +45,14 @@ namespace AphroditeFightCode
         //        Debug.Log(playerMovement.animAfterLeft);
 
                 meleeBox.position = new Vector3(transform.position.x, transform.position.y - 0.8f, transform.position.z);
-                if (playerMovement.animAfterLeft == true)
-                {
-                    meleeBox.rotation = Quaternion.Euler(0f, 0f, 90f);
-                }
-                else
-                {
-                    meleeBox.rotation = Quaternion.Euler(0f, 0f, 270f);
-                }
+                //if (playerMovement.animAfterLeft == true)
+                //{
+                meleeBox.rotation = Quaternion.Euler(0f, 0f, 90f);
+                //}
+                //else
+                //{
+                //    meleeBox.rotation = Quaternion.Euler(0f, 0f, 270f);
+                //}
 
             }
             else if (playerMovement.directionInt == 4) //Left

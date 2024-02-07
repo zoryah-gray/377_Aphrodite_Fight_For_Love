@@ -6443,8 +6443,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 734879591880976982, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1208452454}
   m_SourcePrefab: {fileID: 100100000, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
+--- !u!1 &1208452452 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 734879591880976982, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
+  m_PrefabInstance: {fileID: 988232495}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1208452454
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208452452}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c0c6908a34cab4cf592555762f5a8155, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1340698198
 GameObject:
   m_ObjectHideFlags: 0
@@ -6568,6 +6597,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 1564464395}
+  puzzle: {fileID: 0}
+  puzzleCtrlScript: {fileID: 0}
+  door: {fileID: 0}
 --- !u!1 &1564464395
 GameObject:
   m_ObjectHideFlags: 0
