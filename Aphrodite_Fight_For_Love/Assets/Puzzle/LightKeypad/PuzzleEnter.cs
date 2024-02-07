@@ -11,12 +11,28 @@ namespace AphroditeFightCode
         [Header("PuzzleIcon")]
         public GameObject icon;
 
+        [Header("Puzzle SO")]
+        public KeypadPuzzleTriggerSO puzzle;
+
+        [Header("Puzzle UI Controller")]
+        public KeyPadContoller puzzleCtrlScript;
+
+        [Header("Puzzle Unlocks Obj/Door")]
+        public GameObject door;
+
+        private void Awake()
+        {
+            puzzle.unloackableObj = door;
+        }
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             icon.SetActive(true);
             if (collision.gameObject.name == "Player")
             {
                 collision.gameObject.GetComponent<PlayerKeypadPuzzleController>().inPuzzleTrigger = true;
+                puzzleCtrlScript.currPuzzle = puzzle;
+                
             }
         }
 
@@ -26,6 +42,7 @@ namespace AphroditeFightCode
             if (collision.gameObject.name == "Player")
             {
                 collision.gameObject.GetComponent<PlayerKeypadPuzzleController>().inPuzzleTrigger = false;
+                puzzleCtrlScript.currPuzzle = null;
             }
         }
     }

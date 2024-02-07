@@ -12,7 +12,6 @@ namespace AphroditeFightCode
         private Rigidbody2D rb;
         public bool freezePlayer = false;
         [Header("PuzzleUI")]
-        public GameObject puzzle;
         public bool inPuzzleTrigger = false;
         public bool inKeypadPuzzle = false;
 
@@ -54,10 +53,6 @@ namespace AphroditeFightCode
                 
                 GameData.inKeypadPuzzle = true;
                 GameData.freezePlayer = true;
-                //TODO
-                //currently single ref game object => later have a function to
-                // pass in the puzzle idx
-                puzzle.SetActive(true);
                 inPuzzleTrigger = false;
                 Debug.Log("Puzzle Activated| in puzzle? " + inKeypadPuzzle + "freeze player>?: " + freezePlayer + " Game data saved: " + GameData.freezePlayer);
 

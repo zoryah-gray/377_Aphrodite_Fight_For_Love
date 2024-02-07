@@ -11,6 +11,10 @@ namespace AphroditeFightCode
 {
     public class KeyPadContoller : MonoBehaviour
     {
+
+        [Header("Current Puzzle")]
+        public KeypadPuzzleTriggerSO currPuzzle;
+
         [Header("Keys Objects")]
         [SerializeField] private GameObject currentButton;
   
@@ -25,14 +29,13 @@ namespace AphroditeFightCode
         public int codeID = 0;
         //[SerializeField] private int[] code;
         [SerializeField] private List<int> code;
-        [SerializeField] public Queue<int> codeQ = new Queue<int>();
-
 
         public List<int> currentInput;
+
         [Header("Puzzle Settings")]
+        public float puzzleStartDelay = 3f;
         public float flashDuration = 0.25f;
         public float delayBtFlashes = 0.42f;
-        public bool solved = false;
 
         [Header("Puzzle Unlocks")]
         public GameObject unlocksObj;
@@ -45,11 +48,6 @@ namespace AphroditeFightCode
 
         private void OnEnable()
         {
-            //if (actionMap == null)
-            //{
-            //    actionMap = new ModifiedActionMap();
-            //}
-
             // syncing to playerinputs mapping
             if (input == null)
             {
@@ -57,11 +55,6 @@ namespace AphroditeFightCode
             }
   
             currentButton = EventSystem.current.currentSelectedGameObject;
-
-          
-     
-            //actionMap.Player.Disable();
-            //actionMap.UI.Enable();
 
             // syncing to playerinputs mapping
             input.Player.Disable();
@@ -110,18 +103,6 @@ namespace AphroditeFightCode
         }
 
 
-        // Start is called before the first frame update
-        void Start()
-        {
-
-            Debug.Log("In KeypadCtrler");
-            //StartCoroutine(WaitForKeyCodesDictionary());
-            //populateKeyCode();
-            AddKeyCodeToDictionary();
-            FlashPuzzleAnswer();
-            //currentButton = EventSystem.current.currentSelectedGameObject;
-            
-        }
 
         public void AddKeyPress(int keyID)
         {
@@ -143,14 +124,14 @@ namespace AphroditeFightCode
                 // all buttons flash red
                 FlashAllButtons(flashCount, flashColorIncorrect);
 
-
             }
             else
             {
+
                 // all buttons flash green and set unlocked to true
-                Debug.Log("Code is the same! ");
+                Debug.Log("Code is the same/correct!");
                 FlashAllButtons(flashCount, flashColorCorrect);
-                solved = true;
+                currPuzzle.unlocked = true;
                 UnlockObj();
                 Invoke("OnReturn", 3.5f);
             }
@@ -257,17 +238,21 @@ namespace AphroditeFightCode
                     keypadButtons.Add(btn);
                 }
             }
-            FlashPuzzleAnswer();
+            // assign all the variables from the curr Scriptable Obj to their respective variables
+
+            currPuzzle.code = code;
+            currPuzzle.codeID = codeID;
+            currPuzzle.unloackableObj = unlocksObj;
+            AddKeyCodeToDictionary();
+            //FlashPuzzleAnswer();
+            Invoke("FlashPuzzleAnswer", puzzleStartDelay);
+            
         }
 
         private void AddKeyCodeToDictionary()
         {
             
             GameData.AddKeyCodeToDictionary(codeID, code);
-            foreach (var c in code)
-            {
-                codeQ.Enqueue(c);
-            }
         }
 
 
@@ -276,15 +261,8 @@ namespace AphroditeFightCode
             Debug.Log("populating codes for " + codeID);
 
             code = GameData.GetPuzzleCodeList(codeID);
-            //GameData.keypadPuzzleCodesL[codeID] = codeL;
-            foreach (var c in code)
-            {
-                codeQ.Enqueue(c);
-            }
 
-            Debug.Log(code.Count);
-            //Debug.Log(codeL.Count);
-            Debug.Log(codeQ.Count);
+            //Debug.Log(code.Count);
         }
 
         IEnumerator WaitForKeyCodesDictionary()

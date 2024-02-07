@@ -66,7 +66,7 @@ namespace AphroditeFightCode
                 if (CanMove(moveVector))
                 {
                     rb.velocity = moveVector * moveSpeed;
-                    HandleMovementAnim();
+                    //HandleMovementAnim();
 
                     // I got bored and wanted to procrasinate so I tried condensing/simplifying
                     // your movement statements into blend trees; if you want to see how it works
@@ -74,7 +74,7 @@ namespace AphroditeFightCode
                     // go into animator and set IdleTree to be the default state
                     // n if you have any questions (even if it is Why?) let me know :D - Z
 
-                    //HandleMovementAnimBlendTree();
+                    HandleMovementAnimBlendTree();
                 }
                 else
                 {
@@ -95,6 +95,8 @@ namespace AphroditeFightCode
             }
         }
 
+
+
         public bool CanMove(Vector2 dir)
         {
             //check for obstacles
@@ -111,7 +113,8 @@ namespace AphroditeFightCode
                 {
                     Debug.Log("colliding with: " + hit2D.ToString());
                 }
-                return false;
+                //return false;
+                return true;
             }
 
 
