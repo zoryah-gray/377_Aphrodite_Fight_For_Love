@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 5596180429101290438}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -242,7 +242,7 @@ MonoBehaviour:
   collisionCount: 0
   collisionOffset: 0.05
   movementFilter:
-    useTriggers: 0
+    useTriggers: 1
     useLayerMask: 0
     useDepth: 0
     useOutsideDepth: 0
@@ -268,12 +268,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 7847119825080641495}
-  meleeBox: {fileID: 4836228308981826776}
+  meleeBoxGO: {fileID: 734879591880976982}
   attackBox: {fileID: 4836228308981826776}
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
   curPosition: {x: 0, y: 0, z: 0}
+  animator: {fileID: 0}
 --- !u!114 &5596180429101290438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +288,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   freezePlayer: 0
-  puzzle: {fileID: 0}
   inPuzzleTrigger: 0
   inKeypadPuzzle: 0

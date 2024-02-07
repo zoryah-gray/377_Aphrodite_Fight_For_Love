@@ -123,6 +123,7 @@ namespace AphroditeFightCode
                 Debug.Log("Code is not the same! " + currentInput + " != " + code);
                 // all buttons flash red
                 FlashAllButtons(flashCount, flashColorIncorrect);
+                Invoke("FlashPuzzleAnswer", 1.5f);
 
             }
             else
@@ -222,6 +223,8 @@ namespace AphroditeFightCode
                         newScale.x = val;
                         unlocksObj.transform.localScale = newScale;
                     });
+
+            LeanTween.scaleX(unlocksObj, 1f, 1f).setEase(LeanTweenType.easeOutQuint);
 
             
         }
