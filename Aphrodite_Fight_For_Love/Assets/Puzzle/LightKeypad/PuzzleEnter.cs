@@ -28,11 +28,14 @@ namespace AphroditeFightCode
         private void OnTriggerEnter2D(Collider2D collision)
         {
             icon.SetActive(true);
+            Debug.Log(collision.gameObject.name);
+            puzzleCtrlScript.currPuzzle = puzzle;
             if (collision.gameObject.name == "Player")
             {
                 collision.gameObject.GetComponent<PlayerKeypadPuzzleController>().inPuzzleTrigger = true;
                 puzzleCtrlScript.currPuzzle = puzzle;
-                
+                Debug.Log(puzzleCtrlScript.currPuzzle.name);
+
             }
         }
 
@@ -42,7 +45,7 @@ namespace AphroditeFightCode
             if (collision.gameObject.name == "Player")
             {
                 collision.gameObject.GetComponent<PlayerKeypadPuzzleController>().inPuzzleTrigger = false;
-                puzzleCtrlScript.currPuzzle = null;
+                //puzzleCtrlScript.currPuzzle = null;
             }
         }
     }

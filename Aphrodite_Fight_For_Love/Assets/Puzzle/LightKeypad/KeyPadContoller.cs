@@ -213,16 +213,16 @@ namespace AphroditeFightCode
         {
             float targetScaleXPos = 0.27f;
             unlocksObj.GetComponent<SpriteRenderer>().color = Color.green;
-            LeanTween.move(unlocksObj, new Vector3(2.664f, -0.4138f, 0f), 1f)
-                .setEase(LeanTweenType.easeOutQuad);
-            LeanTween.value(unlocksObj, unlocksObj.transform.localScale.x, targetScaleXPos, 1.5f)
-                .setEase(LeanTweenType.easeOutBounce)
-                .setOnUpdate((float val) =>
-                    {
-                        Vector3 newScale = unlocksObj.transform.localScale;
-                        newScale.x = val;
-                        unlocksObj.transform.localScale = newScale;
-                    });
+            //LeanTween.move(unlocksObj, new Vector3(2.664f, -0.4138f, 0f), 1f)
+            //    .setEase(LeanTweenType.easeOutQuad);
+            //LeanTween.value(unlocksObj, unlocksObj.transform.localScale.x, targetScaleXPos, 1.5f)
+            //    .setEase(LeanTweenType.easeOutBounce)
+            //    .setOnUpdate((float val) =>
+            //        {
+            //            Vector3 newScale = unlocksObj.transform.localScale;
+            //            newScale.x = val;
+            //            unlocksObj.transform.localScale = newScale;
+            //        });
 
             LeanTween.scaleX(unlocksObj, 1f, 1f).setEase(LeanTweenType.easeOutQuint);
 
@@ -233,19 +233,22 @@ namespace AphroditeFightCode
 
         private void Initalize()
         {
-            foreach (Transform child in transform)
+            if (keypadButtons.Count == 0)
             {
-                if (child.TryGetComponent<Button>(out Button btn))
+                foreach (Transform child in transform)
                 {
-                    //Debug.Log(child.gameObject.name + " | " + btn.gameObject.name);
-                    keypadButtons.Add(btn);
+                    if (child.TryGetComponent<Button>(out Button btn))
+                    {
+                        //Debug.Log(child.gameObject.name + " | " + btn.gameObject.name);
+                        keypadButtons.Add(btn);
+                    }
                 }
             }
             // assign all the variables from the curr Scriptable Obj to their respective variables
-
-            currPuzzle.code = code;
-            currPuzzle.codeID = codeID;
-            currPuzzle.unloackableObj = unlocksObj;
+            code = currPuzzle.code;
+            codeID = currPuzzle.codeID;
+            unlocksObj = currPuzzle.unloackableObj;
+            
             AddKeyCodeToDictionary();
             //FlashPuzzleAnswer();
             Invoke("FlashPuzzleAnswer", puzzleStartDelay);

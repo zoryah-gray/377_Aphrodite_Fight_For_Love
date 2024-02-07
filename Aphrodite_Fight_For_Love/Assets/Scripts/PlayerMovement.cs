@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Linq;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
 namespace AphroditeFightCode
@@ -26,8 +27,18 @@ namespace AphroditeFightCode
         [Header("Collision Control")]
         public int collisionCount;
         public float collisionOffset = 0.5f;
+        
+        //public ContactFilter2D movementFilter;
         public ContactFilter2D movementFilter;
         List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
+
+        [Header("Collision Control Attempt 2")]
+        public float circleCastRadius = 5f;
+        public List<RaycastHit2D> collisionRslts = new List<RaycastHit2D>();
+        public ContactFilter2D castCollisions2;
+        public Vector2 boxCastSize;
+        public Vector3 boxOffset;
+
 
         private void Awake()
         {
@@ -41,10 +52,6 @@ namespace AphroditeFightCode
             Cursor.lockState = CursorLockMode.Locked;
         }
 
-        private void Update()
-        {
-
-        }
 
         private void OnEnable()
         {
@@ -60,41 +67,54 @@ namespace AphroditeFightCode
         }
         private void FixedUpdate()
         {
-
             if (!GameData.freezePlayer)
             {
-                if (CanMove(moveVector))
-                {
-                    rb.velocity = moveVector * moveSpeed;
-                    //HandleMovementAnim();
-
-                    // I got bored and wanted to procrasinate so I tried condensing/simplifying
-                    // your movement statements into blend trees; if you want to see how it works
-                    // uncomment the function on the line below and then
-                    // go into animator and set IdleTree to be the default state
-                    // n if you have any questions (even if it is Why?) let me know :D - Z
-
-                    // Z, ur incredible, thank you! -Rch
-
-                    HandleMovementAnimBlendTree();
-                }
-                else
-                {
-                    // try moving left/right
-                    if (CanMove(new Vector2(moveVector.x, 0)))
-                    {
-                        // can move l/r
-                        rb.velocity = new Vector2(moveVector.x, 0) * moveSpeed;
-                    }
-                    else if (CanMove(new Vector2(0, moveVector.y)))
-                    {
-                        //can move up/down
-                        rb.velocity = new Vector2(0, moveVector.y) * moveSpeed;
-                    }
-
-                }
-
+                rb.velocity = moveVector * moveSpeed;
+                HandleMovementAnimBlendTree();
             }
+
+            //if (!GameData.freezePlayer)
+            //{
+            //    if (CanMove(moveVector))
+            //    {
+            //        rb.velocity = moveVector * moveSpeed;
+                    
+            //        //HandleMovementAnim();
+
+            //        // I got bored and wanted to procrasinate so I tried condensing/simplifying
+            //        // your movement statements into blend trees; if you want to see how it works
+            //        // uncomment the function on the line below and then
+            //        // go into animator and set IdleTree to be the default state
+            //        // n if you have any questions (even if it is Why?) let me know :D - Z
+
+            //        // Z, ur incredible, thank you! -Rch
+            //        // it was my fault i apologizes -Z
+
+            //        HandleMovementAnimBlendTree();
+            //    }
+            //    else
+            //    {
+            //        // try moving left/right
+            //        if (CanMove(new Vector2(moveVector.x, 0)))
+            //        {
+            //            // can move l/r
+            //            rb.velocity = new Vector2(moveVector.x, 0) * moveSpeed;
+            //        }
+            //        else if (CanMove(new Vector2(0, moveVector.y)))
+            //        {
+            //            //can move up/down
+            //            rb.velocity = new Vector2(0, moveVector.y) * moveSpeed;
+            //        }
+            //        //else
+            //        //{
+            //        //    rb.velocity = Vector2.zero;
+            //        //}
+
+            //    }
+
+            //}
+
+
         }
 
 
@@ -103,21 +123,44 @@ namespace AphroditeFightCode
         {
             //check for obstacles
             collisionCount = rb.Cast(dir, movementFilter, castCollisions, moveSpeed * Time.fixedDeltaTime + collisionOffset);
+            
 
-            if (collisionCount == 0)
+            Collider2D[] collisionsCollider = Physics2D.OverlapBoxAll(transform.position, boxCastSize, 0f);
+            if (collisionsCollider.Length == 0)
             {
                 // no collisions detected
+                return true;
+
+                
+            }
+            else if (collisionsCollider[0].name == "Player" && collisionsCollider.Length == 1)
+            {
                 return true;
             }
             else
             {
-                foreach (RaycastHit2D hit2D in castCollisions)
+                foreach (Collider2D colision in collisionsCollider)
                 {
-                    Debug.Log("colliding with: " + hit2D.ToString());
+                    Debug.Log("In collision Range| " + colision.name);
                 }
-                //return false;
-                return true;
+                return false;
             }
+
+            ////Debug.Log("4| " + collisionCount);
+            //if (collisionCount == 0)
+            //{
+            //    // no collisions detected
+            //    return true;
+            //}
+            //else
+            //{
+            //    foreach (RaycastHit2D hit2D in castCollisions)
+            //    {
+            //        Debug.Log("colliding with: " + hit2D.ToString());
+            //    }
+            //    return false;
+            //    //return true;
+            //}
 
 
         }
