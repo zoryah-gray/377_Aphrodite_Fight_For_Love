@@ -96,8 +96,8 @@
     <Compile Include="Assets/LeanTween/Testing/PerformanceTests.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/LogoCinematic.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralAdvancedTechniques.cs" />
+    <Compile Include="Assets/Scripts/CameraFollow.cs" />
     <Compile Include="Assets/Scripts/PlayerAttack.cs" />
-    <Compile Include="Assets/CameraFollow.cs" />
     <Compile Include="Assets/LeanTween/Testing/TestingSceneSwitching.cs" />
     <Compile Include="Assets/LeanTween/Testing/Testing246.cs" />
     <Compile Include="Assets/Puzzle/LightKeypad/KeypadPuzzleTriggerSO.cs" />

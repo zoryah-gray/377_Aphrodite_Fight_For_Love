@@ -13,7 +13,7 @@ namespace AphroditeFightCode
         private PlayerInputs input = null;
         private Vector2 moveVector = Vector2.zero;
         private Rigidbody2D rb = null;
-        private float moveSpeed = 3f;
+        private float moveSpeed = 5f;
 
         [Header("Attached Objects and References")]
         public Animator animator;
@@ -78,7 +78,7 @@ namespace AphroditeFightCode
             //    if (CanMove(moveVector))
             //    {
             //        rb.velocity = moveVector * moveSpeed;
-                    
+
             //        //HandleMovementAnim();
 
             //        // I got bored and wanted to procrasinate so I tried condensing/simplifying

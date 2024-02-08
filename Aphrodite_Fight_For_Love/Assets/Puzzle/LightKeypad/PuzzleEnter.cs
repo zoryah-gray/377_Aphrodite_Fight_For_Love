@@ -46,6 +46,7 @@ namespace AphroditeFightCode
             {
                 collision.gameObject.GetComponent<PlayerKeypadPuzzleController>().inPuzzleTrigger = false;
                 //puzzleCtrlScript.currPuzzle = null;
+                Debug.Log("exiting trigger area");
             }
         }
     }
