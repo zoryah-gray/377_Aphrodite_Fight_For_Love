@@ -116,7 +116,6 @@
     <Compile Include="Assets/LeanTween/Framework/LeanTweenExt.cs" />
     <Compile Include="Assets/LeanTween/Framework/LeanSmooth.cs" />
     <Compile Include="Assets/Puzzle/LightKeypad/PlayerKeypadPuzzleController.cs" />
-    <Compile Include="Assets/Scripts/FollowingCam.cs" />
     <Compile Include="Assets/LeanTween/Framework/LeanAudio.cs" />
     <Compile Include="Assets/LeanTween/Framework/LTDescrOptional.cs" />
     <Compile Include="Assets/LeanTween/Testing/TestingMaxTweens.cs" />
