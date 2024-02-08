@@ -212,6 +212,8 @@ namespace AphroditeFightCode
         private void UnlockObj()
         {
             float targetScaleXPos = 0.27f;
+            Vector3 originalScale = unlocksObj.transform.localScale;
+            Vector3 originalPos = unlocksObj.transform.position;
             unlocksObj.GetComponent<SpriteRenderer>().color = Color.green;
             //LeanTween.move(unlocksObj, new Vector3(2.664f, -0.4138f, 0f), 1f)
             //    .setEase(LeanTweenType.easeOutQuad);
@@ -224,9 +226,10 @@ namespace AphroditeFightCode
             //            unlocksObj.transform.localScale = newScale;
             //        });
 
-            LeanTween.scaleX(unlocksObj, 1f, 1f).setEase(LeanTweenType.easeOutQuint);
+            LeanTween.scaleX(unlocksObj, originalScale.x, 1f).setEase(LeanTweenType.easeOutQuint);
+            LeanTween.moveX(unlocksObj, originalPos.x + originalScale.x, 1f).setEase(LeanTweenType.easeOutQuint);
 
-            
+
         }
 
 

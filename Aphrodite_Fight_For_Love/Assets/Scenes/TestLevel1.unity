@@ -380,12 +380,16 @@ PrefabInstance:
       objectReference: {fileID: 552677262}
     - target: {fileID: 5245895175791909654, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5245895175791909654, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
       propertyPath: meleeBoxGO
       value: 
       objectReference: {fileID: 552677258}
+    - target: {fileID: 5596180429101290438, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
+      propertyPath: keypadUI
+      value: 
+      objectReference: {fileID: 1178228804}
     - target: {fileID: 5596180429101290438, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -917,6 +921,10 @@ PrefabInstance:
       propertyPath: puzzle
       value: 
       objectReference: {fileID: 11400000, guid: d814e08a59c474a52b8da57b631473bf, type: 2}
+    - target: {fileID: 4079549317456946476, guid: 9c60e292b60d9426e9ccb48e31b7a44a, type: 3}
+      propertyPath: puzzleCtrlScript
+      value: 
+      objectReference: {fileID: 1178228805}
     - target: {fileID: 4832334983530119367, guid: 9c60e292b60d9426e9ccb48e31b7a44a, type: 3}
       propertyPath: m_Color.g
       value: 0.43685633
@@ -1005,8 +1013,8 @@ Transform:
   m_GameObject: {fileID: 1014757146}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7112, y: 5.67, z: 0}
-  m_LocalScale: {x: 3.1744993, y: 1, z: 1}
+  m_LocalPosition: {x: -0.691, y: 5.68, z: 1.15}
+  m_LocalScale: {x: 3.1744993, y: 0.91, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1399156239}
@@ -1135,7 +1143,7 @@ Transform:
   m_GameObject: {fileID: 1108836957}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9986,6 +9994,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1178228804 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1105540674444929490, guid: 2f3493016bd1c44149b5ee23edd5692c, type: 3}
+  m_PrefabInstance: {fileID: 893941858}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1178228805 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2441046418136214687, guid: 2f3493016bd1c44149b5ee23edd5692c, type: 3}
+  m_PrefabInstance: {fileID: 893941858}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178228804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f859b7fac6fc641aca92674ca77932be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1294234950
 GameObject:
   m_ObjectHideFlags: 0
@@ -12937,6 +12961,10 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 1014757146}
+    - target: {fileID: 4079549317456946476, guid: 9c60e292b60d9426e9ccb48e31b7a44a, type: 3}
+      propertyPath: puzzleCtrlScript
+      value: 
+      objectReference: {fileID: 1178228805}
     - target: {fileID: 6237475888524893230, guid: 9c60e292b60d9426e9ccb48e31b7a44a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.388258
@@ -13183,8 +13211,8 @@ Transform:
   m_GameObject: {fileID: 1919777745}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7344, y: -4.41, z: 0}
-  m_LocalScale: {x: 3.1248, y: 1, z: 1}
+  m_LocalPosition: {x: -0.689, y: -4.295, z: 1.63}
+  m_LocalScale: {x: 3.1248, y: 0.85, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1399156239}
