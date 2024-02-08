@@ -371,8 +371,16 @@ PrefabInstance:
       value: -0.595
       objectReference: {fileID: 0}
     - target: {fileID: 5060671358131745205, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5060671358131745205, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
       propertyPath: m_Constraints
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5060671358131745205, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5245895175791909654, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
       propertyPath: animator
@@ -469,7 +477,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   curPosition: {x: 0, y: 0, z: 0}
-  animator: {fileID: 552677262}
 --- !u!95 &552677262
 Animator:
   serializedVersion: 5

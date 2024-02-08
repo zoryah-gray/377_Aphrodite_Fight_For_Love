@@ -33,7 +33,7 @@ namespace AphroditeFightCode
         public List<int> currentInput;
 
         [Header("Puzzle Settings")]
-        public float puzzleStartDelay = 3f;
+        public float puzzleStartDelay = 1.5f;
         public float flashDuration = 0.25f;
         public float delayBtFlashes = 0.42f;
 
