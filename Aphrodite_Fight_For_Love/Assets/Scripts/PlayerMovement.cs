@@ -13,7 +13,7 @@ namespace AphroditeFightCode
         private PlayerInputs input = null;
         private Vector2 moveVector = Vector2.zero;
         private Rigidbody2D rb = null;
-        private float moveSpeed = 5f;
+        private float moveSpeed = 4f;
 
         [Header("Attached Objects and References")]
         public Animator animator;
@@ -48,8 +48,8 @@ namespace AphroditeFightCode
 
             // lock the cursor and turn it invisible
             // => in playMode if you want to click away press 'Esc'
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.visible = false;
+            //Cursor.lockState = CursorLockMode.Locked;
         }
 
 
@@ -73,97 +73,12 @@ namespace AphroditeFightCode
                 HandleMovementAnimBlendTree();
             }
 
-            //if (!GameData.freezePlayer)
-            //{
-            //    if (CanMove(moveVector))
-            //    {
-            //        rb.velocity = moveVector * moveSpeed;
-
-            //        //HandleMovementAnim();
-
-            //        // I got bored and wanted to procrasinate so I tried condensing/simplifying
-            //        // your movement statements into blend trees; if you want to see how it works
-            //        // uncomment the function on the line below and then
-            //        // go into animator and set IdleTree to be the default state
-            //        // n if you have any questions (even if it is Why?) let me know :D - Z
-
-            //        // Z, ur incredible, thank you! -Rch
-            //        // it was my fault i apologizes -Z
-
-            //        HandleMovementAnimBlendTree();
-            //    }
-            //    else
-            //    {
-            //        // try moving left/right
-            //        if (CanMove(new Vector2(moveVector.x, 0)))
-            //        {
-            //            // can move l/r
-            //            rb.velocity = new Vector2(moveVector.x, 0) * moveSpeed;
-            //        }
-            //        else if (CanMove(new Vector2(0, moveVector.y)))
-            //        {
-            //            //can move up/down
-            //            rb.velocity = new Vector2(0, moveVector.y) * moveSpeed;
-            //        }
-            //        //else
-            //        //{
-            //        //    rb.velocity = Vector2.zero;
-            //        //}
-
-            //    }
-
-            //}
 
 
         }
 
 
 
-        public bool CanMove(Vector2 dir)
-        {
-            //check for obstacles
-            collisionCount = rb.Cast(dir, movementFilter, castCollisions, moveSpeed * Time.fixedDeltaTime + collisionOffset);
-            
-
-            Collider2D[] collisionsCollider = Physics2D.OverlapBoxAll(transform.position, boxCastSize, 0f);
-            if (collisionsCollider.Length == 0)
-            {
-                // no collisions detected
-                return true;
-
-                
-            }
-            else if (collisionsCollider[0].name == "Player" && collisionsCollider.Length == 1)
-            {
-                return true;
-            }
-            else
-            {
-                foreach (Collider2D colision in collisionsCollider)
-                {
-                    Debug.Log("In collision Range| " + colision.name);
-                }
-                return false;
-            }
-
-            ////Debug.Log("4| " + collisionCount);
-            //if (collisionCount == 0)
-            //{
-            //    // no collisions detected
-            //    return true;
-            //}
-            //else
-            //{
-            //    foreach (RaycastHit2D hit2D in castCollisions)
-            //    {
-            //        Debug.Log("colliding with: " + hit2D.ToString());
-            //    }
-            //    return false;
-            //    //return true;
-            //}
-
-
-        }
 
         private void OnDrawGizmos()
         {

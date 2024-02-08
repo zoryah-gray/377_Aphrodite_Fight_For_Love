@@ -49,17 +49,17 @@ namespace AphroditeFightCode
         private void OnEnable()
         {
             // syncing to playerinputs mapping
-            if (input == null)
-            {
-                input = new PlayerInputs();
-            }
+            //if (input == null)
+            //{
+            //    input = new PlayerInputs();
+            //}
   
-            currentButton = EventSystem.current.currentSelectedGameObject;
+            //currentButton = EventSystem.current.currentSelectedGameObject;
 
-            // syncing to playerinputs mapping
-            input.Player.Disable();
-            input.UI.Enable();
-            Debug.Log("ui enabled?: " + input.UI.enabled + " | player enabled?: " + input.Player.enabled);
+            //// syncing to playerinputs mapping
+            //input.Player.Disable();
+            ////input.UI.Enable();
+            //Debug.Log("ui enabled?: " + input.UI.enabled + " | player enabled?: " + input.Player.enabled);
 
             EventSystem.current.SetSelectedGameObject(null);
             Initalize();
@@ -75,9 +75,9 @@ namespace AphroditeFightCode
             //actionMap.Player.Enable();
             //actionMap.UI.Disable();
 
-            // syncing to playerinputs mapping
-            input.Player.Enable();
-            input.UI.Disable();
+            //// syncing to playerinputs mapping
+            //input.Player.Enable();
+            //input.UI.Disable();
 
             StopAllCoroutines();
         
@@ -90,9 +90,9 @@ namespace AphroditeFightCode
             //actionMap.Player.Enable();
             //actionMap.UI.Disable();
 
-            // syncing to playerinputs mapping
-            input.Player.Enable();
-            input.UI.Disable();
+            //// syncing to playerinputs mapping
+            //input.Player.Enable();
+            //input.UI.Disable();
 
             currentInput.Clear();
             GameData.freezePlayer = false;
@@ -133,7 +133,8 @@ namespace AphroditeFightCode
                 Debug.Log("Code is the same/correct!");
                 FlashAllButtons(flashCount, flashColorCorrect);
                 currPuzzle.unlocked = true;
-                UnlockObj();
+                currPuzzle.Unlock();
+                //UnlockObj();
                 Invoke("OnReturn", 3.5f);
             }
             currentInput.Clear();
@@ -211,20 +212,9 @@ namespace AphroditeFightCode
 
         private void UnlockObj()
         {
-            float targetScaleXPos = 0.27f;
             Vector3 originalScale = unlocksObj.transform.localScale;
             Vector3 originalPos = unlocksObj.transform.position;
             unlocksObj.GetComponent<SpriteRenderer>().color = Color.green;
-            //LeanTween.move(unlocksObj, new Vector3(2.664f, -0.4138f, 0f), 1f)
-            //    .setEase(LeanTweenType.easeOutQuad);
-            //LeanTween.value(unlocksObj, unlocksObj.transform.localScale.x, targetScaleXPos, 1.5f)
-            //    .setEase(LeanTweenType.easeOutBounce)
-            //    .setOnUpdate((float val) =>
-            //        {
-            //            Vector3 newScale = unlocksObj.transform.localScale;
-            //            newScale.x = val;
-            //            unlocksObj.transform.localScale = newScale;
-            //        });
 
             LeanTween.scaleX(unlocksObj, originalScale.x, 1f).setEase(LeanTweenType.easeOutQuint);
             LeanTween.moveX(unlocksObj, originalPos.x + originalScale.x, 1f).setEase(LeanTweenType.easeOutQuint);

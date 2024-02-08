@@ -10481,16 +10481,16 @@ MonoBehaviour:
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: 3b8f47e284d3544c7a079906dca1dfeb, type: 3}
-  m_PointAction: {fileID: 0}
+  m_PointAction: {fileID: -3519826928991999279, guid: 3b8f47e284d3544c7a079906dca1dfeb, type: 3}
   m_MoveAction: {fileID: -244753602233531585, guid: 3b8f47e284d3544c7a079906dca1dfeb, type: 3}
-  m_SubmitAction: {fileID: 5338380567969303975, guid: 3b8f47e284d3544c7a079906dca1dfeb, type: 3}
-  m_CancelAction: {fileID: 0}
-  m_LeftClickAction: {fileID: 0}
-  m_MiddleClickAction: {fileID: 0}
-  m_RightClickAction: {fileID: 0}
-  m_ScrollWheelAction: {fileID: 0}
-  m_TrackedDevicePositionAction: {fileID: 0}
-  m_TrackedDeviceOrientationAction: {fileID: 0}
+  m_SubmitAction: {fileID: 2064916234097673511, guid: 3b8f47e284d3544c7a079906dca1dfeb, type: 3}
+  m_CancelAction: {fileID: 2344206949777217705, guid: 3b8f47e284d3544c7a079906dca1dfeb, type: 3}
+  m_LeftClickAction: {fileID: 6294067138297038996, guid: 3b8f47e284d3544c7a079906dca1dfeb, type: 3}
+  m_MiddleClickAction: {fileID: 8182423504272187847, guid: 3b8f47e284d3544c7a079906dca1dfeb, type: 3}
+  m_RightClickAction: {fileID: -3187609040429982642, guid: 3b8f47e284d3544c7a079906dca1dfeb, type: 3}
+  m_ScrollWheelAction: {fileID: -1738596628677840516, guid: 3b8f47e284d3544c7a079906dca1dfeb, type: 3}
+  m_TrackedDevicePositionAction: {fileID: -1256512979054514320, guid: 3b8f47e284d3544c7a079906dca1dfeb, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7030708189283634935, guid: 3b8f47e284d3544c7a079906dca1dfeb, type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
@@ -12817,10 +12817,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -13567,9 +13567,9 @@ SceneRoots:
   - {fileID: 525774027}
   - {fileID: 192905296}
   - {fileID: 1399156239}
-  - {fileID: 1662660793}
-  - {fileID: 1294234953}
   - {fileID: 192246395}
   - {fileID: 1844098569}
   - {fileID: 861394226}
+  - {fileID: 1662660793}
   - {fileID: 1434851654}
+  - {fileID: 1294234953}
