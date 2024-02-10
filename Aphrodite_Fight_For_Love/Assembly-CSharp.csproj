@@ -62,7 +62,10 @@
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralCameraShake.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/TestingUnitTests.cs" />
     <Compile Include="Assets/LeanTween/Framework/LTDescr.cs" />
+    <Compile Include="Assets/Minion Testing Folder/MinionDamageAndDeath.cs" />
     <Compile Include="Assets/LeanTween/Framework/LeanTest.cs" />
+    <Compile Include="Assets/Minion Testing Folder/QuickPlayerMove.cs" />
+    <Compile Include="Assets/Minion Testing Folder/MinionScript.cs" />
     <Compile Include="Assets/LeanTween/Testing/TestingIssue2.cs" />
     <Compile Include="Assets/Scripts/IInteractable.cs" />
     <Compile Include="Assets/LeanTween/Testing/Testing248.cs" />
@@ -71,11 +74,14 @@
     <Compile Include="Assets/LeanTween/Testing/TestingColorTweening.cs" />
     <Compile Include="Assets/Scripts/CompositeInteractable.cs" />
     <Compile Include="Assets/Puzzle/TestPlayerCtlr.cs" />
+    <Compile Include="Assets/Minion Testing Folder/AnimationBehaviors/SearchForPlayer.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralSimpleUI.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSplineEndless.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/Following.cs" />
     <Compile Include="Assets/Puzzle/DoorLogic/KeypadDoor.cs" />
+    <Compile Include="Assets/Minion Testing Folder/AnimationBehaviors/ChasePlayer.cs" />
     <Compile Include="Assets/LeanTween/Testing/TestingRotate.cs" />
+    <Compile Include="Assets/Minion Testing Folder/MinionAttack.cs" />
     <Compile Include="Assets/LeanTween/Testing/Testing243.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralBasics2d.cs" />
     <Compile Include="Assets/Puzzle/LightKeypad/Scripts/KeypadPuzzleTriggerSO.cs" />
@@ -96,6 +102,7 @@
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralAdvancedTechniques.cs" />
     <Compile Include="Assets/Scripts/CameraFollow.cs" />
     <Compile Include="Assets/Puzzle/KeyDoor/Scripts/KeyQuestManager.cs" />
+    <Compile Include="Assets/Scripts/PlayerAttack.cs" />
     <Compile Include="Assets/LeanTween/Testing/TestingSceneSwitching.cs" />
     <Compile Include="Assets/LeanTween/Testing/Testing246.cs" />
     <Compile Include="Assets/PlayerInputs.cs" />
@@ -103,7 +110,9 @@
     <Compile Include="Assets/LeanTween/Examples/Scripts/TestingZLegacyExt.cs" />
     <Compile Include="Assets/Puzzle/KeyDoor/Scripts/ClickableObject.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralSequencer.cs" />
+    <Compile Include="Assets/Minion Testing Folder/AnimationBehaviors/AttackPlayer.cs" />
     <Compile Include="Assets/Puzzle/KeyDoor/Scripts/QuestKeyController.cs" />
+    <Compile Include="Assets/Minion Testing Folder/MinionChase.cs" />
     <Compile Include="Assets/Puzzle/LightKeypad/Scripts/KeyPadContoller.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralEventsListeners.cs" />
     <Compile Include="Assets/Puzzle/LightKeypad/Scripts/PuzzleEnter.cs" />

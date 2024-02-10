@@ -8,16 +8,11 @@ namespace AphroditeFightCode
     {
         // a subclass of the door
 
-        [SerializeField] private KeyPadContoller keypad;
+        [SerializeField] private KeypadPuzzleTriggerSO keypad;
 
         public void Start()
         {
             keypad.Unlocked += OpenDoor;
-        }
-
-        private void OnDestroy()
-        {
-            keypad.Unlocked -= OpenDoor;
         }
     }
 }

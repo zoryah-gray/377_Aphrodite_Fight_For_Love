@@ -2,18 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Linq;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 namespace AphroditeFightCode
 {
     public class PlayerMovement : MonoBehaviour
     {
-        // Start is called before the first frame update
+        [Header("Player RB and Move Controls")]
         private PlayerInputs input = null;
         private Vector2 moveVector = Vector2.zero;
         private Rigidbody2D rb = null;
-<<<<<<< Updated upstream
-        private float moveSpeed = 10f;
-=======
         private float moveSpeed = 4f;
 
         [Header("Attached Objects and References")]
@@ -21,83 +20,60 @@ namespace AphroditeFightCode
         public GameObject playerGO;
         public GameObject meleeBoxGO;
 
-        [Header("Scene Camera")]
-        [SerializeField] private Camera sceneCamera;
-
         [Header("Movement Animation Paramters")]
         public int directionInt = 0;
         public bool animAfterLeft = true;
 
-        [Header("Click Collision Control")]
+        [Header("Collision Control")]
         public int collisionCount;
         public float collisionOffset = 0.5f;
-        public float clickDist = 1f;
-
-        public ContactFilter2D clickFilter;
-        List<RaycastHit2D> clickCastCollisions = new List<RaycastHit2D>();
-
-        //[Header("Collision Control")]
-        //public int collisionCount;
-        //public float collisionOffset = 0.5f;
         
-        ////public ContactFilter2D movementFilter;
         //public ContactFilter2D movementFilter;
-        //List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
+        public ContactFilter2D movementFilter;
+        List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
 
-        //[Header("Collision Control Attempt 2")]
-        //public float circleCastRadius = 5f;
-        //public List<RaycastHit2D> collisionRslts = new List<RaycastHit2D>();
-        //public ContactFilter2D castCollisions2;
-        //public Vector2 boxCastSize;
-        //public Vector3 boxOffset;
+        [Header("Collision Control Attempt 2")]
+        public float circleCastRadius = 5f;
+        public List<RaycastHit2D> collisionRslts = new List<RaycastHit2D>();
+        public ContactFilter2D castCollisions2;
+        public Vector2 boxCastSize;
+        public Vector3 boxOffset;
 
 
-
-
->>>>>>> Stashed changes
         private void Awake()
         {
             input = new PlayerInputs();
             rb = GetComponent<Rigidbody2D>();
-<<<<<<< Updated upstream
-=======
             input.Player.Enable();
-            sceneCamera = Camera.main;
 
             // lock the cursor and turn it invisible
             // => in playMode if you want to click away press 'Esc'
             //Cursor.visible = false;
             //Cursor.lockState = CursorLockMode.Locked;
->>>>>>> Stashed changes
         }
+
+
         private void OnEnable()
         {
-            input.Enable();
+            input.Player.Enable();
             input.Player.Movement.performed += OnMovementPerformed;
             input.Player.Movement.canceled += OnMovementCancelled;
-            input.Player.Click.performed += OnClickPerformed;
         }
         private void OnDisable()
         {
-            input.Disable();
+            input.Player.Disable();
             input.Player.Movement.performed -= OnMovementPerformed;
             input.Player.Movement.canceled -= OnMovementCancelled;
         }
         private void FixedUpdate()
         {
-            rb.velocity = moveVector * moveSpeed;
-        }
-<<<<<<< Updated upstream
-=======
+            if (!GameData.freezePlayer)
+            {
+                rb.velocity = moveVector * moveSpeed;
+                HandleMovementAnimBlendTree();
+            }
 
-        public void AddKey(ClickableKey key)
-        {
-            //print out what the key is
-            string keyName = key.keyName;
-            string questName = key.keyQuestName;
-            KeyQuestManager quest = key.quest;
-            Debug.Log("This is the key " + keyName + "from the Quest " + questName + " (adding it)");
-            key.AddToQuest(quest);
+
 
         }
 
@@ -117,55 +93,15 @@ namespace AphroditeFightCode
             Gizmos.DrawWireCube(cubeCenter, cubeSize);
         }
 
->>>>>>> Stashed changes
         private void OnMovementPerformed(InputAction.CallbackContext val)
         {
             moveVector = val.ReadValue<Vector2>();
         }
+
         private void OnMovementCancelled(InputAction.CallbackContext val)
         {
             moveVector = Vector2.zero;
         }
-<<<<<<< Updated upstream
-=======
-        
-        private void OnClickPerformed(InputAction.CallbackContext context)
-        {
-
-            if (context.action.ReadValue<float>() == 1)
-            {
-                //check what was clicked at this position
-                var mouseWorldPos = sceneCamera.ScreenToWorldPoint(Input.mousePosition);
-                
-                int clickHit2 = Physics2D.Raycast(mouseWorldPos, sceneCamera.transform.position - mouseWorldPos, clickFilter, clickCastCollisions,0);
-                if (clickHit2 != 0)
-                {
-                    // get the first object
-                    RaycastHit2D hit = clickCastCollisions[0];
-                    GameObject hitObject = hit.transform.gameObject;
-                    int hitLayer = hitObject.layer;
-                    string hitTag = hitObject.tag;
-                    // make sure the objects is an interactable (interactable layer = 10
-                    if (hitLayer == 10)
-                    {
-
-                        if (hitObject.TryGetComponent<QuestKeyController>(out QuestKeyController keyCtrl))
-                        {
-                            // Add key to its quest
-                            AddKey(keyCtrl.key);
-                            Destroy(hitObject);
-                        }
-                        //Debug.Log("click detected on collider: " + hit.collider.name + " | Object: " + hitObject.name + " | Layer: " + hitLayer + "| tag: " + hitTag);
-                    }
-
-                    
-                    
-                }
-
-            }
-            
-        }
-
 
 
 
@@ -217,6 +153,13 @@ namespace AphroditeFightCode
             }
             animator.SetFloat("Speed", moveVector.sqrMagnitude);
         }
->>>>>>> Stashed changes
     }
 }
+
+
+
+
+
+
+
+    

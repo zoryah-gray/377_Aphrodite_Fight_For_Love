@@ -13,7 +13,6 @@ namespace AphroditeFightCode
         public bool freezePlayer = false;
         [Header("PuzzleUI")]
         public bool inPuzzleTrigger = false;
-        public bool inQuestTrigger = false;
         public bool inKeypadPuzzle = false;
         public GameObject keypadUI;
 
@@ -60,12 +59,6 @@ namespace AphroditeFightCode
                 keypadUI.SetActive(true);
                 Debug.Log("Puzzle Activated| in puzzle? " + inKeypadPuzzle + "freeze player>?: " + freezePlayer + " Game data saved: " + GameData.freezePlayer);
 
-            }
-            if (inQuestTrigger)
-            {
-                //start the quest that the trigger is in
-                GameData.startingQuestActions = true;
-                Debug.Log("Quest Activated");
             }
         }
     }

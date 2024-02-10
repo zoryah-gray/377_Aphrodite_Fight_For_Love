@@ -24,7 +24,14 @@ namespace AphroditeFightCode
         // if the puzzle has been unlocked
         public bool unlocked = false;
 
-        
+        //
+        public delegate void UnlockHandler();
+        public event UnlockHandler Unlocked;
+
+        public void Unlock()
+        {
+            Unlocked.Invoke();
+        }
 
     }
 }
