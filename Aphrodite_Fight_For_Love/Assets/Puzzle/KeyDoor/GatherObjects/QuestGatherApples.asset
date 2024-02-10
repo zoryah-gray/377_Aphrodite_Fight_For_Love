@@ -16,13 +16,15 @@ MonoBehaviour:
   questName: Gather3Apples
   questID: 0
   sceneID: 0
+  keyAmt: 3
   requiredKeys:
   - {fileID: 11400000, guid: de05b0fb779704bd3b519d07c0d40b24, type: 2}
   - {fileID: 11400000, guid: 5ca8d347672d34c97a5957e03b1a925f, type: 2}
   - {fileID: 11400000, guid: 6b32e203162d247268c4e536f33c6a6a, type: 2}
-  requiredKeysID: 000000000100000002000000000000000100000002000000
-  obtainedKeys: 
-  started: 1
-  complete: 0
+  requiredKeysID: 000000000100000002000000
+  obtainedKeys: 020000000100000000000000
+  ongoing: 0
+  complete: 1
   questInstructions: I'd open that door, but I've lost my apples
   questEnd: My apples!! Good job, I'll unlocked it for you now
+  questEnded: Gah I've already opened it for you

@@ -1266,7 +1266,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
-  cameraScript: {fileID: 1083216092}
   quest: {fileID: 1784396265}
 --- !u!1 &1456184314
 GameObject:

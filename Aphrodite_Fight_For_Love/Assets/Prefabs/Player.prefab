@@ -253,7 +253,7 @@ Animator:
   m_GameObject: {fileID: 8060550628745360157}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2adf5b8afaf6c43969f5b6a97c9c3999, type: 2}
+  m_Controller: {fileID: 9100000, guid: e909d27231b0b4d63880acd2da88b2a6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -279,26 +279,13 @@ MonoBehaviour:
   animator: {fileID: 7458961295609241406}
   playerGO: {fileID: 0}
   meleeBoxGO: {fileID: 734879591880976982}
+  sceneCamera: {fileID: 0}
   directionInt: 0
   animAfterLeft: 1
   collisionCount: 0
   collisionOffset: 0.05
-  movementFilter:
-    useTriggers: 1
-    useLayerMask: 0
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 129
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
-  circleCastRadius: 5
-  castCollisions2:
+  clickDist: 1
+  clickFilter:
     useTriggers: 0
     useLayerMask: 0
     useDepth: 0
@@ -312,8 +299,6 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  boxCastSize: {x: 0, y: 0}
-  boxOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &5596180429101290438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +315,7 @@ MonoBehaviour:
   inPuzzleTrigger: 0
   inKeypadPuzzle: 0
   keypadUI: {fileID: 0}
+  inQuestTrigger: 0
 --- !u!61 &3162960956672723163
 BoxCollider2D:
   m_ObjectHideFlags: 0

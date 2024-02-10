@@ -15,6 +15,7 @@ namespace AphroditeFightCode
         public bool inPuzzleTrigger = false;
         public bool inKeypadPuzzle = false;
         public GameObject keypadUI;
+        public bool inQuestTrigger = false;
 
 
         private void Awake()
@@ -59,6 +60,10 @@ namespace AphroditeFightCode
                 keypadUI.SetActive(true);
                 Debug.Log("Puzzle Activated| in puzzle? " + inKeypadPuzzle + "freeze player>?: " + freezePlayer + " Game data saved: " + GameData.freezePlayer);
 
+            }
+            if (inQuestTrigger)
+            {
+                GameData.startingQuestActions = true;
             }
         }
     }
