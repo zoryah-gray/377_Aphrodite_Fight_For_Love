@@ -20,7 +20,13 @@ namespace AphroditeFightCode
         private Color flashColor = new Color(1f, 0.97f, 0.6f, 1f); //#FFF899
         public GameObject firstButton;
         public List<Button> keypadButtons;
+<<<<<<< Updated upstream:Aphrodite_Fight_For_Love/Assets/Puzzle/LightKeypad/KeyPadContoller.cs
 >>>>>>> Stashed changes
+=======
+
+
+
+>>>>>>> Stashed changes:Aphrodite_Fight_For_Love/Assets/Puzzle/LightKeypad/Scripts/KeyPadContoller.cs
         [Header("Code Tracker")]
         public int codeID = 0;
         //[SerializeField] private int[] code;
@@ -30,9 +36,16 @@ namespace AphroditeFightCode
         [SerializeField] private List<int> currentInput;
 =======
         public List<int> currentInput;
+<<<<<<< Updated upstream:Aphrodite_Fight_For_Love/Assets/Puzzle/LightKeypad/KeyPadContoller.cs
+=======
+
+
+
+>>>>>>> Stashed changes:Aphrodite_Fight_For_Love/Assets/Puzzle/LightKeypad/Scripts/KeyPadContoller.cs
         [Header("Puzzle Settings")]
         public float flashDuration = 0.25f;
         public float delayBtFlashes = 0.42f;
+<<<<<<< Updated upstream:Aphrodite_Fight_For_Love/Assets/Puzzle/LightKeypad/KeyPadContoller.cs
 >>>>>>> Stashed changes
         [Header("Action Map")]
         [SerializeField] private ModifiedActionMap actionMapI;
@@ -58,16 +71,37 @@ namespace AphroditeFightCode
             //EventSystem.current.SetSelectedGameObject(firstButton);
             //currentButton = firstButton;
 >>>>>>> Stashed changes
+=======
+
+        [Header("Puzzle Unlocks")]
+        public GameObject unlocksObj;
+        // event to unlock the door
+        public delegate void UnlockHandler();
+        public event UnlockHandler Unlocked;
+
+        
+
+        private void OnEnable()
+        {
+            
+            EventSystem.current.SetSelectedGameObject(null);
+            Initalize();
+
+>>>>>>> Stashed changes:Aphrodite_Fight_For_Love/Assets/Puzzle/LightKeypad/Scripts/KeyPadContoller.cs
         }
 
         private void OnDisable()
         {
+<<<<<<< Updated upstream:Aphrodite_Fight_For_Love/Assets/Puzzle/LightKeypad/KeyPadContoller.cs
 <<<<<<< Updated upstream
             actionMapI.Player.Disable();
             actionMapI.UI.Enable();
 =======
             actionMap.Player.Enable();
             actionMap.UI.Disable();
+=======
+
+>>>>>>> Stashed changes:Aphrodite_Fight_For_Love/Assets/Puzzle/LightKeypad/Scripts/KeyPadContoller.cs
             StopAllCoroutines();
 >>>>>>> Stashed changes
         }
@@ -77,6 +111,7 @@ namespace AphroditeFightCode
         void Start()
         {
 
+<<<<<<< Updated upstream:Aphrodite_Fight_For_Love/Assets/Puzzle/LightKeypad/KeyPadContoller.cs
             Debug.Log("In KeypadCtrler");
             //StartCoroutine(WaitForKeyCodesDictionary());
             //populateKeyCode();
@@ -84,6 +119,14 @@ namespace AphroditeFightCode
             FlashPuzzleAnswer();
             //currentButton = EventSystem.current.currentSelectedGameObject;
             
+=======
+            currentInput.Clear();
+            GameData.freezePlayer = false;
+            GameData.inKeypadPuzzle = false;
+            StopAllCoroutines();
+
+            gameObject.SetActive(false);
+>>>>>>> Stashed changes:Aphrodite_Fight_For_Love/Assets/Puzzle/LightKeypad/Scripts/KeyPadContoller.cs
         }
 
         public void AddKeyPress(int keyID)
@@ -114,6 +157,13 @@ namespace AphroditeFightCode
                 // all buttons flash green and set unlocked to true
                 Debug.Log("Code is the same! ");
                 FlashAllButtons(flashCount, flashColorCorrect);
+<<<<<<< Updated upstream:Aphrodite_Fight_For_Love/Assets/Puzzle/LightKeypad/KeyPadContoller.cs
+=======
+                currPuzzle.unlocked = true;
+                Unlock();
+                //UnlockObj();
+                Invoke("OnReturn", 3.5f);
+>>>>>>> Stashed changes:Aphrodite_Fight_For_Love/Assets/Puzzle/LightKeypad/Scripts/KeyPadContoller.cs
             }
             currentInput.Clear();
         }
@@ -125,7 +175,7 @@ namespace AphroditeFightCode
 
             foreach (var i in code)
             {
-                Debug.Log(i + " | " + keypadButtons[i - 1].gameObject.name);
+                
                 Image btnImg = keypadButtons[i - 1].GetComponent<Image>();
 
 
@@ -139,6 +189,7 @@ namespace AphroditeFightCode
                         Color currentColor = btnImg.color;
                         currentColor.a = alpha;
                         btnImg.color = currentColor;
+                        //btnImg.color = currentColor;
                     })
                     .setOnComplete(() =>
                     {
@@ -188,6 +239,7 @@ namespace AphroditeFightCode
             }
         }
 
+<<<<<<< Updated upstream:Aphrodite_Fight_For_Love/Assets/Puzzle/LightKeypad/KeyPadContoller.cs
 
         public void OnReturn()
         {
@@ -203,6 +255,26 @@ namespace AphroditeFightCode
         }
 
         
+=======
+        //private void UnlockObj()
+        //{
+        //    Vector3 originalScale = unlocksObj.transform.localScale;
+        //    Vector3 originalPos = unlocksObj.transform.position;
+        //    unlocksObj.GetComponent<SpriteRenderer>().color = Color.green;
+
+        //    LeanTween.scaleX(unlocksObj, originalScale.x, 1f).setEase(LeanTweenType.easeOutQuint);
+        //    LeanTween.moveX(unlocksObj, originalPos.x + originalScale.x, 1f).setEase(LeanTweenType.easeOutQuint);
+
+
+        //}
+
+        public void Unlock()
+        {
+            // door has been unlocked
+            Unlocked?.Invoke();
+        }
+
+>>>>>>> Stashed changes:Aphrodite_Fight_For_Love/Assets/Puzzle/LightKeypad/Scripts/KeyPadContoller.cs
         private void Initalize()
         {
             foreach (Transform child in transform)
