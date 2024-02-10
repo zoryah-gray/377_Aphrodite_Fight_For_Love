@@ -62,15 +62,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Click"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""08ce69a2-e2da-4f6c-a4b8-35c95fe29dd3"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -208,11 +199,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-<<<<<<< Updated upstream
                     ""id"": ""9972f537-85a5-4117-ae64-c18bc54c1815"",
-=======
-                    ""id"": ""00945b09-1748-4a8d-82e7-77d0a47f9907"",
->>>>>>> Stashed changes
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -223,11 +210,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-<<<<<<< Updated upstream
                     ""id"": ""6c210a1f-ca81-494a-9cc6-51120ceb2233"",
-=======
-                    ""id"": ""3cde397f-f147-47f0-9afd-57eb6c5c4850"",
->>>>>>> Stashed changes
                     ""path"": ""<Touchscreen>/touch*/press"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -238,11 +221,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-<<<<<<< Updated upstream
                     ""id"": ""78e8b93c-a6b6-47d3-aaa2-fc09c55a9de7"",
-=======
-                    ""id"": ""d8c922c1-0654-45b9-b396-1b4d4d06977e"",
->>>>>>> Stashed changes
                     ""path"": ""<XRController>/trigger"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -767,7 +746,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player_Click = m_Player.FindAction("Click", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
-        m_Player_Click = m_Player.FindAction("Click", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
@@ -845,7 +823,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Click;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Attack;
-    private readonly InputAction m_Player_Click;
     public struct PlayerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -854,7 +831,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Click => m_Wrapper.m_Player_Click;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
-        public InputAction @Click => m_Wrapper.m_Player_Click;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -876,9 +852,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
-            @Click.started += instance.OnClick;
-            @Click.performed += instance.OnClick;
-            @Click.canceled += instance.OnClick;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -895,9 +868,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
-            @Click.started -= instance.OnClick;
-            @Click.performed -= instance.OnClick;
-            @Click.canceled -= instance.OnClick;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1057,7 +1027,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnClick(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
-        void OnClick(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
