@@ -20,24 +20,20 @@ namespace AphroditeFightCode
         public GameObject playerGO;
         public GameObject meleeBoxGO;
 
+        [Header("Scene Camera")]
+        [SerializeField] private Camera sceneCamera;
+
         [Header("Movement Animation Paramters")]
         public int directionInt = 0;
         public bool animAfterLeft = true;
 
-        [Header("Collision Control")]
+        [Header("Click Collision Control")]
         public int collisionCount;
         public float collisionOffset = 0.5f;
-        
-        //public ContactFilter2D movementFilter;
-        public ContactFilter2D movementFilter;
-        List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
+        public float clickDist = 1f;
 
-        [Header("Collision Control Attempt 2")]
-        public float circleCastRadius = 5f;
-        public List<RaycastHit2D> collisionRslts = new List<RaycastHit2D>();
-        public ContactFilter2D castCollisions2;
-        public Vector2 boxCastSize;
-        public Vector3 boxOffset;
+        public ContactFilter2D clickFilter;
+        List<RaycastHit2D> clickCastCollisions = new List<RaycastHit2D>();
 
 
         private void Awake()
@@ -45,6 +41,7 @@ namespace AphroditeFightCode
             input = new PlayerInputs();
             rb = GetComponent<Rigidbody2D>();
             input.Player.Enable();
+            sceneCamera = Camera.main;
 
             // lock the cursor and turn it invisible
             // => in playMode if you want to click away press 'Esc'
@@ -58,6 +55,7 @@ namespace AphroditeFightCode
             input.Player.Enable();
             input.Player.Movement.performed += OnMovementPerformed;
             input.Player.Movement.canceled += OnMovementCancelled;
+            input.Player.Click.performed += OnClickPerformed;
         }
         private void OnDisable()
         {
@@ -77,7 +75,16 @@ namespace AphroditeFightCode
 
         }
 
+        public void AddKey(ClickableKey key)
+        {
+            //print out what the key is
+            string keyName = key.keyName;
+            string questName = key.keyQuestName;
+            KeyQuestManager quest = key.quest;
+            Debug.Log("This is the key " + keyName + "from the Quest " + questName + " (adding it)");
+            key.AddToQuest(quest);
 
+        }
 
 
         private void OnDrawGizmos()
@@ -103,6 +110,42 @@ namespace AphroditeFightCode
             moveVector = Vector2.zero;
         }
 
+        private void OnClickPerformed(InputAction.CallbackContext context)
+        {
+
+            if (context.action.ReadValue<float>() == 1)
+            {
+                //check what was clicked at this position
+                var mouseWorldPos = sceneCamera.ScreenToWorldPoint(Input.mousePosition);
+
+                int clickHit2 = Physics2D.Raycast(mouseWorldPos, sceneCamera.transform.position - mouseWorldPos, clickFilter, clickCastCollisions, 0);
+                if (clickHit2 != 0)
+                {
+                    // get the first object
+                    RaycastHit2D hit = clickCastCollisions[0];
+                    GameObject hitObject = hit.transform.gameObject;
+                    int hitLayer = hitObject.layer;
+                    string hitTag = hitObject.tag;
+                    // make sure the objects is an interactable (interactable layer = 10
+                    if (hitLayer == 10)
+                    {
+
+                        if (hitObject.TryGetComponent<QuestKeyController>(out QuestKeyController keyCtrl))
+                        {
+                            // Add key to its quest
+                            AddKey(keyCtrl.key);
+                            Destroy(hitObject);
+                        }
+                        //Debug.Log("click detected on collider: " + hit.collider.name + " | Object: " + hitObject.name + " | Layer: " + hitLayer + "| tag: " + hitTag);
+                    }
+
+
+
+                }
+
+            }
+
+        }
 
 
         private void HandleMovementAnimBlendTree()

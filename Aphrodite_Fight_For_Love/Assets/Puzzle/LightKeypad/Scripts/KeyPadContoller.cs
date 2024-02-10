@@ -39,6 +39,9 @@ namespace AphroditeFightCode
 
         [Header("Puzzle Unlocks")]
         public GameObject unlocksObj;
+        // event to unlock the door
+        public delegate void UnlockHandler();
+        public event UnlockHandler Unlocked;
 
         [Header("Action Map")]
         [SerializeField] private ModifiedActionMap actionMap;
@@ -48,36 +51,14 @@ namespace AphroditeFightCode
 
         private void OnEnable()
         {
-            // syncing to playerinputs mapping
-            //if (input == null)
-            //{
-            //    input = new PlayerInputs();
-            //}
-  
-            //currentButton = EventSystem.current.currentSelectedGameObject;
-
-            //// syncing to playerinputs mapping
-            //input.Player.Disable();
-            ////input.UI.Enable();
-            //Debug.Log("ui enabled?: " + input.UI.enabled + " | player enabled?: " + input.Player.enabled);
-
             EventSystem.current.SetSelectedGameObject(null);
             Initalize();
 
-            //EventSystem.current.SetSelectedGameObject(firstButton);
-            //currentButton = firstButton;
 
         }
 
         private void OnDisable()
         {
-     
-            //actionMap.Player.Enable();
-            //actionMap.UI.Disable();
-
-            //// syncing to playerinputs mapping
-            //input.Player.Enable();
-            //input.UI.Disable();
 
             StopAllCoroutines();
         
@@ -86,13 +67,6 @@ namespace AphroditeFightCode
         public void OnReturn()
         {
 
-
-            //actionMap.Player.Enable();
-            //actionMap.UI.Disable();
-
-            //// syncing to playerinputs mapping
-            //input.Player.Enable();
-            //input.UI.Disable();
 
             currentInput.Clear();
             GameData.freezePlayer = false;
@@ -133,7 +107,8 @@ namespace AphroditeFightCode
                 Debug.Log("Code is the same/correct!");
                 FlashAllButtons(flashCount, flashColorCorrect);
                 currPuzzle.unlocked = true;
-                currPuzzle.Unlock();
+                Unlock();
+                //currPuzzle.Unlock();
                 //UnlockObj();
                 Invoke("OnReturn", 3.5f);
             }
@@ -210,16 +185,22 @@ namespace AphroditeFightCode
             }
         }
 
-        private void UnlockObj()
+        //private void UnlockObj()
+        //{
+        //    Vector3 originalScale = unlocksObj.transform.localScale;
+        //    Vector3 originalPos = unlocksObj.transform.position;
+        //    unlocksObj.GetComponent<SpriteRenderer>().color = Color.green;
+
+        //    LeanTween.scaleX(unlocksObj, originalScale.x, 1f).setEase(LeanTweenType.easeOutQuint);
+        //    LeanTween.moveX(unlocksObj, originalPos.x + originalScale.x, 1f).setEase(LeanTweenType.easeOutQuint);
+
+
+        //}
+
+        public void Unlock()
         {
-            Vector3 originalScale = unlocksObj.transform.localScale;
-            Vector3 originalPos = unlocksObj.transform.position;
-            unlocksObj.GetComponent<SpriteRenderer>().color = Color.green;
-
-            LeanTween.scaleX(unlocksObj, originalScale.x, 1f).setEase(LeanTweenType.easeOutQuint);
-            LeanTween.moveX(unlocksObj, originalPos.x + originalScale.x, 1f).setEase(LeanTweenType.easeOutQuint);
-
-
+            // door has been unlocked
+            Unlocked?.Invoke();
         }
 
 
