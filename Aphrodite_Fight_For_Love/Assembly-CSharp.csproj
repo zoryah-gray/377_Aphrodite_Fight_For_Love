@@ -79,6 +79,7 @@
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralSimpleUI.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSplineEndless.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/Following.cs" />
+    <Compile Include="Assets/Scripts/HestiaProjectile.cs" />
     <Compile Include="Assets/Puzzle/DoorLogic/KeypadDoor.cs" />
     <Compile Include="Assets/Minion Testing Folder/AnimationBehaviors/ChasePlayer.cs" />
     <Compile Include="Assets/LeanTween/Testing/TestingRotate.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="Assets/LeanTween/Framework/LeanTween.cs" />
     <Compile Include="Assets/LeanTween/Framework/LeanTweenExt.cs" />
     <Compile Include="Assets/LeanTween/Framework/LeanSmooth.cs" />
+    <Compile Include="Assets/Scripts/Hestia.cs" />
     <Compile Include="Assets/Puzzle/LightKeypad/PlayerKeypadPuzzleController.cs" />
     <Compile Include="Assets/LeanTween/Framework/LeanAudio.cs" />
     <Compile Include="Assets/LeanTween/Framework/LTDescrOptional.cs" />
