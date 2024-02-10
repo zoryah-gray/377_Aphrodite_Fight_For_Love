@@ -13,8 +13,15 @@ namespace AphroditeFightCode
         
         [Header("Puzzle Data")]
         public static Dictionary<int, List<int>> keypadPuzzleCodes = new Dictionary<int, List<int>>();
-        public static bool freezePlayer = false;
-        public static bool inKeypadPuzzle = false;
+        
+
+        [Header("Quest Data")]
+        public static bool startingQuestActions = false;
+        public static Dictionary<int, KeyQuestManager> ongoingQuests = new Dictionary<int, KeyQuestManager>();
+        public static Dictionary<int, KeyQuestManager> completedQuests = new Dictionary<int, KeyQuestManager>();
+
+        [Header("Camera Que Controls")]
+        public static bool moveCamFromPlayer = false;
 
 
 
@@ -48,10 +55,10 @@ namespace AphroditeFightCode
             {
                 keypadPuzzleCodes.Add(codeID, code);
             }
-            //else
-            //{
-            //    Debug.LogWarning("key already exists in keycodesdictionary");
-            //}
+            else
+            {
+                Debug.LogWarning("key already exists in keycodesdictionary");
+            }
         }
 
 
@@ -85,7 +92,55 @@ namespace AphroditeFightCode
             }
         }
 
+        public static void AddQuestToOngoing(int questID, KeyQuestManager quest)
+        {
+            if (!ongoingQuests.ContainsKey(questID))
+            {
+                ongoingQuests.Add(questID, quest);
+            }
+        }
 
+        public static void RemoveQuestFromOngoing(int questID)
+        {
+            if (ongoingQuests.ContainsKey(questID))
+            {
+                ongoingQuests.Remove(questID);
+            }
+        }
+
+        public static void AddQuestToCompleted(int questID, KeyQuestManager quest)
+        {
+            if (CheckQuestCompleted(questID))
+            {
+                completedQuests.Add(questID, quest);
+            }
+        }
+
+        public static bool CheckQuestOngoing(int questID)
+        {
+            // function returns true if quest is currently ongoing
+            if (ongoingQuests.ContainsKey(questID))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool CheckQuestCompleted(int questID)
+        {
+            // function returns true if quest has been completed already
+            if (completedQuests.ContainsKey(questID))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
     }
 }

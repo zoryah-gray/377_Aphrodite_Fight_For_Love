@@ -75,6 +75,7 @@
     <Compile Include="Assets/Scripts/CompositeInteractable.cs" />
     <Compile Include="Assets/Puzzle/TestPlayerCtlr.cs" />
     <Compile Include="Assets/Minion Testing Folder/AnimationBehaviors/SearchForPlayer.cs" />
+    <Compile Include="Assets/EventSystem/PlayerInputs.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralSimpleUI.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSplineEndless.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/Following.cs" />
@@ -105,7 +106,6 @@
     <Compile Include="Assets/Scripts/PlayerAttack.cs" />
     <Compile Include="Assets/LeanTween/Testing/TestingSceneSwitching.cs" />
     <Compile Include="Assets/LeanTween/Testing/Testing246.cs" />
-    <Compile Include="Assets/PlayerInputs.cs" />
     <Compile Include="Assets/Puzzle/KeyDoor/Scripts/ClickInputHandler.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/TestingZLegacyExt.cs" />
     <Compile Include="Assets/Puzzle/KeyDoor/Scripts/ClickableObject.cs" />
