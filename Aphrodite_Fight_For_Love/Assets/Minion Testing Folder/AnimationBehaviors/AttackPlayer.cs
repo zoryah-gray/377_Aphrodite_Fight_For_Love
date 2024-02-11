@@ -16,7 +16,7 @@ namespace AphroditeFightCode
             minionVariables = animator.GetComponentInParent<MinionScript>();
             playerObject = GameObject.FindGameObjectWithTag("Player");
             minionAttackTime = minionVariables.attackSpeed;
-            Attack(playerObject, minionVariables.strength);
+            //Attack(playerObject, minionVariables.strength);
         }
 
         // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

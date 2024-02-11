@@ -74,7 +74,6 @@
     <Compile Include="Assets\LeanTween\Testing\TestingColorTweening.cs" />
     <Compile Include="Assets\Scripts\CompositeInteractable.cs" />
     <Compile Include="Assets\Puzzle\TestPlayerCtlr.cs" />
-    <Compile Include="Assets\Minion Testing Folder\AnimationBehaviors\SearchForPlayer.cs" />
     <Compile Include="Assets\EventSystem\PlayerInputs.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSimpleUI.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplineEndless.cs" />
