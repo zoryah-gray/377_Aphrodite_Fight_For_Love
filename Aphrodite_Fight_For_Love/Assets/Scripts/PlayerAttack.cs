@@ -75,7 +75,6 @@ namespace AphroditeFightCode
             foreach (Collider2D enemy in hitEnemies)
             {
                 Debug.Log("We hit an enemy!" + enemy.name);
-                enemy.GetComponentInParent<MinionScript>().TakeDamage(1);
             }
         }
 
