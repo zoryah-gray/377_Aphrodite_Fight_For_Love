@@ -23,33 +23,46 @@ namespace AphroditeFightCode
 
         public enum SpecialMinionTypes
         {
+            userDefine,
             standard,
             light,
             heavy,
             boss,
-            userDefine
+            
 
         }
         void Start()
         {
             switch (minionType)
             {
+                case SpecialMinionTypes.userDefine:
+
+                    break;
                 case SpecialMinionTypes.standard:
                     health = 2 * level;
+                    moveSpeed = 1;
+                    attackSpeed = 1;
                     strength = .25f;
                     break;
                 case SpecialMinionTypes.light:
                     health = 1 * level;
+                    moveSpeed = 2;
+                    attackSpeed = 1.5f;
+                    strength = .125f;
                     break;
                 case SpecialMinionTypes.heavy:
                     health = 4 * level;
+                    moveSpeed = .75f;
+                    attackSpeed = 1;
+                    strength = .5f;
                     break;
                 case SpecialMinionTypes.boss:
                     health = 5 * level;
+                    moveSpeed = 1;
+                    attackSpeed = 1;
+                    strength = .25f;
                     break;
-                case SpecialMinionTypes.userDefine:
-
-                    break;
+                
 
             }
 

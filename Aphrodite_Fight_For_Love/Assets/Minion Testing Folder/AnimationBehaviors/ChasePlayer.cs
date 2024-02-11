@@ -16,7 +16,7 @@ namespace AphroditeFightCode
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             minionVariables = animator.GetComponentInParent<MinionScript>();
-            playerObject = GameObject.Find("PlayerCircle");
+            playerObject = GameObject.FindGameObjectWithTag("Player");
         }
 
         // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
