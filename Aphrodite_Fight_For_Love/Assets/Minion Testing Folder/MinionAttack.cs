@@ -55,7 +55,7 @@ namespace AphroditeFightCode
         private void OnTriggerExit2D(Collider2D collision)
         {
             //inRadius = false;
-            //Debug.Log("Player outside of attack radius. inRadius is " + inRadius);
+            Debug.Log("Player outside of attack radius. inRadius is " + inRadius);
             /// Stop attacking the player
             /*StopCoroutine(Attack(collision.gameObject, inRadius));*/
             GameObject playerObject = collision.gameObject;

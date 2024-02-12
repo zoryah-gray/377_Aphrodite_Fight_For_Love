@@ -1,8 +1,8 @@
 .vs/
 
-/Library/
-/Logs/
-/[Uu]ser[Ss]ettings/
-/Temp/
 /[Oo]bj/
+/[Tt]emp/
+/[Ll]ibrary/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
 **/.DS_Store
