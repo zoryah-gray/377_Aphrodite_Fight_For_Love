@@ -43,11 +43,6 @@ namespace AphroditeFightCode
         public delegate void UnlockHandler();
         public event UnlockHandler Unlocked;
 
-        [Header("Action Map")]
-        [SerializeField] private ModifiedActionMap actionMap;
-
-        [Header("Input Mappings - Syncing")]
-        private PlayerInputs input = null;
 
         private void OnEnable()
         {
@@ -199,6 +194,7 @@ namespace AphroditeFightCode
 
         public void Unlock()
         {
+            Debug.Log("door unlock called");
             // door has been unlocked
             Unlocked?.Invoke();
         }

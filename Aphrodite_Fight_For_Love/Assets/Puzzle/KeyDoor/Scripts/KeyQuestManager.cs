@@ -38,6 +38,8 @@ namespace AphroditeFightCode
             {
                 obtainedKeys.Clear();
             }
+            complete = false;
+            ongoing = false;
         }
 
         public bool CheckQuestComplete()

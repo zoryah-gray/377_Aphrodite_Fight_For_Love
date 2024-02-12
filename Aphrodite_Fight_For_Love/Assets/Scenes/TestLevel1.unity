@@ -485,6 +485,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   curPosition: {x: 0, y: 0, z: 0}
+  isAttacking: 0
 --- !u!95 &552677262
 Animator:
   serializedVersion: 5
@@ -1053,7 +1054,7 @@ PrefabInstance:
     - target: {fileID: 4079549317456946476, guid: 9c60e292b60d9426e9ccb48e31b7a44a, type: 3}
       propertyPath: puzzle
       value: 
-      objectReference: {fileID: 11400000, guid: d814e08a59c474a52b8da57b631473bf, type: 2}
+      objectReference: {fileID: 11400000, guid: a59c8b8567716417da1922229281cba8, type: 2}
     - target: {fileID: 4079549317456946476, guid: 9c60e292b60d9426e9ccb48e31b7a44a, type: 3}
       propertyPath: puzzleCtrlScript
       value: 
@@ -1130,6 +1131,7 @@ GameObject:
   - component: {fileID: 1014757147}
   - component: {fileID: 1014757149}
   - component: {fileID: 1014757148}
+  - component: {fileID: 1014757150}
   m_Layer: 10
   m_Name: door1
   m_TagString: Untagged
@@ -1249,6 +1251,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1014757150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014757146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b06306929609a45a79e7f45eff8159ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOpen: 0
+  keypad: {fileID: 1178228805}
 --- !u!1 &1028855200
 GameObject:
   m_ObjectHideFlags: 0
@@ -13423,6 +13439,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1014757146}
     - target: {fileID: 4079549317456946476, guid: 9c60e292b60d9426e9ccb48e31b7a44a, type: 3}
+      propertyPath: puzzle
+      value: 
+      objectReference: {fileID: 11400000, guid: a59c8b8567716417da1922229281cba8, type: 2}
+    - target: {fileID: 4079549317456946476, guid: 9c60e292b60d9426e9ccb48e31b7a44a, type: 3}
       propertyPath: puzzleCtrlScript
       value: 
       objectReference: {fileID: 1178228805}
@@ -13733,6 +13753,7 @@ GameObject:
   - component: {fileID: 1919777746}
   - component: {fileID: 1919777748}
   - component: {fileID: 1919777747}
+  - component: {fileID: 1919777749}
   m_Layer: 10
   m_Name: door2
   m_TagString: Untagged
@@ -13852,6 +13873,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1919777749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919777745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b06306929609a45a79e7f45eff8159ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOpen: 0
+  keypad: {fileID: 1178228805}
 --- !u!4 &2123540879 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6237475888524893230, guid: 9c60e292b60d9426e9ccb48e31b7a44a, type: 3}

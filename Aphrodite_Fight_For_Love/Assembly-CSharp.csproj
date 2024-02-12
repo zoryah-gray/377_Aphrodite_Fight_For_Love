@@ -92,11 +92,11 @@
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathBezier.cs" />
     <Compile Include="Assets/Puzzle/AltarPuzzle/Scripts/ItemSlot.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSpline.cs" />
+    <Compile Include="Assets/Puzzle/DoorLogic/QuestDoor.cs" />
     <Compile Include="Assets/Puzzle/ModifiedActionMap.cs" />
     <Compile Include="Assets/LeanTween/Testing/Testing240.cs" />
     <Compile Include="Assets/LeanTween/Testing/Scripts/LeanPool.cs" />
     <Compile Include="Assets/Scripts/DialogueManager.cs" />
-    <Compile Include="Assets/Puzzle/LightKeypad/KeyPadContoller.cs" />
     <Compile Include="Assets/LeanTween/Testing/TestingSequencer.cs" />
     <Compile Include="Assets/Puzzle/KeyDoor/Scripts/QuestController.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/TestingZLegacy.cs" />
@@ -109,7 +109,6 @@
     <Compile Include="Assets/Scripts/PlayerAttack.cs" />
     <Compile Include="Assets/LeanTween/Testing/TestingSceneSwitching.cs" />
     <Compile Include="Assets/LeanTween/Testing/Testing246.cs" />
-    <Compile Include="Assets/Puzzle/LightKeypad/KeypadPuzzleTriggerSO.cs" />
     <Compile Include="Assets/Puzzle/KeyDoor/Scripts/ClickInputHandler.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/TestingZLegacyExt.cs" />
     <Compile Include="Assets/Puzzle/KeyDoor/Scripts/ClickableObject.cs" />
@@ -120,7 +119,6 @@
     <Compile Include="Assets/Puzzle/LightKeypad/Scripts/KeyPadContoller.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralEventsListeners.cs" />
     <Compile Include="Assets/Puzzle/LightKeypad/Scripts/PuzzleEnter.cs" />
-    <Compile Include="Assets/Puzzle/LightKeypad/PuzzleEnter.cs" />
     <Compile Include="Assets/Puzzle/LightKeypad/Scripts/PlayerKeypadPuzzleController.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSpline2d.cs" />
     <Compile Include="Assets/LeanTween/Framework/LTSeq.cs" />
@@ -129,10 +127,8 @@
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralEasingTypes.cs" />
     <Compile Include="Assets/LeanTween/Framework/LeanTween.cs" />
     <Compile Include="Assets/LeanTween/Framework/LeanTweenExt.cs" />
-    <Compile Include="Assets/Scripts/QuestDoor.cs" />
     <Compile Include="Assets/LeanTween/Framework/LeanSmooth.cs" />
     <Compile Include="Assets/Scripts/Hestia.cs" />
-    <Compile Include="Assets/Puzzle/LightKeypad/PlayerKeypadPuzzleController.cs" />
     <Compile Include="Assets/LeanTween/Framework/LeanAudio.cs" />
     <Compile Include="Assets/LeanTween/Framework/LTDescrOptional.cs" />
     <Compile Include="Assets/LeanTween/Testing/TestingMaxTweens.cs" />
