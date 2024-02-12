@@ -13,7 +13,7 @@ namespace AphroditeFightCode
         //public UnityEngine.Transform meleeBox;
         public GameObject meleeBoxGO;
         public GameObject bullet;
-        public float bulletSpeed = 5f;
+        public float bulletSpeed = 10f;
         public UnityEngine.Transform attackBox;
         public LayerMask enemyLayers;
         public Vector3 curPosition;
@@ -26,6 +26,7 @@ namespace AphroditeFightCode
         void Start()
         {
             meleeBoxAnimator = meleeBoxGO.GetComponent<Animator>();
+            bullet.GetComponent<SpriteRenderer>().enabled = false;
         }
         // Update is called once per frame
         void Update()
@@ -50,6 +51,7 @@ namespace AphroditeFightCode
         {
             var bullInitPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             GameObject bulletGO = Instantiate(bullet, bullInitPos, Quaternion.identity);
+            bulletGO.GetComponent<SpriteRenderer>().enabled = true;
             Rigidbody2D bulletRB = bulletGO.GetComponent<Rigidbody2D>();
 
             if (playerMovement.directionInt == 1) //Up

@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 734879591880976982}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.8, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.5000698, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -132,7 +132,7 @@ Transform:
   m_GameObject: {fileID: 1609710822361149366}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.25383103, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -345,26 +345,13 @@ MonoBehaviour:
   animator: {fileID: 7458961295609241406}
   playerGO: {fileID: 8060550628745360157}
   meleeBoxGO: {fileID: 734879591880976982}
+  sceneCamera: {fileID: 0}
   directionInt: 0
   animAfterLeft: 1
   collisionCount: 0
   collisionOffset: 0.05
-  movementFilter:
-    useTriggers: 1
-    useLayerMask: 0
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 129
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
-  circleCastRadius: 5
-  castCollisions2:
+  clickDist: 1
+  clickFilter:
     useTriggers: 0
     useLayerMask: 0
     useDepth: 0
@@ -378,8 +365,6 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  boxCastSize: {x: 0, y: 0}
-  boxOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &5596180429101290438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,6 +381,7 @@ MonoBehaviour:
   inPuzzleTrigger: 0
   inKeypadPuzzle: 0
   keypadUI: {fileID: 0}
+  inQuestTrigger: 0
 --- !u!61 &3162960956672723163
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -455,12 +441,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 7847119825080641495}
   meleeBoxGO: {fileID: 734879591880976982}
-  bullet: {fileID: 0}
-  bulletSpeed: 5
+  bullet: {fileID: 1609710822361149366}
+  bulletSpeed: 10
   attackBox: {fileID: 4836228308981826776}
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   curPosition: {x: 0, y: 0, z: 0}
   isAttacking: 0
-  gunInterval: 1
+  gunInterval: 0.5
