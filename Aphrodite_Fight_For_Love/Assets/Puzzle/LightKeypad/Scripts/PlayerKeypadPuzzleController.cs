@@ -63,6 +63,7 @@ namespace AphroditeFightCode
             }
             if (inQuestTrigger)
             {
+                Debug.Log("in quest trigger");
                 GameData.startingQuestActions = true;
             }
         }
