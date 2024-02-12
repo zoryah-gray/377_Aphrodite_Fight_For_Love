@@ -72,9 +72,6 @@ namespace AphroditeFightCode
                 rb.velocity = moveVector * moveSpeed;
                 HandleMovementAnimBlendTree();
             }
-
-
-
         }
 
 
