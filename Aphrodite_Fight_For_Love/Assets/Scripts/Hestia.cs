@@ -34,7 +34,7 @@ namespace AphroditeFightCode
             GameObject fireballGO = Instantiate(fireballPrefab, fireballInitPos, Quaternion.identity);
 
             //I want a better way to have the fireball track the player's position. Will do more research later
-            Vector2 direction = (player.transform.position - transform.position).normalized;
+            Vector2 direction = player.transform.position;
 
             Rigidbody2D fireballRB = fireballGO.GetComponent<Rigidbody2D>();
             fireballRB.velocity = direction * fireballSpeed;

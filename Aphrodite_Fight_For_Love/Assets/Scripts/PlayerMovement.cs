@@ -70,9 +70,6 @@ namespace AphroditeFightCode
                 rb.velocity = moveVector * moveSpeed;
                 HandleMovementAnimBlendTree();
             }
-
-
-
         }
 
         public void AddKey(ClickableKey key)
