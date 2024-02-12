@@ -12,21 +12,16 @@ namespace AphroditeFightCode
         public PlayerMovement playerMovement;
         //public UnityEngine.Transform meleeBox;
         public GameObject meleeBoxGO;
-        //public GameObject bullet;
-        //public float bulletSpeed = 5f;
+        public GameObject bullet;
+        public float bulletSpeed = 5f;
         public UnityEngine.Transform attackBox;
         public LayerMask enemyLayers;
         public Vector3 curPosition;
         public bool isAttacking;
-        //private float lastShotGun;
-        //public float gunInterval = 1f;
-
-        //private bool canAttack = true;        
-        //private bool isPlaying;
+        private float lastShotGun;
+        public float gunInterval = 0.5f;
         private Animator meleeBoxAnimator;
-
         Vector2 rectangleSize = new Vector2(0.9f, 0.45f);
-        //private bool isPlayingSwingAnim = true;
 
         void Start()
         {
@@ -43,55 +38,37 @@ namespace AphroditeFightCode
                 Debug.Log("Attack!");
                 StartCoroutine(ResetAfterAnim());
             }
-            //if (meleeBoxAnimator.GetCurrentAnimatorStateInfo(0).length >
-            //meleeBoxAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime &&
-
-
-
-            //    AnimatorIsPlaying() && animator.GetCurrentAnimatorStateInfo(0).IsName(stateName)
-
-            //    GetCurrentAnimatorStateInfo(0).IsName("canAttackAnim"))
-
-            //if (Input.GetKeyUp(KeyCode.Space))
-            //{
-            //    meleeBoxAnimator.SetBool("animAttack", false);
-            //    //meleeBoxGO.GetComponent<Animator>().SetBool("animCanAttack", false);
-            //    //UnAttack();
-            //}
-            //if (Input.GetKeyDown(KeyCode.C) && Time.time - lastShotGun >= gunInterval)
-            //{
-            //    ShootGun();
-            //    lastShotGun = Time.time;
-            //}
+            if (Input.GetKeyDown(KeyCode.C) && Time.time - lastShotGun >= gunInterval)
+            {
+                ShootGun();
+                lastShotGun = Time.time;
+            }
         }
 
 
-        //void ShootGun()
-        //{
-        //    var bullInitPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        //    GameObject bulletGO = Instantiate(bullet, bullInitPos, Quaternion.identity);
-        //    Rigidbody2D bulletRB = bulletGO.GetComponent<Rigidbody2D>();
+        void ShootGun()
+        {
+            var bullInitPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            GameObject bulletGO = Instantiate(bullet, bullInitPos, Quaternion.identity);
+            Rigidbody2D bulletRB = bulletGO.GetComponent<Rigidbody2D>();
 
-        //    if (playerMovement.directionInt == 1) //Up
-        //    {
-        //        bulletRB.velocity = transform.up * bulletSpeed;
-        //    }
-        //    else if (playerMovement.directionInt == 2) //Right
-        //    {
-        //        bulletGO.transform.position = new Vector3(transform.position.x + 0.8f, transform.position.y, transform.position.z);
-        //        bulletGO.transform.rotation = Quaternion.Euler(0f, 180f, 180f);
-        //    }
-        //    else if (playerMovement.directionInt == 3) //Down
-        //    {
-        //        bulletGO.transform.position = new Vector3(transform.position.x, transform.position.y - 0.8f, transform.position.z);
-        //        bulletGO.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
-        //    }
-        //    else if (playerMovement.directionInt == 4) //Left
-        //    {
-        //        bulletGO.transform.position = new Vector3(transform.position.x - 0.8f, transform.position.y, transform.position.z);
-        //        bulletGO.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-        //    }
-        //}
+            if (playerMovement.directionInt == 1) //Up
+            {
+                bulletRB.velocity = transform.up * bulletSpeed;
+            }
+            else if (playerMovement.directionInt == 2) //Right
+            {
+                bulletRB.velocity = transform.right * bulletSpeed;
+            }
+            else if (playerMovement.directionInt == 3) //Down
+            {
+                bulletRB.velocity = ((-1) * transform.up) * bulletSpeed;
+            }
+            else if (playerMovement.directionInt == 4) //Left
+            {
+                bulletRB.velocity = ((-1)*transform.right) * bulletSpeed;
+            }
+        }
 
         void Attack()
         {

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4836228308981826776}
   - component: {fileID: 1561182129337584473}
-  - component: {fileID: 109232379833578966}
   - component: {fileID: 2275709222926268987}
   m_Layer: 0
   m_Name: MeleeBox
@@ -86,25 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &109232379833578966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 734879591880976982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fb6603ce9dcadf4eb20cf43e95a75db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerMovement: {fileID: 7847119825080641495}
-  meleeBoxGO: {fileID: 734879591880976982}
-  attackBox: {fileID: 4836228308981826776}
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 128
-  curPosition: {x: 0, y: 0, z: 0}
 --- !u!95 &2275709222926268987
 Animator:
   serializedVersion: 5
@@ -475,8 +455,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 7847119825080641495}
   meleeBoxGO: {fileID: 734879591880976982}
+  bullet: {fileID: 0}
+  bulletSpeed: 5
   attackBox: {fileID: 4836228308981826776}
   enemyLayers:
     serializedVersion: 2
     m_Bits: 0
   curPosition: {x: 0, y: 0, z: 0}
+  isAttacking: 0
+  gunInterval: 1
