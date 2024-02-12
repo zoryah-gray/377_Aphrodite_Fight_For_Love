@@ -22,6 +22,7 @@ namespace AphroditeFightCode
         [Header("Inputs")]
         private PlayerInputs input = null;
         [SerializeField] private bool interacting = false;
+        public bool inTrigger = false;
 
         private void Awake()
         {
@@ -60,6 +61,15 @@ namespace AphroditeFightCode
         {
             Debug.Log("Quest interact Click");
             interacting = true;
+            if (inTrigger)
+            {
+                CheckQuestStatus();
+            }
+        }
+
+        private void Update()
+        {
+            
         }
 
 
@@ -71,7 +81,7 @@ namespace AphroditeFightCode
             if (collision.gameObject.name == "Player")
             {
                 icon.SetActive(true);
-                
+                inTrigger = true;
                 collision.gameObject.GetComponent<PlayerKeypadPuzzleController>().inQuestTrigger = true;
                 if (interacting)
                 {
@@ -106,6 +116,7 @@ namespace AphroditeFightCode
             
             if (collision.gameObject.name == "Player")
             {
+                inTrigger = false;
                 icon.SetActive(false);
                 collision.gameObject.GetComponent<PlayerKeypadPuzzleController>().inQuestTrigger = false;
                 StopAllCoroutines();

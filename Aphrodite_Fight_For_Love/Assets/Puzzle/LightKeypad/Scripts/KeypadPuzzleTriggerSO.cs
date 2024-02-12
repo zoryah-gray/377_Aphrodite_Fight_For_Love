@@ -10,6 +10,7 @@ namespace AphroditeFightCode
 
         // what door the puzzle unlocks
         public GameObject unloackableObj;
+        public Sprite triggerSprite;
 
 
         // the actual code/password

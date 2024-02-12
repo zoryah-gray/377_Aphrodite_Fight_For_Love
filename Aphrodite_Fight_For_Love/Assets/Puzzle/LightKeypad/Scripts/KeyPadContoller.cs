@@ -33,7 +33,7 @@ namespace AphroditeFightCode
         public List<int> currentInput;
 
         [Header("Puzzle Settings")]
-        public float puzzleStartDelay = 1.5f;
+        public float puzzleStartDelay = 3f;
         public float flashDuration = 0.25f;
         public float delayBtFlashes = 0.42f;
 
@@ -119,8 +119,16 @@ namespace AphroditeFightCode
             {
                 Debug.Log(i + " | " + keypadButtons[i - 1].gameObject.name);
                 Image btnImg = keypadButtons[i - 1].GetComponent<Image>();
-
-
+                Vector3 originalScale = btnImg.gameObject.transform.localScale;
+                LeanTween.scale(btnImg.gameObject, originalScale * 1.5f, 0.5f)
+                    .setEase(LeanTweenType.easeInOutQuad)
+                    .setLoopPingPong(1)
+                    .setDelay(i * (flashDuration + delayBtFlashes))
+                    .setOnComplete(() =>
+                    {
+                        LeanTween.scale(btnImg.gameObject, originalScale, 0.5f)
+                        .setEase(LeanTweenType.easeInOutQuad);
+                    });
                 LeanTween.value(btnImg.gameObject, 1f, 0.35f, flashDuration)
                     .setEase(LeanTweenType.easeInOutQuad)
                     .setLoopPingPong(1)
@@ -221,8 +229,23 @@ namespace AphroditeFightCode
             
             AddKeyCodeToDictionary();
             //FlashPuzzleAnswer();
+
             Invoke("FlashPuzzleAnswer", puzzleStartDelay);
             
+        }
+
+        public void RunInstructions()
+        {
+            // PrintToGUI(string text, string textInstr, Sprite image)
+            GUITextManager.instance.PrintToGUI("Let's see if your memory is strong. A pattern will flash, repeat it, and submit it to prove your smarts!", "Click to Press Buttons", currPuzzle.triggerSprite);
+
+            StartCoroutine(DeactivateGUI());
+        }
+
+        IEnumerator DeactivateGUI()
+        {
+            yield return new WaitForSeconds(4f);
+            GUITextManager.instance.SetActive(false);
         }
 
         private void AddKeyCodeToDictionary()

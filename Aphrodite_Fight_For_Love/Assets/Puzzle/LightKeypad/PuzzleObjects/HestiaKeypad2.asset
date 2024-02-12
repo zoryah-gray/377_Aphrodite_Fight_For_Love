@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: HestiaKeypad2
   m_EditorClassIdentifier: 
   unloackableObj: {fileID: 0}
+  triggerSprite: {fileID: 21300000, guid: 7f5cb75031fda4a3db47e4ecdb27822e, type: 3}
   code: 010000000200000003000000040000000500000006000000
   codeID: 1
   sceneID: 0
