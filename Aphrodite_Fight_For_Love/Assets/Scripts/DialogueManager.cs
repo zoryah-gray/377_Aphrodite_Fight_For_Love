@@ -29,22 +29,22 @@ namespace AphroditeFightCode
         {
             if(Input.GetAxis("ProgressDialogue") != 0)
             {
-
+                NextSentence(dialogueArray[dialogueIndex]);
             }
         }
 
-        void ReceiveAndStartDialogue(string[] dialogue)
+        void ReceiveStartReadyDialogue(string[] dialogue)
         {
             dialogueArray = dialogue;
             speakerName = dialogueBoxArray[0];
             dialogueText = dialogueBoxArray[1];
             speakerName.text = "Illia";
-            dialogueText.text = "Testing, Testing, 1 2 3. Please save me from the utter hell i'm about to go through.";
+            //dialogueText.text = "Testing, Testing, 1 2 3. Please save me from the utter hell i'm about to go through.";
         }
 
         private void NextSentence(string sentence)
         {
-
+            Debug.Log(speakerName + ": ");
         }
 
         IEnumerator Type()

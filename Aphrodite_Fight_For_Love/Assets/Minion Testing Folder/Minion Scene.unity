@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91546c665457a2642b9a0876a85c7a21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typeSpeed: 0.2
 --- !u!114 &12719412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -948,6 +949,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   curPosition: {x: 0, y: 0, z: 0}
+  isAttacking: 0
 --- !u!4 &468713308 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2344185762541567039, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
