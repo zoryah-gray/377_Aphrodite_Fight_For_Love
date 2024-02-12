@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb6ac0cd395dd47d5bb4e3b3f8523016, type: 3}
+  m_Name: QuestGatherApples
+  m_EditorClassIdentifier: 
+  questSprite: {fileID: 21300000, guid: 554bee4c1255e4dac8866afc8d507102, type: 3}
+  questName: Gather3Apples
+  questID: 0
+  sceneID: 0
+  keyAmt: 3
+  requiredKeys:
+  - {fileID: 11400000, guid: de05b0fb779704bd3b519d07c0d40b24, type: 2}
+  - {fileID: 11400000, guid: 5ca8d347672d34c97a5957e03b1a925f, type: 2}
+  - {fileID: 11400000, guid: 6b32e203162d247268c4e536f33c6a6a, type: 2}
+  requiredKeysID: 000000000100000002000000
+  obtainedKeys: 
+  ongoing: 0
+  complete: 0
+  questInstructions: I'd open that door, but I've lost my apples
+  questEnd: My apples!! Good job, I'll unlocked it for you now
+  questEnded: Gah I've already opened it for you

@@ -1,7 +1,7 @@
 .vs/
 
 /[Oo]bj/
-/[Tt]emp/
+**/[Tt]emp/
 /[Ll]ibrary/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
