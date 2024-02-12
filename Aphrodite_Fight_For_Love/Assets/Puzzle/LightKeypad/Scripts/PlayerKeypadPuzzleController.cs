@@ -61,11 +61,11 @@ namespace AphroditeFightCode
                 Debug.Log("Puzzle Activated| in puzzle? " + inKeypadPuzzle + "freeze player>?: " + freezePlayer + " Game data saved: " + GameData.freezePlayer);
 
             }
-            if (inQuestTrigger)
-            {
-                Debug.Log("in quest trigger");
-                GameData.startingQuestActions = true;
-            }
+            //if (inQuestTrigger)
+            //{
+            //    Debug.Log("in quest trigger");
+            //    GameData.startingQuestActions = true;
+            //}
         }
     }
 }
