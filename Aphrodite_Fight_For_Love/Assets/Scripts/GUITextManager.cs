@@ -13,6 +13,7 @@ namespace AphroditeFightCode
         [Header("GUI Elements")]
         public GameObject GUITextBox;
         public TMP_Text GUIText;
+        public TMP_Text instructions;
         public Image GUIImg;
 
         private void Awake()
@@ -28,10 +29,11 @@ namespace AphroditeFightCode
         }
 
 
-        public void PrintToGUI(string text, Sprite image)
+        public void PrintToGUI(string text, string textInstr, Sprite image)
         {
             SetActive(true);
             GUIText.text = text;
+            instructions.text = textInstr;
             GUIImg.sprite = image;
 
         }

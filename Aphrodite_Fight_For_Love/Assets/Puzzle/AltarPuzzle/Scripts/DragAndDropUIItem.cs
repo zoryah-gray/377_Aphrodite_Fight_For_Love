@@ -10,6 +10,11 @@ namespace AphroditeFightCode
         [SerializeField]private Canvas canvas;
         private CanvasGroup canvasGroup;
         private RectTransform rt;
+        [Header("Item Info")]
+        public string itemName;
+        public string info;
+        public int choiceID;
+        public Sprite itemSprite;
 
         private void Awake()
         {

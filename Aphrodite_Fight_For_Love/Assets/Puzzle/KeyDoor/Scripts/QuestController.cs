@@ -11,6 +11,7 @@ namespace AphroditeFightCode
         [Header("Quest SO")]
         public KeyQuestManager quest;
         public List<GameObject> requiredKeysGO = new List<GameObject>();
+        private bool completedDialouge = false;
         [Header("Quest Icon")]
         public GameObject icon;
         [Header("Quest Unlocks")]
@@ -61,11 +62,6 @@ namespace AphroditeFightCode
             interacting = true;
         }
 
-        //private void OnInteractCanceled(InputAction.CallbackContext val)
-        //{
-        //    Debug.Log("Quest interact Click - End");
-        //    interacting = false;
-        //}
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -119,23 +115,25 @@ namespace AphroditeFightCode
 
         public void CheckQuestStatus()
         {
+            Debug.Log("status => " + GameData.CheckQuestCompleted(quest.questID));
             //check if quest is not ongoing and not completed
-            if (!GameData.CheckQuestOngoing(quest.questID) && !GameData.CheckQuestCompleted(quest.questID))
+            if (!GameData.CheckQuestOngoing(quest.questID) && !GameData.CheckQuestCompleted(quest.questID) && !quest.complete)
             {
                 Debug.Log("quest not in ongoing => start it");
                 //not in ongoing => start it
                 GameData.AddQuestToOngoing(quest.questID, quest);
                 StartQuest();
             }
-            else if (quest.CheckQuestComplete())
+            else if (quest.CheckQuestComplete() & !completedDialouge)
             {
                 Debug.Log("quest complete");
                 // quest complete
                 EndQuest();
 
             }
-            else if (GameData.CheckQuestCompleted(quest.questID))
+            else if (completedDialouge)
             {
+                Debug.Log("repeat end prompt");
                 RepeatPrompt(true);
             }
             else
@@ -150,7 +148,7 @@ namespace AphroditeFightCode
         public void StartQuest()
         {
             Debug.Log("starting quest");
-            GUITextManager.instance.PrintToGUI(quest.questInstructions, quest.questSprite);
+            GUITextManager.instance.PrintToGUI(quest.questInstructions, quest.GUIinstructions, quest.questSprite);
             
             quest.ongoing = true;
             
@@ -176,11 +174,13 @@ namespace AphroditeFightCode
         public void EndQuest()
         {
             Debug.Log("Ending Quest");
-            GUITextManager.instance.PrintToGUI(quest.questEnd, quest.questSprite);
+            GUITextManager.instance.PrintToGUI(quest.questEnd, quest.GUIinstructions ,quest.questSprite);
             quest.ongoing = false;
             quest.complete = true;
+            completedDialouge = true;
             GameData.RemoveQuestFromOngoing(quest.questID);
             GameData.AddQuestToCompleted(quest.questID, quest);
+            GameData.moveCamFromPlayer = true;
             Unlock();
             StartCoroutine(DeactivateGUI());
 
@@ -190,11 +190,11 @@ namespace AphroditeFightCode
         {
             if (!completed)
             {
-                GUITextManager.instance.PrintToGUI(quest.questInstructions, quest.questSprite);
+                GUITextManager.instance.PrintToGUI(quest.questInstructions, quest.GUIinstructions, quest.questSprite);
             }
             else
             {
-                GUITextManager.instance.PrintToGUI(quest.questEnded, quest.questSprite);
+                GUITextManager.instance.PrintToGUI(quest.questEnded, quest.GUIinstructions, quest.questSprite);
 
             }
             // start a co-routine to turn off the GUI after a few seconds

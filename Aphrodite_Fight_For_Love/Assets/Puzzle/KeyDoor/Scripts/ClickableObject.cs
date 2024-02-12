@@ -13,6 +13,7 @@ namespace AphroditeFightCode
         public string keyName;
         public int keyID;
         public string info;
+        public string instructions;
 
 
         public void AddToQuest(KeyQuestManager quest)

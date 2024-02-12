@@ -44,7 +44,7 @@ namespace AphroditeFightCode
             //change the alpha/color of object
             
             keySprite.color = hoverColor;
-            GUITextManager.instance.PrintToGUI(key.info, key.keySprite);
+            GUITextManager.instance.PrintToGUI(key.info, key.instructions ,key.keySprite);
 
         }
 
