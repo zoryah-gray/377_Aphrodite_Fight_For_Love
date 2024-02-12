@@ -23,6 +23,9 @@ namespace AphroditeFightCode
         private Animator meleeBoxAnimator;
         Vector2 rectangleSize = new Vector2(0.9f, 0.45f);
 
+        public float health = 10f;
+        private GameObject[] bullets;
+
         void Start()
         {
             meleeBoxAnimator = meleeBoxGO.GetComponent<Animator>();
@@ -38,14 +41,40 @@ namespace AphroditeFightCode
                 Attack();
                 Debug.Log("Attack!");
                 StartCoroutine(ResetAfterAnim());
+
+                Debug.Log(health + "health cur");
             }
             if (Input.GetKeyDown(KeyCode.C) && Time.time - lastShotGun >= gunInterval)
             {
                 ShootGun();
                 lastShotGun = Time.time;
             }
+            if (health <= 0f)
+            {
+                PlayerDeath();
+            }
+
+            //// check bullets 
+            //bullets = GameObject.FindGameObjectsWithTag("Bullet");
+            //foreach(GameObject b in bullets)
+            //{
+
+            //}
+
+            Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackBox.position, rectangleSize, 0f, enemyLayers);
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                enemy.gameObject.GetComponent<MinionScript>().TakeDamage(1);
+                Debug.Log("We hit an enemy!" + enemy.name);
+            }
+
+
         }
 
+        private void PlayerDeath()
+        {
+            Destroy(gameObject);
+        }
 
         void ShootGun()
         {
@@ -54,21 +83,24 @@ namespace AphroditeFightCode
             bulletGO.GetComponent<SpriteRenderer>().enabled = true;
             Rigidbody2D bulletRB = bulletGO.GetComponent<Rigidbody2D>();
 
+
+            Vector2 upBul = new Vector2(1, 0);
+            Vector2 rightBul = new Vector2(0, 1);
             if (playerMovement.directionInt == 1) //Up
             {
-                bulletRB.velocity = transform.up * bulletSpeed;
+                bulletRB.velocity = upBul * bulletSpeed;
             }
             else if (playerMovement.directionInt == 2) //Right
             {
-                bulletRB.velocity = transform.right * bulletSpeed;
+                bulletRB.velocity = rightBul * bulletSpeed;
             }
             else if (playerMovement.directionInt == 3) //Down
             {
-                bulletRB.velocity = ((-1) * transform.up) * bulletSpeed;
+                bulletRB.velocity = ((-1) * upBul) * bulletSpeed;
             }
             else if (playerMovement.directionInt == 4) //Left
             {
-                bulletRB.velocity = ((-1)*transform.right) * bulletSpeed;
+                bulletRB.velocity = ((-1) * rightBul) * bulletSpeed;
             }
         }
 
@@ -101,6 +133,7 @@ namespace AphroditeFightCode
             Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackBox.position, rectangleSize, 0f, enemyLayers);
             foreach (Collider2D enemy in hitEnemies)
             {
+                enemy.gameObject.GetComponent<MinionScript>().TakeDamage(1);
                 Debug.Log("We hit an enemy!" + enemy.name);
             }
         }

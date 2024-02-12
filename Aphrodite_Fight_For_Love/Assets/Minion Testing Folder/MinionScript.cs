@@ -116,7 +116,8 @@ namespace AphroditeFightCode
         }
         void Attack(GameObject playerObject, float minionDamage)
         {
-            //playerObject.GetComponent<QuickPlayerMove>().health -= minionDamage;
+
+            playerObject.GetComponent<PlayerAttack>().health -= minionDamage;
             Debug.Log("Player took " + minionDamage + " damage. "); // + playerObject.GetComponent<QuickPlayerMove>().health + " health remaining.");
         }
 
