@@ -4,20 +4,21 @@ using UnityEngine;
 
 namespace AphroditeFightCode
 {
-    public class KeypadDoor : Door
+    public class QuestDoor : Door
     {
-        // a subclass of the door
+        // a subclass of the door for quest puzzles
 
-        [SerializeField] private KeyPadContoller keypad;
+        [SerializeField] private QuestController quest;
 
         public void Start()
         {
-            keypad.Unlocked += OpenDoor;
+            quest.Unlocked += OpenDoor;
         }
 
         private void OnDestroy()
         {
-            keypad.Unlocked -= OpenDoor;
+            quest.Unlocked -= OpenDoor;
         }
+
     }
 }
