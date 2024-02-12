@@ -9,7 +9,7 @@ namespace AphroditeFightCode
     {
         MinionScript minionBase;
         Animator animator;
-        
+
         public GameObject playerBody;
 
         // Start is called before the first frame update
@@ -20,21 +20,21 @@ namespace AphroditeFightCode
              */
             minionBase = GetComponentInParent<MinionScript>();
             animator = GetComponentInParent<Animator>();
-            
+
 
             //Update minion speed to fit the minion type
-            
+
         }
 
         // Update is called once per frame
         void Update()
         {
-        
+
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            
+
             GameObject collidingObject = collision.gameObject;
             /* If the player, 
              * stop patrolling and 
@@ -43,7 +43,7 @@ namespace AphroditeFightCode
             {
 
 
-                
+
                 //GetComponentInParent<AIPath>().enabled = true;
                 animator.SetInteger("currState", 1);
 
@@ -57,12 +57,12 @@ namespace AphroditeFightCode
             GameObject collidingObject = collision.gameObject;
             if (collidingObject.CompareTag("Player"))
             {
-                
+
                 //GetComponentInParent<AIPath>().enabled = false;
                 animator.SetInteger("currState", 0);
             }
         }
 
-        
+
     }
 }

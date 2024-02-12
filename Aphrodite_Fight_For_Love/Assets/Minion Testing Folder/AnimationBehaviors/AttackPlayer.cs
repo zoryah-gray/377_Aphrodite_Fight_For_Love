@@ -23,7 +23,8 @@ namespace AphroditeFightCode
         override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             timeElasped += Time.deltaTime;
-            if (timeElasped >= minionAttackTime ) {
+            if (timeElasped >= minionAttackTime)
+            {
                 timeElasped = 0;
                 Attack(playerObject, minionVariables.strength);
             }

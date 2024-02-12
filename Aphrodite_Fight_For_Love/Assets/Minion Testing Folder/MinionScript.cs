@@ -30,7 +30,7 @@ namespace AphroditeFightCode
             light,
             heavy,
             boss,
-            
+
 
         }
         void Start()
@@ -64,7 +64,7 @@ namespace AphroditeFightCode
                     attackSpeed = 1;
                     strength = .25f;
                     break;
-                
+
 
             }
 
@@ -82,12 +82,12 @@ namespace AphroditeFightCode
         public void TakeDamage(int playerDamage)
         {
             health -= playerDamage;
-            Debug.Log("Minion has taken " +  playerDamage +" damage. " + health + " health remaining");
+            Debug.Log("Minion has taken " + playerDamage + " damage. " + health + " health remaining");
             if (health <= 0)
             {
                 //we'll actually do a kill function which will do a death animation,
                 //then delete the game object
-                
+
                 MinionDeath();
             }
         }
@@ -100,7 +100,7 @@ namespace AphroditeFightCode
             //Destroy game object
             //if (minionType != SpecialMinionTypes.special)
             //{
-                Destroy(gameObject);
+            Destroy(gameObject);
             //}
 
         }
@@ -116,8 +116,7 @@ namespace AphroditeFightCode
         }
         void Attack(GameObject playerObject, float minionDamage)
         {
-
-            playerObject.GetComponent<PlayerAttack>().health -= minionDamage;
+            //playerObject.GetComponent<QuickPlayerMove>().health -= minionDamage;
             Debug.Log("Player took " + minionDamage + " damage. "); // + playerObject.GetComponent<QuickPlayerMove>().health + " health remaining.");
         }
 

@@ -20,7 +20,7 @@ namespace AphroditeFightCode
         // Update is called once per frame
         void Update()
         {
-        
+
         }
 
         //Attack the player on a regular interval

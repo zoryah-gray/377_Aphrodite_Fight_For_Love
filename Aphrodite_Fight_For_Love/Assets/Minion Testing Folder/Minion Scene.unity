@@ -708,6 +708,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1642766213, guid: f395908e02bf74d0a959cd889db339be, type: 3}
+    - target: {fileID: 1609710822361149366, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2344185762541567039, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.01
@@ -944,12 +948,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 468713295}
   meleeBoxGO: {fileID: 468713296}
+  bullet: {fileID: 0}
+  bulletSpeed: 10
   attackBox: {fileID: 468713297}
   enemyLayers:
     serializedVersion: 2
     m_Bits: 0
   curPosition: {x: 0, y: 0, z: 0}
   isAttacking: 0
+  gunInterval: 0.5
+  health: 10
 --- !u!4 &468713308 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2344185762541567039, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
@@ -1379,7 +1387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &852747576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2415,6 +2423,14 @@ PrefabInstance:
     - target: {fileID: 1429764942938352218, guid: ec6d1b50994abc745948049027c3b364, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185164537566606808, guid: ec6d1b50994abc745948049027c3b364, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185164537566606808, guid: ec6d1b50994abc745948049027c3b364, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3475716158109530139, guid: ec6d1b50994abc745948049027c3b364, type: 3}
       propertyPath: m_Name
