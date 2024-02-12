@@ -33,6 +33,11 @@ namespace AphroditeFightCode
                     requiredKeysID.Add(key.keyID);
                 }
             }
+
+            if (obtainedKeys.Count != 0)
+            {
+                obtainedKeys.Clear();
+            }
         }
 
         public bool CheckQuestComplete()
