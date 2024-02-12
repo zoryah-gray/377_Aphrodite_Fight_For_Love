@@ -20,26 +20,28 @@ namespace AphroditeFightCode
         public bool isAttacking;
         //private float lastShotGun;
         //public float gunInterval = 1f;
-      
+
         //private bool canAttack = true;        
         //private bool isPlaying;
+        private Animator meleeBoxAnimator;
 
         Vector2 rectangleSize = new Vector2(0.9f, 0.45f);
         //private bool isPlayingSwingAnim = true;
 
         void Start()
         {
-            Animator meleeBoxAnimator = meleeBoxGO.GetComponent<Animator>();
+            meleeBoxAnimator = meleeBoxGO.GetComponent<Animator>();
         }
         // Update is called once per frame
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                meleeBoxGO.GetComponent<Animator>().SetBool("canAnimAttack",true);
+                meleeBoxAnimator.SetBool("animCanAttack",true);
                 curPosition = meleeBoxGO.transform.position;
                 Attack();
                 Debug.Log("Attack!");
+                StartCoroutine(ResetAfterAnim());
             }
             //if (meleeBoxAnimator.GetCurrentAnimatorStateInfo(0).length >
             //meleeBoxAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime &&
@@ -50,12 +52,12 @@ namespace AphroditeFightCode
 
             //    GetCurrentAnimatorStateInfo(0).IsName("canAttackAnim"))
 
-            if (Input.GetKeyUp(KeyCode.Space))
-            {
-                meleeBoxGO.GetComponent<Animator>().SetBool("animAttack", false);
-                //meleeBoxGO.GetComponent<Animator>().SetBool("animCanAttack", false);
-                //UnAttack();
-            }
+            //if (Input.GetKeyUp(KeyCode.Space))
+            //{
+            //    meleeBoxAnimator.SetBool("animAttack", false);
+            //    //meleeBoxGO.GetComponent<Animator>().SetBool("animCanAttack", false);
+            //    //UnAttack();
+            //}
             //if (Input.GetKeyDown(KeyCode.C) && Time.time - lastShotGun >= gunInterval)
             //{
             //    ShootGun();
@@ -122,6 +124,12 @@ namespace AphroditeFightCode
             {
                 Debug.Log("We hit an enemy!" + enemy.name);
             }
+        }
+
+        private IEnumerator ResetAfterAnim()
+        {
+            yield return new WaitForSeconds(0.1f);
+            meleeBoxAnimator.SetBool("animCanAttack",false);
         }
 
         private void OnDrawGizmosSelected()
