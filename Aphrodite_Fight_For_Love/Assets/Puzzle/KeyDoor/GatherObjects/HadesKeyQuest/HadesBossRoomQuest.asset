@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb6ac0cd395dd47d5bb4e3b3f8523016, type: 3}
+  m_Name: HadesBossRoomQuest
+  m_EditorClassIdentifier: 
+  questSprite: {fileID: 21300000, guid: 578a7d35157fa47e6be1c713c48cd5ef, type: 3}
+  questName: HadesBossRoomKey
+  questID: 1
+  sceneID: 1
+  keyAmt: 4
+  requiredKeys:
+  - {fileID: 11400000, guid: 1f3ccc1df55b94d8d9806083a08d7366, type: 2}
+  - {fileID: 11400000, guid: bce1481169fce4a0b99ee529903464f3, type: 2}
+  - {fileID: 11400000, guid: f797423e9c54d4aa79bcf55c6dd66459, type: 2}
+  - {fileID: 11400000, guid: bf5c90e80a5824408bb95ce3622fb38b, type: 2}
+  requiredKeysID: 00000000010000000200000003000000
+  obtainedKeys: 
+  ongoing: 0
+  complete: 0
+  questInstructions: If you want to see the boss man, you'll have to gather all the
+    keys to his office. If you can't do something that basic you don't deserve to
+    see even the cusps of his crisp suit.
+  questEnd: Hm I guess you're qualified...barely
+  questEnded: What are you still doing here. The boss man hates to be kept waiting.
+  GUIinstructions: Find the Keys Littered Throughout the Office

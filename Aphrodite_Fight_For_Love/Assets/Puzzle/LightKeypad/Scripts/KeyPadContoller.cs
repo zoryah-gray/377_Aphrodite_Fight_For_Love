@@ -33,7 +33,7 @@ namespace AphroditeFightCode
         public List<int> currentInput;
 
         [Header("Puzzle Settings")]
-        public float puzzleStartDelay = 3f;
+        public float puzzleStartDelay = 5f;
         public float flashDuration = 0.25f;
         public float delayBtFlashes = 0.42f;
 
@@ -120,7 +120,7 @@ namespace AphroditeFightCode
                 Debug.Log(i + " | " + keypadButtons[i - 1].gameObject.name);
                 Image btnImg = keypadButtons[i - 1].GetComponent<Image>();
                 Vector3 originalScale = btnImg.gameObject.transform.localScale;
-                LeanTween.scale(btnImg.gameObject, originalScale * 1.5f, 0.5f)
+                LeanTween.scale(btnImg.gameObject, originalScale * 1.15f, 0.5f)
                     .setEase(LeanTweenType.easeInOutQuad)
                     .setLoopPingPong(1)
                     .setDelay(i * (flashDuration + delayBtFlashes))
@@ -225,12 +225,12 @@ namespace AphroditeFightCode
             // assign all the variables from the curr Scriptable Obj to their respective variables
             code = currPuzzle.code;
             codeID = currPuzzle.codeID;
-            unlocksObj = currPuzzle.unloackableObj;
+            //unlocksObj = currPuzzle.unloackableObj;
             
             AddKeyCodeToDictionary();
             //FlashPuzzleAnswer();
-
-            Invoke("FlashPuzzleAnswer", puzzleStartDelay);
+            RunInstructions();
+            //Invoke("FlashPuzzleAnswer", puzzleStartDelay);
             
         }
 
@@ -246,6 +246,7 @@ namespace AphroditeFightCode
         {
             yield return new WaitForSeconds(4f);
             GUITextManager.instance.SetActive(false);
+            FlashPuzzleAnswer();
         }
 
         private void AddKeyCodeToDictionary()

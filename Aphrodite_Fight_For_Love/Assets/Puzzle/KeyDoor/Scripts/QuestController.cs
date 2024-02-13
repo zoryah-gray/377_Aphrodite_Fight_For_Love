@@ -21,7 +21,6 @@ namespace AphroditeFightCode
         public event UnlockHandler Unlocked;
         [Header("Inputs")]
         private PlayerInputs input = null;
-        [SerializeField] private bool interacting = false;
         public bool inTrigger = false;
 
         private void Awake()
@@ -60,17 +59,12 @@ namespace AphroditeFightCode
         private void OnInteractPerformed(InputAction.CallbackContext val)
         {
             Debug.Log("Quest interact Click");
-            interacting = true;
             if (inTrigger)
             {
                 CheckQuestStatus();
             }
         }
 
-        private void Update()
-        {
-            
-        }
 
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -78,38 +72,39 @@ namespace AphroditeFightCode
             
             Debug.Log(collision.gameObject.name);
 
+
             if (collision.gameObject.name == "Player")
             {
                 icon.SetActive(true);
                 inTrigger = true;
                 collision.gameObject.GetComponent<PlayerKeypadPuzzleController>().inQuestTrigger = true;
-                if (interacting)
-                {
-                    GameData.startingQuestActions = true;
-                    interacting = false;
-                }
-                if (GameData.startingQuestActions)
-                {
-                    CheckQuestStatus();
-                }
+                //if (interacting)
+                //{
+                //    GameData.startingQuestActions = true;
+                //    interacting = false;
+                //}
+                //if (GameData.startingQuestActions)
+                //{
+                //    CheckQuestStatus();
+                //}
             }
         }
 
-        private void OnTriggerStay2D(Collider2D collision)
-        {
-            // the player has clicked the interact button and are starting the quest
-            if (collision.gameObject.name == "Player" && (GameData.startingQuestActions || interacting)) {
-                CheckQuestStatus();
-                if (interacting)
-                {
-                    interacting = false;
-                }
-            }
-            //else if (collision.gameObject.name == "Player" && interacting)
-            //{
-            //    CheckQuestStatus();
-            //}
-        }
+        //private void OnTriggerStay2D(Collider2D collision)
+        //{
+        //    // the player has clicked the interact button and are starting the quest
+        //    if (collision.gameObject.name == "Player" && (GameData.startingQuestActions || interacting)) {
+        //        CheckQuestStatus();
+        //        if (interacting)
+        //        {
+        //            interacting = false;
+        //        }
+        //    }
+        //    //else if (collision.gameObject.name == "Player" && interacting)
+        //    //{
+        //    //    CheckQuestStatus();
+        //    //}
+        //}
 
         private void OnTriggerExit2D(Collider2D collision)
         {
@@ -119,8 +114,8 @@ namespace AphroditeFightCode
                 inTrigger = false;
                 icon.SetActive(false);
                 collision.gameObject.GetComponent<PlayerKeypadPuzzleController>().inQuestTrigger = false;
-                StopAllCoroutines();
-                GUITextManager.instance.SetActive(false);
+                //StopAllCoroutines();
+                //GUITextManager.instance.SetActive(false);
             }
         }
 
@@ -132,6 +127,7 @@ namespace AphroditeFightCode
             {
                 Debug.Log("quest not in ongoing => start it");
                 //not in ongoing => start it
+                GameData.startingQuestActions = true;
                 GameData.AddQuestToOngoing(quest.questID, quest);
                 StartQuest();
             }

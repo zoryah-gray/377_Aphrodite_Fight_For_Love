@@ -22,9 +22,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5ca8d347672d34c97a5957e03b1a925f, type: 2}
   - {fileID: 11400000, guid: 6b32e203162d247268c4e536f33c6a6a, type: 2}
   requiredKeysID: 000000000100000002000000
-  obtainedKeys: 020000000100000000000000
+  obtainedKeys: 
   ongoing: 0
-  complete: 1
+  complete: 0
   questInstructions: I'd open that door, but I've lost my apples. Return them and
     I'll open it
   questEnd: My apples!! Good job, I'll unlocked it for you now

@@ -22,16 +22,16 @@ namespace AphroditeFightCode
 
         private void Awake()
         {
-            puzzle.unloackableObj = door;
+            puzzleCtrlScript.unlocksObj = door;
+            //puzzle.unloackableObj = door;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            icon.SetActive(true);
-            Debug.Log(collision.gameObject.name);
             puzzleCtrlScript.currPuzzle = puzzle;
             if (collision.gameObject.name == "Player")
             {
+                icon.SetActive(true);
                 collision.gameObject.GetComponent<PlayerKeypadPuzzleController>().inPuzzleTrigger = true;
                 puzzleCtrlScript.currPuzzle = puzzle;
                 Debug.Log(puzzleCtrlScript.currPuzzle.name);
@@ -41,9 +41,9 @@ namespace AphroditeFightCode
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            icon.SetActive(false);
             if (collision.gameObject.name == "Player")
             {
+                icon.SetActive(false);
                 collision.gameObject.GetComponent<PlayerKeypadPuzzleController>().inPuzzleTrigger = false;
                 //puzzleCtrlScript.currPuzzle = null;
                 Debug.Log("exiting trigger area");

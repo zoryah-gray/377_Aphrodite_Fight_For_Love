@@ -17,12 +17,18 @@ namespace AphroditeFightCode
         private Color spriteOriginalColor;
         [SerializeField] private Color hoverColor = new Color(255,255, 153, 154);
 
+        [Header("Key Animation")]
+        private Animator anim;
+        public float bounceHeight = 1.25f;
+        public float bounceDuration = 0.6f;
+
 
 
 
         private void Awake()
         {
             keySprite = GetComponent<SpriteRenderer>();
+            anim = GetComponent<Animator>();
             spriteOriginalColor = keySprite.color;
             Intialize();
         }
@@ -36,6 +42,18 @@ namespace AphroditeFightCode
             else
             {
                 Debug.LogWarning("A ClickableKey object has not been assigned");
+            }
+
+            if (key.hasAnimation)
+            {
+                //assign the animation
+                anim.enabled = true;
+                anim.SetBool("isSpinning", true);
+                
+            }
+            else
+            {
+                BounceAnim();
             }
         }
 
@@ -53,6 +71,19 @@ namespace AphroditeFightCode
             keySprite.color = spriteOriginalColor;
             GUITextManager.instance.SetActive(false);
 
+        }
+
+        private void BounceAnim()
+        {
+            LeanTween.scale(gameObject, new Vector3(1f, 1f, gameObject.transform.position.z) * bounceHeight, bounceDuration)
+                .setEase(LeanTweenType.easeOutQuad)
+                .setOnComplete(() =>
+                {
+                    LeanTween.scale(gameObject, Vector3.one, bounceDuration)
+                    .setEase(LeanTweenType.easeInQuad)
+                    .setOnComplete(BounceAnim);
+
+                });
         }
 
 

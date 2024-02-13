@@ -8,7 +8,10 @@ namespace AphroditeFightCode
     public class ClickableKey : ScriptableObject
     {
         public KeyQuestManager quest;
+        [Header("Key Sprite and Anim")]
         public Sprite keySprite;
+        public bool hasAnimation;
+        [Header("Key Info")]
         public string keyQuestName;
         public string keyName;
         public int keyID;

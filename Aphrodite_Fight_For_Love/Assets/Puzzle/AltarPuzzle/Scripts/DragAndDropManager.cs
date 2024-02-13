@@ -13,7 +13,12 @@ namespace AphroditeFightCode
         public bool answered = false;
         public List<int> correctChoices = new List<int>();
         public List<int> currentChoices = new List<int>();
-        
+
+        [Header("Quest Unlocks")]
+        public GameObject unlocks;
+        public delegate void UnlockHandler();
+        public event UnlockHandler Unlocked;
+
 
         private void OnEnable()
         {
@@ -25,7 +30,14 @@ namespace AphroditeFightCode
         {
             currentChoices.Clear();
             GameData.freezePlayer = false;
+            Unlock();
             gameObject.SetActive(false);
+        }
+
+        public void Unlock()
+        {
+            // door has been unlocked
+            Unlocked?.Invoke();
         }
 
         public void AddToChosen(int id)
@@ -71,7 +83,7 @@ namespace AphroditeFightCode
                 Debug.Log("RIDDLE ANSWERED - all correct choices have been made");
                 riddle.color = Color.green;
                 answered = true;
-                Invoke("ExitPuzzle", 2f);
+                Invoke("ExitPuzzle", 1.5f);
             }
             else
             {
