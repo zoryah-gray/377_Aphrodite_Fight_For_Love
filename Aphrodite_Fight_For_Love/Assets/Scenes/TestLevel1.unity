@@ -13671,6 +13671,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 219391635817059531, guid: ec6d1b50994abc745948049027c3b364, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409060398458609444, guid: ec6d1b50994abc745948049027c3b364, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1429764942938352218, guid: ec6d1b50994abc745948049027c3b364, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.71716
@@ -13727,6 +13735,10 @@ PrefabInstance:
       propertyPath: m_IncludeLayers.m_Bits
       value: 1665
       objectReference: {fileID: 0}
+    - target: {fileID: 2646768812660145761, guid: ec6d1b50994abc745948049027c3b364, type: 3}
+      propertyPath: playerBody
+      value: 
+      objectReference: {fileID: 1809284487}
     - target: {fileID: 3475716158109530139, guid: ec6d1b50994abc745948049027c3b364, type: 3}
       propertyPath: m_Name
       value: PathfindingMinion
@@ -13740,6 +13752,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec6d1b50994abc745948049027c3b364, type: 3}
+--- !u!1 &1809284487 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8060550628745360157, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
+  m_PrefabInstance: {fileID: 226593111}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1838071050
 GameObject:
   m_ObjectHideFlags: 0

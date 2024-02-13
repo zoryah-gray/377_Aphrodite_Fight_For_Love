@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2226531971838730802}
   - component: {fileID: 5102650041683305008}
   - component: {fileID: 2646768812660145761}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Chase Radius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 2358065608450304493}
   - component: {fileID: 814628610199792917}
   - component: {fileID: 5350312651285219366}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Attack Radius
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -825,6 +825,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHestiaFireball: 0
+  bulletBox: {fileID: 1702109231}
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!4 &1702109231 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3139701630342551622, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
+  m_PrefabInstance: {fileID: 2032265740}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1885297895 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2344185762541567039, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
@@ -967,6 +976,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2344185762541567039, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3162960956672723163, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3162960956672723163, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6432762151047855504, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}

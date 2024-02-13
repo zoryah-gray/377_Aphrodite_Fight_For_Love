@@ -116,6 +116,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3139701630342551622}
   - component: {fileID: 6450805574603162727}
+  - component: {fileID: 8337556109900290363}
+  - component: {fileID: 1614465900374216534}
   m_Layer: 0
   m_Name: BulletBox
   m_TagString: Untagged
@@ -190,6 +192,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &8337556109900290363
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609710822361149366}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &1614465900374216534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609710822361149366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b9bdb9ee37f4cc8910136ae9967b7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHestiaFireball: 0
+  bulletBox: {fileID: 3139701630342551622}
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &8060550628745360157
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,7 +443,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -450,3 +496,4 @@ MonoBehaviour:
   curPosition: {x: 0, y: 0, z: 0}
   isAttacking: 0
   gunInterval: 0.5
+  health: 10

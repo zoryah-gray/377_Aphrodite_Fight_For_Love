@@ -1,3 +1,5 @@
+
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
@@ -24,7 +26,6 @@ namespace AphroditeFightCode
         Vector2 rectangleSize = new Vector2(0.9f, 0.45f);
 
         public float health = 10f;
-        private GameObject[] bullets;
 
         void Start()
         {
@@ -36,7 +37,7 @@ namespace AphroditeFightCode
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                meleeBoxAnimator.SetBool("animCanAttack",true);
+                meleeBoxAnimator.SetBool("animCanAttack", true);
                 curPosition = meleeBoxGO.transform.position;
                 Attack();
                 Debug.Log("Attack!");
@@ -53,22 +54,6 @@ namespace AphroditeFightCode
             {
                 PlayerDeath();
             }
-
-            //// check bullets 
-            //bullets = GameObject.FindGameObjectsWithTag("Bullet");
-            //foreach(GameObject b in bullets)
-            //{
-
-            //}
-
-            Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackBox.position, rectangleSize, 0f, enemyLayers);
-            foreach (Collider2D enemy in hitEnemies)
-            {
-                enemy.gameObject.GetComponent<MinionScript>().TakeDamage(1);
-                Debug.Log("We hit an enemy!" + enemy.name);
-            }
-
-
         }
 
         private void PlayerDeath()
@@ -83,24 +68,21 @@ namespace AphroditeFightCode
             bulletGO.GetComponent<SpriteRenderer>().enabled = true;
             Rigidbody2D bulletRB = bulletGO.GetComponent<Rigidbody2D>();
 
-
-            Vector2 upBul = new Vector2(1, 0);
-            Vector2 rightBul = new Vector2(0, 1);
             if (playerMovement.directionInt == 1) //Up
             {
-                bulletRB.velocity = upBul * bulletSpeed;
+                bulletRB.velocity = transform.up * bulletSpeed;
             }
             else if (playerMovement.directionInt == 2) //Right
             {
-                bulletRB.velocity = rightBul * bulletSpeed;
+                bulletRB.velocity = transform.right * bulletSpeed;
             }
             else if (playerMovement.directionInt == 3) //Down
             {
-                bulletRB.velocity = ((-1) * upBul) * bulletSpeed;
+                bulletRB.velocity = ((-1) * transform.up) * bulletSpeed;
             }
             else if (playerMovement.directionInt == 4) //Left
             {
-                bulletRB.velocity = ((-1) * rightBul) * bulletSpeed;
+                bulletRB.velocity = ((-1) * transform.right) * bulletSpeed;
             }
         }
 
@@ -141,7 +123,7 @@ namespace AphroditeFightCode
         private IEnumerator ResetAfterAnim()
         {
             yield return new WaitForSeconds(0.1f);
-            meleeBoxAnimator.SetBool("animCanAttack",false);
+            meleeBoxAnimator.SetBool("animCanAttack", false);
         }
 
         private void OnDrawGizmosSelected()
