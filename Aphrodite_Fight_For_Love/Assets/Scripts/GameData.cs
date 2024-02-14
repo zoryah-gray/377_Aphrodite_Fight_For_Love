@@ -62,6 +62,7 @@ namespace AphroditeFightCode
                 onHeart = 3;
             }
 
+            
         }
 
         private static void populatePuzzleCodes()

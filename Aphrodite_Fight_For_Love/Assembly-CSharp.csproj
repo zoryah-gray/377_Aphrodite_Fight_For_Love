@@ -64,6 +64,7 @@
     <Compile Include="Assets/LeanTween/Examples/Scripts/TestingUnitTests.cs" />
     <Compile Include="Assets/Puzzle/AltarPuzzle/Scripts/DragAndDropManager.cs" />
     <Compile Include="Assets/LeanTween/Framework/LTDescr.cs" />
+    <Compile Include="Assets/Scripts/HeartController.cs" />
     <Compile Include="Assets/Minion Testing Folder/MinionDamageAndDeath.cs" />
     <Compile Include="Assets/LeanTween/Framework/LeanTest.cs" />
     <Compile Include="Assets/Minion Testing Folder/QuickPlayerMove.cs" />

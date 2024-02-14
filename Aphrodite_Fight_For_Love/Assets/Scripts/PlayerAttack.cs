@@ -43,17 +43,22 @@ namespace AphroditeFightCode
                 Debug.Log("Attack!");
                 StartCoroutine(ResetAfterAnim());
 
-                Debug.Log(health + "health cur");
+                //Debug.Log(health + "health cur");
+                Debug.Log(GameData.playerHeath + " health cur");
             }
             if (Input.GetKeyDown(KeyCode.C) && Time.time - lastShotGun >= gunInterval)
             {
                 ShootGun();
                 lastShotGun = Time.time;
             }
-            if (health <= 0f)
+            if (GameData.playerHeath <= 0f)
             {
                 PlayerDeath();
             }
+            //if (health <= 0f)
+            //{
+            //    PlayerDeath();
+            //}
         }
 
         private void PlayerDeath()

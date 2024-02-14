@@ -33,8 +33,11 @@ namespace AphroditeFightCode
 
         void Attack(GameObject playerObject, float minionDamage)
         {
+            GameData.CheckPlayerHealth(minionDamage);
+            Debug.Log("Player took " + minionDamage + " damage. Curr Player Health = " + GameData.playerHeath);
+
             //playerObject.GetComponent<QuickPlayerMove>().health -= minionDamage;
-            Debug.Log("Player took " + minionDamage + " damage. "); // + playerObject.GetComponent<QuickPlayerMove>().health + " health remaining.");
+            //Debug.Log("Player took " + minionDamage + " damage. "); // + playerObject.GetComponent<QuickPlayerMove>().health + " health remaining.");
         }
 
         // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
