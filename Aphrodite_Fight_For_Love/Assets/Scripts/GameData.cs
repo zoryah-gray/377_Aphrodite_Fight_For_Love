@@ -7,9 +7,10 @@ namespace AphroditeFightCode
 {
     public static class GameData
     {
-        
-        //public static Dictionary<int, int[]> keypadPuzzleCodes = new Dictionary<int, int[]>();
-        //public static Dictionary<int, List<int>> keypadPuzzleCodesL = new Dictionary<int, List<int>>();
+
+        [Header("Player Game Settings")]
+        public static float playerHeath = 60f;
+        public static int onHeart = 1;
         
         [Header("Puzzle Data")]
         public static Dictionary<int, List<int>> keypadPuzzleCodes = new Dictionary<int, List<int>>();
@@ -34,6 +35,33 @@ namespace AphroditeFightCode
             populatePuzzleCodes();
 
             
+        }
+
+        public static void CheckPlayerHealth(float damage)
+        {
+            //playerHealth is max 60f => separated over 3 hearts [60, 40, 20]
+            // each heart holds 20f health
+            /// regular damage: 0.25f (*10 = 2.5f)
+            /// light damage: 0.125f (*10 = 1.25f)
+            /// heavy damage: 0.5f (*10 = 5f)
+            /// boss damage: 0.75f (*10 = 7.5f)
+
+            
+            playerHeath -= (damage * 10f);
+
+            if (playerHeath > 40f)
+            {
+                onHeart = 1;
+            }
+            else if (playerHeath > 20f)
+            {
+                onHeart = 2;
+            }
+            else if (playerHeath <= 0f)
+            {
+                onHeart = 3;
+            }
+
         }
 
         private static void populatePuzzleCodes()

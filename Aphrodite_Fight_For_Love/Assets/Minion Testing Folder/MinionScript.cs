@@ -62,7 +62,7 @@ namespace AphroditeFightCode
                     health = 5 * level;
                     moveSpeed = 1;
                     attackSpeed = 1;
-                    strength = .25f;
+                    strength = .75f;
                     break;
 
 
@@ -117,7 +117,8 @@ namespace AphroditeFightCode
         void Attack(GameObject playerObject, float minionDamage)
         {
             //playerObject.GetComponent<QuickPlayerMove>().health -= minionDamage;
-            Debug.Log("Player took " + minionDamage + " damage. "); // + playerObject.GetComponent<QuickPlayerMove>().health + " health remaining.");
+            GameData.CheckPlayerHealth(minionDamage);
+            Debug.Log("Player took " + minionDamage + " damage. Curr Player Health = " + GameData.playerHeath); // + playerObject.GetComponent<QuickPlayerMove>().health + " health remaining.");
         }
 
     }
