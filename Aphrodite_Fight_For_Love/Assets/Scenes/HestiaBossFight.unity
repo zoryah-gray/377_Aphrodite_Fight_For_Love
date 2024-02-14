@@ -393,6 +393,7 @@ MonoBehaviour:
   curPosition: {x: 0, y: 0, z: 0}
   isAttacking: 0
   gunInterval: 1
+  health: 10
 --- !u!1 &352344630
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,6 +406,7 @@ GameObject:
   - component: {fileID: 352344631}
   - component: {fileID: 352344633}
   - component: {fileID: 352344634}
+  - component: {fileID: 352344635}
   m_Layer: 0
   m_Name: Hestia
   m_TagString: Untagged
@@ -453,7 +455,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: fa503adeb4952438c9d442f03b7a7d67, type: 3}
+  m_Sprite: {fileID: -622028578, guid: ab1bdf2a776ec4c08965d87345c429f1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -530,7 +532,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 5.12}
+    oldSize: {x: 5.1209993, y: 5.12}
     newSize: {x: 5.12, y: 5.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -539,6 +541,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.945528, y: 5.1351566}
   m_EdgeRadius: 0
+--- !u!95 &352344635
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352344630}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 870f38824f1704e23ab04322736425ec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &374125992
 GameObject:
   m_ObjectHideFlags: 0
