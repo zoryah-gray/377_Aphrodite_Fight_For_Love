@@ -16,19 +16,20 @@ namespace AphroditeFightCode
 
         private void Start()
         {
-            GameEvents.current.onOpenDoor += OnOpenDoor;
+            GameEvents.current.onOpenDoorTrigger += OnOpenDoor;
         }
 
         private void OnDestroy()
         {
-            GameEvents.current.onOpenDoor -= OnOpenDoor;
+            GameEvents.current.onOpenDoorTrigger -= OnOpenDoor;
         }
 
         public void OnOpenDoor(int id)
         {
-            Debug.Log("Door compring id vs this | " + id + "  ,   " + this.id);
+            //Debug.Log("Door compring id vs this | " + id + "  ,   " + this.id);
             if (id == this.id)
             {
+                Debug.Log("Door comparing id vs this | " + id + "  ,   " + this.id);
                 camScrpt.MoveCameraToTarget(gameObject.transform);
                 Vector3 originalScale = transform.localScale;
                 Vector3 originalPos = transform.position;

@@ -15,9 +15,10 @@ namespace AphroditeFightCode
         public List<int> currentChoices = new List<int>();
 
         [Header("Quest Unlocks")]
-        public GameObject unlocks;
-        public delegate void UnlockHandler();
-        public event UnlockHandler Unlocked;
+        public int doorID;
+        //public GameObject unlocks;
+        //public delegate void UnlockHandler();
+        //public event UnlockHandler Unlocked;
 
 
         private void OnEnable()
@@ -30,15 +31,16 @@ namespace AphroditeFightCode
         {
             currentChoices.Clear();
             GameData.freezePlayer = false;
-            Unlock();
+            GameEvents.current.OpenDoorTrigger(doorID);
+            //Unlock();
             gameObject.SetActive(false);
         }
 
-        public void Unlock()
-        {
-            // door has been unlocked
-            Unlocked?.Invoke();
-        }
+        //public void Unlock()
+        //{
+        //    // door has been unlocked
+        //    Unlocked?.Invoke();
+        //}
 
         public void AddToChosen(int id)
         {

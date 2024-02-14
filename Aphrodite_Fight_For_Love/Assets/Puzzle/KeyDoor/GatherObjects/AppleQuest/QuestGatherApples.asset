@@ -15,6 +15,7 @@ MonoBehaviour:
   questSprite: {fileID: 21300000, guid: 554bee4c1255e4dac8866afc8d507102, type: 3}
   questName: Gather3Apples
   questID: 0
+  doorID: 3
   sceneID: 0
   keyAmt: 3
   requiredKeys:

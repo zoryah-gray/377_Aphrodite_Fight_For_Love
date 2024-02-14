@@ -19,6 +19,7 @@ namespace AphroditeFightCode
         public static Dictionary<int, List<int>> keypadPuzzleCodes = new Dictionary<int, List<int>>();
         public static bool freezePlayer = false;
         public static bool inKeypadPuzzle = false;
+        public static KeypadPuzzleTriggerSO currKeypadPuzzle;
 
 
         [Header("Quest Data")]

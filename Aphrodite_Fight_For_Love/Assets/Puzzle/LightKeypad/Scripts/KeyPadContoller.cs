@@ -41,13 +41,14 @@ namespace AphroditeFightCode
         public GameObject unlocksObj;
 
         // event to unlock the door
-        public delegate void UnlockHandler();
-        public event UnlockHandler Unlocked;
+        //public delegate void UnlockHandler();
+        //public event UnlockHandler Unlocked;
 
 
         private void OnEnable()
         {
             EventSystem.current.SetSelectedGameObject(null);
+            unlocksObj = null;
             Initalize();
 
 
@@ -86,35 +87,52 @@ namespace AphroditeFightCode
             int flashCount = 3;
             Color flashColorCorrect = new Color(0f, 1f, 0.0157f, 1f); // #00FF04 => green
             Color flashColorIncorrect = new Color(1f, 0.3f, 0.23f, 1f); // #FF4C3B => red
+            
             // evaluate if the pattern and code are the same
-            Debug.Log("code count " + code.Count + " | " + currentInput.Count);
-            if (currentInput.Equals(code) || currentInput.Count != code.Count)
+            if (CheckCorrect())
             {
-                Debug.Log("Code is not the same! " + currentInput + " != " + code);
+                //correct answer
+                Debug.Log("Code is the same/correct!");
+                FlashAllButtons(flashCount, flashColorCorrect);
+                Invoke("OnReturn", 2f);
+                GameEvents.current.OpenDoorTrigger(currPuzzle.doorID);
+            }
+            else { 
+                //incorrect answer
+                Debug.Log("Code is not the same! ");
                 // all buttons flash red
                 FlashAllButtons(flashCount, flashColorIncorrect);
                 Invoke("FlashPuzzleAnswer", 1.5f);
-
             }
-            else
-            {
 
-                // all buttons flash green and set unlocked to true
-                Debug.Log("Code is the same/correct!");
-                FlashAllButtons(flashCount, flashColorCorrect);
-                currPuzzle.unlocked = true;
-                GameEvents.current.OpenDoor(codeID);
-
-                //Unlock();
-
-
-                //currPuzzle.Unlock();
-                //UnlockObj();
-                Invoke("OnReturn", 3.5f);
-            }
             currentInput.Clear();
+
+            
         }
 
+        private bool CheckCorrect()
+        {
+            for (int i = 0; i < currentInput.Count; i++)
+            {
+                if (i >= GameData.currKeypadPuzzle.code.Count)
+                {
+                    return false;
+                }
+                if (currentInput[i] != GameData.currKeypadPuzzle.code[i])
+                {
+                    return false;
+                }
+                //if (i >= currPuzzle.code.Count)
+                //{
+                //    return false;
+                //}
+                //if (currentInput[i] != currPuzzle.code[i])
+                //{
+                //    return false;
+                //}
+            }
+            return true;
+        }
         private void FlashPuzzleAnswer()
         
         {
@@ -193,24 +211,7 @@ namespace AphroditeFightCode
             }
         }
 
-        //private void UnlockObj()
-        //{
-        //    Vector3 originalScale = unlocksObj.transform.localScale;
-        //    Vector3 originalPos = unlocksObj.transform.position;
-        //    unlocksObj.GetComponent<SpriteRenderer>().color = Color.green;
-
-        //    LeanTween.scaleX(unlocksObj, originalScale.x, 1f).setEase(LeanTweenType.easeOutQuint);
-        //    LeanTween.moveX(unlocksObj, originalPos.x + originalScale.x, 1f).setEase(LeanTweenType.easeOutQuint);
-
-
-        //}
-
-        public void Unlock()
-        {
-            Debug.Log("door unlock called");
-            // door has been unlocked
-            Unlocked?.Invoke();
-        }
+        
 
 
 
@@ -227,11 +228,39 @@ namespace AphroditeFightCode
                     }
                 }
             }
+            Debug.Log("in keypad puzzle = " + currPuzzle.name + "  |   gamedata = " + GameData.currKeypadPuzzle.name);
+
             // assign all the variables from the curr Scriptable Obj to their respective variables
-            code = currPuzzle.code;
+            //code = currPuzzle.code;
+            code = GameData.currKeypadPuzzle.code;
             codeID = currPuzzle.codeID;
-            //unlocksObj = currPuzzle.unloackableObj;
-            
+            //assign difficulty
+                //public enum puzzleDifficulty
+                //    {
+                //easy,
+                //medium,
+                //hard,
+
+                //    }
+            switch (currPuzzle.difficulty)
+            {
+                case KeypadPuzzleTriggerSO.puzzleDifficulty.easy:
+                    flashDuration = 0.30f;
+                    delayBtFlashes = 0.42f;
+                    break;
+                case KeypadPuzzleTriggerSO.puzzleDifficulty.medium:
+                    flashDuration = 0.25f;
+                    delayBtFlashes = 0.32f;
+                    break;
+                case KeypadPuzzleTriggerSO.puzzleDifficulty.hard:
+                    flashDuration = 0.15f;
+                    delayBtFlashes = 0.22f;
+                    break;
+                
+
+
+            }
+
             AddKeyCodeToDictionary();
             //FlashPuzzleAnswer();
             RunInstructions();
@@ -242,14 +271,17 @@ namespace AphroditeFightCode
         public void RunInstructions()
         {
             // PrintToGUI(string text, string textInstr, Sprite image)
-            GUITextManager.instance.PrintToGUI("Let's see if your memory is strong. A pattern will flash, repeat it, and submit it to prove your smarts!", "Click to Press Buttons", currPuzzle.triggerSprite);
+            //GUITextManager.instance.PrintToGUI("Let's see if your memory is strong. A pattern will flash, repeat it, and submit it to prove your smarts!", "Click to Press Buttons", currPuzzle.triggerSprite);
+            string instr = "A pattern will flash, repeat it, and submit it to prove your wits. If you can't even do this how will you keep your composure in front of Hestia!";
+            string instr2 = "Click to Press Buttons";
+            GUITextManager.instance.PrintToGUI(instr, instr2,currPuzzle.triggerSprite);
 
             StartCoroutine(DeactivateGUI());
         }
 
         IEnumerator DeactivateGUI()
         {
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(5f);
             GUITextManager.instance.SetActive(false);
             FlashPuzzleAnswer();
         }

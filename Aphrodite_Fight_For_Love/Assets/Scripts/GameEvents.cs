@@ -14,12 +14,12 @@ namespace AphroditeFightCode
             current = this;
         }
 
-        public event Action<int> onOpenDoor;
-        public void OpenDoor(int id)
+        public event Action<int> onOpenDoorTrigger;
+        public void OpenDoorTrigger(int id)
         {
-            if (onOpenDoor != null)
+            if (onOpenDoorTrigger != null)
             {
-                onOpenDoor(id);
+                onOpenDoorTrigger(id);
             }
         }
     }

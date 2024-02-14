@@ -17,8 +17,9 @@ namespace AphroditeFightCode
         [Header("Quest Unlocks")]
         public GameObject unlocks;
         // event to unlock the door
-        public delegate void UnlockHandler();
-        public event UnlockHandler Unlocked;
+        //public delegate void UnlockHandler();
+        //public event UnlockHandler Unlocked;
+
         [Header("Inputs")]
         private PlayerInputs input = null;
         public bool inTrigger = false;
@@ -78,33 +79,11 @@ namespace AphroditeFightCode
                 icon.SetActive(true);
                 inTrigger = true;
                 collision.gameObject.GetComponent<PlayerKeypadPuzzleController>().inQuestTrigger = true;
-                //if (interacting)
-                //{
-                //    GameData.startingQuestActions = true;
-                //    interacting = false;
-                //}
-                //if (GameData.startingQuestActions)
-                //{
-                //    CheckQuestStatus();
-                //}
+                
             }
         }
 
-        //private void OnTriggerStay2D(Collider2D collision)
-        //{
-        //    // the player has clicked the interact button and are starting the quest
-        //    if (collision.gameObject.name == "Player" && (GameData.startingQuestActions || interacting)) {
-        //        CheckQuestStatus();
-        //        if (interacting)
-        //        {
-        //            interacting = false;
-        //        }
-        //    }
-        //    //else if (collision.gameObject.name == "Player" && interacting)
-        //    //{
-        //    //    CheckQuestStatus();
-        //    //}
-        //}
+        
 
         private void OnTriggerExit2D(Collider2D collision)
         {
@@ -188,7 +167,8 @@ namespace AphroditeFightCode
             GameData.RemoveQuestFromOngoing(quest.questID);
             GameData.AddQuestToCompleted(quest.questID, quest);
             GameData.moveCamFromPlayer = true;
-            Unlock();
+            GameEvents.current.OpenDoorTrigger(quest.doorID);
+            //Unlock();
             StartCoroutine(DeactivateGUI());
 
         }
@@ -208,11 +188,11 @@ namespace AphroditeFightCode
             StartCoroutine(DeactivateGUI());
         }
 
-        public void Unlock()
-        {
-            // door has been unlocked
-            Unlocked?.Invoke();
-        }
+        //public void Unlock()
+        //{
+        //    // door has been unlocked
+        //    Unlocked?.Invoke();
+        //}
 
 
 

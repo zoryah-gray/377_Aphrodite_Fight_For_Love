@@ -12,7 +12,7 @@ namespace AphroditeFightCode
         public GameObject unloackableObj;
         public Sprite triggerSprite;
 
-        //public int doorID;
+        public int doorID;
 
 
         // the actual code/password
@@ -27,7 +27,17 @@ namespace AphroditeFightCode
         // if the puzzle has been unlocked
         public bool unlocked = false;
 
-        
+        //the dificulty of the puzzle
+        [SerializeField] public puzzleDifficulty difficulty = puzzleDifficulty.easy;
+        public enum puzzleDifficulty
+        {
+            easy,
+            medium,
+            hard,
+
+
+        }
+
 
     }
 }

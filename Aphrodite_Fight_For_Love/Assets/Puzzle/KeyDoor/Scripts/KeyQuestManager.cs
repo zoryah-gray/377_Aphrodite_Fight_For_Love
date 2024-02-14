@@ -10,6 +10,7 @@ namespace AphroditeFightCode
         public Sprite questSprite;
         public string questName;
         public int questID;
+        public int doorID;
         public int sceneID;
         public int keyAmt;
         public List<ClickableKey> requiredKeys = new List<ClickableKey>();
