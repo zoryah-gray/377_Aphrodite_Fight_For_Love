@@ -39,6 +39,7 @@ namespace AphroditeFightCode
 
         [Header("Puzzle Unlocks")]
         public GameObject unlocksObj;
+
         // event to unlock the door
         public delegate void UnlockHandler();
         public event UnlockHandler Unlocked;
@@ -102,7 +103,11 @@ namespace AphroditeFightCode
                 Debug.Log("Code is the same/correct!");
                 FlashAllButtons(flashCount, flashColorCorrect);
                 currPuzzle.unlocked = true;
-                Unlock();
+                GameEvents.current.OpenDoor(codeID);
+
+                //Unlock();
+
+
                 //currPuzzle.Unlock();
                 //UnlockObj();
                 Invoke("OnReturn", 3.5f);

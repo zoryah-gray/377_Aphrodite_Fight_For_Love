@@ -81,6 +81,7 @@
     <Compile Include="Assets/Scripts/GUITextManager.cs" />
     <Compile Include="Assets/EventSystem/PlayerInputs.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralSimpleUI.cs" />
+    <Compile Include="Assets/Scripts/GameEvents.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSplineEndless.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/Following.cs" />
     <Compile Include="Assets/Scripts/HestiaProjectile.cs" />
@@ -121,6 +122,7 @@
     <Compile Include="Assets/Puzzle/KeyDoor/Scripts/QuestKeyController.cs" />
     <Compile Include="Assets/Minion Testing Folder/MinionChase.cs" />
     <Compile Include="Assets/Puzzle/LightKeypad/Scripts/KeyPadContoller.cs" />
+    <Compile Include="Assets/Scripts/GUIMenuManager.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralEventsListeners.cs" />
     <Compile Include="Assets/Puzzle/LightKeypad/Scripts/PuzzleEnter.cs" />
     <Compile Include="Assets/Puzzle/LightKeypad/Scripts/PlayerKeypadPuzzleController.cs" />
@@ -141,6 +143,7 @@
     <Compile Include="Assets/Scripts/PlayerMovement.cs" />
     <Compile Include="Assets/LeanTween/Testing/FollowingTests.cs" />
     <Compile Include="Assets/Puzzle/DoorLogic/Door.cs" />
+    <Compile Include="Assets/Scripts/SceneTriggerManager.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralBasic.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSplines.cs" />
   </ItemGroup>

@@ -12,6 +12,8 @@ namespace AphroditeFightCode
         public GameObject unloackableObj;
         public Sprite triggerSprite;
 
+        //public int doorID;
+
 
         // the actual code/password
         public List<int> code;

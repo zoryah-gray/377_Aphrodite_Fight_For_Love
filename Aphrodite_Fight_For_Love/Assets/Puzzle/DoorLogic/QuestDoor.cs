@@ -10,15 +10,15 @@ namespace AphroditeFightCode
 
         [SerializeField] private QuestController quest;
 
-        public void Start()
-        {
-            quest.Unlocked += OpenDoor;
-        }
+        //public void Start()
+        //{
+        //    quest.Unlocked += OpenDoor;
+        //}
 
-        private void OnDestroy()
-        {
-            quest.Unlocked -= OpenDoor;
-        }
+        //private void OnDestroy()
+        //{
+        //    quest.Unlocked -= OpenDoor;
+        //}
 
     }
 }

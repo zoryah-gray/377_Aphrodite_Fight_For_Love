@@ -11,7 +11,10 @@ namespace AphroditeFightCode
         [Header("Player Game Settings")]
         public static float playerHeath = 60f;
         public static int onHeart = 1;
-        
+
+        [Header("Level Manager")]
+        public static int onLevel = 1;
+
         [Header("Puzzle Data")]
         public static Dictionary<int, List<int>> keypadPuzzleCodes = new Dictionary<int, List<int>>();
         public static bool freezePlayer = false;

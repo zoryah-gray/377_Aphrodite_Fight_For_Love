@@ -10,14 +10,14 @@ namespace AphroditeFightCode
 
         [SerializeField] private KeyPadContoller keypad;
 
-        public void Start()
-        {
-            keypad.Unlocked += OpenDoor;
-        }
+        //public void Start()
+        //{
+        //    keypad.Unlocked += OpenDoor(keypad.doorID);
+        //}
 
-        private void OnDestroy()
-        {
-            keypad.Unlocked -= OpenDoor;
-        }
+        //private void OnDestroy()
+        //{
+        //    keypad.Unlocked -= OpenDoor;
+        //}
     }
 }

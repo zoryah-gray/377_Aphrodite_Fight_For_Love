@@ -10,15 +10,15 @@ namespace AphroditeFightCode
 
         [SerializeField] private DragAndDropManager altar;
 
-        public void Start()
-        {
-            altar.Unlocked += OpenDoor;
-        }
+        //public void Start()
+        //{
+        //    altar.Unlocked += OpenDoor;
+        //}
 
-        private void OnDestroy()
-        {
-            altar.Unlocked -= OpenDoor;
-        }
+        //private void OnDestroy()
+        //{
+        //    altar.Unlocked -= OpenDoor;
+        //}
 
     }
 }
