@@ -225,6 +225,9 @@ MonoBehaviour:
   fireballPrefab: {fileID: 6382916264366629348, guid: ed80cfb896013e74eb72cbbc9d91727f, type: 3}
   fireballSpeed: 5
   fireballInterval: 3
+  fbIntvalShort: 1
+  fbIntvalLong: 5
+  hestiaAnimator: {fileID: 352344635}
 --- !u!61 &352344634
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1735,6 +1738,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Bullet
       objectReference: {fileID: 0}
+    - target: {fileID: 1614465900374216534, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
+      propertyPath: bulletBox
+      value: 
+      objectReference: {fileID: 680594657}
     - target: {fileID: 2344185762541567039, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.38

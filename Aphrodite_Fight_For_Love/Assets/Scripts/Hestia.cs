@@ -11,6 +11,11 @@ namespace AphroditeFightCode
         private float lastShotFireball;
         public float fireballInterval = 3f;
 
+        public float fbIntvalShort = 1f;
+        public float fbIntvalLong = 10f;
+        public Animator hestiaAnimator;
+        private float animIndex;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -21,11 +26,25 @@ namespace AphroditeFightCode
         void Update()
         {
             
-            if(Time.time - lastShotFireball >= fireballInterval)
+            //if (Time.time - lastShotFireball >= fireballInterval)
+            //{
+            //    
+            //    SwitchHestiaAnim(animIndex);
+            //    AdjustFireballInterval(animIndex);
+            //    lastShotFireball = Time.time;
+            //    animIndex = (animIndex + 1f) % 4f;
+            //}
+            if (Time.time - lastShotFireball >= fireballInterval)
             {
                 ShootFireball();
+                AdjustFireballInterval(animIndex);
+                SwitchHestiaAnim(animIndex);
+                animIndex = (animIndex + 1f) % 8f;
                 lastShotFireball = Time.time;
-            } 
+            }
+
+
+
         }
         void ShootFireball()
         {
@@ -39,5 +58,82 @@ namespace AphroditeFightCode
             Rigidbody2D fireballRB = fireballGO.GetComponent<Rigidbody2D>();
             fireballRB.velocity = direction * fireballSpeed;
         }
+
+        void AdjustFireballInterval(float index)
+        {
+            switch (index)
+            {
+                case 0: //Fireball Prep
+                    fireballInterval = fbIntvalShort;
+                    break;
+                case 1: //Fireball Attack
+                    fireballInterval = fbIntvalLong;
+                    break;
+                case 2: //Fireball Winding Down
+                    fireballInterval = fbIntvalShort;
+                    break;
+                case 3: //Idle
+                    fireballInterval = fbIntvalLong;
+                    break;
+                case 4:
+                    fireballInterval = fbIntvalShort;
+                    break;
+                case 5:
+                    fireballInterval = fbIntvalShort;
+                    break;
+                case 6:
+                    fireballInterval = fbIntvalLong;
+                    break;
+                case 7:
+                    fireballInterval = fbIntvalLong;
+                    break;
+            }
+        }
+        void SwitchHestiaAnim(float index)
+        {
+            switch (index)
+            {
+                case 0: //FireballPrep
+                    hestiaAnimator.SetFloat("HestiaNotAttack", -1f);
+                    hestiaAnimator.SetFloat("FireballAttack", 0f);
+                    Debug.Log("FireballPrep");
+                    break;
+                case 1: //FireballActive
+                    hestiaAnimator.SetFloat("HestiaNotAttack", -1f);
+                    hestiaAnimator.SetFloat("FireballAttack", 1f);
+                    Debug.Log("FireballActive");
+                    break;
+                case 2: //FireballWindDown
+                    hestiaAnimator.SetFloat("HestiaNotAttack", 0f);
+                    hestiaAnimator.SetFloat("FireballAttack", -1f);
+                    Debug.Log("Fireball Winding Down");
+                    break;
+                case 3: //HestiaIdle
+                    hestiaAnimator.SetFloat("HestiaNotAttack", 1f);
+                    hestiaAnimator.SetFloat("FireballAttack", -1f);
+                    Debug.Log("HestiaIdle");
+                    break;
+                case 4: //HestiaFireFloorPrep
+                    hestiaAnimator.SetFloat("HestiaNotAttack", -1f);
+                    hestiaAnimator.SetFloat("FireballAttack", -1f);
+                    Debug.Log("HestiaFireFloorPrep");
+                    break;
+                case 5: //HestiaFireFloorWindingDown
+                    hestiaAnimator.SetFloat("HestiaNotAttack", 1f);
+                    hestiaAnimator.SetFloat("FireballAttack", 0f);
+                    Debug.Log("HestiaFireFloorWindingDown");
+                    break;
+                case 6: //HestiaWallIn
+                    hestiaAnimator.SetFloat("HestiaNotAttack", 1f);
+                    hestiaAnimator.SetFloat("FireballAttack", 1f);
+                    Debug.Log("HestiaWallIn");
+                    break;
+                case 7: //HestiaWallOut
+                    hestiaAnimator.SetFloat("HestiaNotAttack", 0f);
+                    hestiaAnimator.SetFloat("FireballAttack", 1f);
+                    Debug.Log("HestiaWallOut");
+                    break;
+            }
+        }         
     }
 }
