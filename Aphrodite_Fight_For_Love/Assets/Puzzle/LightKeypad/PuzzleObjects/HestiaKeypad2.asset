@@ -15,8 +15,8 @@ MonoBehaviour:
   unloackableObj: {fileID: 0}
   triggerSprite: {fileID: 21300000, guid: 7f5cb75031fda4a3db47e4ecdb27822e, type: 3}
   doorID: 2
-  code: 01000000010000000600000009000000
+  code: 01000000040000000600000009000000
   codeID: 1
   sceneID: 0
-  unlocked: 1
+  unlocked: 0
   difficulty: 1

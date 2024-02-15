@@ -52,7 +52,8 @@ namespace AphroditeFightCode
                     // Use LeanTween to fade out the alpha of the object
                     LeanTween.alpha(obj, 0f, 4f + fadeDuration)
                         .setEase(LeanTweenType.easeOutQuad)
-                        .setOnComplete(() => Destroy(obj)); // Optional: Destroy the object after fading out
+                        .setOnComplete(() => obj.SetActive(false)); // Optional: Destroy the object after fading out
+                        //.setOnComplete(() => Destroy(obj)); // Optional: Destroy the object after fading out
                 }
             }
 
