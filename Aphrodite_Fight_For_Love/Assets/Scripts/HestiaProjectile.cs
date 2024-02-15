@@ -17,26 +17,30 @@ namespace AphroditeFightCode
 
         private void Update()
         {
-            Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(bulletBox.position, rectangleSize, 0f, enemyLayers);
-            foreach (Collider2D enemy in hitEnemies)
+            if (!isHestiaFireball)
             {
-                enemy.gameObject.GetComponent<MinionScript>().TakeDamage(1);
-                Debug.Log("We hit an enemy!" + enemy.name);
-                Destroy(gameObject);
+                Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(bulletBox.position, rectangleSize, 0f, enemyLayers);
+                foreach (Collider2D enemy in hitEnemies)
+                {
+                    enemy.gameObject.GetComponent<MinionScript>().TakeDamage(1);
+                    Debug.Log("We hit an enemy!" + enemy.name);
+                    Destroy(gameObject);
+                }
             }
         }
         private void OnBecameInvisible()
         {
-            Debug.Log("gameObject OOB");
+            //Debug.Log("gameObject OOB");
             Destroy(gameObject);
         }
         void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.tag == "Player" && isHestiaFireball)
             {
-                Debug.Log("Fireball Hit The Player");
+                //Debug.Log("Fireball Hit The Player");
                 Destroy(gameObject);
             }
         }
+        
     }
 }
