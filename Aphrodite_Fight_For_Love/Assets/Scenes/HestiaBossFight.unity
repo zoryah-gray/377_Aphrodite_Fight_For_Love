@@ -224,10 +224,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireballPrefab: {fileID: 6382916264366629348, guid: ed80cfb896013e74eb72cbbc9d91727f, type: 3}
   fireballSpeed: 5
-  fireballInterval: 3
-  fbIntvalShort: 1
-  fbIntvalLong: 5
-  hestiaAnimator: {fileID: 352344635}
+  loopInterval: 3
+  hestAnim: {fileID: 352344635}
 --- !u!61 &352344634
 BoxCollider2D:
   m_ObjectHideFlags: 0
