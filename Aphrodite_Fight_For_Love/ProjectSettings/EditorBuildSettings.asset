@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Start Screens/TitleScreen.unity
+    guid: 48c98fcf340f14c6683ae15fe9cfcb86
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: 8b4734b3af6fe4eb1bf446ad366e538d
+  - enabled: 1
+    path: Assets/Scenes/HestiaBossFight.unity
+    guid: 4cea6c7a1c4654c73b3e9545f64c5c47
+  - enabled: 1
     path: Assets/Scenes/level2.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}

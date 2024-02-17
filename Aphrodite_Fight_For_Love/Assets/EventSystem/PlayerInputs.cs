@@ -725,6 +725,54 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""Timeline"",
+            ""id"": ""86e7799b-8468-47cf-95eb-46eedfab971e"",
+            ""actions"": [
+                {
+                    ""name"": ""Skip"",
+                    ""type"": ""Button"",
+                    ""id"": ""d231ebbb-a3c2-4a66-8899-ea4651ef62b5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Start"",
+                    ""type"": ""Button"",
+                    ""id"": ""ba993d3e-337a-49bd-915c-bbb33b111046"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""4943d3b7-7a89-4fe2-8ba3-6cf680b8585f"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""32ba596b-bcf1-450b-a352-68449ada788e"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -758,6 +806,10 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_UI_Cancel = m_UI.FindAction("Cancel", throwIfNotFound: true);
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
+        // Timeline
+        m_Timeline = asset.FindActionMap("Timeline", throwIfNotFound: true);
+        m_Timeline_Skip = m_Timeline.FindAction("Skip", throwIfNotFound: true);
+        m_Timeline_Start = m_Timeline.FindAction("Start", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1003,6 +1055,60 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Timeline
+    private readonly InputActionMap m_Timeline;
+    private List<ITimelineActions> m_TimelineActionsCallbackInterfaces = new List<ITimelineActions>();
+    private readonly InputAction m_Timeline_Skip;
+    private readonly InputAction m_Timeline_Start;
+    public struct TimelineActions
+    {
+        private @PlayerInputs m_Wrapper;
+        public TimelineActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Skip => m_Wrapper.m_Timeline_Skip;
+        public InputAction @Start => m_Wrapper.m_Timeline_Start;
+        public InputActionMap Get() { return m_Wrapper.m_Timeline; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TimelineActions set) { return set.Get(); }
+        public void AddCallbacks(ITimelineActions instance)
+        {
+            if (instance == null || m_Wrapper.m_TimelineActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_TimelineActionsCallbackInterfaces.Add(instance);
+            @Skip.started += instance.OnSkip;
+            @Skip.performed += instance.OnSkip;
+            @Skip.canceled += instance.OnSkip;
+            @Start.started += instance.OnStart;
+            @Start.performed += instance.OnStart;
+            @Start.canceled += instance.OnStart;
+        }
+
+        private void UnregisterCallbacks(ITimelineActions instance)
+        {
+            @Skip.started -= instance.OnSkip;
+            @Skip.performed -= instance.OnSkip;
+            @Skip.canceled -= instance.OnSkip;
+            @Start.started -= instance.OnStart;
+            @Start.performed -= instance.OnStart;
+            @Start.canceled -= instance.OnStart;
+        }
+
+        public void RemoveCallbacks(ITimelineActions instance)
+        {
+            if (m_Wrapper.m_TimelineActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ITimelineActions instance)
+        {
+            foreach (var item in m_Wrapper.m_TimelineActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_TimelineActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public TimelineActions @Timeline => new TimelineActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -1040,5 +1146,10 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnCancel(InputAction.CallbackContext context);
         void OnSubmit(InputAction.CallbackContext context);
         void OnNavigate(InputAction.CallbackContext context);
+    }
+    public interface ITimelineActions
+    {
+        void OnSkip(InputAction.CallbackContext context);
+        void OnStart(InputAction.CallbackContext context);
     }
 }

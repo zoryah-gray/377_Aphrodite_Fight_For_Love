@@ -703,6 +703,54 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "Timeline",
+            "id": "86e7799b-8468-47cf-95eb-46eedfab971e",
+            "actions": [
+                {
+                    "name": "Skip",
+                    "type": "Button",
+                    "id": "d231ebbb-a3c2-4a66-8899-ea4651ef62b5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Start",
+                    "type": "Button",
+                    "id": "ba993d3e-337a-49bd-915c-bbb33b111046",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4943d3b7-7a89-4fe2-8ba3-6cf680b8585f",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "32ba596b-bcf1-450b-a352-68449ada788e",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
