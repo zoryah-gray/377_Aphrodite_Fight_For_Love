@@ -10,57 +10,70 @@ namespace AphroditeFightCode
     public class DialogueManager : MonoBehaviour
     {
         // Start is called before the first frame update
-        [SerializeField] float typeSpeed = 0.2f;
+        //[SerializeField] float typeSpeed = 0.2f;
         TextMeshProUGUI[] dialogueBoxArray;
+        [SerializeField] private GameObject player;
         TextMeshProUGUI dialogueText;
         TextMeshProUGUI speakerName;
-        string[] dialogueArray;
-        string[] speakerArray;
-        int dialogueIndex;
+        public string[] dialogueArray;
+        public string[] speakerArray;
+        int dIndex;
         void Start()
         {
             //Gather the text mesh pros used to display the text to the player
+            dIndex = 0;
             dialogueBoxArray = GetComponentsInChildren<TextMeshProUGUI>();
-            
+            ReceiveStartReadyDialogue(dialogueArray, speakerArray);
+            player.SetActive(false);
         }
 
         // Update is called once per frame
         void Update()
         {
-            if(Input.GetAxis("ProgressDialogue") != 0)
+            if(Input.GetKeyDown(KeyCode.Space) == true)
             {
-                NextSentence(dialogueArray[dialogueIndex]);
+
+                Debug.Log(dIndex);
+                if (dIndex == dialogueArray.Length)
+                {
+                    EndOfDialogue();
+                }
+                else { NextSentence(dialogueArray[dIndex]); }
             }
         }
 
-        void ReceiveStartReadyDialogue(string[] dialogue)
+        void ReceiveStartReadyDialogue(string[] dialogue, string[] speaker)
         {
-            dialogueArray = dialogue;
             speakerName = dialogueBoxArray[0];
             dialogueText = dialogueBoxArray[1];
-            speakerName.text = "Illia";
-            //dialogueText.text = "Testing, Testing, 1 2 3. Please save me from the utter hell i'm about to go through.";
+            dialogueArray = dialogue;
+            speakerArray = speaker;
+            speakerName.text = speakerArray[dIndex];
+            dialogueText.text = dialogueArray[dIndex];
+            dIndex++;
         }
 
         private void NextSentence(string sentence)
         {
-            Debug.Log(speakerName + ": ");
-        }
-
-        IEnumerator Type()
-        {
-            foreach (char letter in dialogueArray[dialogueIndex].ToCharArray())
-            {
-                dialogueText.text += letter;
-                yield return new WaitForSeconds(typeSpeed);
-            }
+            Debug.Log(speakerName.text + ": " + dialogueText.text);
+            speakerName.text = speakerArray[dIndex];
+            dialogueText.text = dialogueArray[dIndex];
+            dIndex++;
+            
 
         }
+
+        
 
         void EndOfDialogue()
         {
+            
+            player.SetActive(true);
             gameObject.SetActive(false);
+
         }
+
+
 
         /*public void nextSentence()
             {
@@ -80,5 +93,15 @@ namespace AphroditeFightCode
                 }
 
             }*/
+
+        /*IEnumerator Type()
+        {
+            foreach (char letter in dialogueArray[dialogueIndex].ToCharArray())
+            {
+                dialogueText.text += letter;
+                yield return new WaitForSeconds(typeSpeed);
+            }
+
+        }*/
     }
 }
