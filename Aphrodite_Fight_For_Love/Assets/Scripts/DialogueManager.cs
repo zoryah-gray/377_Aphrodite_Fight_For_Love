@@ -23,8 +23,11 @@ namespace AphroditeFightCode
             //Gather the text mesh pros used to display the text to the player
             dIndex = 0;
             dialogueBoxArray = GetComponentsInChildren<TextMeshProUGUI>();
-            ReceiveStartReadyDialogue(dialogueArray, speakerArray);
+            //ReceiveStartReadyDialogue(dialogueArray, speakerArray);
             player.SetActive(false);
+            /*player.GetComponent<PlayerMovement>().enabled = false;
+            player.GetComponent<PlayerKeypadPuzzleController>().enabled = false;
+            player.GetComponent<PlayerAttack>().enabled = false;*/
         }
 
         // Update is called once per frame
@@ -67,8 +70,11 @@ namespace AphroditeFightCode
 
         void EndOfDialogue()
         {
-            
+
             player.SetActive(true);
+            /*player.GetComponent<PlayerKeypadPuzzleController>().enabled = true;
+            player.GetComponent<PlayerAttack>().enabled = true;
+            player.GetComponent<PlayerMovement>().enabled = true;*/
             gameObject.SetActive(false);
 
         }
