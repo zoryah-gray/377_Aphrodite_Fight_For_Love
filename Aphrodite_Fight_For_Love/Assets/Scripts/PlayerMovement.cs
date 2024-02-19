@@ -188,8 +188,6 @@ namespace AphroditeFightCode
                     animAfterLeft = true;
                     directionInt = 4;
                 }
-
-
             }
             animator.SetFloat("Speed", moveVector.sqrMagnitude);
         }
