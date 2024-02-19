@@ -16,6 +16,8 @@ namespace AphroditeFightCode
         public List<TimelineAsset> timelines;
         public List<TimelineState> timelineStates;
 
+        public List<string> sceneNames;
+
         public enum TimelineState
         {
             TimelineStartScreen,
@@ -62,6 +64,12 @@ namespace AphroditeFightCode
             EndLoop(0);
             //SceneManager.LoadScene("Level1");
             PlayFromTimeline(1);
+        }
+
+        public void LoadScene(int idx)
+        {
+            string sceneName = sceneNames[idx];
+            SceneManager.LoadScene(sceneName);
         }
 
 
