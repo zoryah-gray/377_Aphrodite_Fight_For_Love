@@ -8,8 +8,8 @@ namespace AphroditeFightCode
     public class CameraShake : MonoBehaviour
     {
         [SerializeField] private CinemachineVirtualCamera CinemachineVirtualCamera;
-        [SerializeField]private float shakeIntensity = 2f;
-        [SerializeField] private float shakeDuration = 0.3f;
+        //[SerializeField]private float shakeIntensity = 2f;
+        private float shakeDuration = 0.4f;
 
         private float timer;
         private CinemachineBasicMultiChannelPerlin _cineperlin;
