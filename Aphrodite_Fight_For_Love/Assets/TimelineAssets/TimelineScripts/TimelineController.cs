@@ -46,6 +46,11 @@ namespace AphroditeFightCode
             input.Timeline.Start.performed -= OnStartPerformed;
         }
 
+        private void Start()
+        {
+            PlayFromTimeline(0);
+        }
+
         private void OnSkipPerformed(InputAction.CallbackContext val)
         {
             Debug.Log("Skip Perfomred -- skipping current cut scene sequence");
@@ -56,6 +61,7 @@ namespace AphroditeFightCode
             Debug.Log("Starting Game From Start Menu");
             EndLoop(0);
             //SceneManager.LoadScene("Level1");
+            PlayFromTimeline(1);
         }
 
 
@@ -95,12 +101,13 @@ namespace AphroditeFightCode
                         break;
                 }
                 selectedTimeline = timelines[idx];
+                
 
 
             }
-
+            Debug.Log("playing timeline: " + selectedTimeline.name);
             //playing from only one playable director but can be changed later
-            playableDirectors[0].Play(selectedTimeline);
+            playableDirectors[idx].Play(selectedTimeline);
         }
 
         public void EndLoop(int playableDirIdx)
