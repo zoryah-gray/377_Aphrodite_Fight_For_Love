@@ -1303,7 +1303,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 9.921077
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -20611,7 +20611,7 @@ PrefabInstance:
     - target: {fileID: 4079549317456946476, guid: 9c60e292b60d9426e9ccb48e31b7a44a, type: 3}
       propertyPath: puzzle
       value: 
-      objectReference: {fileID: 11400000, guid: a59c8b8567716417da1922229281cba8, type: 2}
+      objectReference: {fileID: 11400000, guid: 9c1a09f51549b480d9a2d15c923043e2, type: 2}
     - target: {fileID: 4079549317456946476, guid: 9c60e292b60d9426e9ccb48e31b7a44a, type: 3}
       propertyPath: keypadUI
       value: 
@@ -23802,7 +23802,7 @@ PrefabInstance:
     - target: {fileID: 4079549317456946476, guid: 9c60e292b60d9426e9ccb48e31b7a44a, type: 3}
       propertyPath: puzzle
       value: 
-      objectReference: {fileID: 11400000, guid: 9c1a09f51549b480d9a2d15c923043e2, type: 2}
+      objectReference: {fileID: 11400000, guid: a59c8b8567716417da1922229281cba8, type: 2}
     - target: {fileID: 4079549317456946476, guid: 9c60e292b60d9426e9ccb48e31b7a44a, type: 3}
       propertyPath: keypadUI
       value: 

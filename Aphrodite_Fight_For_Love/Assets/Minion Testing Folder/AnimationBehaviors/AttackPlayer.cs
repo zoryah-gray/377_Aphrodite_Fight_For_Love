@@ -36,6 +36,25 @@ namespace AphroditeFightCode
             GameData.CheckPlayerHealth(minionDamage);
             Debug.Log("Player took " + minionDamage + " damage. Curr Player Health = " + GameData.playerHeath);
 
+            Color originalColor = playerObject.GetComponent<SpriteRenderer>().color;
+            Color flashColor = Color.red;
+            float flashDuration = 0.1f;
+            int numberOfFlashes = 2;
+
+            LeanTween.value(playerObject, originalColor, flashColor, flashDuration)
+               .setEase(LeanTweenType.easeInOutSine)
+               .setLoopPingPong(numberOfFlashes)
+               .setOnUpdate((Color val) =>
+               {
+                   // Update the object's color during the tween
+                   playerObject.GetComponent<SpriteRenderer>().color = val;
+               })
+               .setOnComplete(() =>
+               {
+                   // Reset the color to the original after the flash is complete
+                   playerObject.GetComponent<SpriteRenderer>().color = originalColor;
+               });
+
             //playerObject.GetComponent<QuickPlayerMove>().health -= minionDamage;
             //Debug.Log("Player took " + minionDamage + " damage. "); // + playerObject.GetComponent<QuickPlayerMove>().health + " health remaining.");
         }

@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHestiaFireball: 0
-  projectileBox: {fileID: 3139701630342551622}
+  bulletBox: {fileID: 3139701630342551622}
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
