@@ -21,16 +21,17 @@ namespace AphroditeFightCode
         public Sprite ff2_Sprite;
         public Sprite ffdamage_Sprite;
         private SpriteRenderer tileSpriteRenderer;
-        public Hestia hestia;
 
         private float loopEnd;
         private float loopInterval = 10f;
-        
+
+
         // Start is called before the first frame update
         void Start()
         {
             tileSpriteRenderer = GetComponent<SpriteRenderer>();
             loopEnd = -loopInterval;
+
         }
         // Update is called once per frame
         void Update()
@@ -46,8 +47,6 @@ namespace AphroditeFightCode
             }
             UpdateSprite();
         }
-
-        
 
         void ChangeState(State newTileState)
         {
