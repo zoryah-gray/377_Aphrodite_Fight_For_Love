@@ -33,7 +33,8 @@ namespace AphroditeFightCode
                 camScrpt.MoveCameraToTarget(gameObject.transform);
                 Vector3 originalScale = transform.localScale;
                 Vector3 originalPos = transform.position;
-                GetComponent<SpriteRenderer>().color = Color.green;
+                // temporaily commented out to work with tiles
+                //GetComponent<SpriteRenderer>().color = Color.green;
 
                 if (openHorz)
                 {

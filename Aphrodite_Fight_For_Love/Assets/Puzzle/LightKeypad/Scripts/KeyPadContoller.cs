@@ -39,6 +39,7 @@ namespace AphroditeFightCode
 
         [Header("Puzzle Unlocks")]
         public GameObject unlocksObj;
+        [SerializeField] private List<int> unlocksDoorIDs = new List<int>();
 
         // event to unlock the door
         //public delegate void UnlockHandler();
@@ -49,9 +50,8 @@ namespace AphroditeFightCode
         {
             EventSystem.current.SetSelectedGameObject(null);
             unlocksObj = null;
-            Initalize();
-
-
+            StartCoroutine(LoadPuzzle());
+            //Initalize();
         }
 
         private void OnDisable()
@@ -77,6 +77,7 @@ namespace AphroditeFightCode
 
         public void AddKeyPress(int keyID)
         {
+            Debug.Log("Adding btn " + keyID);
             currentInput.Add(keyID);
         }
 
@@ -95,7 +96,11 @@ namespace AphroditeFightCode
                 Debug.Log("Code is the same/correct!");
                 FlashAllButtons(flashCount, flashColorCorrect);
                 Invoke("OnReturn", 2f);
-                GameEvents.current.OpenDoorTrigger(currPuzzle.doorID);
+                foreach (var id in unlocksDoorIDs)
+                {
+                    GameEvents.current.OpenDoorTrigger(id);
+                }
+                //GameEvents.current.OpenDoorTrigger(currPuzzle.doorID);
             }
             else { 
                 //incorrect answer
@@ -114,22 +119,15 @@ namespace AphroditeFightCode
         {
             for (int i = 0; i < currentInput.Count; i++)
             {
-                if (i >= GameData.currKeypadPuzzle.code.Count)
+                if (i >= code.Count)
                 {
                     return false;
                 }
-                if (currentInput[i] != GameData.currKeypadPuzzle.code[i])
+                Debug.Log("Checking input (" + currentInput[i] + ") against actual (" + code[i]);
+                if (currentInput[i] != code[i])
                 {
                     return false;
                 }
-                //if (i >= currPuzzle.code.Count)
-                //{
-                //    return false;
-                //}
-                //if (currentInput[i] != currPuzzle.code[i])
-                //{
-                //    return false;
-                //}
             }
             return true;
         }
@@ -140,7 +138,7 @@ namespace AphroditeFightCode
 
             foreach (var i in code)
             {
-                Debug.Log(i + " | " + keypadButtons[i - 1].gameObject.name);
+                //Debug.Log(i + " | " + keypadButtons[i - 1].gameObject.name);
                 Image btnImg = keypadButtons[i - 1].GetComponent<Image>();
                 Vector3 originalScale = btnImg.gameObject.transform.localScale;
                 LeanTween.scale(btnImg.gameObject, originalScale * 1.15f, 0.5f)
@@ -162,17 +160,17 @@ namespace AphroditeFightCode
                         Color currentColor = btnImg.color;
                         currentColor.a = alpha;
                         btnImg.color = currentColor;
-                    })
-                    .setOnComplete(() =>
-                    {
-                        if (i == code[code.Count - 1])
-                        {
-                            EventSystem.current.SetSelectedGameObject(firstButton.gameObject);
-                            currentButton = firstButton.gameObject;
-                        }
+                    });
+                    //.setOnComplete(() =>
+                    //{
+                    //    if (i == code[code.Count - 1])
+                    //    {
+                    //        //EventSystem.current.SetSelectedGameObject(firstButton.gameObject);
+                    //        currentButton = firstButton.gameObject;
+                    //    }
 
                         
-                    });
+                    //});
             }
             
         }
@@ -211,8 +209,6 @@ namespace AphroditeFightCode
             }
         }
 
-        
-
 
 
         private void Initalize()
@@ -228,20 +224,36 @@ namespace AphroditeFightCode
                     }
                 }
             }
-            Debug.Log("in keypad puzzle = " + currPuzzle.name + "  |   gamedata = " + GameData.currKeypadPuzzle.name);
+            //Debug.Log("in keypad puzzle = " + currPuzzle.name + "  |   gamedata = " + GameData.currKeypadPuzzle.name);
+            Debug.Log("  |   gamedata = " + GameData.currKeypadPuzzle.name);
 
             // assign all the variables from the curr Scriptable Obj to their respective variables
             //code = currPuzzle.code;
-            code = GameData.currKeypadPuzzle.code;
+            currPuzzle = GameData.currKeypadPuzzle;
+            code = currPuzzle.code;
+            if (unlocksDoorIDs.Count > 0)
+            {
+                unlocksDoorIDs.Clear();
+            }
+            unlocksDoorIDs = currPuzzle.doorIDs;
             codeID = currPuzzle.codeID;
-            //assign difficulty
-                //public enum puzzleDifficulty
-                //    {
-                //easy,
-                //medium,
-                //hard,
 
-                //    }
+            //StartCoroutine(LoadPuzzle());
+            //if (GameData.currKeypadPuzzle.code != null)
+            //{
+            //    currPuzzle = GameData.currKeypadPuzzle;
+            //    code = GameData.currKeypadPuzzle.code;
+            //    unlocksDoorIDs = GameData.currKeypadPuzzle.doorIDs;
+            //    codeID = GameData.currKeypadPuzzle.codeID;
+            //}
+            //else
+            //{
+            //    StartCoroutine(LoadPuzzle());
+            //}
+            
+            
+
+
             switch (currPuzzle.difficulty)
             {
                 case KeypadPuzzleTriggerSO.puzzleDifficulty.easy:
@@ -256,9 +268,6 @@ namespace AphroditeFightCode
                     flashDuration = 0.15f;
                     delayBtFlashes = 0.22f;
                     break;
-                
-
-
             }
 
             AddKeyCodeToDictionary();
@@ -286,6 +295,17 @@ namespace AphroditeFightCode
             FlashPuzzleAnswer();
         }
 
+        IEnumerator LoadPuzzle()
+        {
+            while (GameData.currKeypadPuzzle == null)
+            {
+                Debug.Log("waiting on puzzle to load through GameData (" + GameData.currKeypadPuzzle + ")");
+                yield return null;
+            }
+            //once done run the puzzle
+            Initalize();
+        }
+
         private void AddKeyCodeToDictionary()
         {
             
@@ -311,5 +331,7 @@ namespace AphroditeFightCode
             }
             populateKeyCode();
         }
+
+
     }
 }
