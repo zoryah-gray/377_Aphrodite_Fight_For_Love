@@ -63,6 +63,7 @@ namespace AphroditeFightCode
             {
                 //animator.SetBool("isAttacking", false);
                 animator.SetInteger("currState", 1);
+                LeanTween.cancel(playerObject);
                 //animator.SetTrigger("isFollowing");
             }
         }
