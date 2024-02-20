@@ -26,16 +26,25 @@ namespace AphroditeFightCode
         Vector2 rectangleSize = new Vector2(0.9f, 0.45f);
 
         public float health = 10f;
-
+        public int curWeapon;
         void Start()
         {
             meleeBoxAnimator = meleeBoxGO.GetComponent<Animator>();
             bullet.GetComponent<SpriteRenderer>().enabled = false;
+
+            curWeapon = 0; // initialized to melee
         }
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Alpha1)){
+                curWeapon = 0;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                curWeapon = 1;
+            }
+            if (Input.GetKeyDown(KeyCode.Space) && curWeapon == 0)
             {
                 meleeBoxAnimator.SetBool("animCanAttack", true);
                 curPosition = meleeBoxGO.transform.position;
@@ -46,7 +55,7 @@ namespace AphroditeFightCode
                 //Debug.Log(health + "health cur");
                 Debug.Log(GameData.playerHeath + " health cur");
             }
-            if (Input.GetKeyDown(KeyCode.C) && Time.time - lastShotGun >= gunInterval)
+            if (Input.GetKeyDown(KeyCode.Space) && Time.time - lastShotGun >= gunInterval && curWeapon == 1)
             {
                 ShootGun();
                 lastShotGun = Time.time;
@@ -75,6 +84,7 @@ namespace AphroditeFightCode
 
             if (playerMovement.directionInt == 1) //Up
             {
+                bulletGO.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
                 bulletRB.velocity = transform.up * bulletSpeed;
             }
             else if (playerMovement.directionInt == 2) //Right
@@ -83,10 +93,12 @@ namespace AphroditeFightCode
             }
             else if (playerMovement.directionInt == 3) //Down
             {
+                bulletGO.transform.rotation = Quaternion.Euler(0f, 0f, 270f);
                 bulletRB.velocity = ((-1) * transform.up) * bulletSpeed;
             }
             else if (playerMovement.directionInt == 4) //Left
             {
+                bulletGO.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
                 bulletRB.velocity = ((-1) * transform.right) * bulletSpeed;
             }
         }

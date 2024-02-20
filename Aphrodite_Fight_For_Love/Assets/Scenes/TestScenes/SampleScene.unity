@@ -994,6 +994,10 @@ PrefabInstance:
       propertyPath: gunInterval
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6450805574603162727, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1529160023, guid: e3f9d3811a1f57b4eac31f03fc31213a, type: 3}
     - target: {fileID: 8060550628745360157, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
       propertyPath: m_Name
       value: Player
