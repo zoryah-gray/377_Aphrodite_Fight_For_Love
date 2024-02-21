@@ -18,16 +18,19 @@ namespace AphroditeFightCode
         public string[] dialogueArray;
         public string[] speakerArray;
         int dIndex;
-        void Start()
+
+        bool isSetup = false;
+        void Setup()
         {
             //Gather the text mesh pros used to display the text to the player
             dIndex = 0;
             dialogueBoxArray = GetComponentsInChildren<TextMeshProUGUI>();
+            speakerName = dialogueBoxArray[0];
+            dialogueText = dialogueBoxArray[1];
+            
             //ReceiveStartReadyDialogue(dialogueArray, speakerArray);
             player.SetActive(false);
-            /*player.GetComponent<PlayerMovement>().enabled = false;
-            player.GetComponent<PlayerKeypadPuzzleController>().enabled = false;
-            player.GetComponent<PlayerAttack>().enabled = false;*/
+            
         }
 
         // Update is called once per frame
@@ -35,20 +38,20 @@ namespace AphroditeFightCode
         {
             if(Input.GetKeyDown(KeyCode.Space) == true)
             {
-
                 Debug.Log(dIndex);
                 if (dIndex == dialogueArray.Length)
                 {
                     EndOfDialogue();
                 }
-                else { NextSentence(dialogueArray[dIndex]); }
+                else { NextSentence(); }
             }
         }
 
-        void ReceiveStartReadyDialogue(string[] dialogue, string[] speaker)
+        public void ReceiveStartReadyDialogue(string[] dialogue, string[] speaker)
         {
-            speakerName = dialogueBoxArray[0];
-            dialogueText = dialogueBoxArray[1];
+            Setup();
+            /* Debug.Log(speakerName.name);
+             Debug.Log(dialogueText.name);*/
             dialogueArray = dialogue;
             speakerArray = speaker;
             speakerName.text = speakerArray[dIndex];
@@ -56,13 +59,12 @@ namespace AphroditeFightCode
             dIndex++;
         }
 
-        private void NextSentence(string sentence)
+        private void NextSentence()
         {
             Debug.Log(speakerName.text + ": " + dialogueText.text);
             speakerName.text = speakerArray[dIndex];
             dialogueText.text = dialogueArray[dIndex];
             dIndex++;
-            
 
         }
 
@@ -76,6 +78,7 @@ namespace AphroditeFightCode
             player.GetComponent<PlayerAttack>().enabled = true;
             player.GetComponent<PlayerMovement>().enabled = true;*/
             gameObject.SetActive(false);
+            Debug.Log("End Of Dialogue. Change trigger thing");
 
         }
 
