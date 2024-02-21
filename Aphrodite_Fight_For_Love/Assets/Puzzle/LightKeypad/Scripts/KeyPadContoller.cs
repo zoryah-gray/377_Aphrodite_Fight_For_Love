@@ -69,6 +69,18 @@ namespace AphroditeFightCode
             GameData.freezePlayer = false;
             GameData.inKeypadPuzzle = false;
             StopAllCoroutines();
+            if (unlocksDoorIDs.Count == 0)
+            {
+                GameEvents.current.OpenDoorTrigger(1);
+            }
+            else
+            {
+                foreach (int id in unlocksDoorIDs)
+                {
+                    Debug.Log("opening " + id);
+                    GameEvents.current.OpenDoorTrigger(id);
+                }
+            }
 
             gameObject.SetActive(false);
         }
@@ -96,10 +108,10 @@ namespace AphroditeFightCode
                 Debug.Log("Code is the same/correct!");
                 FlashAllButtons(flashCount, flashColorCorrect);
                 Invoke("OnReturn", 2f);
-                foreach (var id in unlocksDoorIDs)
-                {
-                    GameEvents.current.OpenDoorTrigger(id);
-                }
+                //foreach (var id in unlocksDoorIDs)
+                //{
+                //    GameEvents.current.OpenDoorTrigger(id);
+                //}
                 //GameEvents.current.OpenDoorTrigger(currPuzzle.doorID);
             }
             else { 
@@ -123,7 +135,7 @@ namespace AphroditeFightCode
                 {
                     return false;
                 }
-                Debug.Log("Checking input (" + currentInput[i] + ") against actual (" + code[i]);
+                //Debug.Log("Checking input (" + currentInput[i] + ") against actual (" + code[i]);
                 if (currentInput[i] != code[i])
                 {
                     return false;

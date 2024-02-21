@@ -25,19 +25,19 @@ namespace AphroditeFightCode
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            Debug.Log("OnPointerDown");
+            //Debug.Log("OnPointerDown");
         }
 
         public void OnDrag(PointerEventData eventData)
         {
-            Debug.Log("OnDrag");
+            //Debug.Log("OnDrag");
             rt.anchoredPosition += eventData.delta / canvas.scaleFactor;
         }
 
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            Debug.Log("OnBeginDrag");
+            //Debug.Log("OnBeginDrag");
             canvasGroup.alpha = .6f;
             canvasGroup.blocksRaycasts = false;
         }
@@ -45,14 +45,14 @@ namespace AphroditeFightCode
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            Debug.Log("OnEndDrag");
+            //Debug.Log("OnEndDrag");
             canvasGroup.alpha = 1f;
             canvasGroup.blocksRaycasts = true;
         }
 
         public void OnDrop(PointerEventData eventData)
         {
-            Debug.Log("OnDrop");
+            //Debug.Log("OnDrop");
         }
     }
 }

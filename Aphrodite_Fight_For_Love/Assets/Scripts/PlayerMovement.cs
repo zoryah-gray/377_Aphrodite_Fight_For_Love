@@ -13,7 +13,7 @@ namespace AphroditeFightCode
         private PlayerInputs input = null;
         private Vector2 moveVector = Vector2.zero;
         private Rigidbody2D rb = null;
-        private float moveSpeed = 4f;
+        private float moveSpeed = 5.5f;
 
         [Header("Attached Objects and References")]
         public Animator animator;

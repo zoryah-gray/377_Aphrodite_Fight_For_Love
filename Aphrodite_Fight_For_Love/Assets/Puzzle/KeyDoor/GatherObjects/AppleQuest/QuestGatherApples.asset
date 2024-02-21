@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: QuestGatherApples
   m_EditorClassIdentifier: 
   questSprite: {fileID: 21300000, guid: 554bee4c1255e4dac8866afc8d507102, type: 3}
+  keySprite: {fileID: 21300000, guid: 28a124e040e29428b98454c1352bf6af, type: 3}
   questName: Gather3Apples
   questID: 0
   doorID: 3
@@ -23,9 +24,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5ca8d347672d34c97a5957e03b1a925f, type: 2}
   - {fileID: 11400000, guid: 6b32e203162d247268c4e536f33c6a6a, type: 2}
   requiredKeysID: 000000000100000002000000
-  obtainedKeys: 
+  obtainedKeys: 000000000200000001000000
   ongoing: 0
-  complete: 0
+  complete: 1
   questInstructions: I'd open that door, but I've lost my apples. Return them and
     I'll open it
   questEnd: My apples!! Good job, I'll unlocked it for you now

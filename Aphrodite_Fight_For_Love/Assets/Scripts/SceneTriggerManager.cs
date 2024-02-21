@@ -15,7 +15,7 @@ namespace AphroditeFightCode
             {
                 if (enterBoss)
                 {
-                    Invoke("EnterBossScene", 2f);
+                    Invoke("EnterBossScene", 0.75f);
                 }
             }
         }

@@ -10,7 +10,19 @@ namespace AphroditeFightCode
     {
         // THIS IS A SINGLETON CLASS - THERE SHOULD ONLY BE ONE IN A SCENE!!
         public static GUITextManager instance { get; private set; }
-        [Header("GUI Elements")]
+        [Header("GUI Menu Elements")]
+        public GameObject menu;
+
+        [Header("GUI Quest Elements")]
+        public GameObject questBar;
+        public Image questBarIcon;
+        public TMP_Text questBarText;
+        public int keyTotal;
+        public int keyCollected;
+        public float popDuration = 0.5f;
+        public float popScale = 1.2f;
+
+        [Header("GUI Elements Temp Dialouge")]
         public GameObject GUITextBox;
         public TMP_Text GUIText;
         public TMP_Text instructions;
@@ -49,6 +61,79 @@ namespace AphroditeFightCode
             {
                 GUITextBox.SetActive(false);
             }
+        }
+
+        public void ToggleMenu()
+        {
+            if (menu.activeSelf)
+            {
+                // menu open => close it
+                menu.SetActive(false);
+            }
+            else
+            {
+                //menu not open => open it
+                menu.SetActive(true);
+            }
+        }
+
+        public void InitalizeQuestBar(int total, Sprite img)
+        {
+            if (!menu.activeSelf)
+            {
+                // quest bar not open => open it
+                //questBar.SetActive(true);
+                RectTransform questBarRT = questBar.GetComponent<RectTransform>();
+                questBarRT.localScale = Vector3.zero;
+
+                LeanTween.scale(questBarRT, Vector3.one * popScale, popDuration)
+                    .setEase(LeanTweenType.easeOutBack)
+                    .setOnStart(() => questBar.SetActive(true)) // Activate the UI element at the start of the animation
+                    .setOnComplete(() => questBar.SetActive(true)); 
+           
+        }
+            keyTotal = total;
+            keyCollected = 0;
+            string format = keyCollected.ToString() + " / " + keyTotal.ToString();
+            questBarText.text = format;
+            questBarIcon.sprite = img;
+        }
+
+        public void UpdateQuestBar()
+        {
+            //public GameObject questBar;
+            //public Image questBarIcon;
+            //public TMP_Text questBarText;
+            
+            keyCollected += 1;
+            string format = keyCollected.ToString() + " / " + keyTotal.ToString();
+            questBarText.text = format;
+
+        }
+
+        public void DeactivateQuestBar()
+        {
+            float flashDuration = 0.4f;
+            RectTransform questBarRT = questBar.GetComponent<RectTransform>();
+
+            LeanTween.value(questBar, Color.white, Color.green, flashDuration)
+            .setEase(LeanTweenType.easeInOutQuad)
+            .setLoopPingPong(2)
+            .setOnUpdate((Color val) =>
+            {
+                // Update the color of the UI element during the tween
+                questBarIcon.color = val;
+                questBarText.color = val;
+            });
+
+            // Pop out
+            LeanTween.scale(questBarRT, new Vector3(popScale, popScale, 1f), popDuration)
+                .setEase(LeanTweenType.easeOutBack)
+                .setDelay(flashDuration * 2)  // Delay to start popping after the flashes
+                .setOnComplete(() =>
+                {
+                    questBar.SetActive(false);
+                });
         }
     }
 }

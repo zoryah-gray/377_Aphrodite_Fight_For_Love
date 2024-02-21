@@ -35,7 +35,7 @@ namespace AphroditeFightCode
         {
             if (quest != null)
             {
-                return;
+                quest.ResetValues();
             }
             else
             {
@@ -137,12 +137,12 @@ namespace AphroditeFightCode
             GUITextManager.instance.PrintToGUI(quest.questInstructions, quest.GUIinstructions, quest.questSprite);
             
             quest.ongoing = true;
-            
             //activate all the quest keys throughout the scene
             foreach (GameObject key in requiredKeysGO)
             {
                 key.SetActive(true);
             }
+            GUITextManager.instance.InitalizeQuestBar(requiredKeysGO.Count, quest.keySprite);
             // start a co-routine to turn off the GUI after a few seconds
             StartCoroutine(DeactivateGUI());
         }
@@ -166,6 +166,7 @@ namespace AphroditeFightCode
             completedDialouge = true;
             GameData.RemoveQuestFromOngoing(quest.questID);
             GameData.AddQuestToCompleted(quest.questID, quest);
+            GUITextManager.instance.DeactivateQuestBar();
             GameData.moveCamFromPlayer = true;
             GameEvents.current.OpenDoorTrigger(quest.doorID);
             //Unlock();

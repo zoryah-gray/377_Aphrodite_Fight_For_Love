@@ -418,7 +418,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8060550628745360157}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 463f3fb33671f4f3c90fc0e76f1c7fd9, type: 3}
   m_Name: 
@@ -497,3 +497,4 @@ MonoBehaviour:
   isAttacking: 0
   gunInterval: 0.5
   health: 10
+  curWeapon: 0

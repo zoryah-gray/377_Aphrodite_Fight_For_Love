@@ -24,6 +24,7 @@ namespace AphroditeFightCode
             if (quest.AddKey(this))
             {
                 quest.obtainedKeys.Add(keyID);
+                GUITextManager.instance.UpdateQuestBar();
                 if (quest.CheckQuestComplete())
                 {
                     quest.complete = true;

@@ -29,14 +29,14 @@ namespace AphroditeFightCode
 
         public void OnDrop(PointerEventData eventData)
         {
-            Debug.Log("OnDrop Slot");
+            //Debug.Log("OnDrop Slot");
             // gameobject currently being dragged
             if (eventData.pointerDrag != null)
             {
                 eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
                 if (eventData.pointerDrag.TryGetComponent<DragAndDropUIItem>(out DragAndDropUIItem itemScrpt))
                 {
-                    Debug.Log("The item " + itemScrpt.name + " has been placed choiceID => " + itemScrpt.choiceID);
+                    //Debug.Log("The item " + itemScrpt.name + " has been placed choiceID => " + itemScrpt.choiceID);
                     holdingItemID = itemScrpt.choiceID;
                     inUse = true;
                     manager.AddToChosen(holdingItemID);

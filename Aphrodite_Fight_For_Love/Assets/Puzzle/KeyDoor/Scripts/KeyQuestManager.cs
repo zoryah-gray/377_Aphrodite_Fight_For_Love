@@ -8,6 +8,7 @@ namespace AphroditeFightCode
     public class KeyQuestManager : ScriptableObject
     {
         public Sprite questSprite;
+        public Sprite keySprite;
         public string questName;
         public int questID;
         public int doorID;
@@ -42,6 +43,13 @@ namespace AphroditeFightCode
             }
             complete = false;
             ongoing = false;
+        }
+
+        public void ResetValues()
+        {
+            complete = false;
+            ongoing = false;
+            obtainedKeys.Clear();
         }
 
         public bool CheckQuestComplete()

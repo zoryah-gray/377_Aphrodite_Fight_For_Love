@@ -19,7 +19,7 @@ namespace AphroditeFightCode
 
         [Header("Key Animation")]
         private Animator anim;
-        public float bounceHeight = 1.25f;
+        public float bounceHeight = 1.15f;
         public float bounceDuration = 0.6f;
 
 
@@ -57,21 +57,46 @@ namespace AphroditeFightCode
             }
         }
 
-        void OnMouseOver()
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            //change the alpha/color of object
+
+            if (collision.gameObject.name == "Player")
+            {
+                keySprite.color = hoverColor;
+                GUITextManager.instance.PrintToGUI(key.info, key.instructions, key.keySprite);
+            }
+        }
+
+        public void DestroyKey()
+        {
+            Destroy(gameObject);
+        }
+
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.gameObject.name == "Player")
+            {
+                keySprite.color = spriteOriginalColor;
+                GUITextManager.instance.SetActive(false);
+            }
+        }
+
+        //void OnMouseOver()
+        //{
+        //    //change the alpha/color of object
             
-            keySprite.color = hoverColor;
-            GUITextManager.instance.PrintToGUI(key.info, key.instructions ,key.keySprite);
+        //    keySprite.color = hoverColor;
+        //    GUITextManager.instance.PrintToGUI(key.info, key.instructions ,key.keySprite);
 
-        }
+        //}
 
-        private void OnMouseExit()
-        {
-            keySprite.color = spriteOriginalColor;
-            GUITextManager.instance.SetActive(false);
+        //private void OnMouseExit()
+        //{
+        //    keySprite.color = spriteOriginalColor;
+        //    GUITextManager.instance.SetActive(false);
 
-        }
+        //}
 
         private void BounceAnim()
         {
