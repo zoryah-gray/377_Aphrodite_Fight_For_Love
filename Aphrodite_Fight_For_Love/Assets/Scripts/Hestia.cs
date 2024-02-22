@@ -52,6 +52,7 @@ namespace AphroditeFightCode
         private Transform arr3T;
 
         public float meteorSpeed;
+        public float numOfMeteor;
 
 
 
@@ -89,6 +90,7 @@ namespace AphroditeFightCode
             arr2T = arr2Prefab.GetComponent<Transform>();
             arr3T = arr3Prefab.GetComponent<Transform>();
             meteorSpeed = 3f;
+            numOfMeteor = 0f;
 
             //HestiaIsLeft = true;
             //currPullingWall = false;
@@ -110,8 +112,8 @@ namespace AphroditeFightCode
 
         void shootMeteor()
         {
-            //int dirM = Random.Range(1, 5);
-            int dirM = 4;
+            int dirM = Random.Range(1, 5);
+            //int dirM = 4;
             
             //from bottom
             if (dirM == 1)
@@ -125,14 +127,16 @@ namespace AphroditeFightCode
 
                 showArrow();
                 
-                for (float i = 1; i < 5f; i++)
+                for (float i = 1; i < 5f + numOfMeteor; i++)
                 {
-                    GameObject bottomMeteor = Instantiate(meteorPrefab, new Vector3(Random.Range(-8f,-4f) + (i * 4f) - 4f, -10f - i, 0f), Quaternion.identity);
+                    GameObject bottomMeteor = Instantiate(meteorPrefab, new Vector3(Random.Range(-8f,8f), -10f - i, 0f), Quaternion.identity);
                     Rigidbody2D bottomMeteorRB = bottomMeteor.GetComponent<Rigidbody2D>();
                     bottomMeteorRB.velocity = new Vector3(0f, meteorSpeed, 0f);
                 }
                 Invoke("hideArrow", 3f);
-                
+                numOfMeteor += 1;
+                meteorSpeed += 0.2f;
+
             }
             
 
@@ -147,14 +151,16 @@ namespace AphroditeFightCode
                 arr3T.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
 
                 showArrow();
-                for (float i = 1; i < 5f; i++)
+                for (float i = 1; i < 5f + numOfMeteor; i++)
                 {
-                    GameObject topMeteor = Instantiate(meteorPrefab, new Vector3(Random.Range(-8f, -4f) + (i*4f) - 4f, 10f + i, 0f), Quaternion.identity);
+                    GameObject topMeteor = Instantiate(meteorPrefab, new Vector3(Random.Range(-8f, 8f), 10f + i, 0f), Quaternion.identity);
                     Rigidbody2D topMeteorRB = topMeteor.GetComponent<Rigidbody2D>();
                     topMeteor.transform.Rotate(0f, 0f, 180f);
                     topMeteorRB.velocity = new Vector3(0f, (-1) * meteorSpeed, 0f);
                 }
                 Invoke("hideArrow", 3f);
+                numOfMeteor += 1;
+                meteorSpeed += 0.2f;
             }
 
             //from left
@@ -167,7 +173,7 @@ namespace AphroditeFightCode
                 arr3T.transform.position = new Vector3(-8.25f, -2.5f, 1);
                 arr3T.transform.rotation = Quaternion.Euler(0f, 0f, -90f);
                 showArrow();
-                for (float i = 1; i < 5f; i++)
+                for (float i = 1; i < 5f + numOfMeteor; i++)
                 {
                     GameObject leftMeteor = Instantiate(meteorPrefab, new Vector3(-14f - i, Random.Range(-4f,4f), 0f), Quaternion.identity);
                     Rigidbody2D leftMeteorRB = leftMeteor.GetComponent<Rigidbody2D>();
@@ -175,6 +181,8 @@ namespace AphroditeFightCode
                     leftMeteorRB.velocity = new Vector3(meteorSpeed, 0f, 0f);
                 }
                 Invoke("hideArrow", 3f);
+                numOfMeteor += 1;
+                meteorSpeed += 0.2f;
 
             }
 
@@ -189,7 +197,7 @@ namespace AphroditeFightCode
                 arr3T.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
                 showArrow();
                 
-                for (float i = 1; i < 5f; i++)
+                for (float i = 1; i < 5f + numOfMeteor; i++)
                 {
                     GameObject rightMeteor = Instantiate(meteorPrefab, new Vector3(14f + i,Random.Range(-4f,4f), 0f), Quaternion.identity);
                     Rigidbody2D rightMeteorRB = rightMeteor.GetComponent<Rigidbody2D>();
@@ -197,6 +205,8 @@ namespace AphroditeFightCode
                     rightMeteorRB.velocity = new Vector3((-1) * meteorSpeed, 0f, 0f);
                 }
                 Invoke("hideArrow", 3f);
+                numOfMeteor++;
+                meteorSpeed += 0.2f;
 
             }
         }
