@@ -295,6 +295,7 @@ MonoBehaviour:
   arr2Prefab: {fileID: 1307001392}
   arr3Prefab: {fileID: 1669550925}
   meteorSpeed: 0
+  numOfMeteor: 0
 --- !u!1 &374125992
 GameObject:
   m_ObjectHideFlags: 0
