@@ -87,7 +87,24 @@ namespace AphroditeFightCode
             {
                 //we'll actually do a kill function which will do a death animation,
                 //then delete the game object
+                Color originalColor = gameObject.GetComponent<SpriteRenderer>().color;
+                Color flashColor = Color.red;
+                float flashDuration = 0.1f;
+                int numberOfFlashes = 2;
 
+                LeanTween.value(gameObject, originalColor, flashColor, flashDuration)
+                   .setEase(LeanTweenType.easeInOutSine)
+                   .setLoopPingPong(numberOfFlashes)
+                   .setOnUpdate((Color val) =>
+                   {
+                       // Update the object's color during the tween
+                       gameObject.GetComponent<SpriteRenderer>().color = val;
+                   })
+                   .setOnComplete(() =>
+                   {
+                       // Reset the color to the original after the flash is complete
+                       gameObject.GetComponent<SpriteRenderer>().color = originalColor;
+                   });
                 MinionDeath();
             }
         }
