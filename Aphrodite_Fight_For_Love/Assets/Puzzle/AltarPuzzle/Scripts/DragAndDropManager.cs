@@ -36,11 +36,6 @@ namespace AphroditeFightCode
             gameObject.SetActive(false);
         }
 
-        //public void Unlock()
-        //{
-        //    // door has been unlocked
-        //    Unlocked?.Invoke();
-        //}
 
         public void AddToChosen(int id)
         {
