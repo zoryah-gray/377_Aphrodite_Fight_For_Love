@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2618221548239944646}
   - component: {fileID: 3320564779113435744}
   - component: {fileID: 3515665071236808020}
+  - component: {fileID: 2274841540871628526}
   m_Layer: 0
   m_Name: QuestGiver
   m_TagString: Untagged
@@ -146,7 +147,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quest: {fileID: 0}
+  requiredKeysGO: []
   icon: {fileID: 6791072519915214246}
+  unlocks: {fileID: 0}
+  dialogueHolder: {fileID: 2274841540871628526}
+  inTrigger: 0
+--- !u!114 &2274841540871628526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5257265344424009707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6963dec09dba034d80e64cc3875dde6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speakerList: []
+  dialogueList: []
+  sceneStart: 0
+  sceneFinish: 0
+  singleSpeaker: 0
+  dialogueManager: {fileID: 0}
 --- !u!1 &6163660371377409972
 GameObject:
   m_ObjectHideFlags: 0

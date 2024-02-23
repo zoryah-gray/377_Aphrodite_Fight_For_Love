@@ -11,7 +11,7 @@ namespace AphroditeFightCode
         [Header("Quest SO")]
         public KeyQuestManager quest;
         public List<GameObject> requiredKeysGO = new List<GameObject>();
-        private bool completedDialouge = false;
+        
         [Header("Quest Icon")]
         public GameObject icon;
         [Header("Quest Unlocks")]
@@ -19,7 +19,12 @@ namespace AphroditeFightCode
         // event to unlock the door
         //public delegate void UnlockHandler();
         //public event UnlockHandler Unlocked;
-
+        [Header("Dialouge")]
+        [SerializeField] private GameObject dialogueManager;
+        private List<string> dialogueList = new List<string>();
+        private List<string> speakerList = new List<string>();
+        private bool completedDialouge = false;
+        //[SerializeField] private DialogueManager dialogueManager;
         [Header("Inputs")]
         private PlayerInputs input = null;
         public bool inTrigger = false;
@@ -41,6 +46,7 @@ namespace AphroditeFightCode
             {
                 Debug.LogWarning("A KeyQuestManager object has not been assigned");
             }
+
         }
 
         private void OnEnable()
@@ -131,9 +137,19 @@ namespace AphroditeFightCode
             //GameData.startingQuestActions = false;
         }
 
+        public void StartDialouge(List<string> dialogueList, List<string> speakerList)
+        {
+            List<Sprite> speakers = new List<Sprite>();
+            speakers.Add(quest.questSprite);
+            dialogueManager.SetActive(true);
+            dialogueManager.GetComponent<DialogueManager>().ReceiveStartReadyDialogue(dialogueList.ToArray(), speakerList.ToArray(), speakers);
+        }
+
         public void StartQuest()
         {
             Debug.Log("starting quest");
+
+            //dialogueList
             GUITextManager.instance.PrintToGUI(quest.questInstructions, quest.GUIinstructions, quest.questSprite);
             
             quest.ongoing = true;

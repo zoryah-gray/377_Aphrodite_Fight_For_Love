@@ -18,6 +18,9 @@ namespace AphroditeFightCode
         public string[] dialogueArray;
         public string[] speakerArray;
         int dIndex;
+        bool singleSpeaker = false;
+        Sprite speaker1;
+        Sprite speaker2;
 
         bool isSetup = false;
         void Setup()
@@ -47,8 +50,25 @@ namespace AphroditeFightCode
             }
         }
 
-        public void ReceiveStartReadyDialogue(string[] dialogue, string[] speaker)
+        public void ReceiveStartReadyDialogue(string[] dialogue, string[] speaker, List<Sprite> speakerSprites)
         {
+            // list of sprites is in the order of speaking; if the length of the list of Sprites
+            // is 1 then its a single speaker, if the length is 2 then the first is the first speaker
+            // and the second is the 2nd speaker [length max 2]
+            // ex speaker = ["Farmer", "Illia", "Farmer", "Farmer"]
+            // sprites[0] == Farmer's Sprite
+            // sprites[1] == Illi's Sprite
+            if (speakerSprites.Count == 1)
+            {
+                singleSpeaker = true;
+                speaker1 = speakerSprites[0];
+            }
+            else
+            {
+                speaker1 = speakerSprites[0];
+                speaker2 = speakerSprites[1];
+            }
+
             Setup();
             /* Debug.Log(speakerName.name);
              Debug.Log(dialogueText.name);*/
