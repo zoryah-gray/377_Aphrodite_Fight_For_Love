@@ -41,8 +41,8 @@ namespace AphroditeFightCode
 
             /*Debug.Log(dialogueList[0]);
             Debug.Log(speakerList[0]);*/
-
-                dialogueManager.GetComponent<DialogueManager>().ReceiveStartReadyDialogue(dialogueList, speakerList);
+                List<Sprite> sprites = new List<Sprite>();
+                dialogueManager.GetComponent<DialogueManager>().ReceiveStartReadyDialogue(dialogueList, speakerList, sprites);
 
                 /*if (singleSpeaker)
                 {
