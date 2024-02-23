@@ -10,7 +10,7 @@ namespace AphroditeFightCode
     public class PlayerMovement : MonoBehaviour
     {
         [Header("Player RB and Move Controls")]
-        private PlayerInputs input = null;
+        //private PlayerInputs input = null;
         private Vector2 moveVector = Vector2.zero;
         private Rigidbody2D rb = null;
         private float moveSpeed = 5.5f;
@@ -38,30 +38,45 @@ namespace AphroditeFightCode
 
         private void Awake()
         {
-            input = new PlayerInputs();
+            //input = new PlayerInputs();
             rb = GetComponent<Rigidbody2D>();
-            input.Player.Enable();
+            //input.Player.Enable();
             sceneCamera = Camera.main;
 
-            // lock the cursor and turn it invisible
-            // => in playMode if you want to click away press 'Esc'
-            //Cursor.visible = false;
-            //Cursor.lockState = CursorLockMode.Locked;
         }
 
 
         private void OnEnable()
         {
-            input.Player.Enable();
-            input.Player.Movement.performed += OnMovementPerformed;
-            input.Player.Movement.canceled += OnMovementCancelled;
-            input.Player.Click.performed += OnClickPerformed;
+            //if (!PlayerInputsSingleton.PlayerInputsInstance.Player.enabled)
+            //{
+            //    PlayerInputsSingleton.PlayerInputsInstance.Player.Enable();
+            //}
+            //PlayerInputsSingleton.PlayerInputsInstance.Player.Enable();
+            PlayerInputsSingleton.PlayerInputsInstance.Player.Movement.performed += OnMovementPerformed;
+            PlayerInputsSingleton.PlayerInputsInstance.Player.Movement.canceled += OnMovementCancelled;
+            PlayerInputsSingleton.PlayerInputsInstance.Player.Click.performed += OnClickPerformed;
+            
+
+            //input.Player.Enable();
+            //input.Player.Movement.performed += OnMovementPerformed;
+            //input.Player.Movement.canceled += OnMovementCancelled;
+            //input.Player.Click.performed += OnClickPerformed;
         }
         private void OnDisable()
         {
-            input.Player.Disable();
-            input.Player.Movement.performed -= OnMovementPerformed;
-            input.Player.Movement.canceled -= OnMovementCancelled;
+            if (PlayerInputsSingleton.PlayerInputsInstance.Player.enabled)
+            {
+                PlayerInputsSingleton.PlayerInputsInstance.Player.Disable();
+            }
+            PlayerInputsSingleton.PlayerInputsInstance.Player.Movement.performed -= OnMovementPerformed;
+            PlayerInputsSingleton.PlayerInputsInstance.Player.Movement.performed -= OnMovementPerformed;
+            PlayerInputsSingleton.PlayerInputsInstance.Player.Click.performed -= OnClickPerformed;
+
+            //input.Player.Disable();
+            //input.Player.Movement.performed -= OnMovementPerformed;
+            //input.Player.Movement.performed -= OnMovementPerformed;
+            //input.Player.Click.performed -= OnClickPerformed;
         }
         private void FixedUpdate()
         {
@@ -70,6 +85,7 @@ namespace AphroditeFightCode
                 rb.velocity = moveVector * moveSpeed;
                 HandleMovementAnimBlendTree();
             }
+            //Debug.Log("    pm: is current action map player? = " + input.Player.enabled);
         }
 
         public void AddKey(ClickableKey key)

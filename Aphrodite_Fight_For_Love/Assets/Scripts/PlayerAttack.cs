@@ -1,10 +1,10 @@
-
-
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
-using AphroditeFightCode;
+//using AphroditeFightCode;
+using UnityEngine.InputSystem;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
 namespace AphroditeFightCode
@@ -26,25 +26,59 @@ namespace AphroditeFightCode
         Vector2 rectangleSize = new Vector2(0.9f, 0.45f);
 
         public float health = 10f;
+        [Header("Controlling Weapon")]
         public int curWeapon;
+        public Sprite meleeSprite;
+        public Sprite gunSprite;
+        public Image GUISlot1;
+        public Image GUISlot2;
+
         void Start()
         {
             meleeBoxAnimator = meleeBoxGO.GetComponent<Animator>();
             bullet.GetComponent<SpriteRenderer>().enabled = false;
 
             curWeapon = 0; // initialized to melee
-        }
-        // Update is called once per frame
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha1)){
-                curWeapon = 0;
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha2))
+
+            // set the GUI
+            // Ensure the Canvas components are present
+            Canvas canvas1 = GUISlot1.GetComponentInParent<Canvas>();
+            Canvas canvas2 = GUISlot2.GetComponentInParent<Canvas>();
+
+            // Set the sorting order to ensure image2 renders over image1
+            if (canvas1 && canvas2)
             {
-                curWeapon = 1;
+                int sortingOrder = canvas1.sortingOrder;
+                canvas2.sortingOrder = sortingOrder + 1;
             }
-            if (Input.GetKeyDown(KeyCode.Space) && curWeapon == 0)
+        }
+
+        private void OnEnable()
+        {
+            if (!PlayerInputsSingleton.PlayerInputsInstance.Player.enabled)
+            {
+                PlayerInputsSingleton.PlayerInputsInstance.Player.Enable();
+            }
+            PlayerInputsSingleton.PlayerInputsInstance.Player.Attack.performed += OnAttackPerformed;
+            PlayerInputsSingleton.PlayerInputsInstance.Player.Melee.performed += OnMeleePerformed;
+            PlayerInputsSingleton.PlayerInputsInstance.Player.Shoot.performed += OnShootPerformed;
+        }
+
+        private void OnDisable()
+        {
+            if (PlayerInputsSingleton.PlayerInputsInstance.Player.enabled)
+            {
+                PlayerInputsSingleton.PlayerInputsInstance.Player.Disable();
+            }
+            PlayerInputsSingleton.PlayerInputsInstance.Player.Attack.performed -= OnAttackPerformed;
+            PlayerInputsSingleton.PlayerInputsInstance.Player.Melee.performed -= OnMeleePerformed;
+            PlayerInputsSingleton.PlayerInputsInstance.Player.Shoot.performed -= OnShootPerformed;
+
+        }
+
+        private void OnAttackPerformed(InputAction.CallbackContext val)
+        {
+            if (curWeapon == 0)
             {
                 meleeBoxAnimator.SetBool("animCanAttack", true);
                 curPosition = meleeBoxGO.transform.position;
@@ -55,11 +89,53 @@ namespace AphroditeFightCode
                 //Debug.Log(health + "health cur");
                 Debug.Log(GameData.playerHeath + " health cur");
             }
-            if (Input.GetKeyDown(KeyCode.Space) && Time.time - lastShotGun >= gunInterval && curWeapon == 1)
+            if (Time.time - lastShotGun >= gunInterval && curWeapon == 1)
             {
                 ShootGun();
                 lastShotGun = Time.time;
             }
+        }
+
+        private void OnMeleePerformed(InputAction.CallbackContext val)
+        {
+            // KeyCode.Alpha1
+            curWeapon = 0;
+            GameData.currWeapon = 0;
+        }
+
+        private void OnShootPerformed(InputAction.CallbackContext val)
+        {
+            // KeyCode.Alpha2
+            curWeapon = 1;
+            GameData.currWeapon = 1;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            //if (Input.GetKeyDown(KeyCode.Alpha1)){
+            //    curWeapon = 0;
+            //}
+            //if (Input.GetKeyDown(KeyCode.Alpha2))
+            //{
+            //    curWeapon = 1;
+            //}
+            //if (Input.GetKeyDown(KeyCode.Space) && curWeapon == 0)
+            //{
+            //    meleeBoxAnimator.SetBool("animCanAttack", true);
+            //    curPosition = meleeBoxGO.transform.position;
+            //    Attack();
+            //    Debug.Log("Attack!");
+            //    StartCoroutine(ResetAfterAnim());
+
+            //    //Debug.Log(health + "health cur");
+            //    Debug.Log(GameData.playerHeath + " health cur");
+            //}
+            //if (Input.GetKeyDown(KeyCode.Space) && Time.time - lastShotGun >= gunInterval && curWeapon == 1)
+            //{
+            //    ShootGun();
+            //    lastShotGun = Time.time;
+            //}
             if (GameData.playerHeath <= 0f)
             {
                 PlayerDeath();

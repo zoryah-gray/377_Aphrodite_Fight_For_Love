@@ -11,6 +11,7 @@ namespace AphroditeFightCode
         [Header("Player Game Settings")]
         public static float playerHeath = 60f;
         public static int onHeart = 1;
+        public static int currWeapon = 0;
 
         [Header("Level Manager")]
         public static int onLevel = 1;

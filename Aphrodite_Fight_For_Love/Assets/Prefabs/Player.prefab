@@ -249,7 +249,6 @@ GameObject:
   - component: {fileID: 5060671358131745205}
   - component: {fileID: 7458961295609241406}
   - component: {fileID: 7847119825080641495}
-  - component: {fileID: 5596180429101290438}
   - component: {fileID: 3162960956672723163}
   - component: {fileID: 6432762151047855504}
   m_Layer: 0
@@ -411,23 +410,6 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
---- !u!114 &5596180429101290438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8060550628745360157}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 463f3fb33671f4f3c90fc0e76f1c7fd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  freezePlayer: 0
-  inPuzzleTrigger: 0
-  inKeypadPuzzle: 0
-  keypadUI: {fileID: 0}
-  inQuestTrigger: 0
 --- !u!61 &3162960956672723163
 BoxCollider2D:
   m_ObjectHideFlags: 0

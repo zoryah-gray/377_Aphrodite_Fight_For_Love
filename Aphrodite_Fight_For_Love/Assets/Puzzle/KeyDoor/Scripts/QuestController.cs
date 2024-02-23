@@ -26,12 +26,12 @@ namespace AphroditeFightCode
         private bool completedDialouge = false;
         //[SerializeField] private DialogueManager dialogueManager;
         [Header("Inputs")]
-        private PlayerInputs input = null;
+        //private PlayerInputs input = null;
         public bool inTrigger = false;
 
         private void Awake()
         {
-            input = new PlayerInputs();
+            //input = new PlayerInputs();
             Intialize();
         }
 
@@ -51,15 +51,29 @@ namespace AphroditeFightCode
 
         private void OnEnable()
         {
-            input.Player.Enable();
-            input.Player.Interact.performed += OnInteractPerformed;
-            //input.Player.Interact.canceled += OnInteractCanceled;
+            if (!PlayerInputsSingleton.PlayerInputsInstance.Player.enabled)
+            {
+                PlayerInputsSingleton.PlayerInputsInstance.Player.Enable();
+            }
+            PlayerInputsSingleton.PlayerInputsInstance.Player.Interact.performed += OnInteractPerformed;
+
+            //if (!input.Player.enabled)
+            //{
+            //    input.Player.Enable();
+                
+            //}
+            //input.Player.Interact.performed += OnInteractPerformed;
         }
         private void OnDisable()
         {
-            input.Player.Disable();
-            input.Player.Interact.performed -= OnInteractPerformed;
-            //input.Player.Interact.canceled -= OnInteractCanceled;
+            PlayerInputsSingleton.PlayerInputsInstance.Player.Interact.performed -= OnInteractPerformed;
+
+            //if (input.Player.enabled)
+            //{
+            //    input.Player.Disable();
+            //}
+            //input.Player.Interact.performed -= OnInteractPerformed;
+
             StopAllCoroutines();
         }
 
@@ -84,8 +98,6 @@ namespace AphroditeFightCode
             {
                 icon.SetActive(true);
                 inTrigger = true;
-                collision.gameObject.GetComponent<PlayerKeypadPuzzleController>().inQuestTrigger = true;
-                
             }
         }
 
@@ -98,9 +110,6 @@ namespace AphroditeFightCode
             {
                 inTrigger = false;
                 icon.SetActive(false);
-                collision.gameObject.GetComponent<PlayerKeypadPuzzleController>().inQuestTrigger = false;
-                //StopAllCoroutines();
-                //GUITextManager.instance.SetActive(false);
             }
         }
 
@@ -147,10 +156,16 @@ namespace AphroditeFightCode
 
         public void StartQuest()
         {
-            Debug.Log("starting quest");
-
-            //dialogueList
-            GUITextManager.instance.PrintToGUI(quest.questInstructions, quest.GUIinstructions, quest.questSprite);
+            
+            ResetDialougeLists();
+            foreach (var line in quest.questInstructions)
+            {
+                speakerList.Add(quest.questGiverName);
+                dialogueList.Add(line);
+            }
+            StartDialouge(dialogueList, speakerList);
+            
+            //GUITextManager.instance.PrintToGUI(quest.questInstructions, quest.GUIinstructions, quest.questSprite);
             
             quest.ongoing = true;
             //activate all the quest keys throughout the scene
@@ -160,7 +175,7 @@ namespace AphroditeFightCode
             }
             GUITextManager.instance.InitalizeQuestBar(requiredKeysGO.Count, quest.keySprite);
             // start a co-routine to turn off the GUI after a few seconds
-            StartCoroutine(DeactivateGUI());
+            //StartCoroutine(DeactivateGUI());
         }
 
         IEnumerator DeactivateGUI()
@@ -175,8 +190,16 @@ namespace AphroditeFightCode
 
         public void EndQuest()
         {
-            Debug.Log("Ending Quest");
-            GUITextManager.instance.PrintToGUI(quest.questEnd, quest.GUIinstructions ,quest.questSprite);
+            
+            ResetDialougeLists();
+            foreach (var line in quest.questEnd)
+            {
+                speakerList.Add(quest.questGiverName);
+                dialogueList.Add(line);
+            }
+            StartDialouge(dialogueList, speakerList);
+
+            //GUITextManager.instance.PrintToGUI(quest.questEnd, quest.GUIinstructions ,quest.questSprite);
             quest.ongoing = false;
             quest.complete = true;
             completedDialouge = true;
@@ -186,30 +209,44 @@ namespace AphroditeFightCode
             GameData.moveCamFromPlayer = true;
             GameEvents.current.OpenDoorTrigger(quest.doorID);
             //Unlock();
-            StartCoroutine(DeactivateGUI());
+            //StartCoroutine(DeactivateGUI());
 
         }
 
         private void RepeatPrompt(bool completed)
         {
+            ResetDialougeLists();
             if (!completed)
             {
-                GUITextManager.instance.PrintToGUI(quest.questInstructions, quest.GUIinstructions, quest.questSprite);
+                foreach (var line in quest.questInstructions)
+                {
+                    speakerList.Add(quest.questGiverName);
+                    dialogueList.Add(line);
+                }
+
+                //GUITextManager.instance.PrintToGUI(quest.questInstructions, quest.GUIinstructions, quest.questSprite);
             }
             else
             {
-                GUITextManager.instance.PrintToGUI(quest.questEnded, quest.GUIinstructions, quest.questSprite);
+                speakerList.Add(quest.questGiverName);
+                dialogueList.Add(quest.questEnded);
+
+                //GUITextManager.instance.PrintToGUI(quest.questEnded, quest.GUIinstructions, quest.questSprite);
 
             }
+
+            StartDialouge(dialogueList, speakerList);
+
             // start a co-routine to turn off the GUI after a few seconds
-            StartCoroutine(DeactivateGUI());
+            //StartCoroutine(DeactivateGUI());
         }
 
-        //public void Unlock()
-        //{
-        //    // door has been unlocked
-        //    Unlocked?.Invoke();
-        //}
+        void ResetDialougeLists()
+        {
+            speakerList.Clear();
+            dialogueList.Clear();
+        }
+
 
 
 

@@ -134,7 +134,6 @@
     <Compile Include="Assets/Scripts/GUIMenuManager.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralEventsListeners.cs" />
     <Compile Include="Assets/Puzzle/LightKeypad/Scripts/PuzzleEnter.cs" />
-    <Compile Include="Assets/Puzzle/LightKeypad/Scripts/PlayerKeypadPuzzleController.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSpline2d.cs" />
     <Compile Include="Assets/LeanTween/Framework/LTSeq.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathBezier2d.cs" />
@@ -151,6 +150,7 @@
     <Compile Include="Assets/LeanTween/Framework/LeanAudio.cs" />
     <Compile Include="Assets/LeanTween/Framework/LTDescrOptional.cs" />
     <Compile Include="Assets/LeanTween/Testing/TestingMaxTweens.cs" />
+    <Compile Include="Assets/Scripts/PlayerInputsSingleton.cs" />
     <Compile Include="Assets/LeanTween/Testing/TestingIssue.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralUISpace.cs" />
     <Compile Include="Assets/Scripts/RotateObject.cs" />

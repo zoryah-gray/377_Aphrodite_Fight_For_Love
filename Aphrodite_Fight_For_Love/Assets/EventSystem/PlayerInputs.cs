@@ -62,6 +62,24 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Melee"",
+                    ""type"": ""Button"",
+                    ""id"": ""3d5cb9f6-520e-456b-b508-e6ed20d7be17"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""065ccd0d-23a7-4ec9-860a-954487ae338a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -227,6 +245,28 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9a063217-f857-4d57-8c1b-7f3dbdf118b1"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Melee"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e607bab-4fdf-4103-a7eb-ff8d1a72799a"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -784,6 +824,34 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Dialouge"",
+            ""id"": ""ccb60bc7-7259-4754-a8b0-26db7901077a"",
+            ""actions"": [
+                {
+                    ""name"": ""Next"",
+                    ""type"": ""Button"",
+                    ""id"": ""4b5aa0dd-ef6a-4ec9-b9e4-88953eca7b38"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""8fa9b663-a69a-4db7-943c-8889533578be"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -805,6 +873,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Click = m_Player.FindAction("Click", throwIfNotFound: true);
+        m_Player_Melee = m_Player.FindAction("Melee", throwIfNotFound: true);
+        m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
@@ -821,6 +891,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Timeline = asset.FindActionMap("Timeline", throwIfNotFound: true);
         m_Timeline_Skip = m_Timeline.FindAction("Skip", throwIfNotFound: true);
         m_Timeline_Start = m_Timeline.FindAction("Start", throwIfNotFound: true);
+        // Dialouge
+        m_Dialouge = asset.FindActionMap("Dialouge", throwIfNotFound: true);
+        m_Dialouge_Next = m_Dialouge.FindAction("Next", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -886,6 +959,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Click;
+    private readonly InputAction m_Player_Melee;
+    private readonly InputAction m_Player_Shoot;
     public struct PlayerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -894,6 +969,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Click => m_Wrapper.m_Player_Click;
+        public InputAction @Melee => m_Wrapper.m_Player_Melee;
+        public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -915,6 +992,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Click.started += instance.OnClick;
             @Click.performed += instance.OnClick;
             @Click.canceled += instance.OnClick;
+            @Melee.started += instance.OnMelee;
+            @Melee.performed += instance.OnMelee;
+            @Melee.canceled += instance.OnMelee;
+            @Shoot.started += instance.OnShoot;
+            @Shoot.performed += instance.OnShoot;
+            @Shoot.canceled += instance.OnShoot;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -931,6 +1014,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Click.started -= instance.OnClick;
             @Click.performed -= instance.OnClick;
             @Click.canceled -= instance.OnClick;
+            @Melee.started -= instance.OnMelee;
+            @Melee.performed -= instance.OnMelee;
+            @Melee.canceled -= instance.OnMelee;
+            @Shoot.started -= instance.OnShoot;
+            @Shoot.performed -= instance.OnShoot;
+            @Shoot.canceled -= instance.OnShoot;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1120,6 +1209,52 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         }
     }
     public TimelineActions @Timeline => new TimelineActions(this);
+
+    // Dialouge
+    private readonly InputActionMap m_Dialouge;
+    private List<IDialougeActions> m_DialougeActionsCallbackInterfaces = new List<IDialougeActions>();
+    private readonly InputAction m_Dialouge_Next;
+    public struct DialougeActions
+    {
+        private @PlayerInputs m_Wrapper;
+        public DialougeActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Next => m_Wrapper.m_Dialouge_Next;
+        public InputActionMap Get() { return m_Wrapper.m_Dialouge; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DialougeActions set) { return set.Get(); }
+        public void AddCallbacks(IDialougeActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DialougeActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DialougeActionsCallbackInterfaces.Add(instance);
+            @Next.started += instance.OnNext;
+            @Next.performed += instance.OnNext;
+            @Next.canceled += instance.OnNext;
+        }
+
+        private void UnregisterCallbacks(IDialougeActions instance)
+        {
+            @Next.started -= instance.OnNext;
+            @Next.performed -= instance.OnNext;
+            @Next.canceled -= instance.OnNext;
+        }
+
+        public void RemoveCallbacks(IDialougeActions instance)
+        {
+            if (m_Wrapper.m_DialougeActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IDialougeActions instance)
+        {
+            foreach (var item in m_Wrapper.m_DialougeActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_DialougeActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public DialougeActions @Dialouge => new DialougeActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -1144,6 +1279,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnClick(InputAction.CallbackContext context);
+        void OnMelee(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -1162,5 +1299,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     {
         void OnSkip(InputAction.CallbackContext context);
         void OnStart(InputAction.CallbackContext context);
+    }
+    public interface IDialougeActions
+    {
+        void OnNext(InputAction.CallbackContext context);
     }
 }

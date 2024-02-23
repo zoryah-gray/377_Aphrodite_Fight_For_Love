@@ -23,23 +23,39 @@ namespace AphroditeFightCode
         public GameObject door;
 
         [Header("Inputs")]
-        private PlayerInputs input = null;
+        //private PlayerInputs input = null;
         public bool inTrigger = false;
 
         private void Awake()
         {
-            input = new PlayerInputs();
+            //input = new PlayerInputs();
         }
 
         private void OnEnable()
         {
-            input.Player.Enable();
-            input.Player.Interact.performed += OnInteractPerformed;
+            PlayerInputsSingleton.PlayerInputsInstance.Player.Interact.performed += OnInteractPerformed;
+
+            //if (!input.Player.enabled)
+            //{
+            //    input.Player.Enable();
+
+            //}
+            //input.Player.Interact.performed += OnInteractPerformed;
+            //input.Player.Enable();
+            //input.Player.Interact.performed += OnInteractPerformed;
         }
         private void OnDisable()
         {
-            input.Player.Disable();
-            input.Player.Interact.performed -= OnInteractPerformed;
+            PlayerInputsSingleton.PlayerInputsInstance.Player.Interact.performed -= OnInteractPerformed;
+
+            //if (input.Player.enabled)
+            //{
+            //    input.Player.Disable();
+            //}
+            //input.Player.Interact.performed -= OnInteractPerformed;
+
+            //input.Player.Disable();
+            //input.Player.Interact.performed -= OnInteractPerformed;
             StopAllCoroutines();
         }
 

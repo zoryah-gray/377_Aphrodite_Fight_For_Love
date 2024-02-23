@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.InputSystem;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,6 +12,9 @@ namespace AphroditeFightCode
     {
         // Start is called before the first frame update
         //[SerializeField] float typeSpeed = 0.2f;
+        //[Header("Action Map Controls")]
+        //private PlayerInputs input = null;
+        [Header("Dialouge Inputs")]
         TextMeshProUGUI[] dialogueBoxArray;
         [SerializeField] private GameObject player;
         TextMeshProUGUI dialogueText;
@@ -32,22 +36,74 @@ namespace AphroditeFightCode
             dialogueText = dialogueBoxArray[1];
             
             //ReceiveStartReadyDialogue(dialogueArray, speakerArray);
-            player.SetActive(false);
+
+
+            //player.SetActive(false);
             
         }
 
-        // Update is called once per frame
+        private void Awake()
+        {
+            //input = new PlayerInputs();
+            //input.Dialouge.Enable();
+        }
+
+        private void OnEnable()
+        {
+            PlayerInputsSingleton.PlayerInputsInstance.Dialouge.Enable();
+            PlayerInputsSingleton.PlayerInputsInstance.Player.Disable();
+            PlayerInputsSingleton.PlayerInputsInstance.Dialouge.Next.performed += OnNextPerformed;
+
+            //input.Dialouge.Enable();
+            //input.Player.Disable();
+            //input.Dialouge.Next.performed += OnNextPerformed;
+        }
+        private void OnDisable()
+        {
+            
+            PlayerInputsSingleton.PlayerInputsInstance.Dialouge.Disable();
+            PlayerInputsSingleton.PlayerInputsInstance.Player.Enable();
+            PlayerInputsSingleton.PlayerInputsInstance.Dialouge.Next.performed -= OnNextPerformed;
+
+            //input.Dialouge.Disable();
+            //input.Player.Enable();
+            //input.Dialouge.Next.performed -= OnNextPerformed;
+        }
+
+        //private void OnDestroy()
+        //{
+        //    if (!PlayerInputsSingleton.PlayerInputsInstance.Player.enabled)
+        //    {
+        //        PlayerInputsSingleton.PlayerInputsInstance.Player.Enable();
+        //    }
+        //    //if (!input.Player.enabled)
+        //    //{
+        //    //    input.Player.Enable();
+        //    //}
+        //}
         void Update()
         {
-            if(Input.GetKeyDown(KeyCode.Space) == true)
+            //Debug.Log("DM: is current action map player? = " + input.Player.enabled);
+            //if (Input.GetKeyDown(KeyCode.Space) == true)
+            //{
+            //    Debug.Log(dIndex);
+            //    if (dIndex == dialogueArray.Length)
+            //    {
+            //        EndOfDialogue();
+            //    }
+            //    else { NextSentence(); }
+            //}
+        }
+
+
+        private void OnNextPerformed(InputAction.CallbackContext val)
+        {
+            Debug.Log(dIndex);
+            if (dIndex == dialogueArray.Length)
             {
-                Debug.Log(dIndex);
-                if (dIndex == dialogueArray.Length)
-                {
-                    EndOfDialogue();
-                }
-                else { NextSentence(); }
+                EndOfDialogue();
             }
+            else { NextSentence(); }
         }
 
         public void ReceiveStartReadyDialogue(string[] dialogue, string[] speaker, List<Sprite> speakerSprites)
@@ -58,6 +114,9 @@ namespace AphroditeFightCode
             // ex speaker = ["Farmer", "Illia", "Farmer", "Farmer"]
             // sprites[0] == Farmer's Sprite
             // sprites[1] == Illi's Sprite
+
+            // switch the action map so space now controls the dialouge
+            //SwitchMap();
             if (speakerSprites.Count == 1)
             {
                 singleSpeaker = true;
@@ -93,7 +152,7 @@ namespace AphroditeFightCode
         void EndOfDialogue()
         {
 
-            player.SetActive(true);
+            //player.SetActive(true);
             /*player.GetComponent<PlayerKeypadPuzzleController>().enabled = true;
             player.GetComponent<PlayerAttack>().enabled = true;
             player.GetComponent<PlayerMovement>().enabled = true;*/
@@ -101,6 +160,50 @@ namespace AphroditeFightCode
             Debug.Log("End Of Dialogue. Change trigger thing");
 
         }
+
+        //void SwitchMap()
+        //{
+        //    if (input != null)
+        //    {
+        //        input.Enable();
+        //    }
+        //    Debug.Log("is current action map player? = " + input.Player.enabled);
+        //    //if (InputSystem.IsCurrentActionMap("Player"))
+        //    //{
+                
+        //    //    input.Player.Disable();
+        //    //    input.Dialouge.Enable();
+
+        //    //    input.Player.Movement.performed -= OnMovementPerformed;
+        //    //    input.Player.Movement.canceled -= OnMovementCancelled;
+
+        //    //    input.Dialouge.Next.performed += OnNextPerformed;
+        //    //}
+        //    //else
+        //    //{
+                
+        //    //    input.Player.Enable();
+        //    //    input.Dialouge.Disable();
+        //    //    input.Dialouge.Next.performed -= OnNextPerformed;
+        //    //}
+
+        //    if (input.Player.enabled)
+        //    {
+        //        // switch map to dialouge
+        //        input.Player.Disable();
+        //        input.Dialouge.Enable();
+                
+        //        input.Dialouge.Next.performed += OnNextPerformed;
+
+        //    }
+        //    else
+        //    {
+        //        input.Player.Enable();
+        //        input.Dialouge.Disable();
+        //        input.Dialouge.Next.performed -= OnNextPerformed;
+        //    }
+        //    Debug.Log("After: is current action map player? = " + input.Player.enabled);
+        //}
 
 
 
