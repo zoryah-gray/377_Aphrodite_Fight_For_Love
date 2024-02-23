@@ -36,7 +36,7 @@ namespace AphroditeFightCode
         // will run when the class is accessed for the first time
         static GameData()
         {
-            
+            currWeapon = 0;
             populatePuzzleCodes();
 
             

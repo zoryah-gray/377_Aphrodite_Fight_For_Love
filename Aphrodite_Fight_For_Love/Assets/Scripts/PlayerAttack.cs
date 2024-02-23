@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using UnityEngine.InputSystem;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
 namespace AphroditeFightCode
@@ -32,25 +33,39 @@ namespace AphroditeFightCode
         public Sprite gunSprite;
         public Image GUISlot1;
         public Image GUISlot2;
+        private SortingGroup sortingGroup1;
+        private SortingGroup sortingGroup2;
 
         void Start()
         {
             meleeBoxAnimator = meleeBoxGO.GetComponent<Animator>();
             bullet.GetComponent<SpriteRenderer>().enabled = false;
 
-            curWeapon = 0; // initialized to melee
-
-            // set the GUI
-            // Ensure the Canvas components are present
-            Canvas canvas1 = GUISlot1.GetComponentInParent<Canvas>();
-            Canvas canvas2 = GUISlot2.GetComponentInParent<Canvas>();
-
-            // Set the sorting order to ensure image2 renders over image1
-            if (canvas1 && canvas2)
+            //curWeapon = 0; // initialized to melee
+            //GameData.currWeapon = 0;
+            if (GameData.currWeapon == 0)
             {
-                int sortingOrder = canvas1.sortingOrder;
-                canvas2.sortingOrder = sortingOrder + 1;
+                Color slotColor = GUISlot2.color;
+                slotColor.a = 0.5f;
+                GUISlot2.color = slotColor;
+
+                Color slot1Color = GUISlot1.color;
+                slot1Color.a = 1f;
+                GUISlot1.color = slot1Color;
+
             }
+            else
+            {
+                
+                Color slotColor = GUISlot1.color;
+                slotColor.a = 0.5f;
+                GUISlot1.color = slotColor;
+
+                Color slot2Color = GUISlot2.color;
+                slot2Color.a = 1f;
+                GUISlot2.color = slot2Color;
+            }
+
         }
 
         private void OnEnable()
@@ -100,14 +115,68 @@ namespace AphroditeFightCode
         {
             // KeyCode.Alpha1
             curWeapon = 0;
-            GameData.currWeapon = 0;
+            //GameData.currWeapon = 0;
+            SwitchSlots(1);
         }
 
         private void OnShootPerformed(InputAction.CallbackContext val)
         {
             // KeyCode.Alpha2
             curWeapon = 1;
-            GameData.currWeapon = 1;
+            //GameData.currWeapon = 1;
+            SwitchSlots(2);
+        }
+
+        private void SwitchSlots(int activeSlotInt)
+        {
+            // if making weapon1 active but its already active ignore
+            
+            if (GameData.currWeapon == activeSlotInt - 1)
+            {
+                // the weapon we are trying to switch to is already the current weapon
+                return;
+            }
+
+            Image activeSlot;
+            Image nonActiveSlot;
+            if (activeSlotInt == 1)
+            {
+                activeSlot = GUISlot1;
+                nonActiveSlot = GUISlot2;
+            }
+            else 
+            {
+                //(activeSlot == 2)
+                activeSlot = GUISlot2;
+                nonActiveSlot = GUISlot1;
+            }
+
+            // Move active in front of nonActive
+            activeSlot.transform.SetSiblingIndex(nonActiveSlot.transform.GetSiblingIndex() + 1);
+            // decrease alpha of nonActive
+            Color slot2Color = nonActiveSlot.color;
+            slot2Color.a = 0.5f;
+            nonActiveSlot.color = slot2Color;
+
+            Color slot1Color = activeSlot.color;
+            slot1Color.a = 1f;
+            activeSlot.color = slot1Color;
+
+            
+
+            RectTransform rectTransform1 = activeSlot.rectTransform;
+            RectTransform rectTransform2 = nonActiveSlot.rectTransform;
+
+            LeanTween.move(rectTransform1.gameObject, rectTransform2.position, 1f)
+                    .setEase(LeanTweenType.easeInOutQuad);
+
+            LeanTween.move(rectTransform2.gameObject, rectTransform1.position, 1f)
+                        .setEase(LeanTweenType.easeInOutQuad);
+
+
+            GameData.currWeapon = activeSlotInt - 1;
+
+
         }
 
         // Update is called once per frame

@@ -45,6 +45,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: GUI
+    uniqueID: 986137023
+    locked: 0
   - name: Door
     uniqueID: 1202234817
     locked: 0
