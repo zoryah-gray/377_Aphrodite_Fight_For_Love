@@ -131,7 +131,6 @@
     <Compile Include="Assets/Minion Testing Folder/MinionChase.cs" />
     <Compile Include="Assets/Puzzle/LightKeypad/Scripts/KeyPadContoller.cs" />
     <Compile Include="Assets/TimelineAssets/TimelineScripts/SubtitleDialouge/TimelineSubtitleTrackMixer.cs" />
-    <Compile Include="Assets/Scripts/GUIMenuManager.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralEventsListeners.cs" />
     <Compile Include="Assets/Puzzle/LightKeypad/Scripts/PuzzleEnter.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSpline2d.cs" />
