@@ -27,15 +27,15 @@ namespace AphroditeFightCode
         public Animator hestAnim;
 
         private float loopEnd;
-        public float loopInterval = 4f;
+        public float loopInterval = 5f;
 
         private float holdAnimLoopEnd;
-        private float holdAnimLoopInterval = 5f;
+        private float holdAnimLoopInterval = 6f;
 
         private GameObject player;
         //private SpriteRenderer hestRend;
 
-        //private bool HestiaIsLeft;
+        private bool HestiaIsLeft;
 
         public GameObject meteorPrefab;
 
@@ -54,6 +54,8 @@ namespace AphroditeFightCode
         public float meteorSpeed;
         public float numOfMeteor;
 
+        public bool theWall;
+        
 
 
 
@@ -63,8 +65,10 @@ namespace AphroditeFightCode
 
         //private GameObject fftile;
 
-        //public GameObject leftWall;
-        //public GameObject rightWall;
+        public GameObject leftWall;
+        public GameObject rightWall;
+        Rigidbody2D leftWallRB;
+        Rigidbody2D rightWallRB;
 
         //public enum FFState
         //{
@@ -91,6 +95,10 @@ namespace AphroditeFightCode
             arr3T = arr3Prefab.GetComponent<Transform>();
             meteorSpeed = 3f;
             numOfMeteor = 0f;
+            theWall = false;
+
+            leftWallRB = leftWall.GetComponent<Rigidbody2D>();
+            rightWallRB = rightWall.GetComponent<Rigidbody2D>();
 
             //HestiaIsLeft = true;
             //currPullingWall = false;
@@ -106,6 +114,11 @@ namespace AphroditeFightCode
             //Debug.Log("transform.position.x" + transform.position.x);
             changeHestiaDir();
             HestiaAttackAnim();
+            if (theWall)
+            {
+                fireWall();
+            }
+            changeWallDir();
             //FFForUpdate();
         }
 
@@ -262,16 +275,15 @@ namespace AphroditeFightCode
 
         void changeHestiaDir()
         {
-
             if (player.transform.position.x > transform.position.x)
             {
                 transform.rotation = Quaternion.Euler(180f, 0f, 180f);
-                //HestiaIsLeft = true;
+                HestiaIsLeft = false;
             }
             if (player.transform.position.x < transform.position.x)
             {
                 transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                //HestiaIsLeft = false;
+                HestiaIsLeft = true;
             }
         }
 
@@ -288,64 +300,122 @@ namespace AphroditeFightCode
         //    hasFF += 1;
         //}
 
-        //void fireWall()
-        //{
-        //    Rigidbody2D leftFireWallRB = leftWall.GetComponent<Rigidbody2D>();
-        //    Rigidbody2D rightFireWallRB = rightWall.GetComponent<Rigidbody2D>();
+        void fWT()
+        {
+            theWall = true;
+        }
+        void fWF()
+        {
+            theWall = false;
+        }
+        void changeWallDir()
+        {
+            if (leftWallRB.velocity.x > 0f && leftWall.transform.position.x > -4f)
+            {
+                leftWallRB.velocity = leftWall.transform.right * -3f;
+            }
+            if(leftWallRB.velocity.x < 0f && leftWall.transform.position.x < -17f)
+            {
+                leftWall.transform.position = new Vector3(-17f, 0f, 0f);
+                leftWallRB.velocity = leftWall.transform.right * 0f;
+            }
+            
+            if (rightWallRB.velocity.x < 0f && rightWall.transform.position.x < 4.5f)
+            {
+                rightWallRB.velocity = rightWall.transform.right * 3f;
+            }
+            if (rightWallRB.velocity.x > 0.1f && rightWall.transform.position.x > 17.1f)
+            {
+                rightWall.transform.position = new Vector3(17f, 0f, 0f);
+                rightWallRB.velocity = rightWall.transform.right * 0f;
+            }
 
-        //    if (!HestiaIsLeft)
-        //    {
-        //        //If wall not moving, set it to left
-        //        if (leftFireWallRB.velocity.x == 0f) { leftWall.transform.position = new Vector3(-17f, 0f, 0f); }
-
-        //        //If it's on the left side, move it from the left
-        //        if (leftWall.transform.position.x <= -17f) { leftFireWallRB.velocity = leftWall.transform.right * 1.5f; }
-
-
-        //        //If the left wall is moving back and it's to the left of it's initial position, freeze the velocity
-        //        //if (leftFireWallRB.velocity.x < 0f && leftWall.transform.position.x <= -17f) { leftFireWallRB.velocity = new Vector2(0f, 0f); }
-        //    }
-
-
-        //    if (HestiaIsLeft)
-        //    {
-        //        //If wall not moving, set it to right
-        //        if (rightFireWallRB.velocity.x == 0f) { rightWall.transform.position = new Vector3(17f, 0f, 0f); }
-
-        //        //If it's on the left side, move it from the left
-        //        if (rightWall.transform.position.x >= 17f) { rightFireWallRB.velocity = rightWall.transform.right * -1.5f; }
-        //    }
+        }
+        void fireWall()
+        {
+            if (HestiaIsLeft)
+            {
+                if (leftWallRB.velocity.x == 0f)
+                {
+                    leftWallRB.velocity = leftWall.transform.right * 3f;
+                }
+            }
+            if (!HestiaIsLeft)
+            {
+                if(rightWallRB.velocity.x == 0f)
+                {
+                    Debug.Log("TRUE");
+                    rightWallRB.velocity = rightWall.transform.right * -3f;
+                }
+            }
 
 
 
 
-        //    //If it has passed the cave-in time, then move backwards
-        //    if (rightWall.transform.position.x < 8f) { rightFireWallRB.velocity = rightWall.transform.right * 1.5f; }
+            //if (!HestiaIsLeft)
+            //{
+            //    //If wall not moving, set it to left
+            //    if (leftFireWallRB.velocity.x == 0f)
+            //    {
+            //        leftWall.transform.position = new Vector3(-17f, 0f, 0f);
+            //    }
 
-        //    //If the left wall is moving back and it's to the right of it's initial position, freeze the velocity
-        //    if (rightFireWallRB.velocity.x > 0f && rightWall.transform.position.x >= 17f)
-        //    {
-        //        rightWall.transform.position = new Vector3(17f, 0f, 0f);
-        //        rightFireWallRB.velocity = new Vector2(0f, 0f);
-        //    }
-
-        //    if (leftFireWallRB.velocity.x < 0f && leftWall.transform.position.x <= -17f)
-        //    {
-        //        leftWall.transform.position = new Vector3(-17f, 0f, 0f);
-        //        leftFireWallRB.velocity = new Vector2(0f, 0f);
-        //    }
-
-        //    //If it has passed the cave-in time, then move backwards
-        //    if (leftWall.transform.position.x > -8f) { leftFireWallRB.velocity = leftWall.transform.right * -1.5f; }
+            //    //If it's on the left side, move it from the left
+            //    if (leftWall.transform.position.x < -6f && leftFireWallRB.velocity.x > 0f)
+            //    {
+            //        leftFireWallRB.velocity = leftWall.transform.right * 1.5f;
+            //    }
 
 
-        //}
+            //    //If the left wall is moving back and it's to the left of it's initial position, freeze the velocity
+            //    //if (leftFireWallRB.velocity.x < 0f && leftWall.transform.position.x <= -17f) { leftFireWallRB.velocity = new Vector2(0f, 0f); }
+            //}
+            //if(leftWall.transform.position.x >= -6f)
+            //{
+            //    leftFireWallRB.velocity = leftWall.transform.right * -1.5f;
+            //}
+
+
+            //if (HestiaIsLeft)
+            //{
+            //    //If wall not moving, set it to right
+            //    if (rightFireWallRB.velocity.x == 0f) { rightWall.transform.position = new Vector3(17f, 0f, 0f); }
+
+            //    //If it's on the left side, move it from the left
+            //    if (rightWall.transform.position.x >= 6f) { rightFireWallRB.velocity = rightWall.transform.right * -1.5f; }
+            //}
+
+
+
+
+            ////If it has passed the cave-in time, then move backwards
+            //if (rightWall.transform.position.x < 6f) { rightFireWallRB.velocity = rightWall.transform.right * 1.5f; }
+
+            ////If the left wall is moving back and it's to the right of it's initial position, freeze the velocity
+            //if (rightFireWallRB.velocity.x > 0f && rightWall.transform.position.x >= 17f)
+            //{
+            //    rightWall.transform.position = new Vector3(17f, 0f, 0f);
+            //    rightFireWallRB.velocity = new Vector2(0f, 0f);
+            //}
+
+            //if (leftFireWallRB.velocity.x < 0f && leftWall.transform.position.x <= -17f)
+            //{
+            //    leftWall.transform.position = new Vector3(-17f, 0f, 0f);
+            //    leftFireWallRB.velocity = new Vector2(0f, 0f);
+            //}
+
+            ////If it has passed the cave-in time, then move backwards
+            ////if (leftWall.transform.position.x > -8f) { leftFireWallRB.velocity = leftWall.transform.right * -1.5f; }
+
+
+        }
 
         void HestiaAttackAnim()
         {
             if (Time.time - loopEnd >= loopInterval)
             {
-                int statePicker = 2;
+                int statePicker = 1;
+
                 //int statePicker = Random.Range(1, 4);
                 //int statePicker = Random.Range(1, 3);
                 Debug.Log("statePicker" + statePicker);
@@ -360,12 +430,12 @@ namespace AphroditeFightCode
                     hestAnim.SetInteger("State", 2);
                     hestAnim.SetInteger("Hold", 1);
                 }
-                //if (statePicker == 3)
-                //{
-                //    hestAnim.SetInteger("State", 3);
-                //    hestAnim.SetInteger("Hold", 1);
-                //    //fireWall();
-                //}
+                if (statePicker == 1)
+                {
+                    hestAnim.SetInteger("State", 3);
+                    hestAnim.SetInteger("Hold", 1);
+                    //fireWall();
+                }
                 loopEnd = Time.time;
                 if (Time.time - holdAnimLoopEnd >= holdAnimLoopInterval)
                 {
