@@ -29,12 +29,8 @@ namespace AphroditeFightCode
         public float health = 10f;
         [Header("Controlling Weapon")]
         public int curWeapon;
-        public Sprite meleeSprite;
-        public Sprite gunSprite;
         public Image GUISlot1;
         public Image GUISlot2;
-        private SortingGroup sortingGroup1;
-        private SortingGroup sortingGroup2;
 
         void Start()
         {
