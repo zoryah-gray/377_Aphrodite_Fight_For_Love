@@ -9,6 +9,7 @@ namespace AphroditeFightCode
 
         [SerializeField] public string[] speakerList;
         [SerializeField] public string[] dialogueList;
+        [SerializeField] public List<Sprite> sprites;
         public bool sceneStart = false;
         public bool sceneFinish  = false;
         public bool singleSpeaker = false;
@@ -17,7 +18,7 @@ namespace AphroditeFightCode
         void Start()
         {
           //GameObject.Find("DialogueManager");
-          Debug.Assert(speakerList.Length == dialogueList.Length);
+          Debug.Assert(speakerList.Length == dialogueList.Length, "Speaker length not equal to dialogue list");
         }
 
         // Update is called once per frame
@@ -41,7 +42,7 @@ namespace AphroditeFightCode
 
             /*Debug.Log(dialogueList[0]);
             Debug.Log(speakerList[0]);*/
-                List<Sprite> sprites = new List<Sprite>();
+                
                 dialogueManager.GetComponent<DialogueManager>().ReceiveStartReadyDialogue(dialogueList, speakerList, sprites);
 
                 /*if (singleSpeaker)
