@@ -163,6 +163,8 @@ namespace AphroditeFightCode
             //    speakerList.Add(quest.questGiverName);
             //    dialogueList.Add(line);
             //}
+            Debug.Log(quest.questInstructions.Count);
+            Debug.Log(quest.questInstructionsSpeakers.Count);
             StartDialouge(quest.questInstructions, quest.questInstructionsSpeakers);
             
             //GUITextManager.instance.PrintToGUI(quest.questInstructions, quest.GUIinstructions, quest.questSprite);
