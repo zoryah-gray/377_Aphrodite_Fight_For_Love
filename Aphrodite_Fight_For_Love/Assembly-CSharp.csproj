@@ -62,6 +62,7 @@
     <Compile Include="Assets/Ink/Demos/Basic Demo/Scripts/BasicInkExample.cs" />
     <Compile Include="Assets/LeanTween/Testing/TestingOptionalCancel.cs" />
     <Compile Include="Assets/Puzzle/AltarPuzzle/Scripts/AltarEnter.cs" />
+    <Compile Include="Assets/Sprites/bossfightsprites/BossHealthScript.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralCameraShake.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/TestingUnitTests.cs" />
     <Compile Include="Assets/Puzzle/AltarPuzzle/Scripts/DragAndDropManager.cs" />
@@ -87,10 +88,12 @@
     <Compile Include="Assets/Scripts/GameEvents.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSplineEndless.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/Following.cs" />
+    <Compile Include="Assets/Scripts/Hades.cs" />
     <Compile Include="Assets/Minion Testing Folder/AnimationBehaviors/ChasePlayer.cs" />
     <Compile Include="Assets/Ink/Demos/Basic Demo/Scripts/QuitGameOnKeypress.cs" />
     <Compile Include="Assets/LeanTween/Testing/TestingRotate.cs" />
     <Compile Include="Assets/Minion Testing Folder/MinionAttack.cs" />
+    <Compile Include="Assets/Prefabs/HadesPrefabs/HestiaProjectile.cs" />
     <Compile Include="Assets/LeanTween/Testing/Testing243.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralBasics2d.cs" />
     <Compile Include="Assets/Puzzle/LightKeypad/Scripts/KeypadPuzzleTriggerSO.cs" />
@@ -107,7 +110,6 @@
     <Compile Include="Assets/LeanTween/Testing/Scripts/LeanPool.cs" />
     <Compile Include="Assets/Scripts/DialogueManager.cs" />
     <Compile Include="Assets/Puzzle/OfficePuzzle/doorlevel2.cs" />
-    <Compile Include="Assets/Sprites/bossfightsprites/HestiaProjectile.cs" />
     <Compile Include="Assets/LeanTween/Testing/TestingSequencer.cs" />
     <Compile Include="Assets/Puzzle/KeyDoor/Scripts/QuestController.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/TestingZLegacy.cs" />

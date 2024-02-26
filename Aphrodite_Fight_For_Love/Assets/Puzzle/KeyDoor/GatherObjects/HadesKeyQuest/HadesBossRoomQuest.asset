@@ -12,23 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb6ac0cd395dd47d5bb4e3b3f8523016, type: 3}
   m_Name: HadesBossRoomQuest
   m_EditorClassIdentifier: 
-  questSprite: {fileID: 21300000, guid: 578a7d35157fa47e6be1c713c48cd5ef, type: 3}
+  questSprite: {fileID: -500888707, guid: 535e098fdb07c4753bd704cd0b75e070, type: 3}
+  keySprite: {fileID: -782685096, guid: 82a23ad49aaeb43b59690f0a1081e5aa, type: 3}
   questName: HadesBossRoomKey
   questID: 1
+  doorID: 0
   sceneID: 1
-  keyAmt: 4
+  keyAmt: 5
   requiredKeys:
   - {fileID: 11400000, guid: 1f3ccc1df55b94d8d9806083a08d7366, type: 2}
   - {fileID: 11400000, guid: bce1481169fce4a0b99ee529903464f3, type: 2}
   - {fileID: 11400000, guid: f797423e9c54d4aa79bcf55c6dd66459, type: 2}
   - {fileID: 11400000, guid: bf5c90e80a5824408bb95ce3622fb38b, type: 2}
-  requiredKeysID: 00000000010000000200000003000000
-  obtainedKeys: 
-  ongoing: 0
+  - {fileID: 11400000, guid: bf5c90e80a5824408bb95ce3622fb38b, type: 2}
+  requiredKeysID: 0000000001000000020000000300000004000000
+  obtainedKeys: 00000000
+  ongoing: 1
   complete: 0
-  questInstructions: If you want to see the boss man, you'll have to gather all the
-    keys to his office. If you can't do something that basic you don't deserve to
-    see even the cusps of his crisp suit.
-  questEnd: Hm I guess you're qualified...barely
+  questGiverName: Director of Styx Inc.
+  speakers:
+  - {fileID: -500888707, guid: 535e098fdb07c4753bd704cd0b75e070, type: 3}
+  - {fileID: 1982266536, guid: 8c7f98b8ed2944d56a46d9af31cb934d, type: 3}
+  questInstructions:
+  - I'll need those filed separately into souls damned to Tartarus and the Elysium.
+    Have it on my desk by tomorrow morning.
+  - Uh ... Hestia sent me.
+  - I see. Then since you're such a weak soul and the boss man does not deserve to
+    be kept waiting. Go collect all the missing keys and I'll set up an appointment
+    with him.
+  - Well get going we can't keep the boss man waiting.
+  questInstructionsSpeakers:
+  - Director of Styx Inc.
+  - Illia
+  - Director of Styx Inc.
+  - Director of Styx Inc.
+  questEnd:
+  - Head straight through those doors and make a right. Hades office will be at the
+    end of that hallway.
   questEnded: What are you still doing here. The boss man hates to be kept waiting.
   GUIinstructions: Find the Keys Littered Throughout the Office

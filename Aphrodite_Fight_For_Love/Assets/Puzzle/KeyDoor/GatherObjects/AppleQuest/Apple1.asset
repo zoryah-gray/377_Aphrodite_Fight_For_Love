@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quest: {fileID: 11400000, guid: 05c8e85ad5c0b46b5b9755a001d5cb31, type: 2}
   keySprite: {fileID: 21300000, guid: 28a124e040e29428b98454c1352bf6af, type: 3}
+  hasAnimation: 0
   keyQuestName: Gather3Apples
-  keyName: Apple1
+  keyName: Apple
   keyID: 0
   info: a crunchy red apple, I wonder who needs this?
-  instructions: Click to Grab
+  instructions: Walk through to grab

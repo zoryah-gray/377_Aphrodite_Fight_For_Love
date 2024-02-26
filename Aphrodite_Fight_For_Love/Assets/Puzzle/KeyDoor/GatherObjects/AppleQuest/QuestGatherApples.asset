@@ -28,10 +28,16 @@ MonoBehaviour:
   ongoing: 0
   complete: 0
   questGiverName: That Random Farmer
+  speakers:
+  - {fileID: 21300000, guid: 554bee4c1255e4dac8866afc8d507102, type: 3}
   questInstructions:
   - You want to get through that door ay
   - I'd open that door, but I've lost my apples
   - If you collect all of them and return them to me I'll open it!
+  questInstructionsSpeakers:
+  - That Random Farmer
+  - That Random Farmer
+  - That Random Farmer
   questEnd:
   - My apples!! Good job, I'll unlocked it for you now
   questEnded: Gah I've already opened it for you

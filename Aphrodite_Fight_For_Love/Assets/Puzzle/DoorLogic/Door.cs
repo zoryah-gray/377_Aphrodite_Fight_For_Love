@@ -94,13 +94,16 @@ namespace AphroditeFightCode
                 }
                 isOpen = true;
                 //LeanTween.alpha(uncoversArea, 0f, 5f).setOnComplete(uncoverArea);
-                foreach (GameObject obj in objectsToFade)
+                if (objectsToFade.Count != 0)
                 {
-                    // Use LeanTween to fade out the alpha of the object
-                    LeanTween.alpha(obj, 0f, 4f + fadeDuration)
-                        .setEase(LeanTweenType.easeOutQuad)
-                        .setOnComplete(() => obj.SetActive(false)); // Optional: Destroy the object after fading out
-                                                                    //.setOnComplete(() => Destroy(obj)); // Optional: Destroy the object after fading out
+                    foreach (GameObject obj in objectsToFade)
+                    {
+                        // Use LeanTween to fade out the alpha of the object
+                        LeanTween.alpha(obj, 0f, 4f + fadeDuration)
+                            .setEase(LeanTweenType.easeOutQuad)
+                            .setOnComplete(() => obj.SetActive(false)); // Optional: Destroy the object after fading out
+                                                                        //.setOnComplete(() => Destroy(obj)); // Optional: Destroy the object after fading out
+                    }
                 }
             }
         }

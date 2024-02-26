@@ -21,7 +21,9 @@ namespace AphroditeFightCode
         public bool ongoing = false;
         public bool complete = false;
         public string questGiverName;
+        public List<Sprite> speakers = new List<Sprite>();
         public List<string> questInstructions = new List<string>();
+        public List<string> questInstructionsSpeakers = new List<string>();
         public List<string> questEnd = new List<string>();
         //public string questInstructions = "I'd open that door, but I've lost my apples";
         //public string questEnd = "My apples!! Good job, I'll unlocked it for you now";

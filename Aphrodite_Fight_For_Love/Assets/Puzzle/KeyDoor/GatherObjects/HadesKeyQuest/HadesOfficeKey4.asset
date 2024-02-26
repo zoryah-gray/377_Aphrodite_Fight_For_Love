@@ -18,5 +18,5 @@ MonoBehaviour:
   keyQuestName: HadesBossRoomKey
   keyName: Cabinet Key 666
   keyID: 3
-  info: a key to a lost cabinet
-  instructions: Click to grab
+  info: A key to a lost cabinet
+  instructions: Walk through to grab

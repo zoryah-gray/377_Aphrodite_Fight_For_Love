@@ -63,7 +63,7 @@ namespace AphroditeFightCode
             if (collision.gameObject.name == "Player")
             {
                 keySprite.color = hoverColor;
-                GUITextManager.instance.PrintToGUI(key.info, key.instructions, key.keySprite);
+                GUITextManager.instance.PrintToGUI(key.info, key.keyName, key.keySprite);
             }
         }
 
