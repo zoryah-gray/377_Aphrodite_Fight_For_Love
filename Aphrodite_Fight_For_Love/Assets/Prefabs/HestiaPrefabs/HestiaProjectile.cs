@@ -12,6 +12,7 @@ namespace AphroditeFightCode
 
         //
         public LayerMask enemyLayers;
+        public LayerMask wallLayers;
         Vector2 rectangleSize = new Vector2(0.5f, 0.5f);
         //
 
@@ -27,6 +28,13 @@ namespace AphroditeFightCode
                     Destroy(gameObject);
                 }
             }
+            Collider2D[] hitWalls = Physics2D.OverlapBoxAll(bulletBox.position, rectangleSize, 0f, enemyLayers);
+            foreach (Collider2D wall in hitWalls)
+            {
+              
+                Debug.Log("We hit a wall");
+                Destroy(gameObject);
+            }
         }
         private void OnBecameInvisible()
         {
@@ -40,7 +48,20 @@ namespace AphroditeFightCode
                 //Debug.Log("Fireball Hit The Player");
                 Destroy(gameObject);
             }
+
+            if (collision.gameObject.tag == "Wall")
+            {
+                Destroy(gameObject);
+            }
         }
-        
+
+        //private void OnTriggerEnter2D(Collider2D collision)
+        //{
+        //    if (collision.CompareTag("Wall"))
+        //    {
+        //        Destroy(gameObject);
+        //    }
+        //}
+
     }
 }
