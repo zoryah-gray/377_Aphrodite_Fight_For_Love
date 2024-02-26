@@ -25,13 +25,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6b32e203162d247268c4e536f33c6a6a, type: 2}
   requiredKeysID: 000000000100000002000000
   obtainedKeys: 
-  ongoing: 0
+  ongoing: 1
   complete: 0
   questGiverName: That Random Farmer
   questInstructions:
   - You want to get through that door ay
   - I'd open that door, but I've lost my apples
   - If you collect all of them and return them to me I'll open it!
+  questSprites:
+  - {fileID: 21300000, guid: fa503adeb4952438c9d442f03b7a7d67, type: 3}
   questEnd:
   - My apples!! Good job, I'll unlocked it for you now
   questEnded: Gah I've already opened it for you
