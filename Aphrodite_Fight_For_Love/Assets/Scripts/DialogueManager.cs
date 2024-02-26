@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.InputSystem;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace AphroditeFightCode
 {
@@ -21,12 +22,10 @@ namespace AphroditeFightCode
         TextMeshProUGUI speakerName;
         public string[] dialogueArray;
         public string[] speakerArray;
+        public List<Sprite> SpeakerSprite;
         int dIndex;
-        bool singleSpeaker = false;
-        Sprite speaker1;
-        Sprite speaker2;
-
-        bool isSetup = false;
+        SpriteRenderer speaker1;
+        SpriteRenderer speaker2;
         void Setup()
         {
             //Gather the text mesh pros used to display the text to the player
@@ -34,12 +33,15 @@ namespace AphroditeFightCode
             dialogueBoxArray = GetComponentsInChildren<TextMeshProUGUI>();
             speakerName = dialogueBoxArray[0];
             dialogueText = dialogueBoxArray[1];
-            
+            SpriteRenderer[] spriteArray = GetComponentsInChildren<SpriteRenderer>();
+            speaker1 = spriteArray[0];
+            speaker2 = spriteArray[1];
+
             //ReceiveStartReadyDialogue(dialogueArray, speakerArray);
 
 
             //player.SetActive(false);
-            
+
         }
 
         private void Awake()
@@ -117,33 +119,51 @@ namespace AphroditeFightCode
 
             // switch the action map so space now controls the dialouge
             //SwitchMap();
-            if (speakerSprites.Count == 1)
-            {
-                singleSpeaker = true;
-                speaker1 = speakerSprites[0];
-            }
-            else
-            {
-                speaker1 = speakerSprites[0];
-                speaker2 = speakerSprites[1];
-            }
+            
 
             Setup();
-            /* Debug.Log(speakerName.name);
-             Debug.Log(dialogueText.name);*/
             dialogueArray = dialogue;
             speakerArray = speaker;
             speakerName.text = speakerArray[dIndex];
             dialogueText.text = dialogueArray[dIndex];
             dIndex++;
+            speaker1.sprite = speakerSprites[0];
+
+            if (speakerSprites.Count == 1)
+            {
+                speaker2.color = new Color (255,255, 255, 0);
+            }
+            else
+            {
+                speaker2.sprite = speakerSprites[1];
+                speaker2.color = new Color(255, 255, 255, 60);
+            }
         }
 
         private void NextSentence()
         {
-            Debug.Log(speakerName.text + ": " + dialogueText.text);
+            //Debug.Log(speakerName.text + ": " + dialogueText.text);
             speakerName.text = speakerArray[dIndex];
             dialogueText.text = dialogueArray[dIndex];
+            if (speakerArray[(dIndex - 1)] != speakerArray[dIndex])
+            {
+                if (speakerArray[dIndex] != speakerArray[0])
+                {
+                    speaker1.transform.localScale = new Vector3(0.787880003f, 0.787880003f, 0.787880003f);
+                    speaker2.transform.localScale = new Vector3(1, 1, 1);
+                }
+                else
+                {
+                    speaker2.transform.localScale = new Vector3(0.787880003f, 0.787880003f, 0.787880003f);
+                    speaker1.transform.localScale = new Vector3(1, 1, 1);
+
+                }
+            }
+
             dIndex++;
+
+            
+
 
         }
 
@@ -152,12 +172,8 @@ namespace AphroditeFightCode
         void EndOfDialogue()
         {
 
-            //player.SetActive(true);
-            /*player.GetComponent<PlayerKeypadPuzzleController>().enabled = true;
-            player.GetComponent<PlayerAttack>().enabled = true;
-            player.GetComponent<PlayerMovement>().enabled = true;*/
             gameObject.SetActive(false);
-            Debug.Log("End Of Dialogue. Change trigger thing");
+            Debug.Log("End Of Dialogue.");
 
         }
 
@@ -205,35 +221,5 @@ namespace AphroditeFightCode
         //    Debug.Log("After: is current action map player? = " + input.Player.enabled);
         //}
 
-
-
-        /*public void nextSentence()
-            {
-
-                if (index < speech.Length - 1)
-                {
-                    index++;
-                    textComponent.text = "";
-                    nameComponent.text = parentName[index];
-                    StartCoroutine(Type());
-                }
-                else
-                {
-                    textComponent.text = "";
-                    nameComponent.text = string.Empty;
-                    canvasWrite.SetActive(false);
-                }
-
-            }*/
-
-        /*IEnumerator Type()
-        {
-            foreach (char letter in dialogueArray[dialogueIndex].ToCharArray())
-            {
-                dialogueText.text += letter;
-                yield return new WaitForSeconds(typeSpeed);
-            }
-
-        }*/
     }
 }
