@@ -1,0 +1,638 @@
+fileFormatVersion: 2
+guid: 535e098fdb07c4753bd704cd0b75e070
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HadesBossSprite2_0
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 544
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ef9891857393453f8a0a68978b9d1b4
+      internalID: -500888707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesBossSprite2_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 544
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a1df37a3a6f140598c69e05e5dc2808
+      internalID: 1209836734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesBossSprite2_2
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 544
+        width: 63
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5019067c9c9974f199670325cab89d5e
+      internalID: 1710810897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesBossSprite2_3
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 544
+        width: 62
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8084e4fe2c5c840acbc2801c9fd327e4
+      internalID: 1756121983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesBossSprite2_4
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 544
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c3e4b6b482a14a44b3071879cfd26f8
+      internalID: -2056467716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesBossSprite2_5
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 416
+        width: 56
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a58f9bcfaf2ad495a853a01c102b65c3
+      internalID: -811845157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesBossSprite2_6
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 416
+        width: 56
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ea2cd1bea95545b8a6101117a2c8195
+      internalID: 1571408450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesBossSprite2_7
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 416
+        width: 56
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87a1960fbd405474c8accced3ed330f6
+      internalID: -598530676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesBossSprite2_8
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 416
+        width: 56
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7618bc718be44e6ea37b58d436494d4
+      internalID: 1957072092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesBossSprite2_9
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 416
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3265d962eeda4fbf80b18447525d6b5
+      internalID: 2081817639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesBossSprite2_10
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 288
+        width: 62
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0d5358d47ae4432b8105a867c4f1018
+      internalID: -1926249721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesBossSprite2_11
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 288
+        width: 65
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 669665434d5f947c78210e346e4cd2bc
+      internalID: -1803485737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesBossSprite2_12
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 288
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7da6c27b229a04d4184a9508fa8b60c9
+      internalID: 902516363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesBossSprite2_13
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 288
+        width: 80
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b58003b06a4dd4b608faefeac927cb14
+      internalID: 467223101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesBossSprite2_14
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 288
+        width: 87
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14d8ef28923f946d0825e55162b191d3
+      internalID: 1777380130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesBossSprite2_15
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 160
+        width: 66
+        height: 64
+      alignment: 9
+      pivot: {x: 0.50684136, y: 0.50507355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b590c2e94d1264710bcf47af929f4c5a
+      internalID: 358343898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesBossSprite2_16
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 160
+        width: 76
+        height: 64
+      alignment: 9
+      pivot: {x: 0.42664096, y: 0.499758}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ce8959b5dbd54abe910b752db6a7d2c
+      internalID: -1431395339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesBossSprite2_17
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 160
+        width: 90
+        height: 64
+      alignment: 9
+      pivot: {x: 0.4823812, y: 0.46814036}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fe9fc3307e894c93a64b6d0a5fdd13a
+      internalID: -1303661987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesBossSprite2_18
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 160
+        width: 88
+        height: 64
+      alignment: 9
+      pivot: {x: 0.45314857, y: 0.47705936}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de941a5e12c054818881f51e7aab54f3
+      internalID: -565690713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesBossSprite2_19
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 160
+        width: 88
+        height: 64
+      alignment: 9
+      pivot: {x: 0.47744265, y: 0.51752377}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 881f139bd0e724e65b47553c7d2b0258
+      internalID: -1601135789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesBossSprite2_20
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 32
+        width: 88
+        height: 64
+      alignment: 9
+      pivot: {x: 0.46125746, y: 0.48788655}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a315c5500528a418d8a549be00bdfbe1
+      internalID: -1567782965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesBossSprite2_21
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 32
+        width: 88
+        height: 64
+      alignment: 9
+      pivot: {x: 0.47085294, y: 0.5017055}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1771705caa81f40db8dfea1ea3833567
+      internalID: -703077094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      HadesBossSprite2_0: -500888707
+      HadesBossSprite2_1: 1209836734
+      HadesBossSprite2_10: -1926249721
+      HadesBossSprite2_11: -1803485737
+      HadesBossSprite2_12: 902516363
+      HadesBossSprite2_13: 467223101
+      HadesBossSprite2_14: 1777380130
+      HadesBossSprite2_15: 358343898
+      HadesBossSprite2_16: -1431395339
+      HadesBossSprite2_17: -1303661987
+      HadesBossSprite2_18: -565690713
+      HadesBossSprite2_19: -1601135789
+      HadesBossSprite2_2: 1710810897
+      HadesBossSprite2_20: -1567782965
+      HadesBossSprite2_21: -703077094
+      HadesBossSprite2_22: -1012239027
+      HadesBossSprite2_3: 1756121983
+      HadesBossSprite2_4: -2056467716
+      HadesBossSprite2_5: -811845157
+      HadesBossSprite2_6: 1571408450
+      HadesBossSprite2_7: -598530676
+      HadesBossSprite2_8: 1957072092
+      HadesBossSprite2_9: 2081817639
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -24,8 +24,10 @@ namespace AphroditeFightCode
         public string[] speakerArray;
         public List<Sprite> SpeakerSprite;
         int dIndex;
-        SpriteRenderer speaker1;
-        SpriteRenderer speaker2;
+        public Image speaker1;
+        public Image speaker2;
+        Color inactiveAlpha;
+        Color activeAlpha;
         void Setup()
         {
             //Gather the text mesh pros used to display the text to the player
@@ -33,9 +35,14 @@ namespace AphroditeFightCode
             dialogueBoxArray = GetComponentsInChildren<TextMeshProUGUI>();
             speakerName = dialogueBoxArray[0];
             dialogueText = dialogueBoxArray[1];
-            SpriteRenderer[] spriteArray = GetComponentsInChildren<SpriteRenderer>();
-            speaker1 = spriteArray[0];
-            speaker2 = spriteArray[1];
+            //Image[] spriteArray = GetComponentsInChildren<Image>();
+            inactiveAlpha = speaker1.color;
+            inactiveAlpha.a = 0.25f;
+            activeAlpha = speaker1.color;
+            speaker1.color = activeAlpha;
+
+            //speaker1 = spriteArray[0];
+            //speaker2 = spriteArray[1];
 
             //ReceiveStartReadyDialogue(dialogueArray, speakerArray);
 
@@ -136,7 +143,7 @@ namespace AphroditeFightCode
             else
             {
                 speaker2.sprite = speakerSprites[1];
-                speaker2.color = new Color(255, 255, 255, 60);
+                speaker2.color = inactiveAlpha;
             }
         }
 
@@ -151,11 +158,21 @@ namespace AphroditeFightCode
                 {
                     speaker1.transform.localScale = new Vector3(0.787880003f, 0.787880003f, 0.787880003f);
                     speaker2.transform.localScale = new Vector3(1, 1, 1);
+                    speaker2.color = activeAlpha;
+                    speaker1.color = inactiveAlpha;
+
+                    //speaker2.color = new Color(255, 255, 255, 255);
+                    //speaker1.color = new Color(255, 255, 255, 50);
                 }
                 else
                 {
                     speaker2.transform.localScale = new Vector3(0.787880003f, 0.787880003f, 0.787880003f);
                     speaker1.transform.localScale = new Vector3(1, 1, 1);
+                    speaker1.color = activeAlpha;
+                    speaker2.color = inactiveAlpha;
+
+                    //speaker1.color = new Color(255, 255, 255, 255);
+                    //speaker2.color = new Color(255, 255, 255, 50);
 
                 }
             }

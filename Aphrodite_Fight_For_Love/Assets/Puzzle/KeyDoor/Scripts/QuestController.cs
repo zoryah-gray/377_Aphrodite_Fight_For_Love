@@ -148,22 +148,24 @@ namespace AphroditeFightCode
 
         public void StartDialouge(List<string> dialogueList, List<string> speakerList)
         {
-            List<Sprite> speakers = new List<Sprite>();
-            speakers.Add(quest.questSprite);
+            //List<Sprite> speakers = new List<Sprite>();
+            //speakers.Add(quest.questSprite);
             dialogueManager.SetActive(true);
-            dialogueManager.GetComponent<DialogueManager>().ReceiveStartReadyDialogue(dialogueList.ToArray(), speakerList.ToArray(), speakers);
+            dialogueManager.GetComponent<DialogueManager>().ReceiveStartReadyDialogue(dialogueList.ToArray(), speakerList.ToArray(), quest.speakers);
         }
 
         public void StartQuest()
         {
             
             ResetDialougeLists();
-            foreach (var line in quest.questInstructions)
-            {
-                speakerList.Add(quest.questGiverName);
-                dialogueList.Add(line);
-            }
-            StartDialouge(dialogueList, speakerList);
+            //foreach (var line in quest.questInstructions)
+            //{
+            //    speakerList.Add(quest.questGiverName);
+            //    dialogueList.Add(line);
+            //}
+            Debug.Log(quest.questInstructions.Count);
+            Debug.Log(quest.questInstructionsSpeakers.Count);
+            StartDialouge(quest.questInstructions, quest.questInstructionsSpeakers);
             
             //GUITextManager.instance.PrintToGUI(quest.questInstructions, quest.GUIinstructions, quest.questSprite);
             
@@ -218,11 +220,13 @@ namespace AphroditeFightCode
             ResetDialougeLists();
             if (!completed)
             {
-                foreach (var line in quest.questInstructions)
-                {
-                    speakerList.Add(quest.questGiverName);
-                    dialogueList.Add(line);
-                }
+                speakerList = quest.questInstructionsSpeakers;
+                dialogueList = quest.questInstructions;
+                //foreach (var line in quest.questInstructions)
+                //{
+                //    speakerList.Add(quest.questGiverName);
+                //    dialogueList.Add(line);
+                //}
 
                 //GUITextManager.instance.PrintToGUI(quest.questInstructions, quest.GUIinstructions, quest.questSprite);
             }

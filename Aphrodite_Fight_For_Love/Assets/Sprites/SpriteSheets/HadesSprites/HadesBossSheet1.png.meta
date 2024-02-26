@@ -1,0 +1,645 @@
+fileFormatVersion: 2
+guid: 6012e48cd935a4f108c7c1025ef11dfc
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HadesIdle
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 544
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.47625178, y: 0.50000095}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97a277c7f74df4ee9b19c4acb4999e8c
+      internalID: -1315471772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesAngry
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 544
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.4732833, y: 0.50000095}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c914c7d8287043dea33fb886e8d13b6
+      internalID: -88786267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesGun1
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 544
+        width: 63
+        height: 64
+      alignment: 9
+      pivot: {x: 0.4649038, y: 0.50000095}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74ad97f5d706a4244ae8d989166c49f7
+      internalID: 1788297315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesGun2
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 544
+        width: 62
+        height: 64
+      alignment: 9
+      pivot: {x: 0.45636135, y: 0.50169086}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfe6cbeb0162640fb870b97a42c56a72
+      internalID: 47071362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesGun3
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 544
+        width: 60
+        height: 64
+      alignment: 9
+      pivot: {x: 0.4355591, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed3ed03107782482c82590d5e200f8c4
+      internalID: -318631260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesGun4
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 416
+        width: 56
+        height: 64
+      alignment: 9
+      pivot: {x: 0.39822122, y: 0.50296974}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a29bac5ce5d694bf29a8b5fa571c3580
+      internalID: 1357797427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesGun5
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 416
+        width: 56
+        height: 64
+      alignment: 9
+      pivot: {x: 0.39676148, y: 0.5031004}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca9f398a898624ec8b2b9606b49d55c3
+      internalID: -1939153353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesGun6
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 416
+        width: 56
+        height: 64
+      alignment: 9
+      pivot: {x: 0.4034364, y: 0.49999952}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dd5cb016001d4aa6a80185ca8e23e84
+      internalID: 1567669481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesGun7
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 416
+        width: 56
+        height: 64
+      alignment: 9
+      pivot: {x: 0.3968517, y: 0.49999952}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b18389fd5e8574280989b60cbff78959
+      internalID: -710878719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesGun8
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 416
+        width: 60
+        height: 64
+      alignment: 9
+      pivot: {x: 0.4358134, y: 0.50087214}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80638a8a25be34d4a93e2d4dd2da0589
+      internalID: -850202779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesGun9
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 288
+        width: 62
+        height: 64
+      alignment: 9
+      pivot: {x: 0.45476145, y: 0.5038376}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06aa951eeaaa944e9835ce1951dbbd4c
+      internalID: -1249660186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesGun10
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 288
+        width: 65
+        height: 64
+      alignment: 9
+      pivot: {x: 0.4835658, y: 0.5000005}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 791d82fa69d1f47e494eb9aaf8914e6f
+      internalID: -751253466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesGun11
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 288
+        width: 74
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5448266, y: 0.5000005}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaa7dc19fe96e4460860faf1bbf269f2
+      internalID: -2068227602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesGun12
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 288
+        width: 80
+        height: 64
+      alignment: 9
+      pivot: {x: 0.578891, y: 0.49999952}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebd0840e0d1ed42e0b424501fec0e216
+      internalID: -1706488807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesGun14
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 288
+        width: 87
+        height: 64
+      alignment: 9
+      pivot: {x: 0.61295295, y: 0.5030103}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55fbd8ff551ad48dbb46095300a8c83b
+      internalID: 336659523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesSpriteSpawn1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 160
+        width: 66
+        height: 64
+      alignment: 9
+      pivot: {x: 0.45982417, y: 0.5158951}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bc6e60b3f1654094b1eb540c0255fb5
+      internalID: -1565105581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesSpriteSpawn2
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 160
+        width: 76
+        height: 64
+      alignment: 9
+      pivot: {x: 0.45751572, y: 0.52162147}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c39d9137ae16145f89e7eb4a3f17e427
+      internalID: 1310471501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesSpriteSpawn3
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 160
+        width: 90
+        height: 64
+      alignment: 9
+      pivot: {x: 0.47181192, y: 0.5324323}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0c9b8b173f5045eba0fd973f87df0e8
+      internalID: 1284261336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesSpriteSpawn4
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 160
+        width: 88
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8d77726c89df4951b48ccda76a36349
+      internalID: -858951689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesSpriteSpawn5
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 160
+        width: 88
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 717e822ce48104f1eaf583ac5f5d91e7
+      internalID: -1487641034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesSpriteSpawn6
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 32
+        width: 88
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1598c9b1d86c4ec0aa76ad7a8b12c5c
+      internalID: -1537380862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HadesSpriteSpawn7
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 29
+        width: 88
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e01a7719321b49f898e35a02cfef22c
+      internalID: -915044894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      HadesAngry: -88786267
+      HadesBossSprite-Sheet2_0: 1438667877
+      HadesBossSprite-Sheet2_18: -1983798111
+      HadesBossSprite-Sheet2_20: 1734716571
+      HadesBossSprite-Sheet2_22: 275198734
+      HadesBossSprite-Sheet2_23: -1449930738
+      HadesBossSprite-Sheet2_25: -820255785
+      HadesBossSprite-Sheet2_26: -1379804898
+      HadesBossSprite-Sheet2_28: -1870177156
+      HadesGun1: 1788297315
+      HadesGun10: -751253466
+      HadesGun11: -2068227602
+      HadesGun12: -1706488807
+      HadesGun14: 336659523
+      HadesGun2: 47071362
+      HadesGun3: -318631260
+      HadesGun4: 1357797427
+      HadesGun5: -1939153353
+      HadesGun6: 1567669481
+      HadesGun7: -710878719
+      HadesGun8: -850202779
+      HadesGun9: -1249660186
+      HadesIdle: -1315471772
+      HadesSpriteSpawn1: -1565105581
+      HadesSpriteSpawn2: 1310471501
+      HadesSpriteSpawn3: 1284261336
+      HadesSpriteSpawn4: -858951689
+      HadesSpriteSpawn5: -1487641034
+      HadesSpriteSpawn6: -1537380862
+      HadesSpriteSpawn7: -915044894
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
