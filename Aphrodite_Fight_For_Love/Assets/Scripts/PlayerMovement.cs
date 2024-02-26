@@ -80,7 +80,7 @@ namespace AphroditeFightCode
         }
         private void FixedUpdate()
         {
-            if (!GameData.freezePlayer)
+            if (!GameData.freezePlayer && GameData.playerHeath > 0f)
             {
                 rb.velocity = moveVector * moveSpeed;
                 HandleMovementAnimBlendTree();

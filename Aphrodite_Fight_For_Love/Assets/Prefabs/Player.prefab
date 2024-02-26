@@ -236,6 +236,9 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
+  wallLayers:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &8060550628745360157
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,5 +481,8 @@ MonoBehaviour:
   curPosition: {x: 0, y: 0, z: 0}
   isAttacking: 0
   gunInterval: 0.5
+  restartScreen: {fileID: 6088876307567681880, guid: f2ab2ee013b1e4ac194183f069d630b9, type: 3}
   health: 10
   curWeapon: 0
+  GUISlot1: {fileID: 0}
+  GUISlot2: {fileID: 0}

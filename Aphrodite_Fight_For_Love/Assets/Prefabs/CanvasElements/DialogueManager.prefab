@@ -304,8 +304,8 @@ MonoBehaviour:
   dialogueArray: []
   speakerArray: []
   SpeakerSprite: []
-  speaker1: {fileID: 0}
-  speaker2: {fileID: 0}
+  speaker1: {fileID: 8217260890262361681}
+  speaker2: {fileID: 3059134915375579832}
 --- !u!1 &3651487529584844167
 GameObject:
   m_ObjectHideFlags: 0

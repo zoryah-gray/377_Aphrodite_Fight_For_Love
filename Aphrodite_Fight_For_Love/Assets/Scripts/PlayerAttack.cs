@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
-//using AphroditeFightCode;
+using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,6 +24,9 @@ namespace AphroditeFightCode
         private float lastShotGun;
         public float gunInterval = 0.5f;
         private Animator meleeBoxAnimator;
+        private Animator playerAnimator;
+        private Rigidbody2D rb;
+        public GameObject restartScreen;
         Vector2 rectangleSize = new Vector2(0.9f, 0.45f);
 
         public float health = 10f;
@@ -35,6 +38,7 @@ namespace AphroditeFightCode
         void Start()
         {
             meleeBoxAnimator = meleeBoxGO.GetComponent<Animator>();
+            playerAnimator = GetComponent<Animator>();
             bullet.GetComponent<SpriteRenderer>().enabled = false;
 
             //curWeapon = 0; // initialized to melee
@@ -178,42 +182,33 @@ namespace AphroditeFightCode
         // Update is called once per frame
         void Update()
         {
-            //if (Input.GetKeyDown(KeyCode.Alpha1)){
-            //    curWeapon = 0;
-            //}
-            //if (Input.GetKeyDown(KeyCode.Alpha2))
-            //{
-            //    curWeapon = 1;
-            //}
-            //if (Input.GetKeyDown(KeyCode.Space) && curWeapon == 0)
-            //{
-            //    meleeBoxAnimator.SetBool("animCanAttack", true);
-            //    curPosition = meleeBoxGO.transform.position;
-            //    Attack();
-            //    Debug.Log("Attack!");
-            //    StartCoroutine(ResetAfterAnim());
-
-            //    //Debug.Log(health + "health cur");
-            //    Debug.Log(GameData.playerHeath + " health cur");
-            //}
-            //if (Input.GetKeyDown(KeyCode.Space) && Time.time - lastShotGun >= gunInterval && curWeapon == 1)
-            //{
-            //    ShootGun();
-            //    lastShotGun = Time.time;
-            //}
             if (GameData.playerHeath <= 0f)
             {
                 PlayerDeath();
             }
-            //if (health <= 0f)
-            //{
-            //    PlayerDeath();
-            //}
         }
 
         private void PlayerDeath()
         {
-            Destroy(gameObject);
+            GameData.ongoingQuests.Clear();
+            GameData.completedQuests.Clear();
+            GameData.playerHeath = 60f;
+            rb = GetComponent<Rigidbody2D>();
+            rb.bodyType = RigidbodyType2D.Static;
+            playerAnimator.SetTrigger("death");
+            PlayerInputsSingleton.PlayerInputsInstance.Player.Disable();
+            //Destroy(gameObject);
+        }
+
+        public void OpenRestartScreen()
+        {
+            restartScreen.SetActive(true);
+        }
+
+        public void Respawn()
+        {
+            restartScreen.SetActive(false);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         void ShootGun()
