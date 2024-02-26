@@ -52,7 +52,7 @@ namespace AphroditeFightCode
                .setOnComplete(() =>
                {
                    // Reset the color to the original after the flash is complete
-                   playerObject.GetComponent<SpriteRenderer>().color = originalColor;
+                   playerObject.GetComponent<SpriteRenderer>().color = Color.white;
                });
 
             //playerObject.GetComponent<QuickPlayerMove>().health -= minionDamage;
