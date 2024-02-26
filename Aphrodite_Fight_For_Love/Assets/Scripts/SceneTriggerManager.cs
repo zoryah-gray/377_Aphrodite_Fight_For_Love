@@ -11,11 +11,16 @@ namespace AphroditeFightCode
         
         private void OnTriggerEnter2D(Collider2D collision)
         {
+
             if (collision.gameObject.name == "Player")
             {
                 if (enterBoss)
                 {
                     Invoke("EnterBossScene", 0.75f);
+                }
+                if (SceneManager.GetActiveScene().name == "level2")
+                {
+                    Invoke("EnterNextLevel", 0.75f);
                 }
             }
         }
@@ -23,6 +28,7 @@ namespace AphroditeFightCode
         public void EnterScene(string sceneName)
         {
             SceneManager.LoadScene(sceneName);
+            
         }
 
         public void EnterBossScene()
@@ -31,14 +37,18 @@ namespace AphroditeFightCode
             {
                 EnterScene("HestiaBossFight");
             }
+            if (GameData.onLevel == 2)
+            {
+                EnterScene("HadesBossTiles");
+            }
         }
 
-        //public void EnterNextLevel()
-        //{
-        //    if (GameData.onLevel == 1)
-        //    {
-        //        //goto level 2
-        //    }
-        //}
+        public void EnterNextLevel()
+        {
+            if (GameData.onLevel == 1)
+            {
+                EnterScene("level2");
+            }
+        }
     }
 }
