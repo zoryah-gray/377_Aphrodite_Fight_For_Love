@@ -14,13 +14,26 @@ namespace AphroditeFightCode
 
             if (collision.gameObject.name == "Player")
             {
-                if (enterBoss)
+                //if (enterBoss)
+                //{
+                //    Invoke("EnterBossScene", 0.75f);
+                //}
+                //if (SceneManager.GetActiveScene().name == "level2")
+                //{
+                //    Invoke("EnterNextLevel", 0.75f);
+                //}
+                Debug.Log("collided in " + SceneManager.GetActiveScene().name + "scene");
+                if (SceneManager.GetActiveScene().name == "Level1")
                 {
-                    Invoke("EnterBossScene", 0.75f);
+                    SceneManager.LoadScene("HestiaBossFight");
                 }
-                if (SceneManager.GetActiveScene().name == "level2")
+                else if (SceneManager.GetActiveScene().name == "HestiaBossFight")
                 {
-                    Invoke("EnterNextLevel", 0.75f);
+                    SceneManager.LoadScene("level2");
+                }
+                else if (SceneManager.GetActiveScene().name == "level2")
+                {
+                    SceneManager.LoadScene("HadesBossCombined");
                 }
             }
         }
