@@ -77,8 +77,9 @@ namespace AphroditeFightCode
         void Update()
         {
             //shut up about this being empty I know
+            
         }
-
+        
         public void TakeDamage(int playerDamage)
         {
             health -= playerDamage;

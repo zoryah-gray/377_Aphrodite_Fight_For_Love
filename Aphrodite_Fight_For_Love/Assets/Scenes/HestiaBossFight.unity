@@ -7406,9 +7406,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 337196088}
     m_Modifications:
+    - target: {fileID: 129316671677491266, guid: f2ab2ee013b1e4ac194183f069d630b9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 204738343037651039, guid: f2ab2ee013b1e4ac194183f069d630b9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6088876307567681880, guid: f2ab2ee013b1e4ac194183f069d630b9, type: 3}
       propertyPath: m_Name
       value: Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6088876307567681880, guid: f2ab2ee013b1e4ac194183f069d630b9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8177235657863535199, guid: f2ab2ee013b1e4ac194183f069d630b9, type: 3}
       propertyPath: m_Pivot.x
