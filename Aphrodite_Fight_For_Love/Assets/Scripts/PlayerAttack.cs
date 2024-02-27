@@ -190,9 +190,9 @@ namespace AphroditeFightCode
 
         private void PlayerDeath()
         {
-            GameData.ongoingQuests.Clear();
-            GameData.completedQuests.Clear();
-            GameData.playerHeath = 60f;
+            //GameData.ongoingQuests.Clear();
+            //GameData.completedQuests.Clear();
+            //GameData.playerHeath = 60f;
             rb = GetComponent<Rigidbody2D>();
             rb.bodyType = RigidbodyType2D.Static;
             playerAnimator.SetTrigger("death");
@@ -207,6 +207,10 @@ namespace AphroditeFightCode
 
         public void Respawn()
         {
+            GameData.ongoingQuests.Clear();
+            GameData.completedQuests.Clear();
+            GameData.playerHeath = 60f;
+            GameData.onHeart = 1;
             restartScreen.SetActive(false);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
