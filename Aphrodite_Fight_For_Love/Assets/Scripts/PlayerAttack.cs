@@ -215,6 +215,7 @@ namespace AphroditeFightCode
         {
             var bullInitPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             GameObject bulletGO = Instantiate(bullet, bullInitPos, Quaternion.identity);
+            bulletGO.tag = "Bullet";
             bulletGO.GetComponent<SpriteRenderer>().enabled = true;
             Rigidbody2D bulletRB = bulletGO.GetComponent<Rigidbody2D>();
 

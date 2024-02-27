@@ -18,38 +18,44 @@ namespace AphroditeFightCode
 
         private void Update()
         {
-            if (!isHestiaFireball)
+            if (!isHestiaFireball && gameObject.tag != "BulletBox")
             {
                 Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(bulletBox.position, rectangleSize, 0f, enemyLayers);
                 foreach (Collider2D enemy in hitEnemies)
-                {
+                {   
                     enemy.gameObject.GetComponent<MinionScript>().TakeDamage(1);
                     Debug.Log("We hit an enemy!" + enemy.name);
                     Destroy(gameObject);
                 }
             }
             Collider2D[] hitWalls = Physics2D.OverlapBoxAll(bulletBox.position, rectangleSize, 0f, enemyLayers);
-            foreach (Collider2D wall in hitWalls)
+            if (!isHestiaFireball && gameObject.tag != "BulletBox")
             {
-              
-                Debug.Log("We hit a wall");
-                Destroy(gameObject);
+                foreach (Collider2D wall in hitWalls)
+                {
+
+                    Debug.Log("We hit a wall");
+                    Destroy(gameObject);
+                }
             }
         }
         private void OnBecameInvisible()
         {
             //Debug.Log("gameObject OOB");
-            Destroy(gameObject);
+            if (!isHestiaFireball && gameObject.tag != "BulletBox")
+            {
+                Destroy(gameObject);
+            }
         }
         void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.tag == "Player" && isHestiaFireball)
+            if (collision.gameObject.tag == "Player" && isHestiaFireball && gameObject.tag != "BulletBox")
             {
                 //Debug.Log("Fireball Hit The Player");
                 Destroy(gameObject);
             }
 
-            if (collision.gameObject.tag == "Wall")
+            if (collision.gameObject.tag == "Wall" && gameObject.tag != "BulletBox")
             {
                 Destroy(gameObject);
             }
