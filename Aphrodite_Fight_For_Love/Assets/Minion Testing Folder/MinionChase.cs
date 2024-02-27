@@ -10,6 +10,7 @@ namespace AphroditeFightCode
         MinionScript minionBase;
         Animator animator;
 
+
         public GameObject playerBody;
 
         // Start is called before the first frame update
@@ -20,7 +21,7 @@ namespace AphroditeFightCode
              */
             minionBase = GetComponentInParent<MinionScript>();
             animator = GetComponentInParent<Animator>();
-
+            
 
             //Update minion speed to fit the minion type
 
@@ -41,9 +42,6 @@ namespace AphroditeFightCode
              * begin following the player*/
             if (collidingObject.CompareTag("Player"))
             {
-
-
-
                 //GetComponentInParent<AIPath>().enabled = true;
                 animator.SetInteger("currState", 1);
 

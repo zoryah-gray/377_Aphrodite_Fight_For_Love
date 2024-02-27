@@ -113,7 +113,7 @@ namespace AphroditeFightCode
         {
             if (Time.time - loopEnd >= loopInterval)
             {
-                int statePicker = 1;
+                int statePicker = 2;
 
                 //int statePicker = Random.Range(1, 4);
                 //int statePicker = Random.Range(1, 3);
