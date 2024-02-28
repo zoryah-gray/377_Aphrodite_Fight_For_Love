@@ -21,6 +21,8 @@ namespace AphroditeFightCode
         [SerializeField] public bool yesPatrol;
         [SerializeField] public int level = 1;
         AIPath minionPathing;
+        GameObject healthBar;
+        float healthBarSize;
         // Start is called before the first frame update
 
         //handles damage to the minion, holds values, and destroys the minion upon death.
@@ -75,6 +77,8 @@ namespace AphroditeFightCode
 
             minionPathing = GetComponentInParent<AIPath>();
             minionPathing.maxSpeed = moveSpeed;
+            healthBar = transform.GetChild(2).gameObject;
+            healthBarSize = healthBar.transform.localScale.x / health;
 
         }
 
@@ -88,6 +92,31 @@ namespace AphroditeFightCode
         public void TakeDamage(int playerDamage)
         {
             health -= playerDamage;
+            Color flashColor = Color.red;
+            float flashDuration = 0.1f;
+            int numberOfFlashes = 1;
+
+            LeanTween.value(gameObject, Color.white, flashColor, flashDuration)
+               .setEase(LeanTweenType.easeInOutSine)
+               .setLoopPingPong(numberOfFlashes)
+               .setOnUpdate((Color val) =>
+               {
+                   // Update the object's color during the tween
+                   gameObject.GetComponent<SpriteRenderer>().color = val;
+               })
+               .setOnComplete(() =>
+               {
+                   // Reset the color to the original after the flash is complete
+                   gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+               });
+
+            ///Affect healthbar or thingy thing
+            Vector3 newHealth = new Vector3(healthBar.transform.localScale.x - healthBarSize, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
+
+
+            healthBar.LeanScale(newHealth, .01f);
+
+
             Debug.Log("Minion has taken " + playerDamage + " damage. " + health + " health remaining");
             Color originalColor = GetComponent<SpriteRenderer>().color;
             Color flashColor = Color.red;
@@ -99,25 +128,7 @@ namespace AphroditeFightCode
             {
                 //we'll actually do a kill function which will do a death animation,
                 //then delete the game object
-
                 MinionDeath();
-            }
-            else
-            {
-                LeanTween.value(gameObject, originalColor, flashColor, flashDuration)
-                   .setEase(LeanTweenType.easeInOutSine)
-                   .setLoopPingPong(numberOfFlashes)
-                   .setOnUpdate((Color val) =>
-                   {
-                       // Update the object's color during the tween
-                       gameObject.GetComponent<SpriteRenderer>().color = val;
-                   })
-                   .setOnComplete(() =>
-                   {
-                       // Reset the color to the original after the flash is complete
-                       gameObject.GetComponent<SpriteRenderer>().color = originalColor;
-                   });
-                PushBackMinion();
             }
         }
 
