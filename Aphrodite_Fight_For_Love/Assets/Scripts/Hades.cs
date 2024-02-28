@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 namespace AphroditeFightCode
 {
@@ -9,6 +10,7 @@ namespace AphroditeFightCode
 
 
         public GameObject hadesBulletPrefab;
+        [SerializeField] 
 
         //public bool canFF;
         //public GameObject FFPrefab;
@@ -39,6 +41,9 @@ namespace AphroditeFightCode
 
         private bool HadesIsLeft;
 
+        public GameObject minionPrefab1;
+        public GameObject minionPrefab2;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -66,18 +71,24 @@ namespace AphroditeFightCode
 
 
 
-        void SpawnHadesEnemies()
+        public void SpawnHadesEnemies()
         {
 
-            GameObject hadesBulletGO1 = Instantiate(hadesBulletPrefab, new Vector2(Random.Range(-7f,-1.5f), Random.Range(-3.5f,3.5f)), Quaternion.identity);
-            GameObject hadesBulletGO2 = Instantiate(hadesBulletPrefab, new Vector2(Random.Range(1.5f, 7f), Random.Range(-3.5f, 3.5f)), Quaternion.identity);
+            minionPrefab1 = Instantiate(minionPrefab1, new Vector2(Random.Range(-7f,-1.5f), Random.Range(-3.5f,3.5f)), Quaternion.identity);
+            minionPrefab2 = Instantiate(minionPrefab2, new Vector2(Random.Range(1.5f, 7f), Random.Range(-3.5f, 3.5f)), Quaternion.identity);
+
+            AIDestinationSetter minPref1targ = minionPrefab1.GetComponent<AIDestinationSetter>();
+            minPref1targ.target = player.transform;
+            AIDestinationSetter minPref2targ = minionPrefab2.GetComponent<AIDestinationSetter>();
+            minPref2targ.target = player.transform;
             //Vector2 direction = player.transform.position;
             //Rigidbody2D hadesBulletRB = hadesBulletGO.GetComponent<Rigidbody2D>();
             //hadesBulletRB.velocity = direction * hadesBulletSpeed;
         }
 
-        void ShootHadesBullet()
+        public void ShootHadesBullet()
         {
+            
             var hadesBulletInitPos1 = new Vector3(0f, 0f, 0f);
            
             if (!HadesIsLeft) { hadesBulletInitPos1 = new Vector3(1.75f, 0f, 0f); }
@@ -113,10 +124,10 @@ namespace AphroditeFightCode
         {
             if (Time.time - loopEnd >= loopInterval)
             {
-                int statePicker = 2;
+                //int statePicker = 2;
 
                 //int statePicker = Random.Range(1, 4);
-                //int statePicker = Random.Range(1, 3);
+                int statePicker = Random.Range(1, 3);
                 Debug.Log("statePicker" + statePicker);
 
                 //if (statePicker == 1)
