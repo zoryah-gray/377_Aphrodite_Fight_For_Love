@@ -27,6 +27,7 @@ namespace AphroditeFightCode
         private Animator playerAnimator;
         private Rigidbody2D rb;
         public GameObject restartScreen;
+        public GameObject diedScreen;
         Vector2 rectangleSize = new Vector2(0.9f, 0.45f);
 
         public float health = 10f;
@@ -182,7 +183,7 @@ namespace AphroditeFightCode
         // Update is called once per frame
         void Update()
         {
-            if (GameData.playerHeath <= 0f)
+            if (GameData.playerHeath <= 0f && !GameData.playerDead)
             {
                 PlayerDeath();
             }
@@ -190,13 +191,12 @@ namespace AphroditeFightCode
 
         private void PlayerDeath()
         {
-            //GameData.ongoingQuests.Clear();
-            //GameData.completedQuests.Clear();
-            //GameData.playerHeath = 60f;
+            GameData.playerDead = true;
             rb = GetComponent<Rigidbody2D>();
             rb.bodyType = RigidbodyType2D.Static;
             playerAnimator.SetTrigger("death");
             PlayerInputsSingleton.PlayerInputsInstance.Player.Disable();
+            diedScreen.SetActive(true);
             //Destroy(gameObject);
         }
 
@@ -211,6 +211,7 @@ namespace AphroditeFightCode
             GameData.completedQuests.Clear();
             GameData.playerHeath = 60f;
             GameData.onHeart = 1;
+            GameData.playerDead = false;
             restartScreen.SetActive(false);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
