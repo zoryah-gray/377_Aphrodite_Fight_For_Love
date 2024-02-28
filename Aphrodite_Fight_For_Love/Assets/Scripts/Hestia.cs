@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace AphroditeFightCode
 {
@@ -55,10 +56,13 @@ namespace AphroditeFightCode
         public float numOfMeteor;
 
         public bool theWall;
-        
 
 
 
+        public float health = 20f;
+        public Image healthBar;
+        public Image border;
+        public Image damageBar;
         //private bool currPullingWall;
 
         //public float hasFF = 0f;
@@ -119,9 +123,51 @@ namespace AphroditeFightCode
                 fireWall();
             }
             changeWallDir();
+            updateHealth();
             //FFForUpdate();
         }
 
+        public void updateHealth()
+        {
+            healthBar.fillAmount = health / 20f; 
+        }
+        public void TakeDamage(int playerDamage)
+        {
+            health -= playerDamage;
+            Debug.Log("Hestia has taken " + playerDamage + " damage. " + health + " health remaining");
+            if (health <= 0)
+            {
+                //we'll actually do a kill function which will do a death animation,
+                //then delete the game object
+                Color originalColor = gameObject.GetComponent<SpriteRenderer>().color;
+                Color flashColor = Color.red;
+                float flashDuration = 0.1f;
+                int numberOfFlashes = 2;
+
+                LeanTween.value(gameObject, originalColor, flashColor, flashDuration)
+                   .setEase(LeanTweenType.easeInOutSine)
+                   .setLoopPingPong(numberOfFlashes)
+                   .setOnUpdate((Color val) =>
+                   {
+                       // Update the object's color during the tween
+                       gameObject.GetComponent<SpriteRenderer>().color = val;
+                   })
+                   .setOnComplete(() =>
+                   {
+                       // Reset the color to the original after the flash is complete
+                       gameObject.GetComponent<SpriteRenderer>().color = originalColor;
+                   });
+                HestiaDeath();
+            }
+        }
+
+        private void HestiaDeath()
+        {
+            Destroy(gameObject);
+            Destroy(healthBar);
+            Destroy(border);
+            Destroy(damageBar);
+        }
 
         void shootMeteor()
         {

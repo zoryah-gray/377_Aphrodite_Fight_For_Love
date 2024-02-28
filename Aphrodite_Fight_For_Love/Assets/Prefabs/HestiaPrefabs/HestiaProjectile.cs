@@ -22,13 +22,22 @@ namespace AphroditeFightCode
             {
                 Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(bulletBox.position, rectangleSize, 0f, enemyLayers);
                 foreach (Collider2D enemy in hitEnemies)
-                {   
-                    enemy.gameObject.GetComponent<MinionScript>().TakeDamage(1);
-                    Debug.Log("We hit an enemy!" + enemy.name);
-                    Destroy(gameObject);
+                {
+                    if (enemy.gameObject.tag == "Hestia")
+                    {
+                        enemy.gameObject.GetComponent<Hestia>().TakeDamage(1);
+                        Debug.Log("We hit Hestia!" + enemy.name);
+                        Destroy(gameObject);
+                    }
+                    else
+                    {
+                        enemy.gameObject.GetComponent<MinionScript>().TakeDamage(1);
+                        Debug.Log("We hit an enemy!" + enemy.name);
+                        Destroy(gameObject);
+                    }
                 }
             }
-            Collider2D[] hitWalls = Physics2D.OverlapBoxAll(bulletBox.position, rectangleSize, 0f, enemyLayers);
+            Collider2D[] hitWalls = Physics2D.OverlapBoxAll(bulletBox.position, rectangleSize, 0f, wallLayers);
             if (!isHestiaFireball && gameObject.tag != "BulletBox")
             {
                 foreach (Collider2D wall in hitWalls)
