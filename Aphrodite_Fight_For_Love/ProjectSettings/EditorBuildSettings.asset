@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/level2.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/HadesBossCombined.unity
+    guid: cb5e5868177204cc3a277aaa4f01ef0e
   m_configObjects: {}
