@@ -26,36 +26,17 @@ namespace AphroditeFightCode
         //private PlayerInputs input = null;
         public bool inTrigger = false;
 
-        private void Awake()
-        {
-            //input = new PlayerInputs();
-        }
+      
 
         private void OnEnable()
         {
             PlayerInputsSingleton.PlayerInputsInstance.Player.Interact.performed += OnInteractPerformed;
 
-            //if (!input.Player.enabled)
-            //{
-            //    input.Player.Enable();
-
-            //}
-            //input.Player.Interact.performed += OnInteractPerformed;
-            //input.Player.Enable();
-            //input.Player.Interact.performed += OnInteractPerformed;
         }
         private void OnDisable()
         {
             PlayerInputsSingleton.PlayerInputsInstance.Player.Interact.performed -= OnInteractPerformed;
 
-            //if (input.Player.enabled)
-            //{
-            //    input.Player.Disable();
-            //}
-            //input.Player.Interact.performed -= OnInteractPerformed;
-
-            //input.Player.Disable();
-            //input.Player.Interact.performed -= OnInteractPerformed;
             StopAllCoroutines();
         }
 
@@ -67,7 +48,7 @@ namespace AphroditeFightCode
                 GameData.currKeypadPuzzle = puzzle;
                 GameData.inKeypadPuzzle = true;
                 GameData.freezePlayer = true;
-                Debug.Log(puzzleCtrlScript.currPuzzle.name + " | gameData = " + GameData.currKeypadPuzzle.name);
+                //Debug.Log(puzzleCtrlScript.currPuzzle.name + " | gameData = " + GameData.currKeypadPuzzle.name);
 
                 keypadUI.SetActive(true);
                 
@@ -84,10 +65,7 @@ namespace AphroditeFightCode
             {
                 icon.SetActive(true);
                 inTrigger = true;
-                //collision.gameObject.GetComponent<PlayerKeypadPuzzleController>().inPuzzleTrigger = true;
-                //puzzleCtrlScript.currPuzzle = puzzle;
-                Debug.Log(puzzleCtrlScript.currPuzzle.name + " | gameData = " + GameData.currKeypadPuzzle.name);
-
+                
             }
         }
 
@@ -102,10 +80,7 @@ namespace AphroditeFightCode
             {
                 icon.SetActive(false);
                 inTrigger = false;
-                //collision.gameObject.GetComponent<PlayerKeypadPuzzleController>().inPuzzleTrigger = false;
-                //puzzleCtrlScript.currPuzzle = ;
-                Debug.Log("exiting trigger area | " + puzzleCtrlScript.currPuzzle.name + " | gameData = " + GameData.currKeypadPuzzle.name);
-
+                
             }
         }
     }

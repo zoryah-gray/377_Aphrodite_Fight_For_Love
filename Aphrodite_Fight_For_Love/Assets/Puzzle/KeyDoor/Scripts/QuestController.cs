@@ -14,6 +14,8 @@ namespace AphroditeFightCode
         
         [Header("Quest Icon")]
         public GameObject icon;
+        public float transitionDuration = 2.5f;
+        public int currIdx = 0;
         [Header("Quest Unlocks")]
         public GameObject unlocks;
         // event to unlock the door
@@ -165,11 +167,16 @@ namespace AphroditeFightCode
             //}
             Debug.Log(quest.questInstructions.Count);
             Debug.Log(quest.questInstructionsSpeakers.Count);
-            StartDialouge(quest.questInstructions, quest.questInstructionsSpeakers);
+            speakerList = new List<string>(quest.questInstructionsSpeakers);
+            dialogueList = new List<string>(quest.questInstructions);
+            StartDialouge(dialogueList, speakerList);
             
             //GUITextManager.instance.PrintToGUI(quest.questInstructions, quest.GUIinstructions, quest.questSprite);
             
             quest.ongoing = true;
+
+            StartCoroutine(QuestStartCamera());
+
             //activate all the quest keys throughout the scene
             foreach (GameObject key in requiredKeysGO)
             {
@@ -180,14 +187,35 @@ namespace AphroditeFightCode
             //StartCoroutine(DeactivateGUI());
         }
 
+        IEnumerator QuestStartCamera()
+        {
+            while (dialogueManager != null && dialogueManager.activeSelf)
+            {
+                yield return null;
+            }
+            
+            foreach (GameObject key in requiredKeysGO)
+            {
+                key.SetActive(true);
+
+            }
+            GUITextManager.instance.InitalizeQuestBar(requiredKeysGO.Count, quest.keySprite);
+
+            foreach (GameObject key in requiredKeysGO)
+            {
+                GameEvents.current.MoveCameraToKey(key, transitionDuration);
+                yield return new WaitForSeconds(transitionDuration);
+
+            }
+        }
+
+        
+
+
         IEnumerator DeactivateGUI()
         {
             yield return new WaitForSeconds(4f);
             GUITextManager.instance.SetActive(false);
-            //if (quest.complete)
-            //{
-            //    //move camera over to position of door
-            //}
         }
 
         public void EndQuest()
@@ -220,8 +248,11 @@ namespace AphroditeFightCode
             ResetDialougeLists();
             if (!completed)
             {
-                speakerList = quest.questInstructionsSpeakers;
-                dialogueList = quest.questInstructions;
+
+                //speakerList = quest.questInstructionsSpeakers;
+                //dialogueList = quest.questInstructions;
+                speakerList = new List<string>(quest.questInstructionsSpeakers);
+                dialogueList = new List<string>(quest.questInstructions);
                 //foreach (var line in quest.questInstructions)
                 //{
                 //    speakerList.Add(quest.questGiverName);
@@ -234,6 +265,7 @@ namespace AphroditeFightCode
             {
                 speakerList.Add(quest.questGiverName);
                 dialogueList.Add(quest.questEnded);
+                GameEvents.current.MoveToDoorTrigger(quest.doorID);
 
                 //GUITextManager.instance.PrintToGUI(quest.questEnded, quest.GUIinstructions, quest.questSprite);
 

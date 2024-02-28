@@ -27,6 +27,7 @@ namespace AphroditeFightCode
         
         [Header("Code Tracker")]
         public int codeID = 0;
+        bool btnInteractable = false;
         //[SerializeField] private int[] code;
         [SerializeField] private List<int> code;
 
@@ -69,16 +70,20 @@ namespace AphroditeFightCode
             GameData.freezePlayer = false;
             GameData.inKeypadPuzzle = false;
             StopAllCoroutines();
-            if (unlocksDoorIDs.Count == 0)
+            GUITextManager.instance.SetActive(false);
+            if (currPuzzle.unlocked)
             {
-                GameEvents.current.OpenDoorTrigger(1);
-            }
-            else
-            {
-                foreach (int id in unlocksDoorIDs)
+                if (unlocksDoorIDs.Count == 0)
                 {
-                    Debug.Log("opening " + id);
-                    GameEvents.current.OpenDoorTrigger(id);
+                    GameEvents.current.OpenDoorTrigger(1);
+                }
+                else
+                {
+                    foreach (int id in unlocksDoorIDs)
+                    {
+                        Debug.Log("opening " + id);
+                        GameEvents.current.OpenDoorTrigger(id);
+                    }
                 }
             }
 
@@ -89,8 +94,11 @@ namespace AphroditeFightCode
 
         public void AddKeyPress(int keyID)
         {
-            Debug.Log("Adding btn " + keyID);
-            currentInput.Add(keyID);
+            //Debug.Log("Adding btn " + keyID);
+            if (btnInteractable)
+            {
+                currentInput.Add(keyID);
+            }
         }
 
   
@@ -118,6 +126,7 @@ namespace AphroditeFightCode
                 //incorrect answer
                 Debug.Log("Code is not the same! ");
                 // all buttons flash red
+                ToggleButtonClicks(false);
                 FlashAllButtons(flashCount, flashColorIncorrect);
                 Invoke("FlashPuzzleAnswer", 1.5f);
             }
@@ -141,12 +150,13 @@ namespace AphroditeFightCode
                     return false;
                 }
             }
+            currPuzzle.unlocked = true;
             return true;
         }
         private void FlashPuzzleAnswer()
         
         {
-            
+            ToggleButtonClicks(false);
 
             foreach (var i in code)
             {
@@ -172,23 +182,22 @@ namespace AphroditeFightCode
                         Color currentColor = btnImg.color;
                         currentColor.a = alpha;
                         btnImg.color = currentColor;
-                    });
-                    //.setOnComplete(() =>
-                    //{
-                    //    if (i == code[code.Count - 1])
-                    //    {
-                    //        //EventSystem.current.SetSelectedGameObject(firstButton.gameObject);
-                    //        currentButton = firstButton.gameObject;
-                    //    }
+                    })
+                    .setOnComplete(() =>
+                    {
+                        if (i == code[code.Count - 1])
+                        {
+                            ToggleButtonClicks(true);
+                        }
 
-                        
-                    //});
+                    });
             }
-            
+
         }
 
         private void FlashAllButtons(int flashCount, Color btnFlashColor)
         {
+            ToggleButtonClicks(false);
             for (int i = 0; i < flashCount; i++)
             {
                 foreach (Button button in keypadButtons)
@@ -213,15 +222,29 @@ namespace AphroditeFightCode
                                         // Update button color
                                         buttonImage.color = color;
                                 });
+                            if (i == code[code.Count - 1])
+                            {
+                                ToggleButtonClicks(true);
+                            }
 
-                               
+
                         })
                         .setDelay(i * (flashDuration + delayBtFlashes));
                 }
             }
+
+            //ToggleButtonClicks(true);
         }
 
-
+        private void ToggleButtonClicks(bool canPress)
+        {
+            foreach (Button btn in keypadButtons)
+            {
+                btn.interactable = canPress;
+                btnInteractable = canPress;
+                Debug.Log("Button " + btn.name + " is interactable = " + btn.interactable);
+            }
+        }
 
         private void Initalize()
         {
@@ -233,11 +256,12 @@ namespace AphroditeFightCode
                     {
                         //Debug.Log(child.gameObject.name + " | " + btn.gameObject.name);
                         keypadButtons.Add(btn);
+                        btn.interactable = false;
                     }
                 }
             }
             //Debug.Log("in keypad puzzle = " + currPuzzle.name + "  |   gamedata = " + GameData.currKeypadPuzzle.name);
-            Debug.Log("  |   gamedata = " + GameData.currKeypadPuzzle.name);
+            //Debug.Log("  |   gamedata = " + GameData.currKeypadPuzzle.name);
 
             // assign all the variables from the curr Scriptable Obj to their respective variables
             //code = currPuzzle.code;
@@ -250,18 +274,6 @@ namespace AphroditeFightCode
             unlocksDoorIDs = currPuzzle.doorIDs;
             codeID = currPuzzle.codeID;
 
-            //StartCoroutine(LoadPuzzle());
-            //if (GameData.currKeypadPuzzle.code != null)
-            //{
-            //    currPuzzle = GameData.currKeypadPuzzle;
-            //    code = GameData.currKeypadPuzzle.code;
-            //    unlocksDoorIDs = GameData.currKeypadPuzzle.doorIDs;
-            //    codeID = GameData.currKeypadPuzzle.codeID;
-            //}
-            //else
-            //{
-            //    StartCoroutine(LoadPuzzle());
-            //}
             
             
 

@@ -12,8 +12,11 @@ namespace AphroditeFightCode
     {
         [SerializeField] int health = 1;
         [SerializeField] public float strength = .5f;
-        [SerializeField] public float attackSpeed = 1.5f; //how many seconds it takes 
+        [SerializeField] public float attackSpeed = 1.5f; //how many seconds it takes
+        [SerializeField] public float knockbackForce = 5f;
+        [SerializeField] private Rigidbody2D rb = null; 
         [SerializeField] public float moveSpeed = 1;
+        [SerializeField] private Animator anim;
         [SerializeField] public SpecialMinionTypes minionType = SpecialMinionTypes.standard;
         [SerializeField] public bool yesPatrol;
         [SerializeField] public int level = 1;
@@ -35,6 +38,8 @@ namespace AphroditeFightCode
         }
         void Start()
         {
+            rb = GetComponent<Rigidbody2D>();
+            anim = GetComponent<Animator>();
             switch (minionType)
             {
                 case SpecialMinionTypes.userDefine:
@@ -84,15 +89,21 @@ namespace AphroditeFightCode
         {
             health -= playerDamage;
             Debug.Log("Minion has taken " + playerDamage + " damage. " + health + " health remaining");
+            Color originalColor = GetComponent<SpriteRenderer>().color;
+            Color flashColor = Color.red;
+            float flashDuration = 0.1f;
+            int numberOfFlashes = 2;
+
+
             if (health <= 0)
             {
                 //we'll actually do a kill function which will do a death animation,
                 //then delete the game object
-                Color originalColor = gameObject.GetComponent<SpriteRenderer>().color;
-                Color flashColor = Color.red;
-                float flashDuration = 0.1f;
-                int numberOfFlashes = 2;
 
+                MinionDeath();
+            }
+            else
+            {
                 LeanTween.value(gameObject, originalColor, flashColor, flashDuration)
                    .setEase(LeanTweenType.easeInOutSine)
                    .setLoopPingPong(numberOfFlashes)
@@ -106,21 +117,38 @@ namespace AphroditeFightCode
                        // Reset the color to the original after the flash is complete
                        gameObject.GetComponent<SpriteRenderer>().color = originalColor;
                    });
-                MinionDeath();
+                PushBackMinion();
             }
         }
+
+        private void PushBackMinion()
+        {
+            if (rb != null)
+            {
+                Vector2 pushDir = -transform.right;
+                rb.AddForce(pushDir * knockbackForce, ForceMode2D.Impulse);
+            }
+        }
+
+
         private void MinionDeath()
         {
             //Do the death animation
             //
             //TODO
             //
+            anim.SetTrigger("death");
             //Destroy game object
             //if (minionType != SpecialMinionTypes.special)
             //{
-            Destroy(gameObject);
+            //Destroy(gameObject);
             //}
 
+        }
+
+        public void DestroyMinion()
+        {
+            Destroy(gameObject);
         }
 
 

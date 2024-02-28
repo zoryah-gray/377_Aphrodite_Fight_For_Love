@@ -18,48 +18,30 @@ namespace AphroditeFightCode
         private void Start()
         {
             GameEvents.current.onOpenDoorTrigger += OnOpenDoor;
+            GameEvents.current.onMoveToDoorTrigger += OnMoveToDoor;
         }
 
         private void OnDestroy()
         {
             GameEvents.current.onOpenDoorTrigger -= OnOpenDoor;
+            GameEvents.current.onMoveToDoorTrigger -= OnMoveToDoor;
         }
 
-        //public void OnOpenDoor(int id)
-        //{
-        //    //Debug.Log("Door compring id vs this | " + id + "  ,   " + this.id);
-        //    if (id == this.id)
-        //    {
-        //        // wait two seconds before running
-        //        StartCoroutine(Pause());
-        //        Debug.Log("Door comparing id vs this | " + id + "  ,   " + this.id);
-        //        camScrpt.MoveCameraToTarget(gameObject.transform);
-        //        Vector3 originalScale = transform.localScale;
-        //        Vector3 originalPos = transform.position;
-        //        GetComponent<SpriteRenderer>().color = Color.green;
+        public void OnMoveToDoor(int id)
+        {
+            if (id == this.id)
+            {
+                camScrpt.MoveCameraToTarget(gameObject.transform);
+                StartCoroutine(CamWait());
+                
+            }
+        }
 
-        //        if (openHorz)
-        //        {
-        //            LeanTween.scaleX(gameObject, originalScale.x, 5f).setEase(LeanTweenType.easeOutQuint);
-        //            LeanTween.moveX(gameObject, originalPos.x + originalScale.x, 5f).setEase(LeanTweenType.easeOutQuint).setOnComplete(ResetCam);
-        //        }
-        //        else
-        //        {
-        //            LeanTween.scaleY(gameObject, originalScale.y, 5f).setEase(LeanTweenType.easeOutQuint);
-        //            LeanTween.moveY(gameObject, originalPos.y + originalScale.y, 5f).setEase(LeanTweenType.easeOutQuint).setOnComplete(ResetCam);
-        //        }
-        //        isOpen = true;
-        //        //LeanTween.alpha(uncoversArea, 0f, 5f).setOnComplete(uncoverArea);
-        //        foreach (GameObject obj in objectsToFade)
-        //        {
-        //            // Use LeanTween to fade out the alpha of the object
-        //            LeanTween.alpha(obj, 0f, 4f + fadeDuration)
-        //                .setEase(LeanTweenType.easeOutQuad)
-        //                .setOnComplete(() => obj.SetActive(false)); // Optional: Destroy the object after fading out
-        //                //.setOnComplete(() => Destroy(obj)); // Optional: Destroy the object after fading out
-        //        }
-        //    }
-        //}
+        IEnumerator CamWait()
+        {
+            yield return new WaitForSeconds(2f);
+            ResetCam();
+        }
 
         public void OnOpenDoor(int id)
         {

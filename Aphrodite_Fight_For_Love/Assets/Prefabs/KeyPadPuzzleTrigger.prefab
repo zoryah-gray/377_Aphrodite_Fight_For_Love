@@ -264,7 +264,9 @@ MonoBehaviour:
   icon: {fileID: 6502698190924717493}
   puzzle: {fileID: 11400000, guid: b7fc5e8a50d064913a2d12854ca3aaa1, type: 2}
   puzzleCtrlScript: {fileID: 2441046418136214687, guid: 2f3493016bd1c44149b5ee23edd5692c, type: 3}
+  keypadUI: {fileID: 0}
   door: {fileID: 0}
+  inTrigger: 0
 --- !u!61 &5531319624276739629
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -297,7 +299,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.45, y: -0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -308,5 +310,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 3.84, y: 2.94}
   m_EdgeRadius: 0

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a228d90cf402c49a1a3ed32b572ff4e3, type: 3}
+  m_Name: Candle2
+  m_EditorClassIdentifier: 
+  quest: {fileID: 11400000, guid: dace9a920746745a68c56b6693faff80, type: 2}
+  keySprite: {fileID: 21300000, guid: 01aadc4a8409e4cea95a765d7e6415ce, type: 3}
+  hasAnimation: 1
+  keyQuestName: Gather3Candles
+  keyName: A Candle With Life
+  keyID: 1
+  info: ...why is there an open flame here??
+  instructions: Walk through to grab

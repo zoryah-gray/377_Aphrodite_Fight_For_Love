@@ -120,7 +120,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.59}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -131,7 +131,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.56, y: 1.62}
+  m_Size: {x: 3.56, y: 3.89}
   m_EdgeRadius: 0
 --- !u!114 &3515665071236808020
 MonoBehaviour:
@@ -148,6 +148,8 @@ MonoBehaviour:
   quest: {fileID: 0}
   requiredKeysGO: []
   icon: {fileID: 6791072519915214246}
+  transitionDuration: 2.5
+  currIdx: 0
   unlocks: {fileID: 0}
   dialogueManager: {fileID: 0}
   inTrigger: 0

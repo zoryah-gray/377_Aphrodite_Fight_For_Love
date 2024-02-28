@@ -31,5 +31,19 @@ namespace AphroditeFightCode
             
             }
         }
+
+        public void MoveCameraToTargetKey(Transform target, float duration)
+        {
+            if (target != null && target.gameObject.name != "Player")
+            {
+                // Calculate the desired position based on the target's position
+                Vector3 targetPosition = new Vector3(target.position.x, target.position.y, transform.position.z);
+
+                // Move the camera to the target position smoothly using LeanTween
+                LeanTween.move(gameObject, targetPosition, duration).setEase(LeanTweenType.easeOutQuint);
+
+            }
+        }
+        
     }
 }

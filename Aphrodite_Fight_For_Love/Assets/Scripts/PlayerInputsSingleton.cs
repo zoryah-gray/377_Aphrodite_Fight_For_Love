@@ -15,7 +15,7 @@ namespace AphroditeFightCode
             if (instance == null)
             {
                 instance = this;
-                DontDestroyOnLoad(gameObject);
+                //DontDestroyOnLoad(gameObject);
 
                 // Initialize the PlayerInputs instance
                 PlayerInputsInstance = new PlayerInputs();

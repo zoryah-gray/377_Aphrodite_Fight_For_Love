@@ -275,7 +275,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 734.8, y: -128}
+  m_AnchoredPosition: {x: 734.8, y: -126}
   m_SizeDelta: {x: 1469.6, y: 352.2}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &7359051027065506889
@@ -309,8 +309,8 @@ MonoBehaviour:
   m_text: This is the substituted flavor text that will appear when a gameobject
     is hovered over. and more if necessary but i doubt so
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e76b5c79bb077410fb0976b04528c685, type: 2}
+  m_sharedMaterial: {fileID: -8351113730365255211, guid: e76b5c79bb077410fb0976b04528c685, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -334,8 +334,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41.06
-  m_fontSizeBase: 41.06
+  m_fontSize: 33.62
+  m_fontSizeBase: 33.62
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -370,7 +370,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 254.1128, y: 51.292175, z: 506.62427, w: 126.268585}
+  m_margin: {x: 254.1128, y: 13.951538, z: 506.62427, w: 106.16211}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -450,8 +450,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 11.231628, y: 95.28821}
-  m_SizeDelta: {x: -446.6486, y: -190.5764}
+  m_AnchoredPosition: {x: 4.0507812, y: 76.688}
+  m_SizeDelta: {x: -432.2869, y: -227.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7747676340659077282
 CanvasRenderer:
@@ -635,15 +635,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Click To Grab Objects
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e76b5c79bb077410fb0976b04528c685, type: 2}
+  m_sharedMaterial: {fileID: -8351113730365255211, guid: e76b5c79bb077410fb0976b04528c685, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 2483027968
-  m_fontColor: {r: 0, g: 0, b: 0, a: 0.5803922}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -660,8 +660,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50.2
-  m_fontSizeBase: 50.2
+  m_fontSize: 39.2
+  m_fontSizeBase: 39.2
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -670,7 +670,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 2.3
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
