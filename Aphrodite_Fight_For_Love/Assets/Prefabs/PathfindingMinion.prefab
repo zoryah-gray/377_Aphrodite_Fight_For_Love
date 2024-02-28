@@ -375,7 +375,10 @@ MonoBehaviour:
   health: 1
   strength: 0.5
   attackSpeed: 1.5
+  knockbackForce: 5
+  rb: {fileID: 0}
   moveSpeed: 1
+  anim: {fileID: 0}
   minionType: 2
   yesPatrol: 0
   level: 1

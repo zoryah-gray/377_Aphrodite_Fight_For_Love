@@ -127,6 +127,7 @@ namespace AphroditeFightCode
                 //we'll actually do a kill function which will do a death animation,
                 //then delete the game object
                 MinionDeath();
+                healthBar.SetActive(false);
             }
             else
             {
