@@ -278,6 +278,12 @@ namespace AphroditeFightCode
                     enemy.gameObject.GetComponent<Hestia>().TakeDamage(1);
                     Debug.Log("We hit Hestia!" + enemy.name);
                 }
+
+                else if (enemy.gameObject.tag == "Hades")
+                {
+                    enemy.gameObject.GetComponent<Hades>().TakeDamage(1);
+                    Debug.Log("We hit Hades!" + enemy.name);
+                }
                 else
                 { 
                     enemy.gameObject.GetComponent<MinionScript>().TakeDamage(1);
