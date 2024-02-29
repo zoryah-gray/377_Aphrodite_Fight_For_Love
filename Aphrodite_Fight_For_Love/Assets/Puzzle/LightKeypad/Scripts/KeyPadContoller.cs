@@ -42,9 +42,11 @@ namespace AphroditeFightCode
         public GameObject unlocksObj;
         [SerializeField] private List<int> unlocksDoorIDs = new List<int>();
 
-        // event to unlock the door
-        //public delegate void UnlockHandler();
-        //public event UnlockHandler Unlocked;
+        [Header("Dialouge")]
+        [SerializeField] private GameObject dialogueManager;
+        public List<string> dialogueList = new List<string>();
+        public List<string> speakerList = new List<string>();
+        public List<Sprite> speakerSprites = new List<Sprite>();
 
 
         private void OnEnable()
@@ -305,11 +307,30 @@ namespace AphroditeFightCode
         {
             // PrintToGUI(string text, string textInstr, Sprite image)
             //GUITextManager.instance.PrintToGUI("Let's see if your memory is strong. A pattern will flash, repeat it, and submit it to prove your smarts!", "Click to Press Buttons", currPuzzle.triggerSprite);
-            string instr = "A pattern will flash, repeat it, and submit it to prove your wits. If you can't even do this how will you keep your composure in front of Hestia!";
-            string instr2 = "Click to Press Buttons";
-            GUITextManager.instance.PrintToGUI(instr, instr2,currPuzzle.triggerSprite);
+            StartDialouge();
+            StartCoroutine(StartPuzzle());
+            //string instr = "A pattern will flash, repeat it, and submit it to prove your wits. If you can't even do this how will you keep your composure in front of Hestia!";
+            //string instr2 = "Click to Press Buttons";
+            //GUITextManager.instance.PrintToGUI(instr, instr2,currPuzzle.triggerSprite);
 
-            StartCoroutine(DeactivateGUI());
+            //StartCoroutine(DeactivateGUI());
+        }
+
+        public void StartDialouge()
+        {
+            //List<Sprite> speakers = new List<Sprite>();
+            //speakers.Add(quest.questSprite);
+            dialogueManager.SetActive(true);
+            dialogueManager.GetComponent<DialogueManager>().ReceiveStartReadyDialogue(dialogueList.ToArray(), speakerList.ToArray(), speakerSprites);
+        }
+
+        IEnumerator StartPuzzle()
+        {
+            while (dialogueManager != null && dialogueManager.activeSelf)
+            {
+                yield return null;
+            }
+            FlashPuzzleAnswer();
         }
 
         IEnumerator DeactivateGUI()
