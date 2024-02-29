@@ -151,13 +151,8 @@ namespace AphroditeFightCode
                         }
                         //Debug.Log("click detected on collider: " + hit.collider.name + " | Object: " + hitObject.name + " | Layer: " + hitLayer + "| tag: " + hitTag);
                     }
-
-
-
                 }
-
             }
-
         }
 
 

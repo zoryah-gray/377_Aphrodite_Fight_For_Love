@@ -360,9 +360,9 @@ namespace AphroditeFightCode
             {
                 leftWallRB.velocity = leftWall.transform.right * -3f;
             }
-            if(leftWallRB.velocity.x < 0f && leftWall.transform.position.x < -17f)
+            if(leftWallRB.velocity.x < 0f && leftWall.transform.position.x < -15f)
             {
-                leftWall.transform.position = new Vector3(-17f, 0f, 0f);
+                leftWall.transform.position = new Vector3(-15f, 0.06f, 0f);
                 leftWallRB.velocity = leftWall.transform.right * 0f;
             }
             
@@ -370,9 +370,9 @@ namespace AphroditeFightCode
             {
                 rightWallRB.velocity = rightWall.transform.right * 3f;
             }
-            if (rightWallRB.velocity.x > 0.1f && rightWall.transform.position.x > 17.1f)
+            if (rightWallRB.velocity.x > 0.1f && rightWall.transform.position.x > 15f)
             {
-                rightWall.transform.position = new Vector3(17f, 0f, 0f);
+                rightWall.transform.position = new Vector3(15f, 1.06f, 0f);
                 rightWallRB.velocity = rightWall.transform.right * 0f;
             }
 
