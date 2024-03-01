@@ -12,6 +12,7 @@ namespace AphroditeFightCode
 
 
         public GameObject playerBody;
+        public GameObject healthBar;
 
         // Start is called before the first frame update
         void Start()
@@ -44,6 +45,7 @@ namespace AphroditeFightCode
             {
                 //GetComponentInParent<AIPath>().enabled = true;
                 animator.SetInteger("currState", 1);
+                healthBar.SetActive(true);
 
             }
         }

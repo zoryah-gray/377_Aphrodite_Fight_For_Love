@@ -126,12 +126,16 @@ namespace AphroditeFightCode
             {
                 //we'll actually do a kill function which will do a death animation,
                 //then delete the game object
-                MinionDeath();
+                //Animator animator = GetComponentInParent<Animator>();
+                gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                anim.SetTrigger("death");
                 healthBar.SetActive(false);
             }
             else
             {
-                PushBackMinion();
+                // PushBackMinion();
+
+                
             }
         }
 
@@ -150,8 +154,8 @@ namespace AphroditeFightCode
             //Do the death animation
             //
             //TODO
-            //
-            anim.SetTrigger("death");
+            
+            Destroy(gameObject);
             //Destroy game object
             //if (minionType != SpecialMinionTypes.special)
             //{
@@ -162,6 +166,7 @@ namespace AphroditeFightCode
 
         public void DestroyMinion()
         {
+
             Destroy(gameObject);
         }
 

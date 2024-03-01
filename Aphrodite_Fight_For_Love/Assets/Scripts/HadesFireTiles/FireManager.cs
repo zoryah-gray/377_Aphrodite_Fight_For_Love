@@ -71,21 +71,30 @@ using UnityEngine.Tilemaps;
         }
 
 
-
-
-        private void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(collision.gameObject.name);
+        if (collision.gameObject.name == "Player")
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector3Int gridPosition = map.WorldToCell(mousePosition);
+            Vector2 player_pos = collision.gameObject.transform.position;
+            Vector3Int gridPosition = map.WorldToCell(player_pos);
+            Debug.Log("player:" + player_pos);
+            Debug.Log("grid:" + gridPosition);
+            TileData data = mapManager.GetTileData(gridPosition);
+            SetTileOnFire(gridPosition, data);
+        }
+    }
 
-                TileData data = mapManager.GetTileData(gridPosition);
 
-                SetTileOnFire(gridPosition, data);
-
-
-            }
+    private void Update()
+        {
+            //if (Input.GetMouseButtonDown(0))
+            //{
+            //    Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            //    Vector3Int gridPosition = map.WorldToCell(mousePosition);
+        //        TileData data = mapManager.GetTileData(gridPosition);
+        //        SetTileOnFire(gridPosition, data);
+        //    }
         }
 
 

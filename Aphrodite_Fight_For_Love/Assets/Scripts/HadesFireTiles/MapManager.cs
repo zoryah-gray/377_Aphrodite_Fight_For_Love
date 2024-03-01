@@ -44,25 +44,25 @@ using UnityEngine.Tilemaps;
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector3Int gridPosition = map.WorldToCell(mousePosition);
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //    Vector3Int gridPosition = map.WorldToCell(mousePosition);
 
-                TileBase clickedTile = map.GetTile(gridPosition);
+        //    TileBase clickedTile = map.GetTile(gridPosition);
 
-                // map.SetTileFlags(gridPosition, TileFlags.None);
-                //  map.SetColor(gridPosition, Color.black);
+        //    // map.SetTileFlags(gridPosition, TileFlags.None);
+        //    //  map.SetColor(gridPosition, Color.black);
 
-                //   float walkingSpeed = dataFromTiles[clickedTile].walkingSpeed;
-
-
+        //    //   float walkingSpeed = dataFromTiles[clickedTile].walkingSpeed;
 
 
 
 
-            }
-        }
+
+
+        //}
+    }
 
 
 

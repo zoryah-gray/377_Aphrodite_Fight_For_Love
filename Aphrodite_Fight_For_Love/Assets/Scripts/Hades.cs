@@ -46,7 +46,7 @@ namespace AphroditeFightCode
         public GameObject minionPrefab2;
 
 
-        public float health = 20f;
+        public float health = 40f;
         public Image healthBar;
         public Image border;
         public Image damageBar;
@@ -79,7 +79,7 @@ namespace AphroditeFightCode
 
         public void updateHealth()
         {
-            healthBar.fillAmount = health / 20f; // change if health changes 
+            healthBar.fillAmount = health / 40f; // change if health changes 
         }
 
         public void TakeDamage(int playerDamage)

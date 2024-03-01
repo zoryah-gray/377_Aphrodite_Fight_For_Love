@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tiles:
   - {fileID: 11400000, guid: 92946adfd4bda4d02b6c7343a08f2f9d, type: 2}
+  - {fileID: 11400000, guid: 7099eded9fcbb4a94909c57941cefada, type: 2}
+  - {fileID: 11400000, guid: 705dbb778f519415da682989ccea06fb, type: 2}
+  - {fileID: 11400000, guid: 548d41d65cf24440b88a71bca83af55a, type: 2}
   walkingSpeed: 4
   poisonous: 0
   canBurn: 0

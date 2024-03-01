@@ -26,6 +26,8 @@ public class Fire : MonoBehaviour
 
         burnTimeCounter = data.burnTime;
         spreadIntervallCounter = data.spreadIntervall;
+        Debug.Log("tile data:"+data);
+        Debug.Log("fire manager:" + fm);
     }
 
 

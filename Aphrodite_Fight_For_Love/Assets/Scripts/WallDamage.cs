@@ -23,7 +23,7 @@ namespace AphroditeFightCode
             GameObject collidingObject = collision.gameObject;
             if (collidingObject.CompareTag("Player"))
             {
-                Attack(collidingObject, 1f);
+                Attack(collidingObject, 0.5f);
             }
         }
         void Attack(GameObject playerObject, float wallDamage)
