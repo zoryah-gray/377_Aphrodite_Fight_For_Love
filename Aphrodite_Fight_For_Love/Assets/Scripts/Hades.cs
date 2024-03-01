@@ -122,16 +122,26 @@ namespace AphroditeFightCode
         {
 
             minionPrefab1 = Instantiate(minionPrefab1, new Vector2(Random.Range(-7f,-1.5f), Random.Range(-3.5f,3.5f)), Quaternion.identity);
-            minionPrefab2 = Instantiate(minionPrefab2, new Vector2(Random.Range(1.5f, 7f), Random.Range(-3.5f, 3.5f)), Quaternion.identity);
+            Invoke("HadesSpawn2",1.5f);
+            
 
+            
             AIDestinationSetter minPref1targ = minionPrefab1.GetComponent<AIDestinationSetter>();
             minPref1targ.target = player.transform;
-            AIDestinationSetter minPref2targ = minionPrefab2.GetComponent<AIDestinationSetter>();
-            minPref2targ.target = player.transform;
+            
             //Vector2 direction = player.transform.position;
             //Rigidbody2D hadesBulletRB = hadesBulletGO.GetComponent<Rigidbody2D>();
             //hadesBulletRB.velocity = direction * hadesBulletSpeed;
         }
+        public void HadesSpawn2()
+        {
+            minionPrefab2 = Instantiate(minionPrefab2, new Vector2(Random.Range(1.5f, 7f), Random.Range(-3.5f, 3.5f)), Quaternion.identity);
+            AIDestinationSetter minPref2targ = minionPrefab2.GetComponent<AIDestinationSetter>();
+            minPref2targ.target = player.transform;
+        }
+
+       
+
 
         public void ShootHadesBullet()
         {
@@ -171,10 +181,10 @@ namespace AphroditeFightCode
         {
             if (Time.time - loopEnd >= loopInterval)
             {
-                //int statePicker = 2;
+                int statePicker = 2;
 
                 //int statePicker = Random.Range(1, 4);
-                int statePicker = Random.Range(1, 3);
+                //int statePicker = Random.Range(1, 3);
                 Debug.Log("statePicker" + statePicker);
 
                 //if (statePicker == 1)

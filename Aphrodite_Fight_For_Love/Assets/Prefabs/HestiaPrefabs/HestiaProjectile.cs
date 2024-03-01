@@ -14,6 +14,7 @@ namespace AphroditeFightCode
         public LayerMask enemyLayers;
         public LayerMask wallLayers;
         Vector2 rectangleSize = new Vector2(0.5f, 0.5f);
+
         //
 
         private void Update()
@@ -57,25 +58,42 @@ namespace AphroditeFightCode
         }
         private void OnBecameInvisible()
         {
-            //Debug.Log("gameObject OOB");
-            if (!isHestiaFireball && gameObject.tag != "BulletBox")
-            {
-                Destroy(gameObject);
-            }
+            Debug.Log("gameObject OOB");
+            Destroy(gameObject);
+            //if (!isHestiaFireball && gameObject.tag != "BulletBox")
+            //{
+            //    Destroy(gameObject);
+            //}
+            
+
         }
         void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.tag == "Player" && isHestiaFireball && gameObject.tag != "BulletBox")
-            {
-                //Debug.Log("Fireball Hit The Player");
-                Destroy(gameObject);
-            }
-
+            //if (collision.gameObject.tag == "Player" && isHestiaFireball && gameObject.tag != "BulletBox")
+            //{
+            //    Debug.Log("Fireball Hit The Player");
+            //    Destroy(gameObject);
+            //}
+            
             if (collision.gameObject.tag == "Wall" && gameObject.tag != "BulletBox")
             {
                 Destroy(gameObject);
             }
+            
+            //GameObject collidingObject = collision.gameObject;
+            //if (isHestiaFireball && collidingObject.CompareTag("Player"))
+            //{
+            //    Destroy(gameObject);
+            //    Attack(collidingObject, 0.3f);
+
+            //}
         }
+        //void Attack(GameObject playerObject, float wallDamage)
+        //{
+        //    //playerObject.GetComponent<QuickPlayerMove>().health -= minionDamage;
+        //    GameData.CheckPlayerHealth(wallDamage);
+        //    Debug.Log("Player took " + wallDamage + " damage. Curr Player Health = " + GameData.playerHeath); // + playerObject.GetComponent<QuickPlayerMove>().health + " health remaining.");
+        //}
 
         //private void OnTriggerEnter2D(Collider2D collision)
         //{

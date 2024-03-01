@@ -11,6 +11,7 @@ TagManager:
   - BulletBox
   - Hestia
   - Hades
+  - HadesBullet
   layers:
   - Default
   - TransparentFX
