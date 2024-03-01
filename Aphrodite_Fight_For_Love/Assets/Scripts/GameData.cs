@@ -7,6 +7,8 @@ namespace AphroditeFightCode
 {
     public static class GameData
     {
+        [Header("Timelines")]
+        public static bool gameStarted = false;
 
         [Header("Player Game Settings")]
         public static float playerHeath = 60f;
