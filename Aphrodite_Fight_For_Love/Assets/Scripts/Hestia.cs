@@ -59,10 +59,11 @@ namespace AphroditeFightCode
 
 
 
-        public float health = 20f;
+        public float health = 40f;
         public Image healthBar;
         public Image border;
         public Image damageBar;
+        public GameObject sceneTrig; 
         //private bool currPullingWall;
 
         //public float hasFF = 0f;
@@ -129,7 +130,7 @@ namespace AphroditeFightCode
 
         public void updateHealth()
         {
-            healthBar.fillAmount = health / 20f; 
+            healthBar.fillAmount = health / 40f; 
         }
         public void TakeDamage(int playerDamage)
         {
@@ -167,6 +168,7 @@ namespace AphroditeFightCode
             Destroy(healthBar);
             Destroy(border);
             Destroy(damageBar);
+            sceneTrig.SetActive(true);
         }
 
         void shootMeteor()

@@ -780,10 +780,11 @@ MonoBehaviour:
   meteorSpeed: 0
   numOfMeteor: 0
   theWall: 0
-  health: 20
+  health: 40
   healthBar: {fileID: 1192365552}
   border: {fileID: 1286986099}
   damageBar: {fileID: 2090643008}
+  sceneTrig: {fileID: 1137274789}
   leftWall: {fileID: 2035815252}
   rightWall: {fileID: 1652398424}
 --- !u!1 &374125992
@@ -2556,7 +2557,7 @@ GameObject:
   - component: {fileID: 777546162}
   - component: {fileID: 777546161}
   - component: {fileID: 777546163}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WallSprite
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -8089,7 +8090,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1137274790
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8377,7 +8378,7 @@ GameObject:
   - component: {fileID: 1294572428}
   - component: {fileID: 1294572427}
   - component: {fileID: 1294572429}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WallSprite
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -9046,7 +9047,7 @@ GameObject:
   - component: {fileID: 1652398425}
   m_Layer: 9
   m_Name: RightFireWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16569,7 +16570,7 @@ GameObject:
   - component: {fileID: 2035815253}
   m_Layer: 9
   m_Name: LeftFireWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

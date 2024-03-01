@@ -35,7 +35,7 @@ namespace AphroditeFightCode
         public ContactFilter2D clickFilter;
         List<RaycastHit2D> clickCastCollisions = new List<RaycastHit2D>();
 
-
+        Vector2 rectangleSize = new Vector2(1f, 1f);
         private void Awake()
         {
             //input = new PlayerInputs();
@@ -84,6 +84,31 @@ namespace AphroditeFightCode
             {
                 rb.velocity = moveVector * moveSpeed;
                 HandleMovementAnimBlendTree();
+            }
+            LayerMask.GetMask("Enemy", "Obstacles");
+            LayerMask hitLayers = LayerMask.GetMask("Enemy", "Obstacles");
+            Collider2D[] hitObjects = Physics2D.OverlapBoxAll(gameObject.transform.position, rectangleSize, 0f, hitLayers);
+            bool touchHestia = false;
+            bool touchWall = false;
+            foreach (Collider2D ob in hitObjects)
+            {
+                if (ob.gameObject.tag == "Hestia")
+                {
+                    Debug.Log("We hit Hestia!" + ob.name);
+                    touchHestia = true;
+                }
+
+                else if (ob.gameObject.tag == "Wall")
+                {
+                    touchWall = true;
+                    Debug.Log("Touched Wall");
+                }
+            }
+
+            if (touchHestia && touchWall)
+            {
+                Debug.Log("Touching Both");
+                gameObject.transform.position = new Vector3(0, -4.2f, 0);
             }
             //Debug.Log("    pm: is current action map player? = " + input.Player.enabled);
         }
