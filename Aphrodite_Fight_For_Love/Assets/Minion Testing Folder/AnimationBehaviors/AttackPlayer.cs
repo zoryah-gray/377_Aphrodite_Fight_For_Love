@@ -25,16 +25,16 @@ namespace AphroditeFightCode
             timeElasped += Time.deltaTime;
             if (timeElasped >= minionAttackTime)
             {
-                timeElasped = 0;
                 Attack(playerObject, minionVariables.strength);
+                timeElasped = 0;
             }
 
         }
 
         void Attack(GameObject playerObject, float minionDamage)
         {
-            GameData.CheckPlayerHealth(minionDamage);
-            Debug.Log("Player took " + minionDamage + " damage. Curr Player Health = " + GameData.playerHeath);
+            
+            
 
             Color originalColor = playerObject.GetComponent<SpriteRenderer>().color;
             Color flashColor = Color.red;
@@ -54,7 +54,8 @@ namespace AphroditeFightCode
                    // Reset the color to the original after the flash is complete
                    playerObject.GetComponent<SpriteRenderer>().color = Color.white;
                });
-
+            GameData.CheckPlayerHealth(minionDamage);
+            Debug.Log("Player taking " + minionDamage + " damage. Curr Player Health = " + GameData.playerHeath);
             //playerObject.GetComponent<QuickPlayerMove>().health -= minionDamage;
             //Debug.Log("Player took " + minionDamage + " damage. "); // + playerObject.GetComponent<QuickPlayerMove>().health + " health remaining.");
         }
