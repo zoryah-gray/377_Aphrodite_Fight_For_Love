@@ -990,11 +990,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2344185762541567039, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.38
+      value: -3.36
       objectReference: {fileID: 0}
     - target: {fileID: 2344185762541567039, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.87
+      value: 0.34
       objectReference: {fileID: 0}
     - target: {fileID: 2344185762541567039, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3235,13 +3235,15 @@ MonoBehaviour:
   hadesBulletPrefab: {fileID: 2827706167118173209, guid: 5f737de4396bf4513994b7cde337c666, type: 3}
   hadesBulletSpeed: 1
   hadesAnim: {fileID: 1975869230}
-  loopInterval: 5
-  minionPrefab1: {fileID: 3475716158109530139, guid: ec6d1b50994abc745948049027c3b364, type: 3}
-  minionPrefab2: {fileID: 3475716158109530139, guid: ec6d1b50994abc745948049027c3b364, type: 3}
+  minionPrefab1: {fileID: 3475716158109530139, guid: 091fd1604c288488386291c702b5f03e, type: 3}
+  minionPrefab2: {fileID: 3475716158109530139, guid: c1eff629c942241e5a04d68f73ddbbbc, type: 3}
+  minionPrefab3: {fileID: 3475716158109530139, guid: 73b15d9cd03bc439db4fecc5c369ddaa, type: 3}
+  minionPrefab4: {fileID: 3475716158109530139, guid: d98a1c910b5834501a03fcea52c5c5d8, type: 3}
   health: 20
   healthBar: {fileID: 11802949}
   border: {fileID: 1073972257}
   damageBar: {fileID: 905838318}
+  healthBarCol: {fileID: 1136101412}
 --- !u!61 &1975869234
 BoxCollider2D:
   m_ObjectHideFlags: 0
