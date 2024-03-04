@@ -22,5 +22,5 @@ MonoBehaviour:
   poisonous: 0
   canBurn: 1
   spreadChance: 20
-  spreadIntervall: 0.35
+  spreadIntervall: 0.5
   burnTime: 60
