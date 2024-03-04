@@ -179,11 +179,11 @@ namespace AphroditeFightCode
             //from bottom
             if (dirM == 1)
             {
-                arr1T.transform.position = new Vector3(-5.45f, -4.5f, 1);
+                arr1T.transform.position = new Vector3(-5.45f, -7.25f, 1);
                 arr1T.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                arr2T.transform.position = new Vector3(0f, -4.5f, 1);
+                arr2T.transform.position = new Vector3(0f, -7.25f, 1);
                 arr2T.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                arr3T.transform.position = new Vector3(5.45f, -4.5f, 1);
+                arr3T.transform.position = new Vector3(5.45f, -7.25f, 1);
                 arr3T.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
 
                 showArrow();
@@ -204,11 +204,11 @@ namespace AphroditeFightCode
             //from top
             if (dirM == 2)
             {
-                arr1T.transform.position = new Vector3(-5.45f, 4.5f, 1);
+                arr1T.transform.position = new Vector3(-5.45f, 7.25f, 1);
                 arr1T.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
-                arr2T.transform.position = new Vector3(0f, 4.5f, 1);
+                arr2T.transform.position = new Vector3(0f, 7.25f, 1);
                 arr2T.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
-                arr3T.transform.position = new Vector3(5.45f, 4.5f, 1);
+                arr3T.transform.position = new Vector3(5.45f, 7.25f, 1);
                 arr3T.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
 
                 showArrow();
@@ -285,27 +285,6 @@ namespace AphroditeFightCode
             arr2SR.enabled = true;
             arr3SR.enabled = true;
         }
-
-        //void decideArrow()
-        //{
-        //    int dirM = 1;
-        //    if(dirM == 1)
-        //    {
-
-        //    }
-        //    if (dirM == 2)
-        //    {
-        //        Debug.Log("showFromUpArrow");
-        //    }
-        //    if (dirM == 3)
-        //    {
-        //        Debug.Log("showFromLeftArrow");
-        //    }
-        //    if (dirM == 4)
-        //    {
-        //        Debug.Log("showFromRightArrow");
-        //    }
-        //}
 
         //void ShootFireball()
         //{
@@ -462,7 +441,7 @@ namespace AphroditeFightCode
         {
             if (Time.time - loopEnd >= loopInterval)
             {
-                int statePicker = 1;
+                int statePicker = 2;
 
                 //int statePicker = Random.Range(1, 4);
                 //int statePicker = Random.Range(1, 3);
@@ -473,7 +452,7 @@ namespace AphroditeFightCode
                 //    hestAnim.SetInteger("State", 1);
                 //    hestAnim.SetInteger("Hold", 1);
                 //}
-                if (statePicker == 2)
+                if (statePicker == 2) //Meteor
                 {
                     hestAnim.SetInteger("State", 2);
                     hestAnim.SetInteger("Hold", 1);
