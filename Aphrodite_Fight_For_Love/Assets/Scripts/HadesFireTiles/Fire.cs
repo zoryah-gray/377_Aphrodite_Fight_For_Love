@@ -12,6 +12,7 @@ public class Fire : MonoBehaviour
 
     private FireManager fireManager;
 
+    private float FireAttack;
 
     private float burnTimeCounter, spreadIntervallCounter;
 
@@ -50,4 +51,11 @@ public class Fire : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Player")
+        {
+            GameData.CheckPlayerHealth(FireAttack);
+        }    
+    }
 }
