@@ -120,7 +120,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meleeClip: {fileID: 8300000, guid: 88b1cbe3caa3fee4b8b103b5edd7aba9, type: 3}
-  rangedClip: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
 --- !u!1 &1609710822361149366
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,7 +267,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meleeClip: {fileID: 0}
-  rangedClip: {fileID: 0}
 --- !u!1 &8060550628745360157
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,7 +427,7 @@ MonoBehaviour:
   collisionCount: 0
   collisionOffset: 0.05
   clickDist: 1
-  walkingClip: {fileID: 0}
+  walkingClip: {fileID: 8300000, guid: 62b8bee7a473c40fc91957a4d08c50ad, type: 3}
   clickFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -514,11 +512,10 @@ MonoBehaviour:
   gunInterval: 0.5
   restartScreen: {fileID: 6088876307567681880, guid: f2ab2ee013b1e4ac194183f069d630b9, type: 3}
   diedScreen: {fileID: 4052986385185066927, guid: 1b0aed97fb5014f9d8a93cd0be131343, type: 3}
-  diedScreen: {fileID: 0}
   health: 10
   curWeapon: 0
   GUISlot1: {fileID: 0}
   GUISlot2: {fileID: 0}
   activeSlotOriginalPos: {x: 0, y: 0, z: 0}
   nonActiveSlotOriginalPos: {x: 0, y: 0, z: 0}
-  swipeSound: {fileID: 0}
+  rangedClip: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}

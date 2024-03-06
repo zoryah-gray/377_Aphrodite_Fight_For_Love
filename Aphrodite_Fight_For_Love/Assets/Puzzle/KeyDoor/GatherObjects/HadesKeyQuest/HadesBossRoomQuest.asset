@@ -24,10 +24,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bce1481169fce4a0b99ee529903464f3, type: 2}
   - {fileID: 11400000, guid: f797423e9c54d4aa79bcf55c6dd66459, type: 2}
   - {fileID: 11400000, guid: bf5c90e80a5824408bb95ce3622fb38b, type: 2}
-  - {fileID: 11400000, guid: bf5c90e80a5824408bb95ce3622fb38b, type: 2}
+  - {fileID: 11400000, guid: f317b2d3b90dc43d1a8c0cea38761201, type: 2}
   requiredKeysID: 0000000001000000020000000300000004000000
   obtainedKeys: 
-  ongoing: 0
+  ongoing: 1
   complete: 0
   questGiverName: Director of Styx Inc.
   speakers:

@@ -55,25 +55,25 @@ namespace AphroditeFightCode
                     break;
                 case SpecialMinionTypes.standard:
                     health = 3;
-                    moveSpeed = 2;
+                    moveSpeed = 3;
                     attackSpeed = 1;
                     strength = .25f;
                     break;
                 case SpecialMinionTypes.light:
                     health = 2;
-                    moveSpeed = 4;
+                    moveSpeed = 6;
                     attackSpeed = 1.5f;
                     strength = .125f;
                     break;
                 case SpecialMinionTypes.heavy:
                     health = 4;
-                    moveSpeed = 1f;
+                    moveSpeed = 2f;
                     attackSpeed = 1;
                     strength = .5f;
                     break;
                 case SpecialMinionTypes.boss:
                     health = 5;
-                    moveSpeed = 1;
+                    moveSpeed = 3;
                     attackSpeed = 1;
                     strength = .75f;
                     break;

@@ -54,6 +54,7 @@ namespace AphroditeFightCode
 
         public void PlayAgain()
         {
+            GameData.playerHeath = 60f;
             SceneManager.LoadScene("TitleScreen");
         }
 
