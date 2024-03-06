@@ -777,9 +777,10 @@ MonoBehaviour:
   arr1Prefab: {fileID: 1064398317}
   arr2Prefab: {fileID: 1307001392}
   arr3Prefab: {fileID: 1669550925}
-  meteorSpeed: 0
-  numOfMeteor: 0
+  meteorSpeed: 5
+  numOfMeteor: 10
   theWall: 0
+  isHestiaDead: 0
   health: 40
   healthBar: {fileID: 1192365552}
   border: {fileID: 1286986099}
@@ -787,6 +788,7 @@ MonoBehaviour:
   sceneTrig: {fileID: 1137274789}
   leftWall: {fileID: 2035815252}
   rightWall: {fileID: 1652398424}
+  hestHealthBufferCollider: {fileID: 1323153238}
 --- !u!1 &374125992
 GameObject:
   m_ObjectHideFlags: 0
