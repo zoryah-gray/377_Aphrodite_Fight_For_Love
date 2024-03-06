@@ -35,6 +35,10 @@ namespace AphroditeFightCode
         public int curWeapon;
         public Image GUISlot1;
         public Image GUISlot2;
+        [SerializeField] private Vector3 activeSlotOriginalPos;
+        [SerializeField] private Vector3 nonActiveSlotOriginalPos;
+     
+
 
         void Start()
         {
@@ -42,10 +46,17 @@ namespace AphroditeFightCode
             playerAnimator = GetComponent<Animator>();
             bullet.GetComponent<SpriteRenderer>().enabled = false;
 
+            activeSlotOriginalPos = GUISlot1.rectTransform.position;
+
+            nonActiveSlotOriginalPos = GUISlot2.rectTransform.position;
+
             //curWeapon = 0; // initialized to melee
             //GameData.currWeapon = 0;
             if (GameData.currWeapon == 0)
             {
+                // Move active in front of nonActive
+                GUISlot1.transform.SetSiblingIndex(GUISlot2.transform.GetSiblingIndex() + 1);
+
                 Color slotColor = GUISlot2.color;
                 slotColor.a = 0.5f;
                 GUISlot2.color = slotColor;
@@ -54,10 +65,16 @@ namespace AphroditeFightCode
                 slot1Color.a = 1f;
                 GUISlot1.color = slot1Color;
 
+                GUISlot1.rectTransform.position = activeSlotOriginalPos;
+
+                GUISlot2.rectTransform.position = nonActiveSlotOriginalPos;
+
             }
             else
             {
-                
+                // Move active in front of nonActive
+                GUISlot2.transform.SetSiblingIndex(GUISlot1.transform.GetSiblingIndex() + 1);
+
                 Color slotColor = GUISlot1.color;
                 slotColor.a = 0.5f;
                 GUISlot1.color = slotColor;
@@ -65,7 +82,13 @@ namespace AphroditeFightCode
                 Color slot2Color = GUISlot2.color;
                 slot2Color.a = 1f;
                 GUISlot2.color = slot2Color;
+
+                GUISlot2.rectTransform.position = activeSlotOriginalPos;
+
+                GUISlot1.rectTransform.position = nonActiveSlotOriginalPos;
             }
+
+            
 
         }
 
@@ -131,7 +154,8 @@ namespace AphroditeFightCode
         private void SwitchSlots(int activeSlotInt)
         {
             // if making weapon1 active but its already active ignore
-            
+            int slot = activeSlotInt - 1;
+            Debug.Log("switching from weapon " + GameData.currWeapon + " to " + slot);
             if (GameData.currWeapon == activeSlotInt - 1)
             {
                 // the weapon we are trying to switch to is already the current weapon
@@ -139,16 +163,20 @@ namespace AphroditeFightCode
             }
 
             Image activeSlot;
+            //Vector3 activeSlotTargetPos;
             Image nonActiveSlot;
+            //Vector3 nonActiveSlotTargetPos;
             if (activeSlotInt == 1)
             {
                 activeSlot = GUISlot1;
+
                 nonActiveSlot = GUISlot2;
             }
             else 
             {
                 //(activeSlot == 2)
                 activeSlot = GUISlot2;
+
                 nonActiveSlot = GUISlot1;
             }
 
@@ -166,13 +194,23 @@ namespace AphroditeFightCode
             
 
             RectTransform rectTransform1 = activeSlot.rectTransform;
+            
             RectTransform rectTransform2 = nonActiveSlot.rectTransform;
+            Debug.Log("-> active slot currently at pos (" + rectTransform1.position + ") needs to move to pos (" + activeSlotOriginalPos + ")");
 
-            LeanTween.move(rectTransform1.gameObject, rectTransform2.position, 1f)
+            // active (1) -> nonactive (2)
+            LeanTween.move(activeSlot.gameObject, activeSlotOriginalPos, 1f)
                     .setEase(LeanTweenType.easeInOutQuad);
 
-            LeanTween.move(rectTransform2.gameObject, rectTransform1.position, 1f)
+            // nonactive(2) -> active (1)
+            LeanTween.move(nonActiveSlot.gameObject, nonActiveSlotOriginalPos, 1f)
                         .setEase(LeanTweenType.easeInOutQuad);
+
+            //LeanTween.move(rectTransform1.gameObject, rectTransform2.position, 1f)
+            //        .setEase(LeanTweenType.easeInOutQuad);
+
+            //LeanTween.move(rectTransform2.gameObject, rectTransform1.position, 1f)
+            //            .setEase(LeanTweenType.easeInOutQuad);
 
 
             GameData.currWeapon = activeSlotInt - 1;

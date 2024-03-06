@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+namespace AphroditeFightCode
+{
     public class FireManager : MonoBehaviour
     {
 
@@ -85,22 +87,23 @@ using UnityEngine.Tilemaps;
 
             activeFires.Add(tilePosition);
 
+
         }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log(collision.gameObject.name);
-        if (collision.gameObject.name == "Player")
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            Vector2 player_pos = collision.gameObject.transform.position;
-            Vector3Int gridPosition = map.WorldToCell(player_pos);
-            Debug.Log("player:" + player_pos);
-            Debug.Log("grid:" + gridPosition);
-            TileData data = mapManager.GetTileData(gridPosition);
-            SetTileOnFire(gridPosition, data);
+            Debug.Log(collision.gameObject.name);
+            if (collision.gameObject.name == "Player" && GameData.inQuest)
+            {
+                Vector2 player_pos = collision.gameObject.transform.position;
+                Vector3Int gridPosition = map.WorldToCell(player_pos);
+                Debug.Log("player:" + player_pos);
+                Debug.Log("grid:" + gridPosition);
+                TileData data = mapManager.GetTileData(gridPosition);
+                SetTileOnFire(gridPosition, data);
+            }
         }
-    }
 
     private void Start()
     {
@@ -141,3 +144,4 @@ using UnityEngine.Tilemaps;
     }
 
     }
+}

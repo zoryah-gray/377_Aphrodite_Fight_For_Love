@@ -7,23 +7,7 @@ namespace AphroditeFightCode
 {
     public class Hestia : MonoBehaviour
     {
-        //public GameObject fireballPrefab;
 
-        //public bool canFF;
-        //public GameObject FFPrefab;
-
-        //public FFState currentState = FFState.ff1;
-        //public Sprite ff_empty;
-        //public Sprite ff1_Sprite;
-        //public Sprite ff2_Sprite;
-        //public Sprite ffdamage_Sprite;
-        //private SpriteRenderer fftileSpriteRenderer;
-        //private float ffloopEnd;
-        //private float ffloopInterval = 10f;
-
-        //public GameObject firetile;
-
-        //public float fireballSpeed = 1f;
 
         public Animator hestAnim;
 
@@ -34,7 +18,7 @@ namespace AphroditeFightCode
         private float holdAnimLoopInterval = 6f;
 
         private GameObject player;
-        //private SpriteRenderer hestRend;
+
 
         private bool HestiaIsLeft;
 
@@ -64,11 +48,7 @@ namespace AphroditeFightCode
         public Image border;
         public Image damageBar;
         public GameObject sceneTrig; 
-        //private bool currPullingWall;
 
-        //public float hasFF = 0f;
-
-        //private GameObject fftile;
 
         public GameObject leftWall;
         public GameObject rightWall;
@@ -76,16 +56,7 @@ namespace AphroditeFightCode
         Rigidbody2D rightWallRB;
 
         public GameObject hestHealthBufferCollider;
-        //public GameObject bottomMeteor;
-        //public GameObject rightMeteor;
 
-        //public enum FFState
-        //{
-        //    empty,
-        //    ff1,
-        //    ff2,
-        //    ffdamage
-        //}
 
         // Start is called before the first frame update
         void Start()
@@ -114,11 +85,6 @@ namespace AphroditeFightCode
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
             gameObject.GetComponent<Collider2D>().enabled = true;
             hestHealthBufferCollider.GetComponent<Collider2D>().enabled = true;
-            //HestiaIsLeft = true;
-            //currPullingWall = false;
-            //ffloopEnd = -ffloopInterval;
-            //canFF = false;
-            //fftileSpriteRenderer = firetile.GetComponent<SpriteRenderer>();
 
         }
 
@@ -195,7 +161,7 @@ namespace AphroditeFightCode
             //int dirM = 1;
             
             //from bottom
-            if (dirM == 1)
+            if (dirM == 1 && !isHestiaDead)
             {
                 arr1T.transform.position = new Vector3(-5.45f, -7.25f, 1);
                 arr1T.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
@@ -220,7 +186,7 @@ namespace AphroditeFightCode
             
 
             //from top
-            if (dirM == 2)
+            if (dirM == 2 && !isHestiaDead)
             {
                 arr1T.transform.position = new Vector3(-5.45f, 7.25f, 1);
                 arr1T.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
@@ -243,7 +209,7 @@ namespace AphroditeFightCode
             }
 
             //from left
-            if (dirM == 3)
+            if (dirM == 3 && !isHestiaDead)
             {
                 arr1T.transform.position = new Vector3(-8.25f, 2.5f, 1);
                 arr1T.transform.rotation = Quaternion.Euler(0f, 0f, -90f);
@@ -266,7 +232,7 @@ namespace AphroditeFightCode
             }
 
             //from right
-            if (dirM == 4)
+            if (dirM == 4 && !isHestiaDead)
             {
                 arr1T.transform.position = new Vector3(8.25f, 2.5f, 1);
                 arr1T.transform.rotation = Quaternion.Euler(0f, 0f, 90f);

@@ -26,6 +26,7 @@ namespace AphroditeFightCode
         //private PlayerInputs input = null;
         public bool inTrigger = false;
 
+        
         private void Awake()
         {
             //input = new PlayerInputs();
@@ -49,22 +50,11 @@ namespace AphroditeFightCode
         {
             PlayerInputsSingleton.PlayerInputsInstance.Player.Interact.performed += OnInteractPerformed;
 
-            //if (!input.Player.enabled)
-            //{
-            //    input.Player.Enable();
-
-            //}
-            //input.Player.Interact.performed += OnInteractPerformed;
         }
         private void OnDisable()
         {
             PlayerInputsSingleton.PlayerInputsInstance.Player.Interact.performed -= OnInteractPerformed;
 
-            //if (input.Player.enabled)
-            //{
-            //    input.Player.Disable();
-            //}
-            //input.Player.Interact.performed -= OnInteractPerformed;
 
             StopAllCoroutines();
         }

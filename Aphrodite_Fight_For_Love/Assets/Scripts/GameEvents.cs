@@ -33,6 +33,25 @@ namespace AphroditeFightCode
             }
         }
 
+
+        public event Action<int> onTrapDoorTriggerEnter;
+        public void TrapDoorTriggerEnter(int id)
+        {
+            if (onTrapDoorTriggerEnter != null)
+            {
+                onTrapDoorTriggerEnter(id);
+            }
+        }
+
+        public event Action<int> onTrapDoorTriggerExit;
+        public void TrapDoorTriggerExit(int id)
+        {
+            if (onTrapDoorTriggerExit != null)
+            {
+                onTrapDoorTriggerExit(id);
+            }
+        }
+
         private void ResetCam()
         {
             GameData.moveCamFromPlayer = false;

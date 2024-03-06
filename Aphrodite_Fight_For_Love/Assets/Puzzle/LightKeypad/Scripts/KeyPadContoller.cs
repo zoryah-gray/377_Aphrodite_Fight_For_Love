@@ -47,12 +47,15 @@ namespace AphroditeFightCode
         public List<string> dialogueList = new List<string>();
         public List<string> speakerList = new List<string>();
         public List<Sprite> speakerSprites = new List<Sprite>();
+        public string speaker;
+        public Sprite speakerSprite;
 
 
         private void OnEnable()
         {
             EventSystem.current.SetSelectedGameObject(null);
             unlocksObj = null;
+            GameData.freezePlayer = true;
             StartCoroutine(LoadPuzzle());
             //Initalize();
         }
@@ -116,13 +119,9 @@ namespace AphroditeFightCode
             {
                 //correct answer
                 Debug.Log("Code is the same/correct!");
+                currPuzzle.unlocked = true;
                 FlashAllButtons(flashCount, flashColorCorrect);
                 Invoke("OnReturn", 2f);
-                //foreach (var id in unlocksDoorIDs)
-                //{
-                //    GameEvents.current.OpenDoorTrigger(id);
-                //}
-                //GameEvents.current.OpenDoorTrigger(currPuzzle.doorID);
             }
             else { 
                 //incorrect answer
@@ -155,6 +154,7 @@ namespace AphroditeFightCode
             currPuzzle.unlocked = true;
             return true;
         }
+
         private void FlashPuzzleAnswer()
         
         {
@@ -262,12 +262,12 @@ namespace AphroditeFightCode
                     }
                 }
             }
-            //Debug.Log("in keypad puzzle = " + currPuzzle.name + "  |   gamedata = " + GameData.currKeypadPuzzle.name);
-            //Debug.Log("  |   gamedata = " + GameData.currKeypadPuzzle.name);
+
 
             // assign all the variables from the curr Scriptable Obj to their respective variables
             //code = currPuzzle.code;
             currPuzzle = GameData.currKeypadPuzzle;
+            
             code = currPuzzle.code;
             if (unlocksDoorIDs.Count > 0)
             {
@@ -275,9 +275,6 @@ namespace AphroditeFightCode
             }
             unlocksDoorIDs = currPuzzle.doorIDs;
             codeID = currPuzzle.codeID;
-
-            
-            
 
 
             switch (currPuzzle.difficulty)
@@ -305,9 +302,18 @@ namespace AphroditeFightCode
 
         public void RunInstructions()
         {
-            // PrintToGUI(string text, string textInstr, Sprite image)
-            //GUITextManager.instance.PrintToGUI("Let's see if your memory is strong. A pattern will flash, repeat it, and submit it to prove your smarts!", "Click to Press Buttons", currPuzzle.triggerSprite);
-            StartDialouge();
+
+            if (currPuzzle.unlocked)
+            {
+                List<string> finishedDialouge = new List<string> {"You have already solved this puzzle"};
+                List<string> finishedSpeakers = new List<string> { speaker };
+                List<Sprite> spriteSpeaker = new List<Sprite> { speakerSprite }; 
+                StartDialouge(finishedDialouge, finishedSpeakers, spriteSpeaker);
+            }
+            else {
+
+                StartDialouge(dialogueList, speakerList, speakerSprites);
+            }
             StartCoroutine(StartPuzzle());
             //string instr = "A pattern will flash, repeat it, and submit it to prove your wits. If you can't even do this how will you keep your composure in front of Hestia!";
             //string instr2 = "Click to Press Buttons";
@@ -316,12 +322,12 @@ namespace AphroditeFightCode
             //StartCoroutine(DeactivateGUI());
         }
 
-        public void StartDialouge()
+        public void StartDialouge(List<string> dialouge, List<string> speakers, List<Sprite> sprites)
         {
             //List<Sprite> speakers = new List<Sprite>();
             //speakers.Add(quest.questSprite);
             dialogueManager.SetActive(true);
-            dialogueManager.GetComponent<DialogueManager>().ReceiveStartReadyDialogue(dialogueList.ToArray(), speakerList.ToArray(), speakerSprites);
+            dialogueManager.GetComponent<DialogueManager>().ReceiveStartReadyDialogue(dialouge.ToArray(), speakers.ToArray(), sprites);
         }
 
         IEnumerator StartPuzzle()
@@ -330,7 +336,14 @@ namespace AphroditeFightCode
             {
                 yield return null;
             }
-            FlashPuzzleAnswer();
+            if (!currPuzzle.unlocked)
+            {
+                FlashPuzzleAnswer();
+            }
+            else
+            {
+                OnReturn();
+            }
         }
 
         IEnumerator DeactivateGUI()
