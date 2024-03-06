@@ -16,16 +16,30 @@ namespace AphroditeFightCode
 
         [Header("Quest Unlocks")]
         public int doorID;
-        //public GameObject unlocks;
-        //public delegate void UnlockHandler();
-        //public event UnlockHandler Unlocked;
+
+
+        [Header("Dialouge")]
+        [SerializeField] private GameObject dialogueManager;
+        public List<string> dialogueList = new List<string>();
+        public List<string> speakerList = new List<string>();
+        public List<Sprite> speakerSprites = new List<Sprite>();
+
 
 
         private void OnEnable()
         {
             GameData.freezePlayer = true;
             riddle.text = riddleText;
+            StartDialouge();
+            //Prove yourself worthy to meet the goddess: The goddess Hestia is known for which two items?
         }
+
+        public void StartDialouge()
+        {
+            dialogueManager.SetActive(true);
+            dialogueManager.GetComponent<DialogueManager>().ReceiveStartReadyDialogue(dialogueList.ToArray(), speakerList.ToArray(), speakerSprites);
+        }
+
 
         public void ExitPuzzle()
         {

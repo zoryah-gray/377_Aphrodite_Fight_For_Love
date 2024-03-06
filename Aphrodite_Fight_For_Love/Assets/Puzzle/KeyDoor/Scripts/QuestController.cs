@@ -160,6 +160,7 @@ namespace AphroditeFightCode
         {
             
             ResetDialougeLists();
+            GameData.inQuest = true;
             //foreach (var line in quest.questInstructions)
             //{
             //    speakerList.Add(quest.questGiverName);
@@ -182,7 +183,7 @@ namespace AphroditeFightCode
             {
                 key.SetActive(true);
             }
-            GUITextManager.instance.InitalizeQuestBar(requiredKeysGO.Count, quest.keySprite);
+            GUITextManager.instance.InitalizeQuestBar(requiredKeysGO.Count, quest.keySprite, quest.questGoalText);
             // start a co-routine to turn off the GUI after a few seconds
             //StartCoroutine(DeactivateGUI());
         }
@@ -199,7 +200,7 @@ namespace AphroditeFightCode
                 key.SetActive(true);
 
             }
-            GUITextManager.instance.InitalizeQuestBar(requiredKeysGO.Count, quest.keySprite);
+            //GUITextManager.instance.InitalizeQuestBar(requiredKeysGO.Count, quest.keySprite);
 
             foreach (GameObject key in requiredKeysGO)
             {
@@ -238,6 +239,7 @@ namespace AphroditeFightCode
             GUITextManager.instance.DeactivateQuestBar();
             GameData.moveCamFromPlayer = true;
             GameEvents.current.OpenDoorTrigger(quest.doorID);
+            GameData.inQuest = false;
             //Unlock();
             //StartCoroutine(DeactivateGUI());
 

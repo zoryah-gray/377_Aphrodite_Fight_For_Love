@@ -30,6 +30,7 @@ namespace AphroditeFightCode
         //public string questEnd = "My apples!! Good job, I'll unlocked it for you now";
         public string questEnded = "Gah I've already opened it for you";
         public string GUIinstructions;
+        public string questGoalText;
 
 
         private void Awake()

@@ -26,6 +26,7 @@ namespace AphroditeFightCode
                 if (SceneManager.GetActiveScene().name == "Level1")
                 {
                     SceneManager.LoadScene("HestiaBossFight");
+                    SceneManager.UnloadSceneAsync("Level1");
                 }
                 else if (SceneManager.GetActiveScene().name == "HestiaBossFight")
                 {

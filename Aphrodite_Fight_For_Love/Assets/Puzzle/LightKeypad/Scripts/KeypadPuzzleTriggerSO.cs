@@ -39,6 +39,21 @@ namespace AphroditeFightCode
 
         }
 
+        private void Awake()
+        {
+            //ResetValues();
+        }
+
+        private void OnEnable()
+        {
+            ResetValues();
+        }
+
+        public void ResetValues()
+        {
+            unlocked = false;
+        }
+
 
     }
 }
