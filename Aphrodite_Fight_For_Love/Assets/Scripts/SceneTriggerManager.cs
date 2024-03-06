@@ -36,6 +36,10 @@ namespace AphroditeFightCode
                 {
                     SceneManager.LoadScene("HadesBossCombined");
                 }
+                else if (SceneManager.GetActiveScene().name == "HadesBossCombined")
+                {
+                    SceneManager.LoadScene("EndCredits");
+                }
             }
         }
 
