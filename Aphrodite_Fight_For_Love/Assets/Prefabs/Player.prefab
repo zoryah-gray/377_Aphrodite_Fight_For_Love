@@ -181,7 +181,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1ef1271389e51408d9959d9c205fd63a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -482,7 +482,10 @@ MonoBehaviour:
   isAttacking: 0
   gunInterval: 0.5
   restartScreen: {fileID: 6088876307567681880, guid: f2ab2ee013b1e4ac194183f069d630b9, type: 3}
+  diedScreen: {fileID: 4052986385185066927, guid: 1b0aed97fb5014f9d8a93cd0be131343, type: 3}
   health: 10
   curWeapon: 0
   GUISlot1: {fileID: 0}
   GUISlot2: {fileID: 0}
+  activeSlotOriginalPos: {x: 0, y: 0, z: 0}
+  nonActiveSlotOriginalPos: {x: 0, y: 0, z: 0}

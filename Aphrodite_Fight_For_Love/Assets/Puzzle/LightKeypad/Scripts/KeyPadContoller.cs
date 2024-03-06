@@ -72,7 +72,7 @@ namespace AphroditeFightCode
 
 
             currentInput.Clear();
-            GameData.freezePlayer = false;
+            
             GameData.inKeypadPuzzle = false;
             StopAllCoroutines();
             GUITextManager.instance.SetActive(false);
@@ -91,7 +91,7 @@ namespace AphroditeFightCode
                     }
                 }
             }
-
+            GameData.freezePlayer = false;
             gameObject.SetActive(false);
         }
 
@@ -118,14 +118,14 @@ namespace AphroditeFightCode
             if (CheckCorrect())
             {
                 //correct answer
-                Debug.Log("Code is the same/correct!");
+                //Debug.Log("Code is the same/correct!");
                 currPuzzle.unlocked = true;
                 FlashAllButtons(flashCount, flashColorCorrect);
                 Invoke("OnReturn", 2f);
             }
             else { 
                 //incorrect answer
-                Debug.Log("Code is not the same! ");
+                //Debug.Log("Code is not the same! ");
                 // all buttons flash red
                 ToggleButtonClicks(false);
                 FlashAllButtons(flashCount, flashColorIncorrect);
@@ -158,6 +158,7 @@ namespace AphroditeFightCode
         private void FlashPuzzleAnswer()
         
         {
+            GameData.freezePlayer = true;
             ToggleButtonClicks(false);
 
             foreach (var i in code)
@@ -244,7 +245,7 @@ namespace AphroditeFightCode
             {
                 btn.interactable = canPress;
                 btnInteractable = canPress;
-                Debug.Log("Button " + btn.name + " is interactable = " + btn.interactable);
+                //Debug.Log("Button " + btn.name + " is interactable = " + btn.interactable);
             }
         }
 
@@ -269,10 +270,10 @@ namespace AphroditeFightCode
             currPuzzle = GameData.currKeypadPuzzle;
             
             code = currPuzzle.code;
-            if (unlocksDoorIDs.Count > 0)
-            {
-                unlocksDoorIDs.Clear();
-            }
+            //if (unlocksDoorIDs.Count > 0)
+            //{
+            //    unlocksDoorIDs.Clear();
+            //}
             unlocksDoorIDs = currPuzzle.doorIDs;
             codeID = currPuzzle.codeID;
 

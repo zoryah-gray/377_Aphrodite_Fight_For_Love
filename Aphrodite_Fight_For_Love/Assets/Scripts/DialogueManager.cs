@@ -28,6 +28,7 @@ namespace AphroditeFightCode
         public Image speaker2;
         Color inactiveAlpha;
         Color activeAlpha;
+
         void Setup()
         {
             //Gather the text mesh pros used to display the text to the player
@@ -40,6 +41,7 @@ namespace AphroditeFightCode
             inactiveAlpha.a = 0.25f;
             activeAlpha = speaker1.color;
             speaker1.color = activeAlpha;
+            GameData.freezePlayer = true;
 
             //speaker1 = spriteArray[0];
             //speaker2 = spriteArray[1];
@@ -62,7 +64,7 @@ namespace AphroditeFightCode
             PlayerInputsSingleton.PlayerInputsInstance.Dialouge.Enable();
             PlayerInputsSingleton.PlayerInputsInstance.Player.Disable();
             PlayerInputsSingleton.PlayerInputsInstance.Dialouge.Next.performed += OnNextPerformed;
-
+            GameData.freezePlayer = true;
             //input.Dialouge.Enable();
             //input.Player.Disable();
             //input.Dialouge.Next.performed += OnNextPerformed;
@@ -188,9 +190,10 @@ namespace AphroditeFightCode
 
         void EndOfDialogue()
         {
-
+            GameData.freezePlayer = false;
             gameObject.SetActive(false);
-            Debug.Log("End Of Dialogue.");
+            
+            //Debug.Log("End Of Dialogue.");
 
         }
 

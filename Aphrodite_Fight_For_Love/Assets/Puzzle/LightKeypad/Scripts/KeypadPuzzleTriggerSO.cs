@@ -52,6 +52,10 @@ namespace AphroditeFightCode
         public void ResetValues()
         {
             unlocked = false;
+            if (doorIDs.Count == 0)
+            {
+                doorIDs.Add(codeID + 1);
+            }
         }
 
 

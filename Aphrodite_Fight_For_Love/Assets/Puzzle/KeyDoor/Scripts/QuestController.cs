@@ -194,7 +194,8 @@ namespace AphroditeFightCode
             {
                 yield return null;
             }
-            
+            GameData.freezePlayer = true;
+
             foreach (GameObject key in requiredKeysGO)
             {
                 key.SetActive(true);
@@ -208,6 +209,7 @@ namespace AphroditeFightCode
                 yield return new WaitForSeconds(transitionDuration);
 
             }
+            GameData.freezePlayer = false;
         }
 
         

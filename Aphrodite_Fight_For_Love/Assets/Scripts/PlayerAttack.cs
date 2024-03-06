@@ -122,11 +122,11 @@ namespace AphroditeFightCode
                 meleeBoxAnimator.SetBool("animCanAttack", true);
                 curPosition = meleeBoxGO.transform.position;
                 Attack();
-                Debug.Log("Attack!");
+                //Debug.Log("Attack!");
                 StartCoroutine(ResetAfterAnim());
 
                 //Debug.Log(health + "health cur");
-                Debug.Log(GameData.playerHeath + " health cur");
+                //Debug.Log(GameData.playerHeath + " health cur");
             }
             if (Time.time - lastShotGun >= gunInterval && curWeapon == 1)
             {
@@ -155,7 +155,7 @@ namespace AphroditeFightCode
         {
             // if making weapon1 active but its already active ignore
             int slot = activeSlotInt - 1;
-            Debug.Log("switching from weapon " + GameData.currWeapon + " to " + slot);
+            //Debug.Log("switching from weapon " + GameData.currWeapon + " to " + slot);
             if (GameData.currWeapon == activeSlotInt - 1)
             {
                 // the weapon we are trying to switch to is already the current weapon
@@ -251,6 +251,7 @@ namespace AphroditeFightCode
             GameData.onHeart = 1;
             GameData.playerDead = false;
             restartScreen.SetActive(false);
+            diedScreen.SetActive(false);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 

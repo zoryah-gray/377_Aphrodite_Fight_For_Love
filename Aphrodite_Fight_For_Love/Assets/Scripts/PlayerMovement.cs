@@ -57,11 +57,6 @@ namespace AphroditeFightCode
             PlayerInputsSingleton.PlayerInputsInstance.Player.Movement.canceled += OnMovementCancelled;
             PlayerInputsSingleton.PlayerInputsInstance.Player.Click.performed += OnClickPerformed;
             
-
-            //input.Player.Enable();
-            //input.Player.Movement.performed += OnMovementPerformed;
-            //input.Player.Movement.canceled += OnMovementCancelled;
-            //input.Player.Click.performed += OnClickPerformed;
         }
         private void OnDisable()
         {
@@ -73,10 +68,6 @@ namespace AphroditeFightCode
             PlayerInputsSingleton.PlayerInputsInstance.Player.Movement.performed -= OnMovementPerformed;
             PlayerInputsSingleton.PlayerInputsInstance.Player.Click.performed -= OnClickPerformed;
 
-            //input.Player.Disable();
-            //input.Player.Movement.performed -= OnMovementPerformed;
-            //input.Player.Movement.performed -= OnMovementPerformed;
-            //input.Player.Click.performed -= OnClickPerformed;
         }
         private void FixedUpdate()
         {
@@ -84,6 +75,10 @@ namespace AphroditeFightCode
             {
                 rb.velocity = moveVector * moveSpeed;
                 HandleMovementAnimBlendTree();
+            }
+            else if (rb.bodyType != RigidbodyType2D.Static)
+            {
+                rb.velocity = Vector2.zero;
             }
             LayerMask.GetMask("Enemy", "Obstacles");
             LayerMask hitLayers = LayerMask.GetMask("Enemy", "Obstacles");
@@ -94,20 +89,20 @@ namespace AphroditeFightCode
             {
                 if (ob.gameObject.tag == "Hestia")
                 {
-                    Debug.Log("We hit Hestia!" + ob.name);
+                    //Debug.Log("We hit Hestia!" + ob.name);
                     touchHestia = true;
                 }
 
                 else if (ob.gameObject.tag == "Wall")
                 {
                     touchWall = true;
-                    Debug.Log("Touched Wall");
+                    //Debug.Log("Touched Wall");
                 }
             }
 
             if (touchHestia && touchWall)
             {
-                Debug.Log("Touching Both");
+                //Debug.Log("Touching Both");
                 gameObject.transform.position = new Vector3(0, -4.2f, 0);
             }
             //Debug.Log("    pm: is current action map player? = " + input.Player.enabled);
@@ -119,7 +114,7 @@ namespace AphroditeFightCode
             string keyName = key.keyName;
             string questName = key.keyQuestName;
             KeyQuestManager quest = key.quest;
-            Debug.Log("This is the key " + keyName + "from the Quest " + questName + " (adding it)");
+            //Debug.Log("This is the key " + keyName + "from the Quest " + questName + " (adding it)");
             key.AddToQuest(quest);
 
         }
