@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: 7325956487281138538}
   - component: {fileID: 3531628635445939862}
   - component: {fileID: 7744006798474849321}
-  - component: {fileID: 3317716781886958728}
-  - component: {fileID: -2204792889341824666}
+  - component: {fileID: -3548058480350388901}
   m_Layer: 0
   m_Name: MeteorSprite
-  m_TagString: Enemy
+  m_TagString: HadesBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,7 +159,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3318022, y: 1.4349549}
   m_EdgeRadius: 0
---- !u!114 &3317716781886958728
+--- !u!114 &-3548058480350388901
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,7 +168,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8616989125542150976}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69b9bdb9ee37f4cc8910136ae9967b7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 280e8ed28868546ad9479fc1c80d7605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isHestiaFireball: 1
@@ -177,22 +176,7 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
---- !u!114 &-2204792889341824666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8616989125542150976}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a9c80dfe18ee7a42b4fcc1b78b8fdeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  strength: 0.5
-  attackSpeed: 1.5
-  moveSpeed: 1
-  minionType: 1
-  yesPatrol: 0
-  level: 1
+  wallLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  playerObject: {fileID: 8060550628745360157, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}

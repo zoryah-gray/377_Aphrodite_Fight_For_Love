@@ -57,7 +57,7 @@ namespace AphroditeFightCode
 
         public bool theWall;
 
-
+        public bool isHestiaDead;
 
         public float health = 40f;
         public Image healthBar;
@@ -74,6 +74,10 @@ namespace AphroditeFightCode
         public GameObject rightWall;
         Rigidbody2D leftWallRB;
         Rigidbody2D rightWallRB;
+
+        public GameObject hestHealthBufferCollider;
+        //public GameObject bottomMeteor;
+        //public GameObject rightMeteor;
 
         //public enum FFState
         //{
@@ -98,18 +102,24 @@ namespace AphroditeFightCode
             arr1T = arr1Prefab.GetComponent<Transform>();
             arr2T = arr2Prefab.GetComponent<Transform>();
             arr3T = arr3Prefab.GetComponent<Transform>();
-            meteorSpeed = 3f;
-            numOfMeteor = 0f;
+            meteorSpeed = 5f;
+            numOfMeteor = 10f;
             theWall = false;
 
             leftWallRB = leftWall.GetComponent<Rigidbody2D>();
             rightWallRB = rightWall.GetComponent<Rigidbody2D>();
 
+            isHestiaDead = false;
+
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            gameObject.GetComponent<Collider2D>().enabled = true;
+            hestHealthBufferCollider.GetComponent<Collider2D>().enabled = true;
             //HestiaIsLeft = true;
             //currPullingWall = false;
             //ffloopEnd = -ffloopInterval;
             //canFF = false;
             //fftileSpriteRenderer = firetile.GetComponent<SpriteRenderer>();
+
         }
 
 
@@ -118,7 +128,10 @@ namespace AphroditeFightCode
             //Debug.Log("player.transform.position.x" + player.transform.position.x);
             //Debug.Log("transform.position.x" + transform.position.x);
             changeHestiaDir();
+            //if (!isHestiaDead)
+            //{
             HestiaAttackAnim();
+            //}
             if (theWall)
             {
                 fireWall();
@@ -164,7 +177,12 @@ namespace AphroditeFightCode
 
         private void HestiaDeath()
         {
-            Destroy(gameObject);
+            //isHestiaDead = true;
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<Collider2D>().enabled = false;
+            hestHealthBufferCollider.GetComponent<Collider2D>().enabled = false;
+            isHestiaDead = true;
+            //Destroy(gameObject);
             Destroy(healthBar);
             Destroy(border);
             Destroy(damageBar);
@@ -174,23 +192,23 @@ namespace AphroditeFightCode
         void shootMeteor()
         {
             int dirM = Random.Range(1, 5);
-            //int dirM = 4;
+            //int dirM = 1;
             
             //from bottom
             if (dirM == 1)
             {
-                arr1T.transform.position = new Vector3(-5.45f, -4.5f, 1);
+                arr1T.transform.position = new Vector3(-5.45f, -7.25f, 1);
                 arr1T.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                arr2T.transform.position = new Vector3(0f, -4.5f, 1);
+                arr2T.transform.position = new Vector3(0f, -7.25f, 1);
                 arr2T.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                arr3T.transform.position = new Vector3(5.45f, -4.5f, 1);
+                arr3T.transform.position = new Vector3(5.45f, -7.25f, 1);
                 arr3T.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
 
                 showArrow();
                 
                 for (float i = 1; i < 5f + numOfMeteor; i++)
                 {
-                    GameObject bottomMeteor = Instantiate(meteorPrefab, new Vector3(Random.Range(-8f,8f), -10f - i, 0f), Quaternion.identity);
+                    GameObject bottomMeteor = Instantiate(meteorPrefab, new Vector3(Random.Range(-9f,9f), -10f - i, 0f), Quaternion.identity);
                     Rigidbody2D bottomMeteorRB = bottomMeteor.GetComponent<Rigidbody2D>();
                     bottomMeteorRB.velocity = new Vector3(0f, meteorSpeed, 0f);
                 }
@@ -204,17 +222,17 @@ namespace AphroditeFightCode
             //from top
             if (dirM == 2)
             {
-                arr1T.transform.position = new Vector3(-5.45f, 4.5f, 1);
+                arr1T.transform.position = new Vector3(-5.45f, 7.25f, 1);
                 arr1T.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
-                arr2T.transform.position = new Vector3(0f, 4.5f, 1);
+                arr2T.transform.position = new Vector3(0f, 7.25f, 1);
                 arr2T.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
-                arr3T.transform.position = new Vector3(5.45f, 4.5f, 1);
+                arr3T.transform.position = new Vector3(5.45f, 7.25f, 1);
                 arr3T.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
 
                 showArrow();
                 for (float i = 1; i < 5f + numOfMeteor; i++)
                 {
-                    GameObject topMeteor = Instantiate(meteorPrefab, new Vector3(Random.Range(-8f, 8f), 10f + i, 0f), Quaternion.identity);
+                    GameObject topMeteor = Instantiate(meteorPrefab, new Vector3(Random.Range(-9f, 9f), 10f + i, 0f), Quaternion.identity);
                     Rigidbody2D topMeteorRB = topMeteor.GetComponent<Rigidbody2D>();
                     topMeteor.transform.Rotate(0f, 0f, 180f);
                     topMeteorRB.velocity = new Vector3(0f, (-1) * meteorSpeed, 0f);
@@ -236,7 +254,7 @@ namespace AphroditeFightCode
                 showArrow();
                 for (float i = 1; i < 5f + numOfMeteor; i++)
                 {
-                    GameObject leftMeteor = Instantiate(meteorPrefab, new Vector3(-14f - i, Random.Range(-4f,4f), 0f), Quaternion.identity);
+                    GameObject leftMeteor = Instantiate(meteorPrefab, new Vector3(-14f - i, Random.Range(-7f,7f), 0f), Quaternion.identity);
                     Rigidbody2D leftMeteorRB = leftMeteor.GetComponent<Rigidbody2D>();
                     leftMeteor.transform.Rotate(0f, 0f, -90f);
                     leftMeteorRB.velocity = new Vector3(meteorSpeed, 0f, 0f);
@@ -260,7 +278,7 @@ namespace AphroditeFightCode
                 
                 for (float i = 1; i < 5f + numOfMeteor; i++)
                 {
-                    GameObject rightMeteor = Instantiate(meteorPrefab, new Vector3(14f + i,Random.Range(-4f,4f), 0f), Quaternion.identity);
+                    GameObject rightMeteor = Instantiate(meteorPrefab, new Vector3(14f + i,Random.Range(-7f,7f), 0f), Quaternion.identity);
                     Rigidbody2D rightMeteorRB = rightMeteor.GetComponent<Rigidbody2D>();
                     rightMeteor.transform.Rotate(0f, 0f, 90f);
                     rightMeteorRB.velocity = new Vector3((-1) * meteorSpeed, 0f, 0f);
@@ -285,27 +303,6 @@ namespace AphroditeFightCode
             arr2SR.enabled = true;
             arr3SR.enabled = true;
         }
-
-        //void decideArrow()
-        //{
-        //    int dirM = 1;
-        //    if(dirM == 1)
-        //    {
-
-        //    }
-        //    if (dirM == 2)
-        //    {
-        //        Debug.Log("showFromUpArrow");
-        //    }
-        //    if (dirM == 3)
-        //    {
-        //        Debug.Log("showFromLeftArrow");
-        //    }
-        //    if (dirM == 4)
-        //    {
-        //        Debug.Log("showFromRightArrow");
-        //    }
-        //}
 
         //void ShootFireball()
         //{
@@ -334,20 +331,6 @@ namespace AphroditeFightCode
                 HestiaIsLeft = true;
             }
         }
-
-        //void fireFloor()
-        //{
-        //    if (hasFF % 20 == 0)
-        //    {
-        //        var ffTilePos = new Vector3(-3.5f, -2.5f, 0f);
-        //        GameObject fftile = Instantiate(FFPrefab, ffTilePos, Quaternion.identity);
-        //        //FFForUpdate();
-        //        Destroy(fftile, 10f);
-        //        hasFF = 1;
-        //    }
-        //    hasFF += 1;
-        //}
-
         void fWT()
         {
             theWall = true;
@@ -367,7 +350,6 @@ namespace AphroditeFightCode
                 leftWall.transform.position = new Vector3(-15f, 0.06f, 0f);
                 leftWallRB.velocity = leftWall.transform.right * 0f;
             }
-            
             if (rightWallRB.velocity.x < 0f && rightWall.transform.position.x < 4.5f)
             {
                 rightWallRB.velocity = rightWall.transform.right * 3f;
@@ -381,14 +363,14 @@ namespace AphroditeFightCode
         }
         void fireWall()
         {
-            if (HestiaIsLeft)
+            if (HestiaIsLeft && !isHestiaDead)
             {
                 if (leftWallRB.velocity.x == 0f)
                 {
                     leftWallRB.velocity = leftWall.transform.right * 3f;
                 }
             }
-            if (!HestiaIsLeft)
+            if (!HestiaIsLeft && !isHestiaDead)
             {
                 if(rightWallRB.velocity.x == 0f)
                 {
@@ -396,76 +378,17 @@ namespace AphroditeFightCode
                     rightWallRB.velocity = rightWall.transform.right * -3f;
                 }
             }
-
-
-
-
-            //if (!HestiaIsLeft)
-            //{
-            //    //If wall not moving, set it to left
-            //    if (leftFireWallRB.velocity.x == 0f)
-            //    {
-            //        leftWall.transform.position = new Vector3(-17f, 0f, 0f);
-            //    }
-
-            //    //If it's on the left side, move it from the left
-            //    if (leftWall.transform.position.x < -6f && leftFireWallRB.velocity.x > 0f)
-            //    {
-            //        leftFireWallRB.velocity = leftWall.transform.right * 1.5f;
-            //    }
-
-
-            //    //If the left wall is moving back and it's to the left of it's initial position, freeze the velocity
-            //    //if (leftFireWallRB.velocity.x < 0f && leftWall.transform.position.x <= -17f) { leftFireWallRB.velocity = new Vector2(0f, 0f); }
-            //}
-            //if(leftWall.transform.position.x >= -6f)
-            //{
-            //    leftFireWallRB.velocity = leftWall.transform.right * -1.5f;
-            //}
-
-
-            //if (HestiaIsLeft)
-            //{
-            //    //If wall not moving, set it to right
-            //    if (rightFireWallRB.velocity.x == 0f) { rightWall.transform.position = new Vector3(17f, 0f, 0f); }
-
-            //    //If it's on the left side, move it from the left
-            //    if (rightWall.transform.position.x >= 6f) { rightFireWallRB.velocity = rightWall.transform.right * -1.5f; }
-            //}
-
-
-
-
-            ////If it has passed the cave-in time, then move backwards
-            //if (rightWall.transform.position.x < 6f) { rightFireWallRB.velocity = rightWall.transform.right * 1.5f; }
-
-            ////If the left wall is moving back and it's to the right of it's initial position, freeze the velocity
-            //if (rightFireWallRB.velocity.x > 0f && rightWall.transform.position.x >= 17f)
-            //{
-            //    rightWall.transform.position = new Vector3(17f, 0f, 0f);
-            //    rightFireWallRB.velocity = new Vector2(0f, 0f);
-            //}
-
-            //if (leftFireWallRB.velocity.x < 0f && leftWall.transform.position.x <= -17f)
-            //{
-            //    leftWall.transform.position = new Vector3(-17f, 0f, 0f);
-            //    leftFireWallRB.velocity = new Vector2(0f, 0f);
-            //}
-
-            ////If it has passed the cave-in time, then move backwards
-            ////if (leftWall.transform.position.x > -8f) { leftFireWallRB.velocity = leftWall.transform.right * -1.5f; }
-
-
         }
 
         void HestiaAttackAnim()
         {
             if (Time.time - loopEnd >= loopInterval)
             {
-                int statePicker = 1;
+                //int statePicker = 1;
 
                 //int statePicker = Random.Range(1, 4);
-                //int statePicker = Random.Range(1, 3);
+                int statePicker = Random.Range(1, 3);
+
                 Debug.Log("statePicker" + statePicker);
 
                 //if (statePicker == 1)
@@ -473,12 +396,12 @@ namespace AphroditeFightCode
                 //    hestAnim.SetInteger("State", 1);
                 //    hestAnim.SetInteger("Hold", 1);
                 //}
-                if (statePicker == 2)
+                if (statePicker == 2 && !isHestiaDead) //Meteor
                 {
                     hestAnim.SetInteger("State", 2);
                     hestAnim.SetInteger("Hold", 1);
                 }
-                if (statePicker == 1)
+                if (statePicker == 1 && !isHestiaDead)
                 {
                     hestAnim.SetInteger("State", 3);
                     hestAnim.SetInteger("Hold", 1);
@@ -492,63 +415,5 @@ namespace AphroditeFightCode
                 }
             }
         }
-
-        //void FFForUpdate()
-        //{
-        //    if (Time.time - ffloopEnd > 2f)
-        //    {
-        //        ChangeState(FFState.ff1);
-        //        UpdateSprite();
-        //        Debug.Log("FFState.ff1");
-        //    }
-        //    if (Time.time - ffloopEnd >= 4f)
-        //    {
-        //        ChangeState(FFState.ff2);
-        //        UpdateSprite();
-        //        Debug.Log("FFState.ff2");
-        //    }
-        //    if (Time.time - ffloopEnd >= 6f)
-        //    {
-        //        ChangeState(FFState.ffdamage);
-        //        UpdateSprite();
-        //        Debug.Log("ffdamage");
-        //    }
-        //    if (Time.time - ffloopEnd > ffloopInterval)
-        //    {
-        //        ChangeState(FFState.empty);
-        //        UpdateSprite();
-        //        Debug.Log("FFState.empty");
-        //        ffloopEnd = loopEnd;
-        //    }
-        //}
-
-
-        //void ChangeState(FFState newTileState)
-        //{
-        //    if (currentState != newTileState) { currentState = newTileState; }
-        //}
-
-        //void UpdateSprite()
-        //{
-        //    switch (currentState)
-        //    {
-        //        case FFState.empty:
-        //            fftileSpriteRenderer.sprite = ff_empty;
-        //            Debug.Log("ff_empty");
-        //            break;
-        //        case FFState.ff1:
-        //            fftileSpriteRenderer.sprite = ff1_Sprite;
-        //            Debug.Log("ff1_Sprite");
-        //            break;
-        //        case FFState.ff2:
-        //            fftileSpriteRenderer.sprite = ff2_Sprite;
-        //            Debug.Log("ff2_Sprite");
-        //            break;
-        //        case FFState.ffdamage:
-        //            fftileSpriteRenderer.sprite = ffdamage_Sprite;
-        //            Debug.Log("ffdamage_Sprite");
-        //            break;
-        //    }
-        //}
     }
 }
