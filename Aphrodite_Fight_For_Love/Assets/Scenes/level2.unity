@@ -993,7 +993,7 @@ GameObject:
   - component: {fileID: 335997500}
   m_Layer: 9
   m_Name: Decor
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61050,6 +61050,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1609710822361149366, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
+      propertyPath: m_TagString
+      value: BulletBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614465900374216534, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
+      propertyPath: wallLayers.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 2344185762541567039, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.92045
@@ -62538,7 +62546,7 @@ GameObject:
   - component: {fileID: 1945715750}
   m_Layer: 9
   m_Name: Walls
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

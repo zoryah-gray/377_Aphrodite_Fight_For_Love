@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unloackableObj: {fileID: 0}
   triggerSprite: {fileID: 21300000, guid: 7f5cb75031fda4a3db47e4ecdb27822e, type: 3}
-  doorIDs: 02000000
+  doorIDs: 
   code: 01000000040000000600000009000000
   codeID: 1
   sceneID: 0

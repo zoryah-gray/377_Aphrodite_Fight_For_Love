@@ -3239,7 +3239,7 @@ MonoBehaviour:
   minionPrefab2: {fileID: 3475716158109530139, guid: c1eff629c942241e5a04d68f73ddbbbc, type: 3}
   minionPrefab3: {fileID: 3475716158109530139, guid: 73b15d9cd03bc439db4fecc5c369ddaa, type: 3}
   minionPrefab4: {fileID: 3475716158109530139, guid: d98a1c910b5834501a03fcea52c5c5d8, type: 3}
-  health: 20
+  health: 40
   healthBar: {fileID: 11802949}
   border: {fileID: 1073972257}
   damageBar: {fileID: 905838318}
