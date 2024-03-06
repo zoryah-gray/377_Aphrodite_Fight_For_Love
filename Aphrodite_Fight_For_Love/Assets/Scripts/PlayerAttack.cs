@@ -40,9 +40,6 @@ namespace AphroditeFightCode
      
 
 
-        [Header("Audio Files")]
-        public AudioClip rangedClip;
-
         void Start()
         {
             meleeBoxAnimator = meleeBoxGO.GetComponent<Animator>();
@@ -264,7 +261,6 @@ namespace AphroditeFightCode
             bulletGO.tag = "Bullet";
             bulletGO.GetComponent<SpriteRenderer>().enabled = true;
             Rigidbody2D bulletRB = bulletGO.GetComponent<Rigidbody2D>();
-            AudioSource.PlayClipAtPoint(rangedClip, transform.localPosition);
 
             if (playerMovement.directionInt == 1) //Up
             {
