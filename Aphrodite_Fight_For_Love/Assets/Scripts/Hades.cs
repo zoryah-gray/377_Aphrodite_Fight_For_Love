@@ -12,8 +12,9 @@ namespace AphroditeFightCode
 
         public GameObject hadesBulletPrefab;
         public CameraShake CameraScrpt;
-        [SerializeField] 
+        [SerializeField]
 
+        public GameObject sceneTrig;
        
         public float hadesBulletSpeed = 1f;
 
@@ -150,7 +151,9 @@ namespace AphroditeFightCode
             Destroy(border);
             Destroy(damageBar);
             Destroy(healthBarCol);
-            
+            Destroy(hadesBulletPrefab);
+            //Destroy(gameObject);
+            sceneTrig.SetActive(true);
 
             //Destroy(minionPrefab1);
             //Destroy(minionPrefab2);
@@ -159,7 +162,7 @@ namespace AphroditeFightCode
 
 
 
-            // sceneTrig.SetActive(true);
+           
         }
         public void SpawnHadesEnemies()
         { 
