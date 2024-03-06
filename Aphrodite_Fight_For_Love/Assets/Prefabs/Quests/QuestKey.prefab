@@ -195,6 +195,7 @@ MonoBehaviour:
   hoverColor: {r: 1, g: 1, b: 0, a: 0.4745098}
   bounceHeight: 1.05
   bounceDuration: 0.6
+  pickUpClip: {fileID: 8300000, guid: b83bf8726a7fac349a54389f0c57cda6, type: 3}
 --- !u!61 &7794958170509382120
 BoxCollider2D:
   m_ObjectHideFlags: 0

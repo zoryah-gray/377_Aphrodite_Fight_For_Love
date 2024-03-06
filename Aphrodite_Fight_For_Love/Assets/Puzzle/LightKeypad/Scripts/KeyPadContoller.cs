@@ -148,15 +148,21 @@ namespace AphroditeFightCode
             {
                 if (i >= code.Count)
                 {
+                    AudioSource.PlayClipAtPoint(incorrectClip, transform.localPosition);
                     return false;
+                    
+
                 }
                 //Debug.Log("Checking input (" + currentInput[i] + ") against actual (" + code[i]);
                 if (currentInput[i] != code[i])
                 {
+                    AudioSource.PlayClipAtPoint(incorrectClip, transform.localPosition);
                     return false;
                 }
             }
+
             currPuzzle.unlocked = true;
+            AudioSource.PlayClipAtPoint(correctClip, transform.localPosition);
             return true;
         }
 
@@ -201,7 +207,10 @@ namespace AphroditeFightCode
             }
 
         }
-
+        public void PlayClickSound()
+        {
+            AudioSource.PlayClipAtPoint(clickClip, transform.localPosition);
+        }
         private void FlashAllButtons(int flashCount, Color btnFlashColor)
         {
             ToggleButtonClicks(false);

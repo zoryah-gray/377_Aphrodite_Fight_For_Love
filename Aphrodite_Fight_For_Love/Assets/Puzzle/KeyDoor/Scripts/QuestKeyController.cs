@@ -22,6 +22,9 @@ namespace AphroditeFightCode
         public float bounceHeight = 1.15f;
         public float bounceDuration = 0.6f;
 
+        [Header("Audio Files")]
+        public AudioClip pickUpClip;
+
 
 
 
@@ -63,12 +66,14 @@ namespace AphroditeFightCode
             if (collision.gameObject.name == "Player")
             {
                 keySprite.color = hoverColor;
+                
                 GUITextManager.instance.PrintToGUI(key.info, key.keyName, key.keySprite);
             }
         }
 
         public void DestroyKey()
         {
+            AudioSource.PlayClipAtPoint(pickUpClip, transform.localPosition);
             Destroy(gameObject);
         }
 
