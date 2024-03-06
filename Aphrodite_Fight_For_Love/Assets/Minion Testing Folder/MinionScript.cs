@@ -13,7 +13,7 @@ namespace AphroditeFightCode
         [SerializeField] int health = 1;
         [SerializeField] public float strength = .5f;
         [SerializeField] public float attackSpeed = 1.5f; //how many seconds it takes
-        [SerializeField] public float knockbackForce = 5f;
+        [SerializeField] public float knockbackForce = 3f;
         [SerializeField] private Rigidbody2D rb = null; 
         [SerializeField] public float moveSpeed = 1;
         [SerializeField] private Animator anim;
@@ -130,21 +130,6 @@ namespace AphroditeFightCode
                 gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
                 anim.SetTrigger("death");
                 healthBar.SetActive(false);
-            }
-            else
-            {
-                // PushBackMinion();
-
-                
-            }
-        }
-
-        private void PushBackMinion()
-        {
-            if (rb != null)
-            {
-                Vector2 pushDir = -transform.right;
-                rb.AddForce(pushDir * knockbackForce, ForceMode2D.Impulse);
             }
         }
 
