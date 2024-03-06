@@ -26,8 +26,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bf5c90e80a5824408bb95ce3622fb38b, type: 2}
   - {fileID: 11400000, guid: bf5c90e80a5824408bb95ce3622fb38b, type: 2}
   requiredKeysID: 0000000001000000020000000300000004000000
-  obtainedKeys: 00000000
-  ongoing: 1
+  obtainedKeys: 
+  ongoing: 0
   complete: 0
   questGiverName: Director of Styx Inc.
   speakers:
@@ -46,8 +46,10 @@ MonoBehaviour:
   - Illia
   - Director of Styx Inc.
   - Director of Styx Inc.
+  questSprites: []
   questEnd:
   - Head straight through those doors and make a right. Hades office will be at the
     end of that hallway.
   questEnded: What are you still doing here. The boss man hates to be kept waiting.
   GUIinstructions: Find the Keys Littered Throughout the Office
+  questGoalText: Collect 5 Keys

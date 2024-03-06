@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+namespace AphroditeFightCode
+{
     public class FireManager : MonoBehaviour
     {
 
@@ -23,7 +25,18 @@ using UnityEngine.Tilemaps;
 
         private List<Vector3Int> activeFires = new List<Vector3Int>();
 
+        private float timer = 0f;
 
+        public float instantiateInterval = 10f; // Time interval between instantiations
+
+
+        public List<Vector3Int> tilestarters;
+
+        public bool isBossFight;
+
+        public bool notrandomspread;
+
+        
 
 
         public void FinishedBurning(Vector3Int position)
@@ -51,9 +64,15 @@ using UnityEngine.Tilemaps;
 
                 if (data != null && data.canBurn)
                 {
+                if (notrandomspread)
+                {
+                    SetTileOnFire(tilePosition, data);
+                }
+                else
+                {
                     if (UnityEngine.Random.Range(0f, 100f) <= data.spreadChance)
                         SetTileOnFire(tilePosition, data);
-
+                }
                 }
 
             }
@@ -68,34 +87,61 @@ using UnityEngine.Tilemaps;
 
             activeFires.Add(tilePosition);
 
+
         }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log(collision.gameObject.name);
-        if (collision.gameObject.name == "Player")
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            Vector2 player_pos = collision.gameObject.transform.position;
-            Vector3Int gridPosition = map.WorldToCell(player_pos);
-            Debug.Log("player:" + player_pos);
-            Debug.Log("grid:" + gridPosition);
-            TileData data = mapManager.GetTileData(gridPosition);
-            SetTileOnFire(gridPosition, data);
+            Debug.Log(collision.gameObject.name);
+            if (collision.gameObject.name == "Player" && GameData.inQuest)
+            {
+                Vector2 player_pos = collision.gameObject.transform.position;
+                Vector3Int gridPosition = map.WorldToCell(player_pos);
+                Debug.Log("player:" + player_pos);
+                Debug.Log("grid:" + gridPosition);
+                TileData data = mapManager.GetTileData(gridPosition);
+                SetTileOnFire(gridPosition, data);
+            }
+        }
+
+    private void Start()
+    {
+        if (isBossFight)
+        {
+            SetLongBurn();
         }
     }
-
 
     private void Update()
-        {
-            //if (Input.GetMouseButtonDown(0))
-            //{
-            //    Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            //    Vector3Int gridPosition = map.WorldToCell(mousePosition);
-        //        TileData data = mapManager.GetTileData(gridPosition);
-        //        SetTileOnFire(gridPosition, data);
-        //    }
-        }
+    {
+        //if (isBossFight)
+        //{
+        //    timer += Time.deltaTime;
 
+        //    // Check if it's time to instantiate the GameObject
+        //    if (timer >= instantiateInterval)
+        //    {
+        //        SetQuickBurn();
+        //        timer = 0f;
+        //    }
+            
+
+        //}
+    }
+
+
+    private void SetLongBurn()
+        {
+        
+            foreach (Vector3Int tilestarter in tilestarters)
+            {
+                if (activeFires.Contains(tilestarter)) continue;
+                TileData data = mapManager.GetTileData(tilestarter);
+                SetTileOnFire(tilestarter, data);
+            }
+  
+    }
 
     }
+}

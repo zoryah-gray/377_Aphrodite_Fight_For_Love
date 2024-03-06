@@ -13,10 +13,17 @@ namespace AphroditeFightCode
         [Header("GUI Menu Elements")]
         public GameObject menu;
 
-        [Header("GUI Quest Elements")]
+
+        [Header("GUI Quest Bar Elements")]
+        public GameObject questCanvas;
         public GameObject questBar;
         public Image questBarIcon;
         public TMP_Text questBarText;
+
+        [Header("GUI Quest Side Header Elements")]
+        //public GameObject questHeader;
+        public TMP_Text sideQuestBarText;
+
         public int keyTotal;
         public int keyCollected;
         public float popDuration = 0.5f;
@@ -77,21 +84,29 @@ namespace AphroditeFightCode
             }
         }
 
-        public void InitalizeQuestBar(int total, Sprite img)
+        public void InitalizeQuestBar(int total, Sprite img, string questGoal)
         {
+            questCanvas.SetActive(true);
             if (!menu.activeSelf)
             {
                 // quest bar not open => open it
+                
+                sideQuestBarText.text = questGoal;
                 //questBar.SetActive(true);
                 RectTransform questBarRT = questBar.GetComponent<RectTransform>();
+                Vector3 originalPos = questBar.transform.position;
                 questBarRT.localScale = Vector3.zero;
 
                 LeanTween.scale(questBarRT, Vector3.one * popScale, popDuration)
                     .setEase(LeanTweenType.easeOutBack)
                     .setOnStart(() => questBar.SetActive(true)) // Activate the UI element at the start of the animation
-                    .setOnComplete(() => questBar.SetActive(true)); 
-           
-        }
+                    .setOnComplete(() => {
+                        questBar.SetActive(true);
+                        questBar.transform.position = originalPos;
+                       });
+
+                
+            }
             keyTotal = total;
             keyCollected = 0;
             string format = keyCollected.ToString() + " / " + keyTotal.ToString();
@@ -125,6 +140,7 @@ namespace AphroditeFightCode
                 questBarIcon.color = val;
                 questBarText.color = val;
             });
+            sideQuestBarText.text = "None";
 
             // Pop out
             LeanTween.scale(questBarRT, new Vector3(popScale, popScale, 1f), popDuration)
@@ -133,6 +149,7 @@ namespace AphroditeFightCode
                 .setOnComplete(() =>
                 {
                     questBar.SetActive(false);
+                    questCanvas.SetActive(false);
                 });
         }
     }

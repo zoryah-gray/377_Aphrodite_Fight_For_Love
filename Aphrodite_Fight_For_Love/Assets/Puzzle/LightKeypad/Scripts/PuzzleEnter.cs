@@ -42,14 +42,12 @@ namespace AphroditeFightCode
 
         private void OnInteractPerformed(InputAction.CallbackContext val)
         {
-            Debug.Log("puzzle interact Click");
+            //Debug.Log("puzzle interact Click");
             if (inTrigger)
             {
                 GameData.currKeypadPuzzle = puzzle;
                 GameData.inKeypadPuzzle = true;
                 GameData.freezePlayer = true;
-                //Debug.Log(puzzleCtrlScript.currPuzzle.name + " | gameData = " + GameData.currKeypadPuzzle.name);
-
                 keypadUI.SetActive(true);
                 
 

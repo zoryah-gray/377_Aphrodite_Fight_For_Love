@@ -49,3 +49,4 @@ MonoBehaviour:
     the way dear
   questEnded: The door's already open dear
   GUIinstructions: Walk through to grab candles
+  questGoalText: Collect 3 Candles

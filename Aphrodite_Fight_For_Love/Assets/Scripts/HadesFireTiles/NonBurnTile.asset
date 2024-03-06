@@ -21,6 +21,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cb6cfe3662ded4a578bc75b0ae3149ff, type: 2}
   - {fileID: 11400000, guid: 437458ce91c4c45c3acd5c11b0c25f0e, type: 2}
   - {fileID: 11400000, guid: 8a2787e53a9b948ca8ce2a67b51d6485, type: 2}
+  - {fileID: 11400000, guid: 643d2b15043604fe48470d6a872229bc, type: 2}
+  - {fileID: 11400000, guid: 0902fab24e80940cf911d89352bd833f, type: 2}
+  - {fileID: 11400000, guid: c7a545f8a3ec14f6392ad3fc0b5717bf, type: 2}
+  - {fileID: 11400000, guid: 8142291850d8e4abcbbeb83bb07971b1, type: 2}
   walkingSpeed: 4
   poisonous: 0
   canBurn: 0
