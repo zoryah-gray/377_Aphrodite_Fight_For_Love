@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67f9007f6b3d14072b6634945cb2fdf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireAttack: 0.5
+  FireAttack: 0.1
 --- !u!95 &2547529676906385746
 Animator:
   serializedVersion: 5
