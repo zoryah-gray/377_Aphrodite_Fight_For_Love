@@ -7704,7 +7704,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: f976e27473f8147c683eecec1841d526, type: 3}
-  m_Color: {r: 0.8018868, g: 0.44303226, b: 0.056737266, a: 1}
+  m_Color: {r: 0.9716981, g: 0.89308035, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -7723,8 +7723,8 @@ Transform:
   m_GameObject: {fileID: 1137274789}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0.008082429, w: 0.9999674}
-  m_LocalPosition: {x: 7.51, y: -0, z: 0.037637807}
-  m_LocalScale: {x: 0.11194149, y: 0.11646635, z: 1}
+  m_LocalPosition: {x: -0.06, y: -1.1, z: 0.037637807}
+  m_LocalScale: {x: 0.2119415, y: 0.2164664, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -8442,6 +8442,10 @@ PrefabInstance:
       propertyPath: diedScreen
       value: 
       objectReference: {fileID: 1045378413}
+    - target: {fileID: 6432762151047855504, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
+      propertyPath: rangedClip
+      value: 
+      objectReference: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
     - target: {fileID: 6450805574603162727, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -8462,6 +8466,10 @@ PrefabInstance:
       propertyPath: sceneCamera
       value: 
       objectReference: {fileID: 1893455637}
+    - target: {fileID: 7847119825080641495, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
+      propertyPath: walkingClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 62b8bee7a473c40fc91957a4d08c50ad, type: 3}
     - target: {fileID: 8060550628745360157, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
       propertyPath: m_Name
       value: Player
