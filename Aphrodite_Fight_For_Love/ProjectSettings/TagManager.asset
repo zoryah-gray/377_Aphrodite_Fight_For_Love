@@ -12,6 +12,9 @@ TagManager:
   - Hestia
   - Hades
   - HadesBullet
+  - Lamp
+  - Chair
+  - Sofa
   layers:
   - Default
   - TransparentFX
