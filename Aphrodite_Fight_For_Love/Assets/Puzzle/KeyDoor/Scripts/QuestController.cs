@@ -160,6 +160,7 @@ namespace AphroditeFightCode
         {
             
             ResetDialougeLists();
+            GameData.inQuest = true;
             //foreach (var line in quest.questInstructions)
             //{
             //    speakerList.Add(quest.questGiverName);
@@ -238,6 +239,7 @@ namespace AphroditeFightCode
             GUITextManager.instance.DeactivateQuestBar();
             GameData.moveCamFromPlayer = true;
             GameEvents.current.OpenDoorTrigger(quest.doorID);
+            GameData.inQuest = false;
             //Unlock();
             //StartCoroutine(DeactivateGUI());
 

@@ -72,18 +72,18 @@ namespace AphroditeFightCode
                     //GetComponent<SpriteRenderer>().color = Color.green;
                     Vector3 size = GetComponent<SpriteRenderer>().bounds.size;
                     float topCoordinate = transform.position.y + (transform.localScale.y * 0.5f);
-                    Debug.Log("size of boz = " + size.y * 2f);
-                    Debug.Log("original coordy =" + transform.position + "top coord = " +  topCoordinate);
+                    //Debug.Log("size of boz = " + size.y * 2f);
+                    //Debug.Log("original coordy =" + transform.position + "top coord = " +  topCoordinate);
 
                     if (openHorz)
                     {
-                        Debug.Log("open Horz scale x = " + originalScale.x);
+                        //Debug.Log("open Horz scale x = " + originalScale.x);
                         //LeanTween.scaleX(gameObject, originalScale.x, 5f).setEase(LeanTweenType.easeOutQuint);
                         LeanTween.moveX(gameObject, originalPos.x + (originalScale.x * 2f * direction), 5f).setEase(LeanTweenType.easeOutQuint).setOnComplete(ResetCam);
                     }
                     else
                     {
-                        Debug.Log("open Horz scale y = " + originalScale.y);
+                        //Debug.Log("open Horz scale y = " + originalScale.y);
                         //LeanTween.scaleY(gameObject, originalScale.y, 5f).setEase(LeanTweenType.easeOutQuint);
                         //LeanTween.moveY(gameObject, originalPos.y + (originalScale.y * 2f * direction), 5f).setEase(LeanTweenType.easeOutQuint).setOnComplete(ResetCam);
                         LeanTween.moveY(gameObject, topCoordinate, 5f).setEase(LeanTweenType.easeOutQuint).setOnComplete(ResetCam);
