@@ -187,8 +187,8 @@ namespace AphroditeFightCode
             
             var hadesBulletInitPos1 = new Vector3(0f, 0f, 0f);
            
-            if (!HadesIsLeft) { hadesBulletInitPos1 = new Vector3(1.75f, -1f, 0f); }
-            if (HadesIsLeft) { hadesBulletInitPos1 = new Vector3(-1.75f, -1f, 0f); }
+            if (!HadesIsLeft) { hadesBulletInitPos1 = new Vector3(1.9f, -1f, 0f); }
+            if (HadesIsLeft) { hadesBulletInitPos1 = new Vector3(-1.9f, -1f, 0f); }
             
             GameObject hadesBulletGO = Instantiate(hadesBulletPrefab, hadesBulletInitPos1, Quaternion.identity);
             
