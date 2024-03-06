@@ -50,6 +50,11 @@ namespace AphroditeFightCode
         public string speaker;
         public Sprite speakerSprite;
 
+        [Header("Audio Files")]
+        public AudioClip correctClip;
+        public AudioClip incorrectClip;
+        public AudioClip clickClip;
+
 
         private void OnEnable()
         {

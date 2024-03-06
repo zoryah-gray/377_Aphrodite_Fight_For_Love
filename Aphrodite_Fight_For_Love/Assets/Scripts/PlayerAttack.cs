@@ -37,7 +37,9 @@ namespace AphroditeFightCode
         public Image GUISlot2;
         [SerializeField] private Vector3 activeSlotOriginalPos;
         [SerializeField] private Vector3 nonActiveSlotOriginalPos;
-     
+
+        [Header("Audio Clips")]
+        public AudioClip rangedClip;
 
 
         void Start()
@@ -257,10 +259,12 @@ namespace AphroditeFightCode
         void ShootGun()
         {
             var bullInitPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            AudioSource.PlayClipAtPoint(rangedClip, transform.localPosition);
             GameObject bulletGO = Instantiate(bullet, bullInitPos, Quaternion.identity);
             bulletGO.tag = "Bullet";
             bulletGO.GetComponent<SpriteRenderer>().enabled = true;
             Rigidbody2D bulletRB = bulletGO.GetComponent<Rigidbody2D>();
+            
 
             if (playerMovement.directionInt == 1) //Up
             {
