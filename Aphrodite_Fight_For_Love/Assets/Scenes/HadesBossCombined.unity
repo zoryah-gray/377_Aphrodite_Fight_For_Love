@@ -272,14 +272,14 @@ RectTransform:
   m_GameObject: {fileID: 149507755}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7156299, y: 0.36249, z: 1}
+  m_LocalScale: {x: 1.1307073, y: 0.28500777, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 780551365}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.1980371, y: -129.9058}
+  m_AnchoredPosition: {x: -1.501975, y: -91.59032}
   m_SizeDelta: {x: 109.7549, y: 73.1699}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &149507757
@@ -31403,14 +31403,14 @@ RectTransform:
   m_GameObject: {fileID: 373155183}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7156299, y: 0.36249, z: 1}
+  m_LocalScale: {x: 1.1307073, y: 0.28500777, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 780551365}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.9, y: -130.5155}
+  m_AnchoredPosition: {x: -1.8, y: -92.2}
   m_SizeDelta: {x: 121.9498, y: 121.9498}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &373155185
@@ -31960,14 +31960,14 @@ RectTransform:
   m_GameObject: {fileID: 636502121}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7156299, y: 0.36249, z: 1}
+  m_LocalScale: {x: 1.1307073, y: 0.28500777, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 780551365}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.262805, y: -129.9058}
+  m_AnchoredPosition: {x: -1.4372072, y: -91.59032}
   m_SizeDelta: {x: 109.7549, y: 73.1699}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &636502123
@@ -35998,17 +35998,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hadesBulletPrefab: {fileID: 2827706167118173209, guid: 5f737de4396bf4513994b7cde337c666, type: 3}
+  CameraScrpt: {fileID: 0}
   hadesBulletSpeed: 1
   hadesAnim: {fileID: 1637841923}
   minionPrefab1: {fileID: 3475716158109530139, guid: 091fd1604c288488386291c702b5f03e, type: 3}
   minionPrefab2: {fileID: 3475716158109530139, guid: c1eff629c942241e5a04d68f73ddbbbc, type: 3}
   minionPrefab3: {fileID: 3475716158109530139, guid: 73b15d9cd03bc439db4fecc5c369ddaa, type: 3}
   minionPrefab4: {fileID: 3475716158109530139, guid: d98a1c910b5834501a03fcea52c5c5d8, type: 3}
-  health: 20
+  health: 40
   healthBar: {fileID: 149507757}
   border: {fileID: 373155185}
   damageBar: {fileID: 636502123}
   healthBarCol: {fileID: 2084068364}
+  isHadesDead: 0
+  hadesHealthBufferCollider: {fileID: 2084068363}
 --- !u!95 &1637841923
 Animator:
   serializedVersion: 5
@@ -36339,7 +36342,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.5366125
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -36364,7 +36367,7 @@ Transform:
   m_GameObject: {fileID: 2025629583}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.3, z: -10}
+  m_LocalPosition: {x: 0.06, y: -1.02, z: -30.915457}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36551,7 +36554,7 @@ GameObject:
   - component: {fileID: 2084068365}
   - component: {fileID: 2084068364}
   m_Layer: 0
-  m_Name: Square
+  m_Name: HadesCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36611,8 +36614,8 @@ Transform:
   m_GameObject: {fileID: 2084068363}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: -1.73, z: 0}
-  m_LocalScale: {x: 1.7359376, y: 0.9632812, z: 1}
+  m_LocalPosition: {x: 0.08, y: -2.9, z: 0}
+  m_LocalScale: {x: 2.1482227, y: 0.9632812, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

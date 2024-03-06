@@ -11,6 +11,7 @@ namespace AphroditeFightCode
 
 
         public GameObject hadesBulletPrefab;
+        public CameraShake CameraScrpt;
         [SerializeField] 
 
        
@@ -40,6 +41,9 @@ namespace AphroditeFightCode
         public Image damageBar;
         public Collider2D healthBarCol;
 
+        public bool isHadesDead = false;
+        public GameObject hadesHealthBufferCollider;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -48,6 +52,11 @@ namespace AphroditeFightCode
             holdAnimLoopEnd -= holdAnimLoopInterval;
             hadesAnim = GetComponent<Animator>();
             hadesAnim.SetInteger("Hold", 1);
+
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            gameObject.GetComponent<Collider2D>().enabled = true;
+            hadesHealthBufferCollider.GetComponent<Collider2D>().enabled = true;
+
         }
 
 
@@ -58,8 +67,44 @@ namespace AphroditeFightCode
             changeHadesDir();
             HadesAttackAnim();
             updateHealth();
-        }
+            //if (isHadesDead) 
+            //{
+                
 
+            //}
+        }
+        public void hadesDeathAnim()
+        {
+            Color originalColor = gameObject.GetComponent<SpriteRenderer>().color;
+            float flashDuration = 0.1f;
+            int numberOfFlashes = 2; // This determines how many times it will ping-pong
+
+            // Create a transparent version of the original color (fully transparent in this case)
+            Color transparentColor = new Color(originalColor.r, originalColor.g, originalColor.b, 0);
+
+            // Perform the ping-pong animation
+            LeanTween.value(gameObject, originalColor.a, transparentColor.a, flashDuration)
+                .setEase(LeanTweenType.easeInOutSine)
+                .setLoopPingPong(numberOfFlashes)
+                .setOnUpdate((float val) => {
+                    // Update the object's color with the new alpha value during the tween
+                    Color currentColor = gameObject.GetComponent<SpriteRenderer>().color;
+                    gameObject.GetComponent<SpriteRenderer>().color = new Color(currentColor.r, currentColor.g, currentColor.b, val);
+                })
+                .setOnComplete(() => {
+                    // After the ping-pong effect, transition to fully transparent permanently
+                    LeanTween.value(gameObject, transparentColor.a, 0f, flashDuration)
+                        .setOnUpdate((float val) => {
+                            Color currentColor = gameObject.GetComponent<SpriteRenderer>().color;
+                            gameObject.GetComponent<SpriteRenderer>().color = new Color(currentColor.r, currentColor.g, currentColor.b, val);
+                        })
+                        .setOnComplete(() => {
+                            // Ensure the player object is fully transparent after all animations are complete
+                            gameObject.GetComponent<SpriteRenderer>().color = new Color(originalColor.r, originalColor.g, originalColor.b, 0);
+                        });
+                });
+
+        }
         public void updateHealth()
         {
             healthBar.fillAmount = health / 40f; // change if health changes 
@@ -96,15 +141,25 @@ namespace AphroditeFightCode
         }
         private void HadesDeath()
         {
-            Destroy(gameObject);
+            //gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            hadesDeathAnim();
+            gameObject.GetComponent<Collider2D>().enabled = false;
+            hadesHealthBufferCollider.GetComponent<Collider2D>().enabled = false;
+            isHadesDead = true;
             Destroy(healthBar);
             Destroy(border);
             Destroy(damageBar);
             Destroy(healthBarCol);
-            Destroy(minionPrefab1);
-            Destroy(minionPrefab2);
-            Destroy(minionPrefab3);
-            Destroy(minionPrefab4);
+            
+
+            //Destroy(minionPrefab1);
+            //Destroy(minionPrefab2);
+            //Destroy(minionPrefab3);
+            //Destroy(minionPrefab4);
+
+
+
+            // sceneTrig.SetActive(true);
         }
         public void SpawnHadesEnemies()
         { 
@@ -177,16 +232,17 @@ namespace AphroditeFightCode
                 //int statePicker = Random.Range(1, 3);
                 Debug.Log("statePicker" + statePicker);
 
-                if (statePicker == 1)
+                if (statePicker == 1 && !isHadesDead)
                 {
                     hadesAnim.SetInteger("State", statePicker);
                     SetHoldAndWait(1);
                 }
-                if (statePicker == 2)
+                if (statePicker == 2 && !isHadesDead)
                 {
                     hadesAnim.SetInteger("State", statePicker);
                     SetHoldAndWait(1);
                 }
+              
                 loopEnd = Time.time;
             }
         }

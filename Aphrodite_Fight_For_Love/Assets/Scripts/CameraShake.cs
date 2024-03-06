@@ -21,7 +21,7 @@ namespace AphroditeFightCode
 
         void Start()
         {
-            StopShake();
+            //StopShake();
         
         }
 
