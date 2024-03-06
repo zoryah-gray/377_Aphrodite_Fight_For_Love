@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 namespace AphroditeFightCode
 {
@@ -34,8 +35,16 @@ namespace AphroditeFightCode
         void Attack(GameObject playerObject, float minionDamage)
         {
 
+<<<<<<< Updated upstream
             if (!GameData.freezePlayer)
             {
+=======
+            Color originalColor = playerObject.GetComponent<SpriteRenderer>().color;
+            Color flashColor = Color.red;
+            float flashDuration = 0.1f;
+            int numberOfFlashes = 2;
+            AudioSource.PlayClipAtPoint(minionVariables.audioClips[0], minionVariables.gameObject.transform.localPosition);
+>>>>>>> Stashed changes
 
 
                 Color originalColor = playerObject.GetComponent<SpriteRenderer>().color;
