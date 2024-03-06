@@ -32072,6 +32072,68 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8491784960169955057, guid: 4a69a2ab5380349d5bdf668dba30a872, type: 3}
   m_PrefabInstance: {fileID: 719963873}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &747308317
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3377860085586724256, guid: 25aa9ab4dade6450ab76ecde168ccb15, type: 3}
+      propertyPath: m_Name
+      value: SceneTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393537526182241984, guid: 25aa9ab4dade6450ab76ecde168ccb15, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393537526182241984, guid: 25aa9ab4dade6450ab76ecde168ccb15, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393537526182241984, guid: 25aa9ab4dade6450ab76ecde168ccb15, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.037637807
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393537526182241984, guid: 25aa9ab4dade6450ab76ecde168ccb15, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9999674
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393537526182241984, guid: 25aa9ab4dade6450ab76ecde168ccb15, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393537526182241984, guid: 25aa9ab4dade6450ab76ecde168ccb15, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393537526182241984, guid: 25aa9ab4dade6450ab76ecde168ccb15, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.008082429
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393537526182241984, guid: 25aa9ab4dade6450ab76ecde168ccb15, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393537526182241984, guid: 25aa9ab4dade6450ab76ecde168ccb15, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393537526182241984, guid: 25aa9ab4dade6450ab76ecde168ccb15, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -0.926
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 25aa9ab4dade6450ab76ecde168ccb15, type: 3}
+--- !u!1 &747308318 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3377860085586724256, guid: 25aa9ab4dade6450ab76ecde168ccb15, type: 3}
+  m_PrefabInstance: {fileID: 747308317}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &780551364
 GameObject:
   m_ObjectHideFlags: 0
@@ -35673,6 +35735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hadesBulletPrefab: {fileID: 2827706167118173209, guid: 5f737de4396bf4513994b7cde337c666, type: 3}
   CameraScrpt: {fileID: 0}
+  sceneTrig: {fileID: 747308318}
   hadesBulletSpeed: 1
   hadesAnim: {fileID: 1637841923}
   minionPrefab1: {fileID: 3475716158109530139, guid: 091fd1604c288488386291c702b5f03e, type: 3}
@@ -36069,3 +36132,4 @@ SceneRoots:
   - {fileID: 647238582}
   - {fileID: 1474943719}
   - {fileID: 780551365}
+  - {fileID: 747308317}

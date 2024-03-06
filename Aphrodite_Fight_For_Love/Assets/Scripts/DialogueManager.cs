@@ -196,7 +196,7 @@ namespace AphroditeFightCode
 
         void EndOfDialogue()
         {
-            GameData.freezePlayer = false;
+            //GameData.freezePlayer = false;
             gameObject.SetActive(false);
             
             //Debug.Log("End Of Dialogue.");

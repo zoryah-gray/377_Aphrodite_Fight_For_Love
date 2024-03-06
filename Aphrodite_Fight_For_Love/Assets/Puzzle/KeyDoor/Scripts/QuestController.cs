@@ -194,7 +194,7 @@ namespace AphroditeFightCode
             {
                 yield return null;
             }
-            GameData.freezePlayer = true;
+            //GameData.freezePlayer = true;
 
             foreach (GameObject key in requiredKeysGO)
             {

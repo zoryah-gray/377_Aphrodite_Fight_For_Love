@@ -236,7 +236,14 @@ namespace AphroditeFightCode
             rb.bodyType = RigidbodyType2D.Static;
             playerAnimator.SetTrigger("death");
             PlayerInputsSingleton.PlayerInputsInstance.Player.Disable();
-            diedScreen.SetActive(true);
+            if (SceneManager.GetActiveScene().name == "HadesBossCombined")
+            {
+                Respawn();
+            }
+            else
+            {
+                diedScreen.SetActive(true);
+            }
             //Destroy(gameObject);
         }
 
