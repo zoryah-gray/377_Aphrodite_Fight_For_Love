@@ -26,6 +26,10 @@ namespace AphroditeFightCode
         int dIndex;
         public Image speaker1;
         public Image speaker2;
+
+        [Header("Audio Files")]
+        public AudioClip progressClip;
+
         Color inactiveAlpha;
         Color activeAlpha;
         void Setup()
@@ -129,6 +133,7 @@ namespace AphroditeFightCode
             
 
             Setup();
+            AudioSource.PlayClipAtPoint(progressClip, transform.localPosition);
             dialogueArray = dialogue;
             speakerArray = speaker;
             speakerName.text = speakerArray[dIndex];
@@ -150,6 +155,7 @@ namespace AphroditeFightCode
         private void NextSentence()
         {
             //Debug.Log(speakerName.text + ": " + dialogueText.text);
+            AudioSource.PlayClipAtPoint(progressClip, transform.localPosition);
             speakerName.text = speakerArray[dIndex];
             dialogueText.text = dialogueArray[dIndex];
             if (speakerArray[(dIndex - 1)] != speakerArray[dIndex])

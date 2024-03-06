@@ -306,6 +306,7 @@ MonoBehaviour:
   SpeakerSprite: []
   speaker1: {fileID: 8217260890262361681}
   speaker2: {fileID: 3059134915375579832}
+  progressClip: {fileID: 8300000, guid: 7cc057bed53baf34799f52aab3c84800, type: 3}
 --- !u!1 &3651487529584844167
 GameObject:
   m_ObjectHideFlags: 0
