@@ -182,8 +182,14 @@ namespace AphroditeFightCode
         void Attack(GameObject playerObject, float minionDamage)
         {
             //playerObject.GetComponent<QuickPlayerMove>().health -= minionDamage;
-            GameData.CheckPlayerHealth(minionDamage);
-            Debug.Log("Player took " + minionDamage + " damage. Curr Player Health = " + GameData.playerHeath); // + playerObject.GetComponent<QuickPlayerMove>().health + " health remaining.");
+            // already handled in attackPlayer Script
+
+            //Debug.Log("minion scrpt" +GameData.freezePlayer);
+            //if (!GameData.freezePlayer)
+            //{
+            //    GameData.CheckPlayerHealth(minionDamage);
+            //    Debug.Log("Player took " + minionDamage + " damage. Curr Player Health = " + GameData.playerHeath); // + playerObject.GetComponent<QuickPlayerMove>().health + " health remaining.");
+            //}
         }
 
     }
