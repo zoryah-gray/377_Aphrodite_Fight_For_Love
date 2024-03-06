@@ -10,19 +10,24 @@ namespace AphroditeFightCode
 {
     public class MinionScript : MonoBehaviour
     {
+        [Header("Minion Type Variables")]
+
+        [SerializeField] public SpecialMinionTypes minionType = SpecialMinionTypes.standard;
         [SerializeField] int health = 1;
         [SerializeField] public float strength = .5f;
         [SerializeField] public float attackSpeed = 1.5f; //how many seconds it takes
-        [SerializeField] public float knockbackForce = 3f;
-        [SerializeField] private Rigidbody2D rb = null; 
         [SerializeField] public float moveSpeed = 1;
+
+        [Header("Other variables")]
+        [SerializeField] private Rigidbody2D rb = null;
         [SerializeField] private Animator anim;
-        [SerializeField] public SpecialMinionTypes minionType = SpecialMinionTypes.standard;
-        [SerializeField] public bool yesPatrol;
         [SerializeField] public int level = 1;
+
+        public AudioClip[] audioClips;
         AIPath minionPathing;
         GameObject healthBar;
         float healthBarSize;
+        AudioListener listener;
         // Start is called before the first frame update
 
         //handles damage to the minion, holds values, and destroys the minion upon death.
@@ -42,6 +47,7 @@ namespace AphroditeFightCode
         {
             rb = GetComponent<Rigidbody2D>();
             anim = GetComponent<Animator>();
+            listener = GameObject.Find("Main Camera").GetComponent<AudioListener>();
             switch (minionType)
             {
                 case SpecialMinionTypes.userDefine:
@@ -96,7 +102,8 @@ namespace AphroditeFightCode
             Color flashColor = Color.red;
             float flashDuration = 0.1f;
             int numberOfFlashes = 2;
-
+            AudioSource.PlayClipAtPoint(audioClips[1], transform.localPosition);
+            
             LeanTween.value(gameObject, Color.white, flashColor, flashDuration)
                .setEase(LeanTweenType.easeInOutSine)
                .setLoopPingPong(numberOfFlashes)

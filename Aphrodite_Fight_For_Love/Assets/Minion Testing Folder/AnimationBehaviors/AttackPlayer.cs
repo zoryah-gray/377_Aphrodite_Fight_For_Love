@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 namespace AphroditeFightCode
 {
@@ -10,6 +11,7 @@ namespace AphroditeFightCode
         public GameObject playerObject;
         MinionScript minionVariables;
         float minionAttackTime;
+
         // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
@@ -42,6 +44,7 @@ namespace AphroditeFightCode
                 Color flashColor = Color.red;
                 float flashDuration = 0.1f;
                 int numberOfFlashes = 2;
+                AudioSource.PlayClipAtPoint(minionVariables.audioClips[0], playerObject.transform.localPosition);
 
                 LeanTween.value(playerObject, originalColor, flashColor, flashDuration)
                    .setEase(LeanTweenType.easeInOutSine)

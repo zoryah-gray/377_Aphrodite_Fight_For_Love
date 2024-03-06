@@ -111,6 +111,38 @@ namespace AphroditeFightCode
         {
             healthBar.fillAmount = health / 40f; 
         }
+        public void hestDeathAnim()
+        {
+            Color originalColor = gameObject.GetComponent<SpriteRenderer>().color;
+            float flashDuration = 0.1f;
+            int numberOfFlashes = 2; // This determines how many times it will ping-pong
+
+            // Create a transparent version of the original color (fully transparent in this case)
+            Color transparentColor = new Color(originalColor.r, originalColor.g, originalColor.b, 0);
+
+            // Perform the ping-pong animation
+            LeanTween.value(gameObject, originalColor.a, transparentColor.a, flashDuration)
+                .setEase(LeanTweenType.easeInOutSine)
+                .setLoopPingPong(numberOfFlashes)
+                .setOnUpdate((float val) => {
+                    // Update the object's color with the new alpha value during the tween
+                    Color currentColor = gameObject.GetComponent<SpriteRenderer>().color;
+                    gameObject.GetComponent<SpriteRenderer>().color = new Color(currentColor.r, currentColor.g, currentColor.b, val);
+                })
+                .setOnComplete(() => {
+                    // After the ping-pong effect, transition to fully transparent permanently
+                    LeanTween.value(gameObject, transparentColor.a, 0f, flashDuration)
+                        .setOnUpdate((float val) => {
+                            Color currentColor = gameObject.GetComponent<SpriteRenderer>().color;
+                            gameObject.GetComponent<SpriteRenderer>().color = new Color(currentColor.r, currentColor.g, currentColor.b, val);
+                        })
+                        .setOnComplete(() => {
+                            // Ensure the player object is fully transparent after all animations are complete
+                            gameObject.GetComponent<SpriteRenderer>().color = new Color(originalColor.r, originalColor.g, originalColor.b, 0);
+                        });
+                });
+
+        }
         public void TakeDamage(int playerDamage)
         {
             health -= playerDamage;
@@ -144,7 +176,8 @@ namespace AphroditeFightCode
         private void HestiaDeath()
         {
             //isHestiaDead = true;
-            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            hestDeathAnim();
+            //gameObject.GetComponent<SpriteRenderer>().enabled = false;
             gameObject.GetComponent<Collider2D>().enabled = false;
             hestHealthBufferCollider.GetComponent<Collider2D>().enabled = false;
             isHestiaDead = true;

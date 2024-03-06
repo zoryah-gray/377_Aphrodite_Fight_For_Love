@@ -32,6 +32,10 @@ namespace AphroditeFightCode
         public float collisionOffset = 0.5f;
         public float clickDist = 1f;
 
+        [Header("Audio Files")]
+        public AudioClip walkingClip;
+
+
         public ContactFilter2D clickFilter;
         List<RaycastHit2D> clickCastCollisions = new List<RaycastHit2D>();
 
@@ -136,6 +140,7 @@ namespace AphroditeFightCode
         private void OnMovementPerformed(InputAction.CallbackContext val)
         {
             moveVector = val.ReadValue<Vector2>();
+        
         }
 
         private void OnMovementCancelled(InputAction.CallbackContext val)
@@ -221,6 +226,11 @@ namespace AphroditeFightCode
                 }
             }
             animator.SetFloat("Speed", moveVector.sqrMagnitude);
+        }
+
+        private void PlaySound()
+        {
+            AudioSource.PlayClipAtPoint(walkingClip, transform.localPosition);
         }
     }
 }
