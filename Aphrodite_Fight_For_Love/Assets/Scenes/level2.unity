@@ -60552,15 +60552,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2344185762541567039, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.45
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 2344185762541567039, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.4
+      value: 10.1
       objectReference: {fileID: 0}
     - target: {fileID: 2344185762541567039, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.03
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2344185762541567039, guid: e5ca6e2f4049f443da7c5f7cad3c3cf8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -67779,6 +67779,10 @@ MonoBehaviour:
   map: {fileID: 1121970577}
   mapManager: {fileID: 527589750}
   firePrefab: {fileID: 6821271320635937206, guid: 6d84787632f054282bd6d9e34289233d, type: 3}
+  instantiateInterval: 10
+  tilestarters: []
+  isBossFight: 0
+  notrandomspread: 0
 --- !u!61 &2147283613
 BoxCollider2D:
   m_ObjectHideFlags: 0
