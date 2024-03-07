@@ -242,6 +242,7 @@ namespace AphroditeFightCode
             GameData.moveCamFromPlayer = true;
             GameEvents.current.OpenDoorTrigger(quest.doorID);
             GameData.inQuest = false;
+            GameData.freezePlayer = false;
             //Unlock();
             //StartCoroutine(DeactivateGUI());
 
