@@ -57,6 +57,10 @@ namespace AphroditeFightCode
 
         public GameObject hestHealthBufferCollider;
 
+        [Header("Audio Files")]
+        public AudioClip deathClip;
+        public AudioClip fireballClip;
+        public AudioClip wallClip;
 
         // Start is called before the first frame update
         void Start()
@@ -119,7 +123,7 @@ namespace AphroditeFightCode
 
             // Create a transparent version of the original color (fully transparent in this case)
             Color transparentColor = new Color(originalColor.r, originalColor.g, originalColor.b, 0);
-
+            AudioSource.PlayClipAtPoint(deathClip, transform.localPosition);
             // Perform the ping-pong animation
             LeanTween.value(gameObject, originalColor.a, transparentColor.a, flashDuration)
                 .setEase(LeanTweenType.easeInOutSine)
@@ -210,6 +214,7 @@ namespace AphroditeFightCode
                     GameObject bottomMeteor = Instantiate(meteorPrefab, new Vector3(Random.Range(-9f,9f), -10f - i, 0f), Quaternion.identity);
                     Rigidbody2D bottomMeteorRB = bottomMeteor.GetComponent<Rigidbody2D>();
                     bottomMeteorRB.velocity = new Vector3(0f, meteorSpeed, 0f);
+                    AudioSource.PlayClipAtPoint(fireballClip, transform.localPosition);
                 }
                 Invoke("hideArrow", 3f);
                 numOfMeteor += 1;
@@ -235,6 +240,7 @@ namespace AphroditeFightCode
                     Rigidbody2D topMeteorRB = topMeteor.GetComponent<Rigidbody2D>();
                     topMeteor.transform.Rotate(0f, 0f, 180f);
                     topMeteorRB.velocity = new Vector3(0f, (-1) * meteorSpeed, 0f);
+                    AudioSource.PlayClipAtPoint(fireballClip, transform.localPosition);
                 }
                 Invoke("hideArrow", 3f);
                 numOfMeteor += 1;
@@ -257,6 +263,7 @@ namespace AphroditeFightCode
                     Rigidbody2D leftMeteorRB = leftMeteor.GetComponent<Rigidbody2D>();
                     leftMeteor.transform.Rotate(0f, 0f, -90f);
                     leftMeteorRB.velocity = new Vector3(meteorSpeed, 0f, 0f);
+                    AudioSource.PlayClipAtPoint(fireballClip, transform.localPosition);
                 }
                 Invoke("hideArrow", 3f);
                 numOfMeteor += 1;
@@ -281,7 +288,9 @@ namespace AphroditeFightCode
                     Rigidbody2D rightMeteorRB = rightMeteor.GetComponent<Rigidbody2D>();
                     rightMeteor.transform.Rotate(0f, 0f, 90f);
                     rightMeteorRB.velocity = new Vector3((-1) * meteorSpeed, 0f, 0f);
+                    AudioSource.PlayClipAtPoint(fireballClip, transform.localPosition);
                 }
+
                 Invoke("hideArrow", 3f);
                 numOfMeteor++;
                 meteorSpeed += 0.2f;
@@ -366,6 +375,7 @@ namespace AphroditeFightCode
             {
                 if (leftWallRB.velocity.x == 0f)
                 {
+                    AudioSource.PlayClipAtPoint(wallClip, transform.localPosition);
                     leftWallRB.velocity = leftWall.transform.right * 3f;
                 }
             }
@@ -373,6 +383,7 @@ namespace AphroditeFightCode
             {
                 if(rightWallRB.velocity.x == 0f)
                 {
+                    AudioSource.PlayClipAtPoint(wallClip, transform.localPosition);
                     Debug.Log("TRUE");
                     rightWallRB.velocity = rightWall.transform.right * -3f;
                 }

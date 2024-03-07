@@ -25,6 +25,8 @@ namespace AphroditeFightCode
         Vector2 rectangleSize = new Vector2(0.5f, 0.5f);
         public GameObject playerObject;
 
+        [Header("Audio Files")]
+        public AudioClip hitClip;
         //
         void Start()
         {
@@ -55,6 +57,7 @@ namespace AphroditeFightCode
             GameObject collidingObject = collision.gameObject;
             if (isHestiaFireball && collidingObject.CompareTag("Player"))
             {
+
                 Destroy(gameObject);
                 Attack(collidingObject, 0.3f);
 
@@ -74,6 +77,7 @@ namespace AphroditeFightCode
             float flashDuration = 0.1f;
             int numberOfFlashes = 2;
 
+            AudioSource.PlayClipAtPoint(hitClip, transform.localPosition);
             LeanTween.value(playerObject, originalColor, flashColor, flashDuration)
                .setEase(LeanTweenType.easeInOutSine)
                .setLoopPingPong(numberOfFlashes)

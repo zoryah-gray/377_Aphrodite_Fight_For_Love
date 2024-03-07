@@ -17,6 +17,10 @@ namespace AphroditeFightCode
         public Vector3 originalScale;
         public Vector3 originalPos;
 
+        [Header("Audio Files")]
+        public AudioClip doorClip;
+        
+
         private void Start()
         {
             GameEvents.current.onOpenDoorTrigger += OnOpenDoor;
@@ -74,7 +78,7 @@ namespace AphroditeFightCode
                     float topCoordinate = transform.position.y + (transform.localScale.y * 0.5f);
                     //Debug.Log("size of boz = " + size.y * 2f);
                     //Debug.Log("original coordy =" + transform.position + "top coord = " +  topCoordinate);
-
+                    AudioSource.PlayClipAtPoint(doorClip, transform.localPosition);
                     if (openHorz)
                     {
                         //Debug.Log("open Horz scale x = " + originalScale.x);

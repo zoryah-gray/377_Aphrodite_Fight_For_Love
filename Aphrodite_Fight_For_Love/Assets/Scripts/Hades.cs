@@ -45,6 +45,11 @@ namespace AphroditeFightCode
         public bool isHadesDead = false;
         public GameObject hadesHealthBufferCollider;
 
+        [Header("Audio Files")]
+        public AudioClip deathClip;
+        public AudioClip shootClip;
+        public AudioClip spawnClip;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -82,7 +87,7 @@ namespace AphroditeFightCode
 
             // Create a transparent version of the original color (fully transparent in this case)
             Color transparentColor = new Color(originalColor.r, originalColor.g, originalColor.b, 0);
-
+            AudioSource.PlayClipAtPoint(deathClip, transform.localPosition);
             // Perform the ping-pong animation
             LeanTween.value(gameObject, originalColor.a, transparentColor.a, flashDuration)
                 .setEase(LeanTweenType.easeInOutSine)
@@ -165,7 +170,8 @@ namespace AphroditeFightCode
            
         }
         public void SpawnHadesEnemies()
-        { 
+        {
+            AudioSource.PlayClipAtPoint(spawnClip, transform.localPosition);
             Instantiate(minionPrefab1, new Vector2(Random.Range(-7f, -1.5f), Random.Range(0f, 3.5f)), Quaternion.identity).GetComponent<AIDestinationSetter>().target = player.transform;
         }
         public void HadesSpawn2()
@@ -192,7 +198,7 @@ namespace AphroditeFightCode
            
             if (!HadesIsLeft) { hadesBulletInitPos1 = new Vector3(1.9f, -1f, 0f); }
             if (HadesIsLeft) { hadesBulletInitPos1 = new Vector3(-1.9f, -1f, 0f); }
-            
+            AudioSource.PlayClipAtPoint(shootClip, transform.localPosition);
             GameObject hadesBulletGO = Instantiate(hadesBulletPrefab, hadesBulletInitPos1, Quaternion.identity);
             
             Vector2 direction = player.transform.position - hadesBulletInitPos1;
