@@ -139,6 +139,11 @@ namespace AphroditeFightCode
             }
 
         }
+
+        public void SkipNextScene()
+        {
+            SceneManager.LoadScene("Level1");
+        }
         public void LoadScene(int idx)
         {
             string sceneName = sceneNames[idx];
