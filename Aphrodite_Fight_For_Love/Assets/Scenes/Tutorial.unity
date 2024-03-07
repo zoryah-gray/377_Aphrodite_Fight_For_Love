@@ -5236,7 +5236,9 @@ MonoBehaviour:
   timelines:
   - {fileID: 11400000, guid: d8df916afb67644ec8611aaaeac45620, type: 2}
   timelineStates: 02000000
-  sceneNames: []
+  sceneNames:
+  - Tutorial
+  - Level1
   activeScene: 
   sceneID: 0
   loopStartTime: 0
